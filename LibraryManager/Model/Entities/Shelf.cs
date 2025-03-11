@@ -13,8 +13,7 @@ namespace LibraryManager.Model.Entities
 
         //Foregin key
         public int BookShelfId { get; set; }
-        public int StorageId { get; set; }
         public BookShelf BookShelf { get; set; }
-        public Storage Storage { get; set; }
+        public ICollection<Storage> Storages { get; set; }
     }
 }
