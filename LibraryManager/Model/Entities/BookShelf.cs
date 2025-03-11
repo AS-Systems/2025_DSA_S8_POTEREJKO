@@ -12,7 +12,7 @@ namespace LibraryManager.Model.Entities
         public int BookShelfNumber { get; set; }
 
         //Foregin keys
-        public ICollection<Shelf> Shelves { get; set; }
+        public ICollection<Shelf> Shelfs { get; set; }
         public ICollection<Storage> Storages { get; set; }
 
     }
