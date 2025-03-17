@@ -14,8 +14,18 @@ namespace LibraryManager.Model
         public DbSet<Shelf> Shelves { get; set; }
         public DbSet<BookShelf> BookShelves { get; set; }
 
+        public LibraryContext() { }
+
         public LibraryContext(DbContextOptions<LibraryContext> options) : base(options) { }
 
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=LibraryDB;Integrated Security=True;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,43 +34,48 @@ namespace LibraryManager.Model
                 .HasValue<User>("User")
                 .HasValue<Author>("Author");
 
-            //Book info
             modelBuilder.Entity<Book>()
                 .HasOne(b => b.Author)
                 .WithMany(a => a.Books)
-                .HasForeignKey(b => b.AuthorId);
+                .HasForeignKey(b => b.AuthorId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<Book>()
                 .HasOne(b => b.Storage)
                 .WithMany(s => s.Books)
-                .HasForeignKey(b => b.StorageId);
+                .HasForeignKey(b => b.StorageId)
+                .OnDelete(DeleteBehavior.NoAction);
 
-            //Loan info
             modelBuilder.Entity<Loan>()
                 .HasOne(l => l.Book)
                 .WithMany(b => b.Loans)
-                .HasForeignKey(l => l.BookId);
+                .HasForeignKey(l => l.BookId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<Loan>()
                 .HasOne(l => l.User)
                 .WithMany(u => u.Loans)
-                .HasForeignKey(l => l.UserId);
+                .HasForeignKey(l => l.UserId)
+                .OnDelete(DeleteBehavior.NoAction);
 
-            //Storage info
             modelBuilder.Entity<Storage>()
                 .HasOne(s => s.Shelf)
                 .WithMany(s => s.Storages)
-                .HasForeignKey(s => s.ShelfId);
+                .HasForeignKey(s => s.ShelfId)
+                .OnDelete(DeleteBehavior.NoAction); 
+
             modelBuilder.Entity<Storage>()
                 .HasOne(s => s.BookShelf)
                 .WithMany(b => b.Storages)
-                .HasForeignKey(s => s.BookShelfId);
+                .HasForeignKey(s => s.BookShelfId)
+                .OnDelete(DeleteBehavior.NoAction);
 
-            //Shelf info
             modelBuilder.Entity<Shelf>()
                 .HasOne(s => s.BookShelf)
-                .WithMany(b => b.Shelfs)
-                .HasForeignKey(s => s.BookShelfId);
+                .WithMany(b => b.Shelves)
+                .HasForeignKey(s => s.BookShelfId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
-
 
     }
 }

@@ -8,9 +8,7 @@ namespace LibraryManager.Model.Entities
 {
     public class User : Person
     {
-        public int Id { get; set; }
         public string Phone { get; set; }
-
         public ICollection<Loan> Loans { get; set; }
     }
 }
