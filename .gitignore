@@ -1,0 +1,47 @@
+# Ignore Visual Studio temporary files, build results, and
+# user-specific files
+
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+.vs/
+*.user
+*.suo
+*.cache
+*.csproj.user
+
+# NuGet packages
+*.nupkg
+packages/
+
+# Logs and debugging
+*.log
+*.tlog
+*.pdb
+
+# Compiled binaries
+*.exe
+*.dll
+*.appx
+*.appxbundle
+
+# Resharper and Rider files
+.idea/
+*.DotSettings.user
+
+# Publish directory
+publish/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Auto-generated files
+GeneratedFiles/
+
+# Rider and Visual Studio Code
+.vscode/
+*.code-workspace
+
