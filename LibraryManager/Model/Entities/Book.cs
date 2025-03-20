@@ -14,6 +14,7 @@ namespace LibraryManager.Model.Entities
         public int PageCount { get; set; }
 
         //Foregin keys
+        public int LoanID { get; set; }
         public ICollection<Loan> Loans {  get; set; }   
 
         public int AuthorId { get; set; }
