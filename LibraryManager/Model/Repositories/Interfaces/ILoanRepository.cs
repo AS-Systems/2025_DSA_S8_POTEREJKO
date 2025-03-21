@@ -9,13 +9,11 @@ namespace LibraryManager.Model.Repositories.Interfaces
 {
     internal interface ILoanRepository
     {
-        IEnumerable<Loan> GetAll();
-        Loan GetById(int id);
-        void Insert(Loan book);
-        void Update(Loan book);
-        void Delete(Loan book);
-        void Save();
-
-        
+        Task<IEnumerable<Loan>> GetAllAsync();
+        Task<Loan?> GetByIdAsync(int id);
+        Task InsertAsync(Loan loan);
+        Task UpdateAsync(Loan loan);
+        Task DeleteAsync(Loan loan);
+        Task SaveAsync();
     }
 }

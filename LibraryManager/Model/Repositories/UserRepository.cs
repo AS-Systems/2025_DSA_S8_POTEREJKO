@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibraryManager.Model.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Model.Repositories
 {
@@ -14,46 +15,47 @@ namespace LibraryManager.Model.Repositories
         {
            _context = context; 
         }
-        public void Delete(User user)
+
+        public async Task DeleteAsync(User user)
         {
-            var userToDelete = _context.Users.Find(user.Id);
+            var userToDelete = await _context.Users.FindAsync(user.Id);
             if (userToDelete != null)
             {
                 _context.Users.Remove(userToDelete);
+                await SaveAsync();
             }
         }
 
-        public IEnumerable<User> GetAll()
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
-            var users = _context.Users.ToList();
-            return users;
+            return await _context.Users.ToListAsync();
         }
 
-        public User GetById(int id)
+        public async Task<User?> GetByIdAsync(int id)
         {
-            var user = _context.Users.Find(id);
-            return user;
+            return await _context.Users.FindAsync(id);
         }
 
-        public void Insert(User user)
+        public async Task InsertAsync(User user)
         {
-            _context.Users.Add(user);
+            await _context.Users.AddAsync(user);
+            await SaveAsync();
         }
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(User user)
+        public async Task UpdateAsync(User user)
         {
-            var userToUpdate = _context.Users.Find(user.Id);
+            var userToUpdate = await _context.Users.FindAsync(user.Id);
             if (userToUpdate != null)
             {
-                userToUpdate.Phone = user.Phone;
                 userToUpdate.Name = user.Name;
                 userToUpdate.Surname = user.Surname;
-                _context.SaveChanges();
+                userToUpdate.Phone = user.Phone;
+                await SaveAsync();
             }
         }
     }

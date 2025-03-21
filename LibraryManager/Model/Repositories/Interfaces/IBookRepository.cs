@@ -9,13 +9,11 @@ namespace LibraryManager.Model.Repositories.Interfaces
 {
     internal interface IBookRepository
     {
-        IEnumerable<Book> GetAll();
-        Book GetById(int id);
-        void Insert(Book book);
-        void Update(Book book);
-        void Delete(Book book);
-        void Save();
-
-        
+        Task<IEnumerable<Book>> GetAllAsync();
+        Task<Book?> GetByIdAsync(int id);
+        Task InsertAsync(Book book);
+        Task UpdateAsync(Book book);
+        Task DeleteAsync(Book book);
+        Task SaveAsync();
     }
 }

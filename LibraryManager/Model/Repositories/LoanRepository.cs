@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibraryManager.Model.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Model.Repositories
 {
@@ -14,47 +15,45 @@ namespace LibraryManager.Model.Repositories
         {
            _context = context; 
         }
-        public void Delete(Loan loan)
+
+        public async Task DeleteAsync(Loan loan)
         {
-            var loanToDelete = _context.Loans.Find(loan.Id);
+            var loanToDelete = await _context.Loans.FindAsync(loan.Id);
             if (loanToDelete != null)
             {
                 _context.Loans.Remove(loanToDelete);
+                await SaveAsync();
             }
         }
 
-        public IEnumerable<Loan> GetAll()
+        public async Task<IEnumerable<Loan>> GetAllAsync()
         {
-            var loans = _context.Loans.ToList();
-            return loans;
+            return await _context.Loans.ToListAsync();
         }
 
-        public Loan GetById(int id)
+        public async Task<Loan?> GetByIdAsync(int id)
         {
-            var loan = _context.Loans.Find(id);
-            return loan;
+            return await _context.Loans.FindAsync(id);
         }
 
-        public void Insert(Loan loan)
+        public async Task InsertAsync(Loan loan)
         {
-            _context.Loans.Add(loan);
+            await _context.Loans.AddAsync(loan);
+            await SaveAsync();
         }
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(Loan loan)
+        public async Task UpdateAsync(Loan loan)
         {
-            var loanToUpdate = _context.Loans.Find(loan.Id);
+            var loanToUpdate = await _context.Loans.FindAsync(loan.Id);
             if (loanToUpdate != null)
             {
                 loanToUpdate.TakeDate = loan.TakeDate;
-                loanToUpdate.ReturnDate = loan.ReturnDate;
-                loanToUpdate.BookId = loan.BookId;
-                loanToUpdate.UserId = loan.UserId;
-                _context.SaveChanges();
+                await SaveAsync();
             }
         }
     }
