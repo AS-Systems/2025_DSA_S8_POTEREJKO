@@ -7,15 +7,13 @@ using LibraryManager.Model.Entities;
 
 namespace LibraryManager.Model.Repositories.Interfaces
 {
-    internal interface IBookRepository
+    internal interface IUserRepository
     {
-        IEnumerable<Book> GetAll();
-        Book GetById(int id);
-        void Insert(Book book);
-        void Update(Book book);
-        void Delete(Book book);
-        void Save();
-
-        
+        Task<IEnumerable<User>> GetAllAsync();
+        Task<User?> GetByIdAsync(int id);
+        Task InsertAsync(User user);
+        Task UpdateAsync(User user);
+        Task DeleteAsync(User user);
+        Task SaveAsync();
     }
 }

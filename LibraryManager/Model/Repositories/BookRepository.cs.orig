@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibraryManager.Model.Entities;
+<<<<<<< HEAD
+=======
 using Microsoft.EntityFrameworkCore;
+>>>>>>> origin/CRUD-Repositories-Book-User-Loan
 
 namespace LibraryManager.Model.Repositories
 {
@@ -15,6 +18,42 @@ namespace LibraryManager.Model.Repositories
         {
            _context = context; 
         }
+<<<<<<< HEAD
+        public void Delete(Book book)
+        {
+            var bookToDelete = _context.Books.Find(book.Id);
+            if (bookToDelete != null)
+            {
+                _context.Books.Remove(bookToDelete);
+            }
+        }
+
+        public IEnumerable<Book> GetAll()
+        {
+            var books = _context.Books.ToList();
+            return books;
+        }
+
+        public Book GetById(int id)
+        {
+            var book = _context.Books.Find(id);
+            return book;
+        }
+
+        public void Insert(Book book)
+        {
+            _context.Books.Add(book);
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+        public void Update(Book book)
+        {
+            var bookToUpdate = _context.Books.Find(book.Id);
+=======
 
         public async Task DeleteAsync(Book book)
         {
@@ -50,15 +89,23 @@ namespace LibraryManager.Model.Repositories
         public async Task UpdateAsync(Book book)
         {
             var bookToUpdate = await _context.Books.FindAsync(book.Id);
+>>>>>>> origin/CRUD-Repositories-Book-User-Loan
             if (bookToUpdate != null)
             {
                 bookToUpdate.Title = book.Title;
                 bookToUpdate.Genre = book.Genre;
                 bookToUpdate.PageCount = book.PageCount;
+<<<<<<< HEAD
+                bookToUpdate.AuthorId = book.AuthorId;
+                bookToUpdate.StorageId = book.StorageId;
+                bookToUpdate.LoanID = book.LoanID;
+                _context.SaveChanges();
+=======
                 bookToUpdate.LoanID = book.LoanID;
                 bookToUpdate.AuthorId = book.AuthorId;
                 bookToUpdate.StorageId = book.StorageId;
                 await SaveAsync();
+>>>>>>> origin/CRUD-Repositories-Book-User-Loan
             }
         }
     }

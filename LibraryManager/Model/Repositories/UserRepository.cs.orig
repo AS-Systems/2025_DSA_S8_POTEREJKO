@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibraryManager.Model.Entities;
+<<<<<<< HEAD
+=======
 using Microsoft.EntityFrameworkCore;
+>>>>>>> origin/CRUD-Repositories-Book-User-Loan
 
 namespace LibraryManager.Model.Repositories
 {
@@ -15,7 +18,50 @@ namespace LibraryManager.Model.Repositories
         {
            _context = context; 
         }
-       public async Task DeleteAsync(User user)
+<<<<<<< HEAD
+        public void Delete(User user)
+        {
+            var userToDelete = _context.Users.Find(user.Id);
+            if (userToDelete != null)
+            {
+                _context.Users.Remove(userToDelete);
+            }
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            var users = _context.Users.ToList();
+            return users;
+        }
+
+        public User GetById(int id)
+        {
+            var user = _context.Users.Find(id);
+            return user;
+        }
+
+        public void Insert(User user)
+        {
+            _context.Users.Add(user);
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+        public void Update(User user)
+        {
+            var userToUpdate = _context.Users.Find(user.Id);
+            if (userToUpdate != null)
+            {
+                userToUpdate.Phone = user.Phone;
+                userToUpdate.Name = user.Name;
+                userToUpdate.Surname = user.Surname;
+                _context.SaveChanges();
+=======
+
+        public async Task DeleteAsync(User user)
         {
             var userToDelete = await _context.Users.FindAsync(user.Id);
             if (userToDelete != null)
@@ -50,9 +96,12 @@ namespace LibraryManager.Model.Repositories
         {
             var userToUpdate = await _context.Users.FindAsync(user.Id);
             if (userToUpdate != null)
+            {
+                userToUpdate.Name = user.Name;
                 userToUpdate.Surname = user.Surname;
                 userToUpdate.Phone = user.Phone;
                 await SaveAsync();
+>>>>>>> origin/CRUD-Repositories-Book-User-Loan
             }
         }
     }
