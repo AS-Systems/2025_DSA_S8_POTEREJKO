@@ -53,6 +53,9 @@ namespace LibraryManager.Model.Repositories
             if (loanToUpdate != null)
             {
                 loanToUpdate.TakeDate = loan.TakeDate;
+                loanToUpdate.ReturnDate = loan.ReturnDate;
+                loanToUpdate.BookId = loan.BookId;
+                loanToUpdate.UserId = loan.UserId;
                 await SaveAsync();
             }
         }
