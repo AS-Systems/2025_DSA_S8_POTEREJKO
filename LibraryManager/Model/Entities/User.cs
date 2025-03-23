@@ -13,5 +13,9 @@ namespace LibraryManager.Model.Entities
         public string Surname { get; set; }
         public string Phone { get; set; }
 
+
+        //Foregin keys
+        public int BorrowID { get; set; }
+        public ICollection<Borrow> Borrows {  get; set; }   
     }
 }

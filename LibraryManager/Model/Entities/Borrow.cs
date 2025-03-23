@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Entities
 {
-    public class Loan
+    public class Borrow
     {
         public int Id { get; set; }
         public DateTime TakeDate { get; set; }
