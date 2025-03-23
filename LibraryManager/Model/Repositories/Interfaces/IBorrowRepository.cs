@@ -7,13 +7,13 @@ using LibraryManager.Model.Entities;
 
 namespace LibraryManager.Model.Repositories.Interfaces
 {
-    internal interface IBookRepository
+    internal interface IBorrowRepository
     {
-        Task<IEnumerable<Book>> GetAllAsync();
-        Task<Book?> GetByIdAsync(int id);
-        Task InsertAsync(Book book);
-        Task UpdateAsync(Book book);
-        Task DeleteAsync(Book book);
+        Task<IEnumerable<Borrow>> GetAllAsync();
+        Task<Borrow?> GetByIdAsync(int id);
+        Task InsertAsync(Borrow loan);
+        Task UpdateAsync(Borrow loan);
+        Task DeleteAsync(Borrow loan);
         Task SaveAsync();
     }
 }
