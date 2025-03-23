@@ -4,10 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibraryManager.Model.Entities;
-<<<<<<< HEAD
-=======
 using Microsoft.EntityFrameworkCore;
->>>>>>> origin/CRUD-Repositories-Book-User-Loan
 
 namespace LibraryManager.Model.Repositories
 {
@@ -18,51 +15,7 @@ namespace LibraryManager.Model.Repositories
         {
            _context = context; 
         }
-<<<<<<< HEAD
-        public void Delete(Loan loan)
-        {
-            var loanToDelete = _context.Loans.Find(loan.Id);
-            if (loanToDelete != null)
-            {
-                _context.Loans.Remove(loanToDelete);
-            }
-        }
-
-        public IEnumerable<Loan> GetAll()
-        {
-            var loans = _context.Loans.ToList();
-            return loans;
-        }
-
-        public Loan GetById(int id)
-        {
-            var loan = _context.Loans.Find(id);
-            return loan;
-        }
-
-        public void Insert(Loan loan)
-        {
-            _context.Loans.Add(loan);
-        }
-
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
-
-        public void Update(Loan loan)
-        {
-            var loanToUpdate = _context.Loans.Find(loan.Id);
-            if (loanToUpdate != null)
-            {
-                loanToUpdate.TakeDate = loan.TakeDate;
-                loanToUpdate.ReturnDate = loan.ReturnDate;
-                loanToUpdate.BookId = loan.BookId;
-                loanToUpdate.UserId = loan.UserId;
-                _context.SaveChanges();
-=======
-
-        public async Task DeleteAsync(Loan loan)
+       public async Task DeleteAsync(Loan loan)
         {
             var loanToDelete = await _context.Loans.FindAsync(loan.Id);
             if (loanToDelete != null)
@@ -99,8 +52,14 @@ namespace LibraryManager.Model.Repositories
             if (loanToUpdate != null)
             {
                 loanToUpdate.TakeDate = loan.TakeDate;
+                loanToUpdate.ReturnDate = loan.ReturnDate;
+                loanToUpdate.BookId = loan.BookId;
+                loanToUpdate.UserId = loan.UserId;
+<<<<<<< HEAD
+		await SaveAsync();
+=======
                 await SaveAsync();
->>>>>>> origin/CRUD-Repositories-Book-User-Loan
+>>>>>>> CRUD-Repositories-Book-User-Loan
             }
         }
     }
