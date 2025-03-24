@@ -91,7 +91,7 @@ namespace LibraryManager.Model
             );
 
             modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, Name = "User1", Surname = "Surname1", Phone = "1234567890" },
+                new User { Id = 1, Name = "User", Surname = "Surname", Phone = "1234567890" },
                 new User { Id = 2, Name = "User2", Surname = "Surname2", Phone = "0987654321" },
                 new User { Id = 3, Name = "User3", Surname = "Surname3", Phone = "1234567890" },
                 new User { Id = 4, Name = "User4", Surname = "Surname4", Phone = "0987654321" },
