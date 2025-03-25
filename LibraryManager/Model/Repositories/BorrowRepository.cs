@@ -54,8 +54,8 @@ namespace LibraryManager.Model.Repositories
                 borrowToUpdate.TakeDate = borrow.TakeDate;
                 borrowToUpdate.ReturnDate = borrow.ReturnDate;
                 borrowToUpdate.BookId = borrow.BookId;
-                borrowToUpdate.UserId = borrow.UserId;
-		await SaveAsync();
+                borrowToUpdate.BorrowerId = borrow.BorrowerId;
+		        await SaveAsync();
             }
         }
     }
