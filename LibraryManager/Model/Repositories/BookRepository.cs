@@ -55,7 +55,7 @@ namespace LibraryManager.Model.Repositories
                 bookToUpdate.Title = book.Title;
                 bookToUpdate.Genre = book.Genre;
                 bookToUpdate.PageCount = book.PageCount;
-                bookToUpdate.LoanID = book.LoanID;
+                bookToUpdate.BorrowID = book.BorrowID;
                 bookToUpdate.AuthorId = book.AuthorId;
                 bookToUpdate.StorageId = book.StorageId;
                 await SaveAsync();

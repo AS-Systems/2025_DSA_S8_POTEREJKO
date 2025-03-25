@@ -16,14 +16,14 @@ namespace LibraryManager.Model.Repositories
            _context = context; 
         }
        public async Task DeleteAsync(User user)
-        {
+       { 
             var userToDelete = await _context.Users.FindAsync(user.Id);
             if (userToDelete != null)
             {
                 _context.Users.Remove(userToDelete);
                 await SaveAsync();
             }
-        }
+       }
 
         public async Task<IEnumerable<User>> GetAllAsync()
         {
@@ -50,6 +50,7 @@ namespace LibraryManager.Model.Repositories
         {
             var userToUpdate = await _context.Users.FindAsync(user.Id);
             if (userToUpdate != null)
+            { 
                 userToUpdate.Surname = user.Surname;
                 userToUpdate.Phone = user.Phone;
                 await SaveAsync();

@@ -6,7 +6,7 @@ namespace LibraryManager.Model
     public class LibraryContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
-        public DbSet<Loan> Loans { get; set; }
+        public DbSet<Borrow> Borrows { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Author> Authors { get; set; }
@@ -46,15 +46,15 @@ namespace LibraryManager.Model
                 .HasForeignKey(b => b.StorageId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Loan>()
-                .HasOne(l => l.Book)
-                .WithMany(b => b.Loans)
+            modelBuilder.Entity<Borrow>()
+                .HasOne(b => b.Book)
+                .WithMany(b => b.Borrows)
                 .HasForeignKey(l => l.BookId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Loan>()
+            modelBuilder.Entity<Borrow>()
                 .HasOne(l => l.User)
-                .WithMany(u => u.Loans)
+                .WithMany(u => u.Borrows)
                 .HasForeignKey(l => l.UserId)
                 .OnDelete(DeleteBehavior.NoAction);
 
