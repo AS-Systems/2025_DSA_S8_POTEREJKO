@@ -6,15 +6,10 @@
         xmlns:local="clr-namespace:LibraryManager"
         xmlns:uc="clr-namespace:LibraryManager.View.CustomControls"
         xmlns:bt="clr-namespace:LibraryManager.View.CustomControls.Buttons"
+        xmlns:cap="clr-namespace:LibraryManager.View.CustomControls.Capsules"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
-        <StackPanel>
-            <uc:CircularButtonControl ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#faffc5" ButtonHoverColor="#dfe4af" ButtonClickColor="#bec29b"  />
-            <bt:PageSelectionButton BackgroundColor="#3a3960" FontColor="#a9bfa8" Width="200" Height="60" ButtonFontSize="30"  ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" ButtonText="Home"/>
-        </StackPanel>
-       
-        
-   </Grid>
+    </Grid>
 </Window>

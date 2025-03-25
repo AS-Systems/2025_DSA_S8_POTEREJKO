@@ -16,6 +16,5 @@ namespace LibraryManager.Model.Repositories.Interfaces
         void Delete(Book book);
         void Save();
 
-        
     }
 }

@@ -12,6 +12,6 @@ namespace LibraryManager.Model.Entities
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Phone { get; set; }
-
+        public ICollection<Loan> Loans { get; set; }
     }
 }

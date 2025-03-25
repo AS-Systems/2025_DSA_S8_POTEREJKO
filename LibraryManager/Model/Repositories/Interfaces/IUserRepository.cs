@@ -7,13 +7,13 @@ using LibraryManager.Model.Entities;
 
 namespace LibraryManager.Model.Repositories.Interfaces
 {
-    internal interface IBookRepository
+    internal interface IUserRepository
     {
-        IEnumerable<Book> GetAll();
-        Book GetById(int id);
-        void Insert(Book book);
-        void Update(Book book);
-        void Delete(Book book);
+        IEnumerable<User> GetAll();
+        User GetById(int id);
+        void Insert(User user);
+        void Update(User user);
+        void Delete(User user);
         void Save();
 
         
