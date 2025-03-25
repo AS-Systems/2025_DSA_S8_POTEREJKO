@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibraryManager.Model.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Model.Repositories
 {
@@ -14,50 +15,52 @@ namespace LibraryManager.Model.Repositories
         {
            _context = context; 
         }
-        public void Delete(Book book)
+
+        public async Task DeleteAsync(Book book)
         {
-            var bookToDelete = _context.Books.Find(book.Id);
+            var bookToDelete = await _context.Books.FindAsync(book.Id);
             if (bookToDelete != null)
             {
                 _context.Books.Remove(bookToDelete);
+                await SaveAsync();
             }
         }
 
-        public IEnumerable<Book> GetAll()
+        public async Task<IEnumerable<Book>> GetAllAsync()
         {
-            var books = _context.Books.ToList();
-            return books;
+            return await _context.Books.ToListAsync();
         }
 
-        public Book GetById(int id)
+        public async Task<Book?> GetByIdAsync(int id)
         {
-            var book = _context.Books.Find(id);
-            return book;
+            return await _context.Books.FindAsync(id);
         }
 
-        public void Insert(Book book)
+        public async Task InsertAsync(Book book)
         {
-            _context.Books.Add(book);
+            await _context.Books.AddAsync(book);
+            await SaveAsync();
         }
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(Book book)
+        public async Task UpdateAsync(Book book)
         {
-            var bookToUpdate = _context.Books.Find(book.Id);
+            var bookToUpdate = await _context.Books.FindAsync(book.Id);
             if (bookToUpdate != null)
             {
                 bookToUpdate.Title = book.Title;
                 bookToUpdate.Genre = book.Genre;
                 bookToUpdate.PageCount = book.PageCount;
+                bookToUpdate.LoanID = book.LoanID;
                 bookToUpdate.AuthorId = book.AuthorId;
                 bookToUpdate.StorageId = book.StorageId;
-                bookToUpdate.LoanID = book.LoanID;
-                _context.SaveChanges();
+                await SaveAsync();
             }
         }
+
     }
 }

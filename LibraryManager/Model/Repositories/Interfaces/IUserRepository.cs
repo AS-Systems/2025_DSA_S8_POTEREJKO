@@ -9,13 +9,11 @@ namespace LibraryManager.Model.Repositories.Interfaces
 {
     internal interface IUserRepository
     {
-        IEnumerable<User> GetAll();
-        User GetById(int id);
-        void Insert(User user);
-        void Update(User user);
-        void Delete(User user);
-        void Save();
-
-        
+        Task<IEnumerable<User>> GetAllAsync();
+        Task<User?> GetByIdAsync(int id);
+        Task InsertAsync(User user);
+        Task UpdateAsync(User user);
+        Task DeleteAsync(User user);
+        Task SaveAsync();
     }
 }
