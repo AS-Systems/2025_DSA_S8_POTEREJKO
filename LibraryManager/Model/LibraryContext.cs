@@ -8,7 +8,7 @@ namespace LibraryManager.Model
         public DbSet<Book> Books { get; set; }
         public DbSet<Borrow> Borrows { get; set; }
         public DbSet<Person> People { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Borrower> Borrowers { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Storage> Storages { get; set; }
         public DbSet<Shelf> Shelves { get; set; }
@@ -31,7 +31,7 @@ namespace LibraryManager.Model
         {
             modelBuilder.Entity<Person>()
                 .HasDiscriminator<string>("PersonType")
-                .HasValue<User>("User")
+                .HasValue<Borrower>("Borrower")
                 .HasValue<Author>("Author");
 
             modelBuilder.Entity<Book>()
@@ -53,9 +53,9 @@ namespace LibraryManager.Model
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Borrow>()
-                .HasOne(l => l.User)
+                .HasOne(l => l.Borrower)
                 .WithMany(u => u.Borrows)
-                .HasForeignKey(l => l.UserId)
+                .HasForeignKey(l => l.BorrowerId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Storage>()

@@ -10,6 +10,6 @@ namespace LibraryManager.Model.Entities
     {
         Fantasy = 1,
         Action = 2,
-        Horror = 3
+        Horror = 4
     }
 }
