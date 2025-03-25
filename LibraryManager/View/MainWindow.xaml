@@ -7,10 +7,9 @@
         xmlns:local="clr-namespace:LibraryManager"
         xmlns:uc="clr-namespace:LibraryManager.View.CustomControls"
         xmlns:bt="clr-namespace:LibraryManager.View.CustomControls.Buttons"
+        xmlns:cap="clr-namespace:LibraryManager.View.CustomControls.Capsules"
         mc:Ignorable="d"
-        Title="MainWindow" WindowStyle="None" Height="450" Width="800" Background="#FF3A3960" ResizeMode="NoResize" >
-
-    
+        Title="MainWindow" WindowStyle="None" Height="450" Width="800" Background="#FF3A3960" ResizeMode="NoResize" > 
 
         <Grid>
         <Grid.ColumnDefinitions>
@@ -41,7 +40,5 @@
         </Border>
         
 
-
-            
     </Grid>
 </Window>
