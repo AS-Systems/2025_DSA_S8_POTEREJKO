@@ -12,6 +12,7 @@ namespace LibraryManager.Model.Entities
         public string Title { get; set; }
         public Genre Genre { get; set; }
         public int PageCount { get; set; }
+        public bool IsAvailable { get; set; } = true; // Default value
 
         //Foregin keys
         public int BorrowID { get; set; }
