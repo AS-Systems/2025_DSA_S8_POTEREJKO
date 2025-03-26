@@ -22,6 +22,15 @@
     <Compile Update="View\Windows\AddAuthor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Windows\AddBook.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\AddBorrow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\AddBorrower.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\CustomControls\Buttons\CircularButtonControl.xaml">
@@ -40,6 +49,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\AddAuthor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\AddBook.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\AddBorrow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\AddBorrower.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
