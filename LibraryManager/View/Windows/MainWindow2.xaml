@@ -7,7 +7,7 @@
         xmlns:uc="clr-namespace:LibraryManager.View.CustomControls"
         xmlns:local="clr-namespace:LibraryManager.View.Windows"
         mc:Ignorable="d"
-        Title="MainWindow2" Height="450" Width="800" WindowStyle="None" Background="Transparent" AllowsTransparency="True"  ResizeMode="NoResize">
+        Title="MainWindow2" Height="800" Width="1400" WindowStyle="None" Background="Transparent" AllowsTransparency="True"  ResizeMode="NoResize">
     
     <Grid>
         <!--Rounding whole window-->
@@ -16,7 +16,7 @@
 
             <!--Division into left and right part-->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="130*"/>
                 <ColumnDefinition Width="500*"/>
             </Grid.ColumnDefinitions>
             
@@ -24,7 +24,7 @@
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <!-- Title of the window-->
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="70"/>
                     <!--Buttons-->
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -36,38 +36,51 @@
                 </Grid.RowDefinitions>
 
                 <!--Label and buttons of left column-->
-                <Label Grid.Column="0" Grid.Row="0" Content="Library Manager" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22" Foreground="#a9bfa8"> </Label>
+                <Label Grid.Column="0" Grid.Row="0" Content="Library Manager" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="35" Foreground="#a9bfa8"> </Label>
                 <bt:PageSelectionButton
-                    ButtonText="Home" Grid.Column="0" Grid.Row="1" Width="200" Height="60" FontColor="#a9bfa8" ButtonFontSize="25" BackgroundColor="#3a3960" ButtonHoverColor="#595879" />
+                    ButtonText="Home" Grid.Column="0" Grid.Row="1"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" />
                 <bt:PageSelectionButton
-                    ButtonText="Books" Grid.Column="0" Grid.Row="2" Width="200" Height="60" FontColor="#a9bfa8" ButtonFontSize="25" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
+                    ButtonText="Books" Grid.Column="0" Grid.Row="2"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
                 <bt:PageSelectionButton
-                    ButtonText="Lents" Grid.Column="0" Grid.Row="3" Width="200" Height="60" FontColor="#a9bfa8" ButtonFontSize="25" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
+                    ButtonText="Borrows" Grid.Column="0" Grid.Row="3"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
                 <bt:PageSelectionButton
-                    ButtonText="Users" Grid.Column="0" Grid.Row="4" Width="200" Height="60" FontColor="#a9bfa8" ButtonFontSize="25" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
+                    ButtonText="Users" Grid.Column="0" Grid.Row="4"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
                 <bt:PageSelectionButton
-                    ButtonText="Storage" Grid.Column="0" Grid.Row="5" Width="200" Height="60" FontColor="#a9bfa8" ButtonFontSize="25" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
+                    ButtonText="Storage" Grid.Column="0" Grid.Row="5"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
 
 
             </Grid>
             
             <!--Right part-->
             <Grid Grid.Column="1">
-  
+
                 <Grid.RowDefinitions>
                     <!-- Buttons bar -->
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="70"/>
                     <!-- Yellow part-->
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border Background="#faffc5" CornerRadius="35" Grid.Row="1"></Border>
-                <uc:CircularButtonControl
-                    Grid.Column="1" Grid.Row="0" Diameter="40" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" x:Name="btnClose" Margin="480,-15,-24,0"/>
-                <uc:CircularButtonControl
-                    Grid.Column="1" Grid.Row="0" Diameter="40" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" x:Name="btnMinimise" Margin="400,-15,-24,0"/>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+            <Border Background="#faffc5" CornerRadius="35" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                    <!--Frame TO DO, as idk how do you want it to work later-->
+                    <Frame />
+            </Border>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                    <uc:CircularButtonControl Margin="0,0,4,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e"/>
+                    <uc:CircularButtonControl Margin="4,0,0,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e"/>
+            </StackPanel>
+            
+            
+               
                 
-                <!--Frame TO DO, as idk how do you want it to work later-->
-                <Frame Grid.Column="1" Grid.Row="1"/>
+
+                
             </Grid>
             
             

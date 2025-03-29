@@ -28,5 +28,6 @@ namespace LibraryManager.View.Windows
         {
             DragMove();
         }
+
     }
 }
