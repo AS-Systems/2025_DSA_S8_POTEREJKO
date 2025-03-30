@@ -9,28 +9,28 @@ using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories
 {
-    internal class BookRepository : IBookRepository
+    internal class AuthorRepository : IAuthorRepository
     {
         private readonly LibraryDBContext _libraryDBContext;
 
-        public BookRepository(LibraryDBContext libraryDBContext)
+        public AuthorRepository(LibraryDBContext libraryDBContext) 
         {
             _libraryDBContext = libraryDBContext;
         }
 
-        public Task<IEnumerable<Book>> GetAllBooksAsync()
+        public async Task<IEnumerable<Author>> GetAllAuthorsAsync()
         {
-            throw new NotImplementedException();
+            return await _libraryDBContext.Authors.ToListAsync();
         }
 
-        public Task<Book> GetBookByIdAsync(int id)
+        public async Task<Author?> GetAuthorByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _libraryDBContext.Authors.FindAsync(id);
         }
 
-        public async Task<bool> IsAnyBookAsync()
+        public async Task<bool> IsAnyAuthorAsync()
         {
-            return await _libraryDBContext.Books.AnyAsync();
+            return await _libraryDBContext.Authors.AnyAsync();
         }
     }
 }

@@ -19,16 +19,19 @@
     <Compile Update="View\CustomControls\Capsules\TotalBorrows.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\Windows\AddAuthor.xaml.cs">
+    <Compile Update="View\Windows\Add\AddAuthor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\Windows\AddBook.xaml.cs">
+    <Compile Update="View\Windows\Add\AddBook.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\Windows\AddBorrow.xaml.cs">
+    <Compile Update="View\Windows\Add\AddBorrow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\Windows\AddBorrower.xaml.cs">
+    <Compile Update="View\Windows\Add\AddBorrower.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Windows\MainWindow2.xaml.cs">
@@ -48,19 +51,19 @@
     <Page Update="View\CustomControls\Capsules\TotalBorrows.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\MainWindow.xaml">
+    <Page Update="View\Windows\Add\AddAuthor.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Windows\AddAuthor.xaml">
+    <Page Update="View\Windows\Add\AddBook.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Windows\AddBook.xaml">
+    <Page Update="View\Windows\Add\AddBorrow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Windows\AddBorrow.xaml">
+    <Page Update="View\Windows\Add\AddBorrower.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Windows\AddBorrower.xaml">
+    <Page Update="View\Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\MainWindow2.xaml">

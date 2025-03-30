@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryManager.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,10 @@ namespace LibraryManager.View.Windows
     /// </summary>
     public partial class MainWindow2 : Window
     {
-        public MainWindow2()
+        public MainWindow2(User user)
         {
             InitializeComponent();
+            UsernameLabel.Text = user.Name + " " + user.Surname; 
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
