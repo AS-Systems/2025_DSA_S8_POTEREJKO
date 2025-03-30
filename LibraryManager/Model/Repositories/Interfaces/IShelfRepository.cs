@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories.Interfaces
 {
-    internal interface IBookRepository
+    internal interface IShelfRepository
     {
-        Task<bool> IsAnyBookAsync();
-        Task<IEnumerable<Book>> GetAllBooksAsync();
-        Task<Book> GetBookByIdAsync(int id);
+        Task<bool> IsAnyShelfAsync();
+        Task<IEnumerable<Shelf>> GetAllShelvesAsync();
+        Task<Shelf?> GetShelfByIdAsync(int id);
     }
 }

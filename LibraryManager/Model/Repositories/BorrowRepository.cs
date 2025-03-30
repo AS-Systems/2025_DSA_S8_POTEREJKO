@@ -1,62 +1,36 @@
-﻿using System;
+﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LibraryManager.Model.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Model.Repositories
 {
-    internal class BorrowRepository : Interfaces.IBorrowRepository
+    internal class BorrowRepository : IBorrowRepository
     {
-        private readonly LibraryContext _context;
-        public BorrowRepository(LibraryContext context)
+        private readonly LibraryDBContext _libraryDBContext;
+
+        public BorrowRepository(LibraryDBContext libraryDBContext)
         {
-           _context = context; 
-        }
-       public async Task DeleteAsync(Borrow borrow)
-        {
-            var borrowToDelete = await _context.Borrows.FindAsync(borrow.Id);
-            if (borrowToDelete != null)
-            {
-                _context.Borrows.Remove(borrowToDelete);
-                await SaveAsync();
-            }
+            _libraryDBContext = libraryDBContext;
         }
 
-        public async Task<IEnumerable<Borrow>> GetAllAsync()
+        public async Task<IEnumerable<Borrow>> GetAllBorrowsAsync()
         {
-            return await _context.Borrows.ToListAsync();
+            return await _libraryDBContext.Borrows.ToListAsync();
         }
 
-        public async Task<Borrow?> GetByIdAsync(int id)
+        public async Task<Borrow?> GetBorrowByIdAsync(int id)
         {
-            return await _context.Borrows.FindAsync(id);
+            return await _libraryDBContext.Borrows.FindAsync(id);
         }
 
-        public async Task InsertAsync(Borrow borrow)
+        public async Task<bool> IsAnyBorrowAsync()
         {
-            await _context.Borrows.AddAsync(borrow);
-            await SaveAsync();
-        }
-
-        public async Task SaveAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task UpdateAsync(Borrow borrow)
-        {
-            var borrowToUpdate = await _context.Borrows.FindAsync(borrow.Id);
-            if (borrowToUpdate != null)
-            {
-                borrowToUpdate.TakeDate = borrow.TakeDate;
-                borrowToUpdate.ReturnDate = borrow.ReturnDate;
-                borrowToUpdate.BookId = borrow.BookId;
-                borrowToUpdate.BorrowerId = borrow.BorrowerId;
-		        await SaveAsync();
-            }
+            return await _libraryDBContext.Borrows.AnyAsync();
         }
     }
 }

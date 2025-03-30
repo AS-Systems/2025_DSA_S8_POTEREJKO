@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LibraryManager.Model.Entities
+namespace LibraryManager.Model.Entities;
+
+public partial class Shelf
 {
-    public class Shelf
-    {
-        public int Id { get; set; }
-        public int Number { get; set; }
+    public int Id { get; set; }
 
-        //Foregin key
-        public int BookShelfId { get; set; }
-        public BookShelf BookShelf { get; set; }
-        public ICollection<Storage> Storages { get; set; }
-    }
+    public int BookShelfeId { get; set; }
+
+    public string Name { get; set; } = null!;
+
+    public int AvaliableSpace { get; set; }
+
+    public int Capacity { get; set; }
+
+    public virtual Bookshelf BookShelfe { get; set; } = null!;
+
+    public virtual ICollection<Storage> Storages { get; set; } = new List<Storage>();
 }
