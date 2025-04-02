@@ -19,6 +19,12 @@
     <Compile Update="View\CustomControls\Capsules\TotalBorrows.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\Comboboxes\TransparentCombobox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\HomePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Windows\Add\AddAuthor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +55,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\Capsules\TotalBorrows.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\Comboboxes\TransparentCombobox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\HomePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Add\AddAuthor.xaml">

@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LibraryManager.View.CustomControls.Capsules"
+             xmlns:cmb="clr-namespace:LibraryManager.View.CustomControls.Comboboxes"
              mc:Ignorable="d" 
              Name="TotalCapsule"
-             d:DesignHeight="400" d:DesignWidth="400">
+             d:DesignHeight="250" d:DesignWidth="250">
     <Grid>
         <local:Capsule CapsuleBackground="#bec29b" Width="{Binding CapsuleWidth, ElementName=TotalCapsule}" Height="{Binding CapsuleHeight, ElementName=TotalCapsule}" CapsuleRadius="{Binding CapsuleCornerRadius, ElementName=TotalCapsule}"/>
         <Grid Width="{Binding CapsuleWidth, ElementName=TotalCapsule}" Height="{Binding CapsuleHeight, ElementName=TotalCapsule}">
@@ -27,7 +28,7 @@
 
                 <TextBlock Grid.Row="0" Text="Total" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding HeaderTopFontSize, ElementName=TotalCapsule}" FontWeight="Bold" Foreground="#5e686d"/>
                 <TextBlock Grid.Row="1" Text="Borrows" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="{Binding HeaderBottomFontSize, ElementName=TotalCapsule}" FontWeight="Bold" Foreground="#5e686d"/>
-                <ComboBox Grid.Row="2" />
+                <cmb:TransparentCombobox Grid.Row="2" Margin="45,0"/>
                 <TextBlock Grid.Row="3" Text="{Binding TotalCountText, ElementName=TotalCapsule}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding TotalCountTextFontSize, ElementName=TotalCapsule}" FontWeight="Bold" Foreground="#3a3960"/>
 
             </Grid>

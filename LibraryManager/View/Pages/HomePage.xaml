@@ -1,0 +1,33 @@
+﻿<Page x:Class="LibraryManager.View.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibraryManager.View.Pages"
+      xmlns:cap="clr-namespace:LibraryManager.View.CustomControls.Capsules"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1100"
+      Title="HomePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition/>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition/>
+            <RowDefinition Height=".1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".1*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width=".1*"/>
+        </Grid.ColumnDefinitions>
+
+        <cap:TotalBorrows Grid.Row="1" Grid.Column="4" CapsuleCornerRadius="50" CapsuleWidth="230" CapsuleHeight="280" TotalCountTextFontSize="130" />
+
+    </Grid>
+</Page>

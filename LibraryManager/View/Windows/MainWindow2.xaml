@@ -73,7 +73,7 @@
 
             <Border Background="#faffc5" CornerRadius="35" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
                     <!--Frame TO DO, as idk how do you want it to work later-->
-                    <Frame />
+                    <Frame x:Name="PageHolder" NavigationUIVisibility="Hidden" />
             </Border>
 
             <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
