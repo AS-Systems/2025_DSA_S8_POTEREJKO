@@ -1,4 +1,5 @@
 ﻿using LibraryManager.Model.Entities;
+using LibraryManager.View.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace LibraryManager.View.Windows
         public MainWindow2(User user)
         {
             InitializeComponent();
-            UsernameLabel.Text = user.Name + " " + user.Surname; 
+            UsernameLabel.Text = user.Name + " " + user.Surname;
+            PageHolder.Content = new HomePage();
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
