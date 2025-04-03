@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManager.View.Windows"
         mc:Ignorable="d"
-        Title="AddAuthor" Height="450" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        Title="AddAuthor" Height="650" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
@@ -45,6 +45,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1.4*"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
@@ -56,6 +57,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
+
                             </Grid.RowDefinitions>
 
                             <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
@@ -72,9 +74,23 @@
                                     Text="Surname"
                             />
                         </Grid>
-
-                        <!--Button grid-->
                         <Grid Grid.Row="2">
+                            <!--Grid layout-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+
+                            </Grid.RowDefinitions>
+
+                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                                     VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                                     Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                                     BorderThickness="3" BorderBrush="#5e686d"
+                                     Text="Info"
+                            />
+
+                        </Grid>
+                        <!--Button grid-->
+                        <Grid Grid.Row="3">
                             <!--Grid layout-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
