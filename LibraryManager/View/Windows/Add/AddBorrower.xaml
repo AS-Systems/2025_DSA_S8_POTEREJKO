@@ -25,7 +25,7 @@
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Content="Add Borrower" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
+                        <Label Grid.Column="1" Content="Add User" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
                     </Grid>
                 </Border>
 
@@ -48,9 +48,11 @@
   
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
+                        
                         <Rectangle Grid.Row="0" Stroke="#3a3960" StrokeDashArray="4,2" StrokeThickness="3" Width="110" Height="110"  RadiusX="25" RadiusY="25"/>
                         <!--To do: Implement drop image control-->
 
@@ -109,6 +111,25 @@
                                  BorderThickness="3" BorderBrush="#5e686d"
                                  Text="Phone"
                         />
+                            
+                            
+                            <!--To do: Impelment custom TextBox control-->
+
+
+                        </Grid>
+                        <Grid Grid.Row="4">
+                            <!--Grid layout-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+
+                            </Grid.RowDefinitions>
+
+                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                                    VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                                    Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                                    BorderThickness="3" BorderBrush="#5e686d"
+                                    Text="E-mail"
+                            />
                             <!--To do: Impelment custom TextBox control-->
 
 
