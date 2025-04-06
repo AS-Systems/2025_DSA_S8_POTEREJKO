@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="LibraryManager.View.CustomControls.Capsules.Upcoming"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryManager.View.CustomControls.Capsules"
+              xmlns:cmb="clr-namespace:LibraryManager.View.CustomControls.Comboboxes"
+             mc:Ignorable="d" 
+             Name="UpcomingCapsule"
+             d:DesignHeight="250" d:DesignWidth="250">
+    <Grid>
+        <local:Capsule CapsuleBackground="#bec29b" Width="{Binding CapsuleWidth, ElementName=UpcomingCapsule}" Height="{Binding CapsuleHeight, ElementName=UpcomingCapsule}" CapsuleRadius="{Binding CapsuleCornerRadius, ElementName=UpcomingCapsule}"/>
+
+        <Grid Width="{Binding CapsuleWidth, ElementName=UpcomingCapsule}" Height="{Binding CapsuleHeight, ElementName=UpcomingCapsule}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.7*" />
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5.6*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Upcoming" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding HeaderTopFontSize, ElementName=UpcomingCapsule}" FontWeight="Bold" Foreground="#5e686d"/>
+                <cmb:TransparentCombobox Grid.Row="1" Margin="45,0"/>
+
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Content="Borrows" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Foreground="#5e686d" FontWeight="Bold" FontSize="{Binding ActionFontSize, ElementName=UpcomingCapsule}"/>
+                    <Label Grid.Row="2" Content="Returns" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Foreground="#5e686d" FontWeight="Bold" FontSize="{Binding ActionFontSize, ElementName=UpcomingCapsule}"/>
+
+                    <TextBlock Grid.Row="1" Text="{Binding BorrowCount, ElementName=UpcomingCapsule}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#3a3960"  FontSize="{Binding BorrowsReturnsFontSize, ElementName=UpcomingCapsule}"/>
+                    <TextBlock Grid.Row="3" Text="{Binding ReturnCount, ElementName=UpcomingCapsule}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#3a3960"  FontSize="{Binding BorrowsReturnsFontSize, ElementName=UpcomingCapsule}"/>
+                </Grid>
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>
