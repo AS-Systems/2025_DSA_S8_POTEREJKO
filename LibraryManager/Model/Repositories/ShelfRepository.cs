@@ -1,36 +1,51 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories
 {
-    internal class ShelfRepository : IShelfRepository
+    public class ShelfRepository : IShelfRepository
     {
-        private readonly LibraryDBContext _libraryDBContext;
+        private readonly LibraryDBContext _context;
 
-        public ShelfRepository(LibraryDBContext libraryDBContext)
+        public ShelfRepository(LibraryDBContext context)
         {
-            _libraryDBContext = libraryDBContext;
-        }
-
-        public async Task<IEnumerable<Shelf>> GetAllShelvesAsync()
-        {
-            return await _libraryDBContext.Shelves.ToListAsync();
-        }
-
-        public async Task<Shelf?> GetShelfByIdAsync(int id)
-        {
-            return await _libraryDBContext.Shelves.FindAsync(id);
+            _context = context;
         }
 
         public async Task<bool> IsAnyShelfAsync()
         {
-            return await _libraryDBContext.Shelves.AnyAsync();
+            return await _context.Shelves.AnyAsync();
+        }
+
+        public async Task<IEnumerable<Shelf>> GetAllShelvesAsync()
+        {
+            return await _context.Shelves.Include(s => s.Storages).ToListAsync();
+        }
+
+        public async Task<Shelf?> GetShelfByIdAsync(int id)
+        {
+            return await _context.Shelves.Include(s => s.Storages).FirstOrDefaultAsync(s => s.Id == id);
+        }
+
+        public async Task InsertAsync(Shelf shelf)
+        {
+            await _context.Shelves.AddAsync(shelf);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Shelf shelf)
+        {
+            _context.Shelves.Update(shelf);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Shelf shelf)
+        {
+            _context.Shelves.Remove(shelf);
+            await _context.SaveChangesAsync();
         }
     }
 }

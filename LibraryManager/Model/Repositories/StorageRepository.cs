@@ -1,36 +1,51 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories
 {
-    internal class StorageRepository : IStorageRepository
+    public class StorageRepository : IStorageRepository
     {
-        private readonly LibraryDBContext _libraryDBContext;
+        private readonly LibraryDBContext _context;
 
-        public StorageRepository(LibraryDBContext libraryDBContext)
+        public StorageRepository(LibraryDBContext context)
         {
-            _libraryDBContext = libraryDBContext;
+            _context = context;
+        }
+
+        public async Task<bool> IsAnyStorageAsync()
+        {
+            return await _context.Storages.AnyAsync();
         }
 
         public async Task<IEnumerable<Storage>> GetAllStoragesAsync()
         {
-            return await _libraryDBContext.Storages.ToListAsync();
+            return await _context.Storages.Include(s => s.Books).ToListAsync();
         }
 
         public async Task<Storage?> GetStorageByIdAsync(int id)
         {
-            return await _libraryDBContext.Storages.FindAsync(id);
+            return await _context.Storages.Include(s => s.Books).FirstOrDefaultAsync(s => s.Id == id);
         }
 
-        public async Task<bool> IsAnySorageAsync()
+        public async Task InsertAsync(Storage storage)
         {
-            return await _libraryDBContext.Storages.AnyAsync();
+            await _context.Storages.AddAsync(storage);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Storage storage)
+        {
+            _context.Storages.Update(storage);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Storage storage)
+        {
+            _context.Storages.Remove(storage);
+            await _context.SaveChangesAsync();
         }
     }
 }
