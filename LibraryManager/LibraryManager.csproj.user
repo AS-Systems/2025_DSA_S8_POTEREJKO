@@ -16,6 +16,9 @@
     <Compile Update="View\CustomControls\Capsules\Capsule.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\Capsules\TopGenre.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\Capsules\TotalBorrows.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -64,6 +67,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\Capsules\Capsule.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\Capsules\TopGenre.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\Capsules\TotalBorrows.xaml">
