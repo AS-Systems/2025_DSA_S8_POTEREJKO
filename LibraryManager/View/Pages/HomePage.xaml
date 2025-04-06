@@ -28,6 +28,6 @@
         </Grid.ColumnDefinitions>
 
         <cap:TotalBorrows Grid.Row="1" Grid.Column="4" CapsuleCornerRadius="50" CapsuleWidth="230" CapsuleHeight="280" TotalCountTextFontSize="130" />
-
+        <cap:TopGenre x:Name="TopGenres" Grid.Row="1" Grid.Column="3" CapsuleCornerRadius="50" CapsuleHeight="280" CapsuleWidth="230" />
     </Grid>
 </Page>
