@@ -37,6 +37,18 @@
     <Compile Update="View\Windows\Add\AddBorrower.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Windows\Edit\EditAuthor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\Edit\EditBook.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\Edit\EditBorrow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\Edit\EditUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Windows\LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -73,6 +85,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Add\AddBorrower.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\Edit\EditAuthor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\Edit\EditBook.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\Edit\EditBorrow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\Edit\EditUser.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\LoginWindow.xaml">
