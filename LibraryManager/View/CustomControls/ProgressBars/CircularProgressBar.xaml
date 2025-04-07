@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="LibraryManager.View.CustomControls.ProgressBars.CircularProgressBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryManager.View.CustomControls.ProgressBars"
+             xmlns:drw="http://schemas.microsoft.com/expression/2010/drawing"
+             mc:Ignorable="d" 
+             Name="CircularProgress"
+             d:DesignHeight="80" d:DesignWidth="80">
+    <UserControl.Resources>
+        <local:ValueAndMaxToAngleConverter x:Key="ValueAndMaxToAngleConverter" />
+    </UserControl.Resources>
+    
+    <Grid>
+        <drw:Arc Stretch="None" EndAngle="360" ArcThickness="{Binding ElementName=CircularProgress, Path=ArcThickness}" Fill="{Binding ElementName=CircularProgress, Path=BackgroundIndicator}"/>
+        <Label x:Name="FillValue" FontSize="{Binding ElementName=CircularProgress, Path=FillValueFontSize}" Content="{Binding ElementName=CircularProgress, Path=FillValueText}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#3a3960" FontWeight="Bold" />
+        <drw:Arc x:Name="progressBar"
+         Stretch="None"
+         ArcThickness="{Binding ElementName=CircularProgress, Path=ArcThickness}"
+         Fill="{Binding ElementName=CircularProgress, Path=IndicatorBrush}">
+            <drw:Arc.EndAngle>
+                <MultiBinding Converter="{StaticResource ValueAndMaxToAngleConverter}">
+                    <Binding ElementName="CircularProgress" Path="Value" />
+                    <Binding ElementName="CircularProgress" Path="MaxValue" />
+                </MultiBinding>
+            </drw:Arc.EndAngle>
+        </drw:Arc>
+    </Grid>
+</UserControl>

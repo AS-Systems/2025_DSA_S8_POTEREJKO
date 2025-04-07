@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="LibraryManager.View.CustomControls.Capsules.AvaliableBooks"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryManager.View.CustomControls.Capsules"
+             xmlns:prog="clr-namespace:LibraryManager.View.CustomControls.ProgressBars"
+             Name="AvaliableBooksCapsule"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="500">
+    <Grid>
+
+        <local:Capsule CapsuleBackground="#bec29b" Width="{Binding CapsuleWidth, ElementName=AvaliableBooksCapsule}" Height="{Binding CapsuleHeight, ElementName=AvaliableBooksCapsule}" CapsuleRadius="{Binding CapsuleCornerRadius, ElementName=AvaliableBooksCapsule}"/>
+        <Grid Width="{Binding CapsuleWidth, ElementName=AvaliableBooksCapsule}" Height="{Binding CapsuleHeight, ElementName=AvaliableBooksCapsule}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="1.3*"/>
+                    <RowDefinition Height=".2*"/>
+                    <RowDefinition Height="5.4*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Margin="10,0,0,0" Text="Your Avaliable" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding HeaderTopFontSize, ElementName=AvaliableBooksCapsule}" FontWeight="Bold" Foreground="#5e686d"/>
+                <TextBlock Grid.Row="1" Text="Books" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="{Binding HeaderBottomFontSize, ElementName=AvaliableBooksCapsule}" FontWeight="Bold" Foreground="#5e686d" Grid.RowSpan="3"/>
+
+                <Grid Grid.Row="3">
+                    <prog:CircularProgressBar Width="150" Height="150" MaxValue="{Binding YourBooksMax, ElementName=AvaliableBooksCapsule}" Value="{Binding YourBooksAvaliable, ElementName=AvaliableBooksCapsule}" />
+                </Grid>
+
+                <TextBlock Grid.Column="1" Text="All Avaliable" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding HeaderTopFontSize, ElementName=AvaliableBooksCapsule}" FontWeight="Bold" Foreground="#5e686d"/>
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="Books" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="{Binding HeaderBottomFontSize, ElementName=AvaliableBooksCapsule}" FontWeight="Bold" Foreground="#5e686d" Grid.RowSpan="3"/>
+
+                <Grid Grid.Column="1" Grid.Row="3">
+                    <prog:CircularProgressBar Width="150" Height="150" MaxValue="{Binding AllBooksMax, ElementName=AvaliableBooksCapsule}" Value="{Binding AllBooksAvaliable, ElementName=AvaliableBooksCapsule}"/>
+                </Grid>
+
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

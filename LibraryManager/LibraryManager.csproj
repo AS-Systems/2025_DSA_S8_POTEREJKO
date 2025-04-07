@@ -19,13 +19,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\Images\close.png" />
+    <Content Include="Resources\Images\close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\home.png" />
     <Content Include="Resources\Images\image-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\lents.png" />
-    <Content Include="Resources\Images\minimise.png" />
+    <Content Include="Resources\Images\minimise.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\storage.png" />
     <Content Include="Resources\Images\users.png" />
   </ItemGroup>
@@ -45,6 +49,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="NetCore5.0.Microsoft.Expression.Drawing" Version="1.0.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
   </ItemGroup>
 

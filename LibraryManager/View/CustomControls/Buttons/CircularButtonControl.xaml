@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              Name ="CircularButton" Width="50" Height="50">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Width="{Binding Diameter, ElementName=CircularButton}" Height="{Binding Diameter, ElementName=CircularButton}">
+        <Button Width="{Binding Diameter, ElementName=CircularButton}" Height="{Binding Diameter, ElementName=CircularButton}" Click="Button_Click">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">
