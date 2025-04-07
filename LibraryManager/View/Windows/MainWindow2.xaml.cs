@@ -26,6 +26,9 @@ namespace LibraryManager.View.Windows
             InitializeComponent();
             UsernameLabel.Text = user.Name + " " + user.Surname;
             PageHolder.Content = new HomePage();
+
+            CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
+            MinimiseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "minimise.png");
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -33,5 +36,14 @@ namespace LibraryManager.View.Windows
             DragMove();
         }
 
+        private void MinimiseBTN_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void CloseBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

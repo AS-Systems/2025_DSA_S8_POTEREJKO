@@ -73,13 +73,13 @@
                 </StackPanel>
 
             <Border Background="#faffc5" CornerRadius="35" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-                    <!--Frame TO DO, as idk how do you want it to work later-->
+                    
                     <Frame x:Name="PageHolder" NavigationUIVisibility="Hidden" />
             </Border>
 
             <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
-                    <uc:CircularButtonControl Margin="0,0,4,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e"/>
-                    <uc:CircularButtonControl Margin="4,0,0,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e"/>
+                    <uc:CircularButtonControl x:Name="MinimiseBTN" Margin="0,0,4,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="MinimiseBTN_Click"/>
+                    <uc:CircularButtonControl x:Name="CloseBTN" Margin="4,0,0,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="CloseBTN_Click"/>
             </StackPanel>
             
             

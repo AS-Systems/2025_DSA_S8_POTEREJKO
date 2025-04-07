@@ -46,6 +46,13 @@ namespace LibraryManager.View.CustomControls
         public static readonly DependencyProperty ButtonClickColorProperty =
            DependencyProperty.Register("ButtonClickColor", typeof(Brush), typeof(CircularButtonControl), new PropertyMetadata(Brushes.Gray));
 
+        public event RoutedEventHandler Click;
+
+        protected virtual void OnClick(RoutedEventArgs e)
+        {
+            Click?.Invoke(this, e);
+        }
+
 
         public int ImageWidth
         {
@@ -103,5 +110,9 @@ namespace LibraryManager.View.CustomControls
             set { SetValue(ButtonClickColorProperty, value); }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OnClick(e); 
+        }
     }
 }
