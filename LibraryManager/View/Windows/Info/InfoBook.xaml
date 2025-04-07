@@ -1,0 +1,164 @@
+﻿<Window x:Class="LibraryManager.View.Windows.Info.InfoBook"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryManager.View.Windows.Info"
+        mc:Ignorable="d"
+        Title="InfoBook" Height="650" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+    <Grid>
+        <Border Background="#faffc5" CornerRadius="35">
+            <Grid>
+                <!--Window layout-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.4*"/>
+                    <RowDefinition Height="9.4*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Top bar with window title-->
+                <Border Grid.Row="0" Background="#3a3960" CornerRadius="33,33,0,0" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                    <Grid>
+                        <!--Top bar layout-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1" Content="Info Book" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
+                    </Grid>
+                </Border>
+
+                <!--Window content space Grid-->
+                <Grid Grid.Row="1">
+
+                    <!--Window content space Grid layout-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Content grid-->
+                    <Grid Grid.Column="1">
+                        <!--Grid layout-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.4*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.7*"/>
+                        </Grid.RowDefinitions>
+
+                        <Rectangle Grid.Row="0" Stroke="#3a3960" StrokeDashArray="4,2" StrokeThickness="3" Width="110" Height="110"  RadiusX="25" RadiusY="25"/>
+                        <!--To do: Implement drop image control-->
+
+                        <!--TextBox grid-->
+                        <Grid Grid.Row="1">
+                            <!--Grid layout-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+
+                            </Grid.RowDefinitions>
+
+                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                               BorderThickness="3" BorderBrush="#5e686d"
+                               Text="Title" Name="txtTitle" IsReadOnly="True"
+                      />
+                            <!--To do: Impelment custom TextBox control-->
+
+
+                        </Grid>
+
+
+                        <!--Comboboxes grid-->
+                        <Grid Grid.Row="2">
+                            <!--Grid layout-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!-- To do: Implement custom ComboBoc control-->
+                            <ComboBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                               BorderThickness="3" BorderBrush="#5e686d"
+                               Text="Name" Name="cmbAuthor" IsReadOnly="True"
+                          />
+
+                            <ComboBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                               BorderThickness="3" BorderBrush="#5e686d"
+                               Text="Name" Name="cmbGenre" IsReadOnly="True"
+                          />
+                            <!--To do: Impelment custom TextBox control-->
+
+
+                        </Grid>
+
+                        <!--TextBox grid-->
+                        <Grid Grid.Row="3">
+                            <!--Grid layout-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+
+                            </Grid.RowDefinitions>
+
+                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                               BorderThickness="3" BorderBrush="#5e686d"
+                               Text="Page number" Name="txtPage" IsReadOnly="True"
+                      />
+                            <!--To do: Impelment custom TextBox control-->
+
+
+                        </Grid>
+
+                        <Grid Grid.Row="4">
+                            <!--Grid layout-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+
+                            </Grid.RowDefinitions>
+
+                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                               BorderThickness="3" BorderBrush="#5e686d"
+                               Text="Description" Name="txtDescription" IsReadOnly="True"
+                      />
+                            <!--To do: Impelment custom TextBox control-->
+
+
+                        </Grid>
+
+                        <!-- To do: Implement sliced in half Combobox at the grid row 4 (grid with 2 comboboxes)-->
+
+                        <!--Button grid-->
+                        <Grid Grid.Row="5">
+                            <!--Grid layout-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="1
+                                    " Margin="10" Content="Close" 
+                              FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
+                              BorderThickness="3" BorderBrush="#5e686d" Background="Transparent"
+                              Click="Button_Click"
+                              />
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
