@@ -49,6 +49,18 @@
     <Compile Update="View\Windows\Edit\EditUser.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Windows\Info\InfoAuthor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\Info\InfoBook.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\Info\InfoBorrow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\Info\InfoUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Windows\LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -97,6 +109,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Edit\EditUser.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\Info\InfoAuthor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\Info\InfoBook.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\Info\InfoBorrow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\Info\InfoUser.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\LoginWindow.xaml">
