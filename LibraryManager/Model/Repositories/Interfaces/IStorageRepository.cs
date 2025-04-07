@@ -1,16 +1,16 @@
 ﻿using LibraryManager.Model.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories.Interfaces
 {
     internal interface IStorageRepository
     {
-        Task<bool> IsAnySorageAsync();
-        Task<Storage?> GetStorageByIdAsync(int id);
+        Task<bool> IsAnyStorageAsync();
         Task<IEnumerable<Storage>> GetAllStoragesAsync();
+        Task<Storage?> GetStorageByIdAsync(int id);
+        Task InsertAsync(Storage storage);
+        Task UpdateAsync(Storage storage);
+        Task DeleteAsync(Storage storage);
     }
 }

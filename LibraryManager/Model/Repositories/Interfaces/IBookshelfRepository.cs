@@ -1,8 +1,5 @@
 ﻿using LibraryManager.Model.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories.Interfaces
@@ -12,5 +9,8 @@ namespace LibraryManager.Model.Repositories.Interfaces
         Task<bool> IsAnyBookshelfAsync();
         Task<IEnumerable<Bookshelf?>> GetAllBookshelvesAsync();
         Task<Bookshelf> GetBookshelfByIdAsync(int id);
+        Task InsertAsync(Bookshelf bookshelf);
+        Task UpdateAsync(Bookshelf bookshelf);
+        Task DeleteAsync(Bookshelf bookshelf);
     }
 }
