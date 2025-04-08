@@ -11,26 +11,44 @@ namespace LibraryManager.Model.Repositories
 {
     internal class BookRepository : IBookRepository
     {
-        private readonly LibraryDBContext _libraryDBContext;
+        private readonly LibraryDBContext _context;
 
-        public BookRepository(LibraryDBContext libraryDBContext)
+        public BookRepository(LibraryDBContext context)
         {
-            _libraryDBContext = libraryDBContext;
-        }
-
-        public Task<IEnumerable<Book>> GetAllBooksAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Book> GetBookByIdAsync(int id)
-        {
-            throw new NotImplementedException();
+            _context = context;
         }
 
         public async Task<bool> IsAnyBookAsync()
         {
-            return await _libraryDBContext.Books.AnyAsync();
+            return await _context.Books.AnyAsync();
         }
+
+        public async Task<IEnumerable<Book>> GetAllBooksAsync()
+        {
+            return await _context.Books.Include(b => b.Borrows).ToListAsync();
+        }
+
+        public async Task<Book?> GetBookByIdAsync(int id)
+        {
+            return await _context.Books.Include(b => b.Borrows).FirstOrDefaultAsync(b => b.Id == id);
+        }
+
+        public async Task InsertAsync(Book book)
+        {
+            await _context.Books.AddAsync(book);
+            await _context.SaveChangesAsync();
+        }
+        public async Task UpdateAsync(Book book)
+        {
+            _context.Books.Update(book);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Book book)
+        {
+            _context.Books.Remove(book);
+            await _context.SaveChangesAsync();
+        }
+ 
     }
 }

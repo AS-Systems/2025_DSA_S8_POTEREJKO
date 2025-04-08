@@ -12,5 +12,8 @@ namespace LibraryManager.Model.Repositories.Interfaces
         Task<bool> IsAnyBorrowAsync();
         Task<IEnumerable<Borrow>> GetAllBorrowsAsync();
         Task<Borrow?> GetBorrowByIdAsync(int id);
+        Task InsertAsync(Borrow borrow);
+        Task UpdateAsync(Borrow borrow);
+        Task DeleteAsync(Borrow borrow);
     }
 }
