@@ -31,7 +31,13 @@
     <Compile Update="View\CustomControls\Comboboxes\TransparentCombobox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\ItemTemplates\BookItemTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\ProgressBars\CircularProgressBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\BooksPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\HomePage.xaml.cs">
@@ -105,7 +111,13 @@
     <Page Update="View\CustomControls\Comboboxes\TransparentCombobox.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\CustomControls\ItemTemplates\BookItemTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CustomControls\ProgressBars\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\BooksPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Pages\HomePage.xaml">

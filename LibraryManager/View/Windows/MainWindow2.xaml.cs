@@ -25,7 +25,7 @@ namespace LibraryManager.View.Windows
         {
             InitializeComponent();
             UsernameLabel.Text = user.Name + " " + user.Surname;
-            PageHolder.Content = new HomePage();
+            PageHolder.Content = new BooksPage();
 
             CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
             MinimiseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "minimise.png");
