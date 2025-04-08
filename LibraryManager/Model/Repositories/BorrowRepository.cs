@@ -11,26 +11,44 @@ namespace LibraryManager.Model.Repositories
 {
     internal class BorrowRepository : IBorrowRepository
     {
-        private readonly LibraryDBContext _libraryDBContext;
+        private readonly LibraryDBContext _context;
 
-        public BorrowRepository(LibraryDBContext libraryDBContext)
+        public BorrowRepository(LibraryDBContext context)
         {
-            _libraryDBContext = libraryDBContext;
-        }
-
-        public async Task<IEnumerable<Borrow>> GetAllBorrowsAsync()
-        {
-            return await _libraryDBContext.Borrows.ToListAsync();
-        }
-
-        public async Task<Borrow?> GetBorrowByIdAsync(int id)
-        {
-            return await _libraryDBContext.Borrows.FindAsync(id);
+            _context = context;
         }
 
         public async Task<bool> IsAnyBorrowAsync()
         {
-            return await _libraryDBContext.Borrows.AnyAsync();
+            return await _context.Borrows.AnyAsync();
         }
+
+        public async Task<IEnumerable<Borrow>> GetAllBorrowsAsync()
+        {
+            return await _context.Borrows.Include(b => b.Book).Include(b => b.User).ToListAsync();
+        }
+
+        public async Task<Borrow?> GetBorrowByIdAsync(int id)
+        {
+            return await _context.Borrows.Include(b => b.Book).Include(b => b.User).FirstOrDefaultAsync(b => b.Id == id);
+        }
+        public async Task InsertAsync(Borrow borrow)
+        {
+            await _context.Borrows.AddAsync(borrow);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Borrow borrow)
+        {
+            _context.Borrows.Update(borrow);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Borrow borrow)
+        {
+            _context.Borrows.Remove(borrow);
+            await _context.SaveChangesAsync();
+        }
+ 
     }
 }

@@ -12,31 +12,49 @@ namespace LibraryManager.Model.Repositories
 {
     internal class UserRepository : IUserRepository
     {
-        private readonly LibraryDBContext _libraryDBContext;
+        private readonly LibraryDBContext _context;
 
-        public UserRepository(LibraryDBContext libraryDBContext)
+        public UserRepository(LibraryDBContext context)
         {
-            _libraryDBContext = libraryDBContext;
-        }
-
-        public async Task<IEnumerable<Entities.User>> GetAllUsersAsync()
-        {
-            return await _libraryDBContext.Users.ToListAsync();
-        }
-
-        public async Task<Entities.User?> GetUserByIdAsync(int userId)
-        {
-            return await _libraryDBContext.Users.FindAsync(userId);
-        }
-
-        public async Task<Entities.User?> GetUserByUsernameAsync(string username)
-        {
-            return await _libraryDBContext.Users.Where(u => u.Username == username).FirstOrDefaultAsync();
+            _context = context;
         }
 
         public async Task<bool> IsAnyUserAsync()
         {
-            return await _libraryDBContext.Users.AnyAsync();
+            return await _context.Users.AnyAsync();
         }
+
+        public async Task<IEnumerable<Entities.User>> GetAllUsersAsync()
+        {
+            return await _context.Users.Include(u => u.Books).Include(u => u.Borrows).ToListAsync();
+        }
+
+        public async Task<Entities.User?> GetUserByIdAsync(int userId)
+        {
+            return await _context.Users.Include(u => u.Books).Include(u => u.Borrows).FirstOrDefaultAsync(u => u.Id == userId);
+        }
+
+        public async Task<Entities.User?> GetUserByUsernameAsync(string username)
+        {
+            return await _context.Users.Where(u => u.Username == username).FirstOrDefaultAsync();
+        }
+        public async Task InsertAsync(Entities.User user)
+        {
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Entities.User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Entities.User user)
+        {
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+        }
+ 
     }
 }

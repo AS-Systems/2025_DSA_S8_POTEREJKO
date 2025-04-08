@@ -13,5 +13,9 @@ namespace LibraryManager.Model.Repositories.Interfaces
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task<User?> GetUserByIdAsync(int userId);
         Task<User?> GetUserByUsernameAsync(string username);
+        Task InsertAsync(User user);
+        Task UpdateAsync(User user);
+        Task DeleteAsync(User user);
+
     }
 }
