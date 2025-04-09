@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LibraryManager.View.Pages"
       xmlns:it="clr-namespace:LibraryManager.View.CustomControls.ItemTemplates"
+      xmlns:btn="clr-namespace:LibraryManager.View.CustomControls.Buttons"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BooksPage">
@@ -36,7 +37,7 @@
             </Border>
             <Rectangle Height="4" VerticalAlignment="Bottom" Stroke="#2e2d4b" StrokeThickness="5" Margin="35,0"/>
         </Grid>
-        
+
         <Grid Grid.Row="1">
             <ListBox ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedPerson}" SelectionMode="Single" Background="Transparent" BorderThickness="0"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False">
                 <ListBox.ItemContainerStyle>
@@ -51,9 +52,8 @@
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-
             </ListBox>
         </Grid>
-
+        <btn:ComparisonOperationButtonControl Grid.Row="2" Height="50" Width="50"/>
     </Grid>
 </Page>
