@@ -5,26 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LibraryManager.View.CustomControls.Buttons"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-
-    <UserControl.Resources>
-        <Storyboard x:Key="FadeOutStoryboard">
-            <DoubleAnimation
-            Storyboard.TargetName="ToggleButton"
-            Storyboard.TargetProperty="Opacity"
-            From="1" To="0" Duration="0:0:0.1" />
-        </Storyboard>
-
-        <Storyboard x:Key="FadeInStoryboard">
-            <DoubleAnimation
-            Storyboard.TargetName="ToggleButton"
-            Storyboard.TargetProperty="Opacity"
-            From="0" To="1" Duration="0:0:0.1" />
-        </Storyboard>
-    </UserControl.Resources>
+             Name="ComparisonBTN"
+             d:DesignHeight="80" d:DesignWidth="70">
 
     <Grid>
-        <Button x:Name="ToggleButton" Content=">" Click="ToggleButton_Click" Width="50" Height="50" 
-        FontSize="30" Background="#faffc5" Foreground="#3a3960" BorderBrush="#5e686d"/>
+        <Button x:Name="ToggleButton" Click="ToggleButton_Click" Width="{Binding ButtonWidth, ElementName=ComparisonBTN}" Height="{Binding ButtonHeight, ElementName=ComparisonBTN}"  Background="#faffc5"  BorderThickness="2" BorderBrush="#5e686d">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <TextBlock x:Name="OperationText" HorizontalAlignment="Center" VerticalAlignment="Center" Text=">" FontWeight="Bold" FontSize="{Binding ContentFontSize,ElementName=ComparisonBTN}" Margin="0,0,0,5" Foreground="#3a3960"/>
+        </Button>
     </Grid>
 </UserControl>

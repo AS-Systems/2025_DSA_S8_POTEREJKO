@@ -1,8 +1,11 @@
 ﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,14 +23,15 @@ namespace LibraryManager.View.Pages
     /// <summary>
     /// Logika interakcji dla klasy BooksPage.xaml
     /// </summary>
-    public partial class BooksPage : Page
+    public partial class BooksPage : Page, INotifyPropertyChanged
     {
         public ObservableCollection<Book> Books { get; set; }
+
+
 
         public BooksPage()
         {
             InitializeComponent();
-
             Books = new ObservableCollection<Book>
 {
     new Book
@@ -95,7 +99,7 @@ namespace LibraryManager.View.Pages
         Borrows = new List<Borrow>()
     },
     new Book
-    {
+        {
         Id = 5,
         Title = "Dune",
         AuthorId = 105,
@@ -109,14 +113,17 @@ namespace LibraryManager.View.Pages
         StorageId = 305,
         Storage = new Storage(),
         Borrows = new List<Borrow>()
-    }
-};
-
+        }
+    };
 
             DataContext = this;
+        }
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
 
 }
