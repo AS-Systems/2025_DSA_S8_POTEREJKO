@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="LibraryManager.View.CustomControls.ColumnFilters.AvailableColumnFilter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryManager.View.CustomControls.ColumnFilters"
+             mc:Ignorable="d" 
+             xmlns:btn="clr-namespace:LibraryManager.View.CustomControls.Buttons"
+             xmlns:txtBox="clr-namespace:LibraryManager.View.CustomControls.TextBoxes"
+             xmlns:ChcBox="clr-namespace:LibraryManager.View.CustomControls.CheckBox"
+             >
+
+    <Grid  x:Name="RootGrid">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Margin="5,0,2,0" Grid.Column="0" x:Name="ColumnName" Text="Available" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28" Foreground="#5e686d" FontWeight="DemiBold"/>
+
+        <Button Grid.Column="1" BorderBrush="Transparent" Background="Transparent" Click="FilterButton_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}">
+                                    <Path x:Name="arrowPath"
+                           Data="M 0,0 L 14,0 L 7,11 Z"
+                           Fill="#3a3960"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="2"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="arrowPath" Property="Fill" Value="Black"/>
+
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Popup x:Name="PART_Popup"
+Margin="0,20"
+Width="180"
+MinHeight="40"
+Placement="Bottom"
+PlacementTarget="{Binding ElementName=ColumnName}"
+StaysOpen="True" 
+AllowsTransparency="True"
+PopupAnimation="Slide"
+IsOpen="{Binding IsPopupOpen, Mode=TwoWay}">
+            <Border
+     x:Name="dropDownBorder"
+     Background="#bec29b"
+     BorderBrush="#5e686d"
+     BorderThickness="2" 
+     CornerRadius="10">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ChcBox:CustomCheckbox Grid.Row="0" />
+                    <ChcBox:CustomCheckbox Grid.Row="1" />
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

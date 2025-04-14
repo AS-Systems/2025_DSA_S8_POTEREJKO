@@ -31,7 +31,19 @@
     <Compile Update="View\CustomControls\Capsules\Upcoming.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\CheckBox\CustomCheckbox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\CustomControls\ColumnFilters\AuthorColumnFilter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\CustomControls\ColumnFilters\AvailableColumnFilter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\ColumnFilters\PageCountColumnFilter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\CustomControls\ColumnFilters\TitleColumnFilter.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\CustomControls\Comboboxes\TransparentCombobox.xaml.cs">
@@ -120,7 +132,19 @@
     <Page Update="View\CustomControls\Capsules\Upcoming.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\CustomControls\CheckBox\CustomCheckbox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\ColumnFilters\AuthorColumnFilter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\ColumnFilters\AvailableColumnFilter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CustomControls\ColumnFilters\PageCountColumnFilter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\ColumnFilters\TitleColumnFilter.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\Comboboxes\TransparentCombobox.xaml">
