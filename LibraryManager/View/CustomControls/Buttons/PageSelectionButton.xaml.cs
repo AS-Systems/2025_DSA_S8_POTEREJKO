@@ -29,6 +29,12 @@ namespace LibraryManager.View.CustomControls.Buttons
         public static readonly DependencyProperty ButtonClickColorProperty =  DependencyProperty.Register("ButtonClickColor", typeof(Brush), typeof(PageSelectionButton), new PropertyMetadata(Brushes.DarkGray));
         public static readonly DependencyProperty ButtonClickedImagePathProperty = DependencyProperty.Register("ButtonClickedImagePath", typeof(string), typeof(PageSelectionButton), new PropertyMetadata(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "image-icon.png")));
 
+        public event RoutedEventHandler Click;
+        protected virtual void OnClick(RoutedEventArgs e)
+        {
+            Click?.Invoke(this, e);
+        }
+
         public int Width
         {
             get { return (int)GetValue(WidthProperty); }
@@ -91,5 +97,9 @@ namespace LibraryManager.View.CustomControls.Buttons
             set { SetValue(ButtonClickedImagePathProperty, value); }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OnClick(e);
+        }
     }
 }

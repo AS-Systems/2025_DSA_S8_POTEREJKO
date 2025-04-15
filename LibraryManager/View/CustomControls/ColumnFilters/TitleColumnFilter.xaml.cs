@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryManager.View.CustomControls.TextBoxes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,6 +56,15 @@ namespace LibraryManager.View.CustomControls.ColumnFilters
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
             PART_Popup.IsOpen = !PART_Popup.IsOpen;
+        }
+
+        public event EventHandler<string> FilterTextChanged;
+        private void CustomTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is CustomTextBox textBox)
+            {
+                FilterTextChanged?.Invoke(this, textBox.TextBoxText);
+            }
         }
 
     }

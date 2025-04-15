@@ -30,7 +30,7 @@
                     </Grid.ColumnDefinitions>
 
                     <cf:PageCountColumnFilter Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="0,0,0,5"/>
-                    <cf:TitleColumnFilter Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5"/>
+                    <cf:TitleColumnFilter Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" FilterTextChanged="TitleColumnFilter_FilterTextChanged"/>
                     <cf:AuthorColumnFilter Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5"/>
                     <cf:AvailableColumnFilter Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5"/>
 
@@ -42,7 +42,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <ListBox ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedPerson}" SelectionMode="Single" Background="Transparent" BorderThickness="0"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False">
+            <ListBox ItemsSource="{Binding FilteredBooks,Mode=TwoWay}" SelectedItem="{Binding SelectedPerson}" SelectionMode="Single" Background="Transparent" BorderThickness="0"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

@@ -62,7 +62,7 @@
          CornerRadius="10">
 
                 <Grid>
-                    <txtBox:SmallTextBox Grid.Column="2" TextBoxWidth="135" Margin="5,5"/>
+                    <txtBox:CustomTextBox Grid.Column="2" Margin="5,5" TextBoxWidth="160" TextChanged="CustomTextBox_TextChanged" TextBoxText=""/>
                 </Grid>
             </Border>
         </Popup>

@@ -8,7 +8,7 @@
              Name="PageSelectionBtn"
              d:DesignHeight="100" d:DesignWidth="300">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Width="{Binding Width, ElementName=PageSelectionBtn}" Height="{Binding Height, ElementName=PageSelectionBtn}" >
+        <Button Width="{Binding Width, ElementName=PageSelectionBtn}" Height="{Binding Height, ElementName=PageSelectionBtn}" Click="Button_Click" >
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Template">

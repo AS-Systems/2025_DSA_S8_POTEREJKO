@@ -21,11 +21,14 @@ namespace LibraryManager.View.Windows
     /// </summary>
     public partial class MainWindow2 : Window
     {
+        private BooksPage booksPage = new BooksPage();
+        private HomePage homePage = new HomePage();
+
         public MainWindow2(User user)
         {
             InitializeComponent();
             UsernameLabel.Text = user.Name + " " + user.Surname;
-            PageHolder.Content = new BooksPage();
+            PageHolder.Content = homePage;
 
             CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
             MinimiseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "minimise.png");
@@ -58,6 +61,16 @@ namespace LibraryManager.View.Windows
         private void CloseBTN_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void HomeBTN_Click(object sender, RoutedEventArgs e)
+        {
+            PageHolder.Content = homePage;
+        }
+
+        private void BooksBTN_Click(object sender, RoutedEventArgs e)
+        {
+            PageHolder.Content = booksPage;
         }
     }
 }

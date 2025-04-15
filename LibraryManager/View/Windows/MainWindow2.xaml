@@ -39,9 +39,9 @@
                 <!--Label and buttons of left column-->
                 <Label Grid.Column="0" Grid.Row="0" Content="Library Manager" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="35" Foreground="#a9bfa8"> </Label>
                 <bt:PageSelectionButton x:Name="HomeBTN"
-                    ButtonText="Home" Grid.Column="0" Grid.Row="1"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b"/>
+                    ButtonText="Home" Grid.Column="0" Grid.Row="1"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="HomeBTN_Click"/>
                 <bt:PageSelectionButton x:Name="BooksBTN"
-                    ButtonText="Books" Grid.Column="0" Grid.Row="2"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b"/>
+                    ButtonText="Books" Grid.Column="0" Grid.Row="2"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="BooksBTN_Click"/>
                 <bt:PageSelectionButton x:Name="BorrowsBTN"
                     ButtonText="Borrows" Grid.Column="0" Grid.Row="3"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b"/>
                 <bt:PageSelectionButton x:Name="UsersBTN"
