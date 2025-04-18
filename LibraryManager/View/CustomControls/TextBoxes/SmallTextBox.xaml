@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="45" d:DesignWidth="80">
     <Grid Width="{Binding TextBoxWidth, ElementName=SmallTxb}" Height="{Binding TextBoxHeight, ElementName=SmallTxb}">
-        <TextBox Background="#faffc5"  BorderThickness="2" BorderBrush="#5e686d" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding TextBoxText, ElementName=SmallTxb}" FontSize="{Binding TextBoxFontSize, ElementName=SmallTxb}" FontWeight="DemiBold" Foreground="#3a3960">
+        <TextBox Background="#faffc5" PreviewTextInput="NumericTextBox_PreviewTextInput" DataObject.Pasting="NumericTextBox_Pasting"  PreviewKeyDown="NumericTextBox_PreviewKeyDown" BorderThickness="2" BorderBrush="#5e686d" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding TextBoxText, ElementName=SmallTxb, UpdateSourceTrigger=PropertyChanged}" FontSize="{Binding TextBoxFontSize, ElementName=SmallTxb}" TextChanged="TextBox_TextChanged" FontWeight="DemiBold" Foreground="#3a3960">
             <TextBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>

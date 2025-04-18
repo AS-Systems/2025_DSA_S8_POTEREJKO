@@ -8,6 +8,7 @@
              xmlns:btn="clr-namespace:LibraryManager.View.CustomControls.Buttons"
              xmlns:txtBox="clr-namespace:LibraryManager.View.CustomControls.TextBoxes"
              xmlns:ChcBox="clr-namespace:LibraryManager.View.CustomControls.CheckBox"
+             Name="Filter"
              >
 
     <Grid  x:Name="RootGrid">
@@ -47,30 +48,22 @@
             </Button.Style>
         </Button>
 
-        <Popup x:Name="PART_Popup"
-Margin="0,20"
-Width="180"
-MinHeight="40"
-Placement="Bottom"
-PlacementTarget="{Binding ElementName=ColumnName}"
-StaysOpen="True" 
-AllowsTransparency="True"
-PopupAnimation="Slide"
-IsOpen="{Binding IsPopupOpen, Mode=TwoWay}">
-            <Border
-     x:Name="dropDownBorder"
-     Background="#bec29b"
-     BorderBrush="#5e686d"
-     BorderThickness="2" 
-     CornerRadius="10">
-
+        <Popup x:Name="PART_Popup" Margin="10,20" MinHeight="40" Placement="Bottom" HorizontalOffset="30" PlacementTarget="{Binding ElementName=ColumnName}" StaysOpen="True" 
+               AllowsTransparency="True" PopupAnimation="Slide" IsOpen="{Binding IsPopupOpen, Mode=TwoWay}">
+            
+            <Border x:Name="dropDownBorder" Background="#bec29b" BorderBrush="#5e686d" BorderThickness="2" CornerRadius="10">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=" *"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ChcBox:CustomCheckbox Grid.Row="0" />
-                    <ChcBox:CustomCheckbox Grid.Row="1" />
+                    <ChcBox:CustomCheckbox Grid.Row="0" Grid.Column="1" Margin="0.8" Label="Yes"  CheckedChanged="CustomCheckbox_YesCheckedChanged" Checked="{Binding YesCheckBoxIsChecked, Mode=TwoWay, ElementName=Filter}"/>
+                    <ChcBox:CustomCheckbox Grid.Row="1" Grid.Column="1" Margin="0.8" Label="No"   CheckedChanged="CustomCheckbox_NoCheckedChanged"  Checked="{Binding NoCheckBoxIsChecked, Mode=TwoWay, ElementName=Filter}"/>
                 </Grid>
             </Border>
         </Popup>

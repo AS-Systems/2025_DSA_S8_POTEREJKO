@@ -8,7 +8,7 @@
              xmlns:txtBox="clr-namespace:LibraryManager.View.CustomControls.TextBoxes"
              mc:Ignorable="d" 
              >
-    <Grid  x:Name="RootGrid">
+    <Grid x:Name="RootGrid">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -70,9 +70,9 @@
                         <ColumnDefinition Width=".3*"/>
                     </Grid.ColumnDefinitions>
 
-                    <btn:ComparisonOperationButtonControl Grid.Column="1" Margin="0,5" />
-                    <txtBox:SmallTextBox Grid.Column="2"  Margin="0,5"/>
-
+                    <btn:ComparisonOperationButtonControl Grid.Column="1" Margin="0,5" ButtonTextChanged="OperationButton_OperationChanged"/>
+                    <txtBox:SmallTextBox Grid.Column="2"  Margin="0,5" TextChanged="CustomTextBox_TextChanged"/>
+                    <!--<TextBlock Grid.Column="2" Text="{Binding ComparisonOperation}"/>-->
                 </Grid>
                 
             </Border>

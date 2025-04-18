@@ -1,11 +1,14 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Enums;
+using LibraryManager.View.CustomControls.Buttons;
+using LibraryManager.View.CustomControls.ColumnFilters;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -123,7 +126,7 @@ namespace LibraryManager.View.Pages
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        protected void OnPropertyChanged(string propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -139,6 +142,88 @@ namespace LibraryManager.View.Pages
             {
                 FilteredBooks.Add(book);
             }
+        }
+
+        private void AuthorColumnFilter_FilterTextChanged(object sender, string filterText)
+        {
+            var filtered = AllBooks
+           .Where(b => (b.Author.Name+b.Author.Surname).Contains(filterText, StringComparison.OrdinalIgnoreCase))
+           .ToList();
+
+            FilteredBooks.Clear();
+            foreach (var book in filtered)
+            {
+                FilteredBooks.Add(book);
+            }
+        }
+
+        private void PageCountColumnFilter_FilterTextChanged(object sender, int pageCount)
+        {
+            var operation = ((PageCountColumnFilter)sender).ComparisonOperation;
+
+            List<Book> filtered = operation switch
+            {
+                ComparisonOperation.Equal => AllBooks.Where(b => b.PageCount == pageCount).ToList(),
+                ComparisonOperation.Greater => AllBooks.Where(b => b.PageCount > pageCount).ToList(),
+                ComparisonOperation.GreaterOrEqual => AllBooks.Where(b => b.PageCount >= pageCount).ToList(),
+                ComparisonOperation.Lower => AllBooks.Where(b => b.PageCount < pageCount).ToList(),
+                ComparisonOperation.LowerOrEqual => AllBooks.Where(b => b.PageCount <= pageCount).ToList(),
+                _ => AllBooks
+            };
+
+            FilteredBooks.Clear();
+            foreach (var book in filtered)
+            {
+                FilteredBooks.Add(book);
+            }
+        }
+
+        private void PageCountColumnFilter_OperationChanged(object sender, ComparisonOperation operation)
+        {
+            var pageCount = ((PageCountColumnFilter)sender).Count;
+            List<Book> filtered = operation switch
+            {
+                ComparisonOperation.Equal => AllBooks.Where(b => b.PageCount == pageCount).ToList(),
+                ComparisonOperation.Greater => AllBooks.Where(b => b.PageCount > pageCount).ToList(),
+                ComparisonOperation.GreaterOrEqual => AllBooks.Where(b => b.PageCount >= pageCount).ToList(),
+                ComparisonOperation.Lower => AllBooks.Where(b => b.PageCount < pageCount).ToList(),
+                ComparisonOperation.LowerOrEqual => AllBooks.Where(b => b.PageCount <= pageCount).ToList(),
+                _ => AllBooks
+            };
+
+            FilteredBooks.Clear();
+            foreach (var book in filtered)
+            {
+                FilteredBooks.Add(book);
+            }
+        }
+
+        private void AvailableColumnFilter_AvailabilityChanged(object sender, SelectedCheckbox? e)
+        {
+            var noCheckboxValue = e.Value.NoSelection;
+            var yesCheckboxValue = e.Value.YesSelection;
+            List<Book> filtered = new List<Book>();
+
+
+            if (noCheckboxValue != null && yesCheckboxValue != null)
+            {
+                if (noCheckboxValue == true && yesCheckboxValue == true)
+                {
+                    filtered = AllBooks;
+                }
+                else if (yesCheckboxValue == true && noCheckboxValue == false)
+                {
+                    filtered = AllBooks.Where(b => b.IsAvailable == true).ToList();
+                }
+                else if (yesCheckboxValue == false && noCheckboxValue == true)
+                {
+                    filtered = AllBooks.Where(b => b.IsAvailable == false).ToList();
+                }
+            }
+
+            FilteredBooks.Clear();
+            foreach (var book in filtered)
+                FilteredBooks.Add(book);
         }
     }
 

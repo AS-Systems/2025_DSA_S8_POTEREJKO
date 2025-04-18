@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LibraryManager.Model.Enums;
+using LibraryManager.View.CustomControls.CheckBox;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +22,31 @@ namespace LibraryManager.View.CustomControls.ColumnFilters
     /// </summary>
     public partial class AvailableColumnFilter : UserControl
     {
+
+
+
+        public bool YesCheckBoxIsChecked
+        {
+            get { return (bool)GetValue(YesCheckBoxIsCheckedProperty); }
+            set { SetValue(YesCheckBoxIsCheckedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CheckBoxIsChecked.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty YesCheckBoxIsCheckedProperty =
+            DependencyProperty.Register("YesCheckBoxIsChecked", typeof(bool), typeof(AvailableColumnFilter), new PropertyMetadata(true));
+
+        public bool NoCheckBoxIsChecked
+        {
+            get { return (bool)GetValue(NoCheckBoxIsCheckedProperty); }
+            set { SetValue(NoCheckBoxIsCheckedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CheckBoxIsChecked.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty NoCheckBoxIsCheckedProperty =
+            DependencyProperty.Register("NoCheckBoxIsChecked", typeof(bool), typeof(AvailableColumnFilter), new PropertyMetadata(true));
+
+
+
         public AvailableColumnFilter()
         {
             InitializeComponent();
@@ -50,6 +77,7 @@ namespace LibraryManager.View.CustomControls.ColumnFilters
                     };
                 }
             };
+            DataContext = this;
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -57,5 +85,46 @@ namespace LibraryManager.View.CustomControls.ColumnFilters
             PART_Popup.IsOpen = !PART_Popup.IsOpen;
         }
 
+        public event EventHandler<SelectedCheckbox?> AvailabilityChanged;
+
+        private void CustomCheckbox_YesCheckedChanged(object sender, RoutedEventArgs e)
+        {
+
+            if(sender is CustomCheckbox)
+            {
+                CustomCheckbox customCheckbox = sender as CustomCheckbox;
+
+                var selections = new SelectedCheckbox();
+                selections.YesSelection = customCheckbox.Checked;
+                selections.NoSelection = NoCheckBoxIsChecked;
+
+                AvailabilityChanged?.Invoke(this, selections);
+            }
+        }
+
+        private void CustomCheckbox_NoCheckedChanged(object sender, RoutedEventArgs e)
+        {
+
+            if (sender is CustomCheckbox)
+            {
+                CustomCheckbox customCheckbox = sender as CustomCheckbox;
+
+                var selections = new SelectedCheckbox();
+                selections.YesSelection = YesCheckBoxIsChecked;
+                selections.NoSelection = customCheckbox.Checked;
+
+                AvailabilityChanged?.Invoke(this, selections);
+
+            }
+        }
+
     }
+
+    public struct SelectedCheckbox
+    { 
+        public bool? YesSelection;
+        public bool? NoSelection;
+    }
+
+
 }

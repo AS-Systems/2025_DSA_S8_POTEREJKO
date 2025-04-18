@@ -29,10 +29,10 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <cf:PageCountColumnFilter Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="0,0,0,5"/>
+                    <cf:PageCountColumnFilter Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="0,0,0,5" FilterTextChanged="PageCountColumnFilter_FilterTextChanged" OperationChanged="PageCountColumnFilter_OperationChanged"/>
                     <cf:TitleColumnFilter Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" FilterTextChanged="TitleColumnFilter_FilterTextChanged"/>
-                    <cf:AuthorColumnFilter Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5"/>
-                    <cf:AvailableColumnFilter Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5"/>
+                    <cf:AuthorColumnFilter Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" FilterTextChanged="AuthorColumnFilter_FilterTextChanged"/>
+                    <cf:AvailableColumnFilter Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" AvailabilityChanged="AvailableColumnFilter_AvailabilityChanged"  />
 
                     <TextBlock Text="Genre" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
                 
@@ -57,6 +57,8 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
+
+        <Label Grid.Row="2" Foreground="Black" FontSize="30" Content="{Binding Operation, Mode=TwoWay}"/>
 
     </Grid>
 </Page>

@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿using LibraryManager.Model.Enums;
+using LibraryManager.View.CustomControls.Buttons;
+using LibraryManager.View.CustomControls.TextBoxes;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace LibraryManager.View.CustomControls.ColumnFilters
@@ -8,9 +12,22 @@ namespace LibraryManager.View.CustomControls.ColumnFilters
     /// </summary>
     public partial class PageCountColumnFilter : UserControl
     {
+
+        public static readonly DependencyProperty ComparisonOperationProperty = DependencyProperty.Register( nameof(ComparisonOperation), typeof(ComparisonOperation), typeof(PageCountColumnFilter), new PropertyMetadata(ComparisonOperation.Greater));
+
+        public ComparisonOperation ComparisonOperation
+        {
+            get => (ComparisonOperation)GetValue(ComparisonOperationProperty);
+            set => SetValue(ComparisonOperationProperty, value);
+        }
+
+        public int Count { get; set; }
+
+
         public PageCountColumnFilter()
         {
             InitializeComponent();
+            DataContext = this;
 
             Loaded += (s, e) =>
             {
@@ -38,11 +55,35 @@ namespace LibraryManager.View.CustomControls.ColumnFilters
                     };
                 }
             };
+
+            //PART_Popup.DataContext = this;
+
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
             PART_Popup.IsOpen = !PART_Popup.IsOpen;
+        }
+
+        public event EventHandler<int> FilterTextChanged;
+        private void CustomTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is SmallTextBox textBox)
+            {
+                FilterTextChanged?.Invoke(this, textBox.TextBoxText);
+                Count = textBox.TextBoxText;
+            }
+        }
+
+        public event EventHandler<ComparisonOperation> OperationChanged;
+
+        private void OperationButton_OperationChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is ComparisonOperationButtonControl button)
+            {
+                ComparisonOperation = button.SelectedComparisonOperation;
+                OperationChanged?.Invoke(this, button.SelectedComparisonOperation);
+            }
         }
 
     }
