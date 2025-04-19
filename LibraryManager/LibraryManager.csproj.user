@@ -10,6 +10,9 @@
     <Compile Update="View\CustomControls\Buttons\CircularButtonControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\Buttons\ComparisonOperationButtonControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\Buttons\PageSelectionButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,10 +31,37 @@
     <Compile Update="View\CustomControls\Capsules\Upcoming.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\CheckBox\CustomCheckbox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\CustomControls\ColumnFilters\AuthorColumnFilter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\CustomControls\ColumnFilters\AvailableColumnFilter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\CustomControls\ColumnFilters\PageCountColumnFilter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\CustomControls\ColumnFilters\TitleColumnFilter.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\Comboboxes\TransparentCombobox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\ItemTemplates\BookItemTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\ProgressBars\CircularProgressBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\CustomControls\TextBoxes\CustomTextBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\CustomControls\TextBoxes\SmallTextBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\BooksPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\HomePage.xaml.cs">
@@ -84,6 +114,9 @@
     <Page Update="View\CustomControls\Buttons\CircularButtonControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\CustomControls\Buttons\ComparisonOperationButtonControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CustomControls\Buttons\PageSelectionButton.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -102,10 +135,37 @@
     <Page Update="View\CustomControls\Capsules\Upcoming.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\CustomControls\CheckBox\CustomCheckbox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\ColumnFilters\AuthorColumnFilter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\ColumnFilters\AvailableColumnFilter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\ColumnFilters\PageCountColumnFilter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\ColumnFilters\TitleColumnFilter.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CustomControls\Comboboxes\TransparentCombobox.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\CustomControls\ItemTemplates\BookItemTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CustomControls\ProgressBars\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\TextBoxes\CustomTextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\TextBoxes\SmallTextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\BooksPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Pages\HomePage.xaml">

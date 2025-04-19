@@ -38,16 +38,16 @@
 
                 <!--Label and buttons of left column-->
                 <Label Grid.Column="0" Grid.Row="0" Content="Library Manager" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="35" Foreground="#a9bfa8"> </Label>
-                <bt:PageSelectionButton
-                    ButtonText="Home" Grid.Column="0" Grid.Row="1"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" />
-                <bt:PageSelectionButton
-                    ButtonText="Books" Grid.Column="0" Grid.Row="2"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
-                <bt:PageSelectionButton
-                    ButtonText="Borrows" Grid.Column="0" Grid.Row="3"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
-                <bt:PageSelectionButton
-                    ButtonText="Users" Grid.Column="0" Grid.Row="4"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
-                <bt:PageSelectionButton
-                    ButtonText="Storage" Grid.Column="0" Grid.Row="5"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879"/>
+                <bt:PageSelectionButton x:Name="HomeBTN"
+                    ButtonText="Home" Grid.Column="0" Grid.Row="1"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="HomeBTN_Click"/>
+                <bt:PageSelectionButton x:Name="BooksBTN"
+                    ButtonText="Books" Grid.Column="0" Grid.Row="2"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="BooksBTN_Click"/>
+                <bt:PageSelectionButton x:Name="BorrowsBTN"
+                    ButtonText="Borrows" Grid.Column="0" Grid.Row="3"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b"/>
+                <bt:PageSelectionButton x:Name="UsersBTN"
+                    ButtonText="Users" Grid.Column="0" Grid.Row="4"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b"/>
+                <bt:PageSelectionButton x:Name="StorageBTN"
+                    ButtonText="Storage" Grid.Column="0" Grid.Row="5"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b"/>
 
 
             </Grid>
@@ -77,16 +77,10 @@
                     <Frame x:Name="PageHolder" NavigationUIVisibility="Hidden" />
             </Border>
 
-            <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+                <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
                     <uc:CircularButtonControl x:Name="MinimiseBTN" Margin="0,0,4,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="MinimiseBTN_Click"/>
                     <uc:CircularButtonControl x:Name="CloseBTN" Margin="4,0,0,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="CloseBTN_Click"/>
-            </StackPanel>
-            
-            
-               
-                
-
-                
+                </StackPanel>
             </Grid>
             
             
