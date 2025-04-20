@@ -12,9 +12,9 @@ namespace LibraryManager.Model.Repositories
 {
     internal class UserRepository : IUserRepository
     {
-        private readonly LibraryDBContext _context;
+        private readonly HomelibraryContext _context;
 
-        public UserRepository(LibraryDBContext context)
+        public UserRepository(HomelibraryContext context)
         {
             _context = context;
         }
@@ -26,12 +26,12 @@ namespace LibraryManager.Model.Repositories
 
         public async Task<IEnumerable<Entities.User>> GetAllUsersAsync()
         {
-            return await _context.Users.Include(u => u.Books).Include(u => u.Borrows).ToListAsync();
+            return await _context.Users.Include(u => u.Borrows).ToListAsync();
         }
 
         public async Task<Entities.User?> GetUserByIdAsync(int userId)
         {
-            return await _context.Users.Include(u => u.Books).Include(u => u.Borrows).FirstOrDefaultAsync(u => u.Id == userId);
+            return await _context.Users.Include(u => u.Borrows).FirstOrDefaultAsync(u => u.Id == userId);
         }
 
         public async Task<Entities.User?> GetUserByUsernameAsync(string username)

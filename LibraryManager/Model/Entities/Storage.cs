@@ -15,7 +15,7 @@ public partial class Storage
 
     public string Street { get; set; } = null!;
 
-    public virtual ICollection<Book> Books { get; set; } = new List<Book>();
+    public virtual ICollection<Bookcopy> Bookcopies { get; set; } = new List<Bookcopy>();
 
     public virtual Shelf Shelf { get; set; } = null!;
 }

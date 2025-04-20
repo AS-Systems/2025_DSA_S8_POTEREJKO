@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Model.Entities;
 
-public partial class LibraryDBContext : DbContext
+public partial class HomelibraryContext : DbContext
 {
-    public LibraryDBContext()
+    public HomelibraryContext()
     {
     }
 
-    public LibraryDBContext(DbContextOptions<LibraryDBContext> options)
+    public HomelibraryContext(DbContextOptions<HomelibraryContext> options)
         : base(options)
     {
     }
@@ -18,6 +18,8 @@ public partial class LibraryDBContext : DbContext
     public virtual DbSet<Author> Authors { get; set; }
 
     public virtual DbSet<Book> Books { get; set; }
+
+    public virtual DbSet<Bookcopy> Bookcopies { get; set; }
 
     public virtual DbSet<Bookshelf> Bookshelves { get; set; }
 
@@ -29,6 +31,8 @@ public partial class LibraryDBContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //    => optionsBuilder.UseMySql("server=192.168.0.207;database=homelibrary;user id=test;password=twoje_haslo;port=3306", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.3.0-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -55,25 +59,39 @@ public partial class LibraryDBContext : DbContext
 
             entity.HasIndex(e => e.AuthorId, "AuthorId");
 
-            entity.HasIndex(e => e.OwnerId, "OwnerId");
-
-            entity.HasIndex(e => e.StorageId, "idx_books_storage");
-
+            entity.Property(e => e.Cover).HasColumnType("blob");
             entity.Property(e => e.Description).HasColumnType("text");
-            entity.Property(e => e.IsAvailable).HasDefaultValueSql("'1'");
             entity.Property(e => e.Title).HasMaxLength(255);
 
             entity.HasOne(d => d.Author).WithMany(p => p.Books)
                 .HasForeignKey(d => d.AuthorId)
                 .HasConstraintName("books_ibfk_1");
+        });
 
-            entity.HasOne(d => d.Owner).WithMany(p => p.Books)
+        modelBuilder.Entity<Bookcopy>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("bookcopies");
+
+            entity.HasIndex(e => e.BookId, "BookId");
+
+            entity.HasIndex(e => e.OwnerId, "OwnerId");
+
+            entity.HasIndex(e => e.StorageId, "StorageId");
+
+            entity.HasOne(d => d.Book).WithMany(p => p.Bookcopies)
+                .HasForeignKey(d => d.BookId)
+                .HasConstraintName("bookcopies_ibfk_3");
+
+            entity.HasOne(d => d.Owner).WithMany(p => p.Bookcopies)
                 .HasForeignKey(d => d.OwnerId)
-                .HasConstraintName("books_ibfk_2");
+                .HasConstraintName("bookcopies_ibfk_1");
 
-            entity.HasOne(d => d.Storage).WithMany(p => p.Books)
+            entity.HasOne(d => d.Storage).WithMany(p => p.Bookcopies)
                 .HasForeignKey(d => d.StorageId)
-                .HasConstraintName("fk_books_storage");
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("bookcopies_ibfk_2");
         });
 
         modelBuilder.Entity<Bookshelf>(entity =>
@@ -91,15 +109,15 @@ public partial class LibraryDBContext : DbContext
 
             entity.ToTable("borrows");
 
-            entity.HasIndex(e => e.BookId, "BookId");
+            entity.HasIndex(e => e.BookCopyId, "BookCopyId");
 
             entity.HasIndex(e => e.UserId, "UserId");
 
             entity.Property(e => e.BorrowDate).HasColumnType("datetime");
             entity.Property(e => e.ReturnDate).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Book).WithMany(p => p.Borrows)
-                .HasForeignKey(d => d.BookId)
+            entity.HasOne(d => d.BookCopy).WithMany(p => p.Borrows)
+                .HasForeignKey(d => d.BookCopyId)
                 .HasConstraintName("borrows_ibfk_1");
 
             entity.HasOne(d => d.User).WithMany(p => p.Borrows)
@@ -151,6 +169,7 @@ public partial class LibraryDBContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.PhoneNumber).HasMaxLength(20);
+            entity.Property(e => e.ProfilePicture).HasColumnType("blob");
             entity.Property(e => e.Surname).HasMaxLength(50);
             entity.Property(e => e.Username).HasMaxLength(50);
         });

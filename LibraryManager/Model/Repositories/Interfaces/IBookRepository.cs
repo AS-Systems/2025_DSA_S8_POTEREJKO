@@ -10,7 +10,7 @@ namespace LibraryManager.Model.Repositories.Interfaces
     internal interface IBookRepository
     {
         Task<bool> IsAnyBookAsync();
-        Task<IEnumerable<Book>> GetAllBooksAsync();
+        Task<List<Book>> GetAllBooksAsync();
         Task<Book> GetBookByIdAsync(int id);
     }
 }

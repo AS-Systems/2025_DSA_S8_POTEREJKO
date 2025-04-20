@@ -11,9 +11,9 @@ namespace LibraryManager.Model.Repositories
 {
     internal class BookRepository : IBookRepository
     {
-        private readonly LibraryDBContext _context;
+        private readonly HomelibraryContext _context;
 
-        public BookRepository(LibraryDBContext context)
+        public BookRepository(HomelibraryContext context)
         {
             _context = context;
         }
@@ -23,14 +23,14 @@ namespace LibraryManager.Model.Repositories
             return await _context.Books.AnyAsync();
         }
 
-        public async Task<IEnumerable<Book>> GetAllBooksAsync()
+        public async Task<List<Book>> GetAllBooksAsync()
         {
-            return await _context.Books.Include(b => b.Borrows).ToListAsync();
+            return await _context.Books.Include(b => b.Author).Include(b => b.Bookcopies).ToListAsync();
         }
 
         public async Task<Book?> GetBookByIdAsync(int id)
         {
-            return await _context.Books.Include(b => b.Borrows).FirstOrDefaultAsync(b => b.Id == id);
+            return await _context.Books.Include(b => b.Author).Include(b => b.Bookcopies).FirstOrDefaultAsync(b => b.Id == id);
         }
 
         public async Task InsertAsync(Book book)

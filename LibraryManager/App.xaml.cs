@@ -21,13 +21,15 @@ namespace LibraryManager
             var serviceCollection = new ServiceCollection();
 
             // Registering services with DI
-            serviceCollection.AddDbContext<LibraryDBContext>(options =>
+            serviceCollection.AddDbContext<HomelibraryContext>(options =>
                 options.UseMySql("server=192.168.0.207;database=homelibrary;user id=test;password=twoje_haslo;port=3306", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.3.0-mysql"))); // Set your connection string here
             serviceCollection.AddScoped<IUserRepository, UserRepository>();
+            serviceCollection.AddScoped<IBookRepository, BookRepository>();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 
             base.OnStartup(e);
         }
     }
+
 }

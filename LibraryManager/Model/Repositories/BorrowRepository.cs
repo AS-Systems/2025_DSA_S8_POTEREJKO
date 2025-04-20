@@ -11,9 +11,9 @@ namespace LibraryManager.Model.Repositories
 {
     internal class BorrowRepository : IBorrowRepository
     {
-        private readonly LibraryDBContext _context;
+        private readonly HomelibraryContext _context;
 
-        public BorrowRepository(LibraryDBContext context)
+        public BorrowRepository(HomelibraryContext context)
         {
             _context = context;
         }
@@ -25,12 +25,12 @@ namespace LibraryManager.Model.Repositories
 
         public async Task<IEnumerable<Borrow>> GetAllBorrowsAsync()
         {
-            return await _context.Borrows.Include(b => b.Book).Include(b => b.User).ToListAsync();
+            return await _context.Borrows.Include(b => b.User).ToListAsync();
         }
 
         public async Task<Borrow?> GetBorrowByIdAsync(int id)
         {
-            return await _context.Borrows.Include(b => b.Book).Include(b => b.User).FirstOrDefaultAsync(b => b.Id == id);
+            return await _context.Borrows.Include(b => b.User).FirstOrDefaultAsync(b => b.Id == id);
         }
         public async Task InsertAsync(Borrow borrow)
         {

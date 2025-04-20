@@ -28,6 +28,7 @@ namespace LibraryManager.View.Windows
         {
             InitializeComponent();
             UsernameLabel.Text = user.Name + " " + user.Surname;
+            
             PageHolder.Content = homePage;
 
             CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
@@ -63,13 +64,15 @@ namespace LibraryManager.View.Windows
             Close();
         }
 
-        private void HomeBTN_Click(object sender, RoutedEventArgs e)
+        private async void HomeBTN_Click(object sender, RoutedEventArgs e)
         {
+            await homePage.LoadDataAsync();
             PageHolder.Content = homePage;
         }
 
-        private void BooksBTN_Click(object sender, RoutedEventArgs e)
+        private async void BooksBTN_Click(object sender, RoutedEventArgs e)
         {
+            await booksPage.LoadDataAsync();
             PageHolder.Content = booksPage;
         }
     }
