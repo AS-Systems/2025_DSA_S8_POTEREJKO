@@ -8,9 +8,9 @@ namespace LibraryManager.Model.Repositories
 {
     internal class AuthorRepository : IAuthorRepository
     {
-        private readonly LibraryDBContext _libraryDBContext;
+        private readonly HomelibraryContext _libraryDBContext;
 
-        public AuthorRepository(LibraryDBContext libraryDBContext)
+        public AuthorRepository(HomelibraryContext libraryDBContext)
         {
             _libraryDBContext = libraryDBContext;
         }

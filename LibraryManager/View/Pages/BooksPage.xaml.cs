@@ -1,7 +1,9 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Enums;
+using LibraryManager.Model.Repositories.Interfaces;
 using LibraryManager.View.CustomControls.Buttons;
 using LibraryManager.View.CustomControls.ColumnFilters;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,100 +30,16 @@ namespace LibraryManager.View.Pages
     /// </summary>
     public partial class BooksPage : Page, INotifyPropertyChanged
     {
-        public ObservableCollection<Book> FilteredBooks { get; set; }
+        public ObservableCollection<Book> FilteredBooks { get; set; } = new ObservableCollection<Book>();
+        private List<Book> AllBooks { get; set; } = new List<Book>();
+        private readonly IBookRepository _bookRepository;
 
-        private List<Book> AllBooks { get; set; }
 
         public BooksPage()
         {
             InitializeComponent();
-            
-            AllBooks = new List<Book> {
-
-            new Book
-            {
-                Id = 1,
-                Title = "The Fellowship of the Ring",
-                AuthorId = 101,
-                Author = new Author { Id = 101, Name = "J.R.R. Tolkien",Surname="Surname" },
-                OwnerId = 201,
-                Owner = new User { Id = 201, Username = "LibraryAdmin" },
-                Genre = 1,
-                PageCount = 423,
-                IsAvailable = true,
-                Description = "The first part of the epic Lord of the Rings trilogy.",
-                StorageId = 301,
-                Storage = new Storage (),
-                Borrows = new List<Borrow>()
-            },
-            new Book
-            {
-                Id = 2,
-                Title = "1984",
-                AuthorId = 102,
-                Author = new Author { Id = 102, Name = "George Orwell" },
-                OwnerId = 202,
-                Owner = new User { Id = 202, Username = "LibrarianJoe" },
-                Genre = 2,
-                PageCount = 328,
-                IsAvailable = false,
-                Description = "A dystopian novel about totalitarianism and surveillance.",
-                StorageId = 302,
-                Storage = new Storage(),
-                Borrows = new List<Borrow>()
-            },
-            new Book
-            {
-                Id = 3,
-                Title = "Pride and Prejudice",
-                AuthorId = 103,
-                Author = new Author { Id = 103, Name = "Jane Austen" },
-                OwnerId = 203,
-                Owner = new User { Id = 203, Username = "ClassicLover" },
-                Genre = 3,
-                PageCount = 279,
-                IsAvailable = true,
-                Description = "A romantic novel of manners in 19th-century England.",
-                StorageId = 303,
-                Storage = new Storage(),
-                Borrows = new List<Borrow>()
-            },
-            new Book
-            {
-                Id = 4,
-                Title = "To Kill a Mockingbird",
-                AuthorId = 104,
-                Author = new Author { Id = 104, Name = "Harper", Surname="Nazwisko" },
-                OwnerId = 204,
-                Owner = new User { Id = 204, Username = "Read4Justice" },
-                Genre = 4,
-                PageCount = 336,
-                IsAvailable = true,
-                Description = "A novel about racial injustice in the Deep South.",
-                StorageId = 304,
-                Storage = new Storage(),
-                Borrows = new List<Borrow>()
-            },
-            new Book
-            {
-                Id = 5,
-                Title = "Dune",
-                AuthorId = 105,
-                Author = new Author { Id = 105, Name = "Frank Herbert" },
-                OwnerId = 205,
-                Owner = new User { Id = 205, Username = "SciFiFan" },
-                Genre = 5,
-                PageCount = 688,
-                IsAvailable = false,
-                Description = "A science fiction epic set on the desert planet Arrakis.",
-                StorageId = 305,
-                Storage = new Storage(),
-                Borrows = new List<Borrow>()
-            }
-
-            };
-
-            FilteredBooks = new ObservableCollection<Book>(AllBooks);
+            _bookRepository = App.ServiceProvider.GetRequiredService<IBookRepository>();
+         
             DataContext = this;
         }
 
@@ -213,11 +131,11 @@ namespace LibraryManager.View.Pages
                 }
                 else if (yesCheckboxValue == true && noCheckboxValue == false)
                 {
-                    filtered = AllBooks.Where(b => b.IsAvailable == true).ToList();
+                    filtered = AllBooks.Where(b => b.Bookcopies.Any(c => c.IsAvailable == true)).ToList();
                 }
                 else if (yesCheckboxValue == false && noCheckboxValue == true)
                 {
-                    filtered = AllBooks.Where(b => b.IsAvailable == false).ToList();
+                    filtered = AllBooks.Where(b => b.Bookcopies.Any(c => c.IsAvailable == false)).ToList();
                 }
             }
 
@@ -225,6 +143,19 @@ namespace LibraryManager.View.Pages
             foreach (var book in filtered)
                 FilteredBooks.Add(book);
         }
+
+        public async Task LoadDataAsync()
+        {
+            AllBooks = await _bookRepository.GetAllBooksAsync();
+            FilteredBooks.Clear();
+            foreach (var book in AllBooks)
+            {
+                FilteredBooks.Add(book);
+            }
+
+        }
+
     }
+
 
 }

@@ -7,7 +7,7 @@ public partial class Borrow
 {
     public int Id { get; set; }
 
-    public int BookId { get; set; }
+    public int BookCopyId { get; set; }
 
     public int UserId { get; set; }
 
@@ -15,7 +15,7 @@ public partial class Borrow
 
     public DateTime? ReturnDate { get; set; }
 
-    public virtual Book Book { get; set; } = null!;
+    public virtual Bookcopy BookCopy { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;
 }

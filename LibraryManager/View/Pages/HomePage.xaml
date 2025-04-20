@@ -27,10 +27,10 @@
             <ColumnDefinition Width=".1*"/>
         </Grid.ColumnDefinitions>
 
-        <cap:TotalBorrows Grid.Row="1" Grid.Column="4" CapsuleCornerRadius="50" CapsuleWidth="230" CapsuleHeight="280" TotalCountTextFontSize="130" />
+        <cap:TotalBorrows Grid.Row="1" Grid.Column="4" CapsuleCornerRadius="50" CapsuleWidth="230" CapsuleHeight="280" TotalCountTextFontSize="130" TotalCountText="{Binding TotalBorrows, UpdateSourceTrigger=PropertyChanged}" />
         <cap:TopGenre x:Name="TopGenres" Grid.Row="1" Grid.Column="3" CapsuleCornerRadius="50" CapsuleHeight="280" CapsuleWidth="230" />
-        <cap:Upcoming  Grid.Row="3" Grid.Column="4" CapsuleCornerRadius="50" CapsuleWidth="230" CapsuleHeight="280"/>
-        <cap:AvaliableBooks  Grid.Row="1"  Grid.Column="1" Grid.ColumnSpan="2"  CapsuleCornerRadius="50" CapsuleHeight="280" CapsuleWidth="510" YourBooksAvaliable="8"  />
+        <cap:Upcoming  Grid.Row="3" Grid.Column="4" CapsuleCornerRadius="50" CapsuleWidth="230" CapsuleHeight="280" BorrowCount="{Binding UpcomingBorrows, UpdateSourceTrigger=PropertyChanged}" ReturnCount="{Binding UpcomingReturns, UpdateSourceTrigger=PropertyChanged}"/>
+        <cap:AvaliableBooks  Grid.Row="1"  Grid.Column="1" Grid.ColumnSpan="2"  CapsuleCornerRadius="50" CapsuleHeight="280" CapsuleWidth="510" YourBooksAvaliable="{Binding AvailableYourBooks, UpdateSourceTrigger=PropertyChanged}" YourBooksMax="{Binding YourBooks, UpdateSourceTrigger=PropertyChanged}" AllBooksAvaliable="{Binding AllAvailableBooks, UpdateSourceTrigger=PropertyChanged}" AllBooksMax="{Binding AllBooks, UpdateSourceTrigger=PropertyChanged}" />
 
     </Grid>
 </Page>

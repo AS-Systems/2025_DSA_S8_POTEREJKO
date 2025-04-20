@@ -23,7 +23,7 @@ namespace LibraryManager.View.Windows.Edit
         public EditBorrow(Borrow borrow)
         {
             InitializeComponent();
-            cmbBook.Text = borrow.Book.ToString();
+            cmbBook.Text = borrow.BookCopy.Book.Title.ToString();
             cmbUser.Text = borrow.User.ToString();
             //txtDescription.Text = borrow.Description;
         }

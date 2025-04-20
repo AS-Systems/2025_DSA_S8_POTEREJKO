@@ -27,7 +27,7 @@
             <TextBlock Text="{Binding Author, Converter={StaticResource AuthorToStringConverter}}" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis" Margin="0,0,15,0" Foreground="#3a3960" FontWeight="DemiBold" />
             <TextBlock Text="{Binding Genre, Converter={StaticResource IntGenreConverter}}" FontSize="30" Grid.Column="2" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
             <TextBlock Text="{Binding PageCount}" FontSize="30" Grid.Column="3" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding IsAvailable, Converter={StaticResource BoolAvailabilityConverter}}" FontSize="30" Grid.Column="4" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding Bookcopies, Converter={StaticResource BoolAvailabilityConverter}}" FontSize="30" Grid.Column="4" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
         </Grid>
         
 

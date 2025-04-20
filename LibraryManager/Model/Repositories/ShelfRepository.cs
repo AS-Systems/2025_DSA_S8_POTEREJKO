@@ -8,9 +8,9 @@ namespace LibraryManager.Model.Repositories
 {
     public class ShelfRepository : IShelfRepository
     {
-        private readonly LibraryDBContext _context;
+        private readonly HomelibraryContext _context;
 
-        public ShelfRepository(LibraryDBContext context)
+        public ShelfRepository(HomelibraryContext context)
         {
             _context = context;
         }

@@ -8,9 +8,9 @@ namespace LibraryManager.Model.Repositories
 {
     public class StorageRepository : IStorageRepository
     {
-        private readonly LibraryDBContext _context;
+        private readonly HomelibraryContext _context;
 
-        public StorageRepository(LibraryDBContext context)
+        public StorageRepository(HomelibraryContext context)
         {
             _context = context;
         }
@@ -22,12 +22,12 @@ namespace LibraryManager.Model.Repositories
 
         public async Task<IEnumerable<Storage>> GetAllStoragesAsync()
         {
-            return await _context.Storages.Include(s => s.Books).ToListAsync();
+            return await _context.Storages.ToListAsync();
         }
 
         public async Task<Storage?> GetStorageByIdAsync(int id)
         {
-            return await _context.Storages.Include(s => s.Books).FirstOrDefaultAsync(s => s.Id == id);
+            return await _context.Storages.FirstOrDefaultAsync(s => s.Id == id);
         }
 
         public async Task InsertAsync(Storage storage)

@@ -19,7 +19,11 @@ public partial class User
 
     public string Email { get; set; } = null!;
 
-    public virtual ICollection<Book> Books { get; set; } = new List<Book>();
+    public byte[]? ProfilePicture { get; set; }
+
+    public sbyte Role { get; set; }
+
+    public virtual ICollection<Bookcopy> Bookcopies { get; set; } = new List<Bookcopy>();
 
     public virtual ICollection<Borrow> Borrows { get; set; } = new List<Borrow>();
 }

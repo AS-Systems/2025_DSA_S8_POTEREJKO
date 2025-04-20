@@ -25,7 +25,7 @@
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <!-- Title of the window-->
-                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="95"/>
                     <!--Buttons-->
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
@@ -37,7 +37,7 @@
                 </Grid.RowDefinitions>
 
                 <!--Label and buttons of left column-->
-                <Label Grid.Column="0" Grid.Row="0" Content="Library Manager" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="35" Foreground="#a9bfa8"> </Label>
+                <Label Grid.Column="0" Grid.Row="0" Content="Library Manager" HorizontalContentAlignment="Right" VerticalContentAlignment="Top" Padding="0,10" FontSize="35" Foreground="#a9bfa8"> </Label>
                 <bt:PageSelectionButton x:Name="HomeBTN"
                     ButtonText="Home" Grid.Column="0" Grid.Row="1"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="HomeBTN_Click"/>
                 <bt:PageSelectionButton x:Name="BooksBTN"

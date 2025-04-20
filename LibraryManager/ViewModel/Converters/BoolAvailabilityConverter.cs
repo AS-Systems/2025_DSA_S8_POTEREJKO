@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryManager.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -14,8 +15,10 @@ namespace LibraryManager.ViewModel.Converters
         {
             if (value != null)
             { 
-                var available = (bool)value;
-                
+                var bookCopies = (List<Bookcopy>)value;
+
+                bool available = bookCopies.Any(b => b.IsAvailable);
+
                 if (available)
                 {
                     return "Yes";
@@ -27,18 +30,7 @@ namespace LibraryManager.ViewModel.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(!string.IsNullOrEmpty(value.ToString())) 
-            {
-                var availableTxt = value.ToString();
-
-                if (availableTxt == "Yes")
-                {
-                    return true;
-                }
-                return false;
-
-            }
-            return false;
+            return Binding.DoNothing;
         }
     }
 }
