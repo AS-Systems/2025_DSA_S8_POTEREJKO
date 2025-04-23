@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="LibraryManager.View.CustomControls.Buttons.CircularSingleButtonControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryManager.View.CustomControls.Buttons"
+             xmlns:cir="clr-namespace:LibraryManager.View.CustomControls"
+             mc:Ignorable="d" 
+             Name="CirSingSub"
+             >
+    <Grid Height="70">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding ButtonWidth, ElementName=CirSingSub}"/>
+            <ColumnDefinition Width="70"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="20,18,35,18">
+            <Button x:Name="SubButton"
+        BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"
+        Content="{Binding SubButtonText, ElementName=CirSingSub}" HorizontalContentAlignment="Center"
+        FontSize="16" Padding="0,0,5,0" FontWeight="Bold" Foreground="#3a3960">
+                <Button.RenderTransform>
+                    <TranslateTransform x:Name="SubButtonTransform" />
+                </Button.RenderTransform>
+            </Button>
+        </Grid>
+        <cir:CircularButtonControl x:Name="buttonCir" Grid.Column="1" Diameter="70" Grid.RowSpan="2" Width="70" Height="70" ButtonBorderThickness="5" ButtonBorderColor="#5e686d" ButtonBackground="#faffc5" ImageHeight="30" ImageWidth="30" Click="buttonCir_Click" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e"/>
+
+    </Grid>
+</UserControl>
