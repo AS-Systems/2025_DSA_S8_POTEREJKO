@@ -10,6 +10,9 @@
     <Compile Update="View\CustomControls\Buttons\CircularButtonControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\Buttons\CircularDoubleButtonControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\Buttons\ComparisonOperationButtonControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -115,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\CustomControls\Buttons\CircularButtonControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\Buttons\CircularDoubleButtonControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\Buttons\ComparisonOperationButtonControl.xaml">

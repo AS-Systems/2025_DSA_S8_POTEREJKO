@@ -3,6 +3,7 @@ using LibraryManager.Model.Enums;
 using LibraryManager.Model.Repositories.Interfaces;
 using LibraryManager.View.CustomControls.Buttons;
 using LibraryManager.View.CustomControls.ColumnFilters;
+using LibraryManager.View.Windows;
 using LibraryManager.View.Windows.Edit;
 using LibraryManager.View.Windows.Info;
 using Microsoft.Extensions.DependencyInjection;
@@ -220,6 +221,18 @@ namespace LibraryManager.View.Pages
             
 
 
+        }
+
+        private void CircularDoubleButtonControl_ButtonBottomClick(object sender, RoutedEventArgs e)
+        {
+            var addBookWindow = new AddBook();
+            addBookWindow.ShowDialog();
+        }
+
+        private void CircularDoubleButtonControl_ButtonTopClick(object sender, RoutedEventArgs e)
+        {
+            var addAuthorWindow = new AddAuthor();
+            addAuthorWindow.ShowDialog();
         }
     }
 
