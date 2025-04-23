@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="LibraryManager.View.CustomControls.Buttons.ItemActionButtonControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryManager.View.CustomControls.Buttons"
+             mc:Ignorable="d" 
+             Name="ItemActionButton"
+             d:DesignHeight="40" d:DesignWidth="80">
+    <Grid>
+        <Button x:Name="ActionButton" Click="ActionButton_Click" Width="{Binding ButtonWidth, ElementName=ItemActionButton}" Height="{Binding ButtonHeight, ElementName=ItemActionButton}"  Background="{Binding ButtonBackgroundColor, ElementName=ItemActionButton}"  BorderThickness="2" BorderBrush="#5e686d">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <TextBlock x:Name="OperationText" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ButtonText, ElementName=ItemActionButton}" FontWeight="Bold" FontSize="{Binding ContentFontSize,ElementName=ItemActionButton}" Margin="0,0,0,5" Foreground="#3a3960"/>
+        </Button>
+    </Grid>
+</UserControl>
