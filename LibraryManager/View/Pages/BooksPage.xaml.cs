@@ -3,6 +3,8 @@ using LibraryManager.Model.Enums;
 using LibraryManager.Model.Repositories.Interfaces;
 using LibraryManager.View.CustomControls.Buttons;
 using LibraryManager.View.CustomControls.ColumnFilters;
+using LibraryManager.View.Windows.Edit;
+using LibraryManager.View.Windows.Info;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -34,12 +36,25 @@ namespace LibraryManager.View.Pages
         private List<Book> AllBooks { get; set; } = new List<Book>();
         private readonly IBookRepository _bookRepository;
 
+        private Book selectedBook;
+
+        public Book SelectedBook
+        {
+            get { return selectedBook; }
+            set { selectedBook = value;
+                OnPropertyChanged();
+                ActivateItemActionButtons();
+            }
+        }
+
+
 
         public BooksPage()
         {
             InitializeComponent();
             _bookRepository = App.ServiceProvider.GetRequiredService<IBookRepository>();
-         
+
+            ActivateItemActionButtons();
             DataContext = this;
         }
 
@@ -155,6 +170,57 @@ namespace LibraryManager.View.Pages
 
         }
 
+        private void ActivateItemActionButtons()
+        {
+            if (selectedBook == null)
+            {
+                ItemInfo.IsEnabled = false;
+                ItemEdit.IsEnabled = false;
+                ItemDelete.IsEnabled = false;
+            }
+            else
+            {
+                ItemInfo.IsEnabled = true;
+                ItemEdit.IsEnabled = true;
+                ItemDelete.IsEnabled = true;
+            }
+        }
+
+        private void ItemInfo_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (selectedBook != null)
+            {
+                var infoWindow = new InfoBook(selectedBook);
+                infoWindow.ShowDialog();
+            }
+        }
+
+        private void ItemEdit_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (selectedBook != null)
+            {
+                var editWindow = new EditBook(selectedBook);
+                editWindow.ShowDialog();
+            }
+        }
+
+        private void ItemDelete_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (selectedBook != null)
+            {
+                var result = MessageBox.Show($"Are you sure you want to delete: {selectedBook.Title}", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Perform the delete logic here
+                    MessageBox.Show("Item deleted successfully!", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+            }
+            
+
+
+        }
     }
 
 

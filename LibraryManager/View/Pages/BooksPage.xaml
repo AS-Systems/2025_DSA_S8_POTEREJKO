@@ -42,7 +42,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <ListBox ItemsSource="{Binding FilteredBooks,Mode=TwoWay}" SelectedItem="{Binding SelectedPerson}" SelectionMode="Single" Background="Transparent" BorderThickness="0"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False">
+            <ListBox ItemsSource="{Binding FilteredBooks,Mode=TwoWay}" SelectedItem="{Binding SelectedBook, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single" Background="Transparent" BorderThickness="0"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False">
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -58,7 +58,33 @@
             </ListBox>
         </Grid>
 
-        <Label Grid.Row="2" Foreground="Black" FontSize="30" Content="{Binding Operation, Mode=TwoWay}"/>
+        <Grid Grid.Row="2" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".8*"/>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="2.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel  Grid.Column="1" Orientation="Horizontal">
+                    <btn:ItemActionButtonControl x:Name="ItemInfo" ButtonText="Info" ButtonClick="ItemInfo_ButtonClick"/>
+                    <btn:ItemActionButtonControl x:Name="ItemEdit" Margin="15,0" ButtonText="Edit" ButtonClick="ItemEdit_ButtonClick"/>
+                    <btn:ItemActionButtonControl x:Name="ItemDelete" ButtonText="Delete" ButtonBackgroundColor="#bec29b" ButtonClick="ItemDelete_ButtonClick"/>
+                </StackPanel>
+                
+
+            </Grid>
+                      
+        </Grid>
 
     </Grid>
 </Page>

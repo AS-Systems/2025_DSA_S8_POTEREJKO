@@ -13,6 +13,9 @@
     <Compile Update="View\CustomControls\Buttons\ComparisonOperationButtonControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\Buttons\ItemActionButtonControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\Buttons\PageSelectionButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -115,6 +118,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\Buttons\ComparisonOperationButtonControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\Buttons\ItemActionButtonControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\Buttons\PageSelectionButton.xaml">
