@@ -4,16 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManager.View.Windows.Info"
+        xmlns:uc="clr-namespace:LibraryManager.View.CustomControls"
         mc:Ignorable="d"
-        Title="InfoBook" Height="650" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        WindowStartupLocation="CenterOwner"
+        Title="InfoBook" Height="650" Width="450" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
                 <!--Window layout-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.4*"/>
-                    <RowDefinition Height="9.4*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="9.8*"/>
+                    <RowDefinition Height="0.4*"/>
                 </Grid.RowDefinitions>
 
                 <!--Top bar with window title-->
@@ -22,16 +24,18 @@
                         <!--Top bar layout-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
+                        <uc:CircularButtonControl Grid.Column="2" x:Name="CloseBTN" Margin="4,0,0,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="CloseBTN_Click"/>
                         <Label Grid.Column="1" Content="Info Book" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
                     </Grid>
                 </Border>
 
+                <Border BorderThickness="5,0,5,5" BorderBrush="#bfbb81" Grid.Row="1" CornerRadius="0,0,31,31" Grid.RowSpan="2"/>
                 <!--Window content space Grid-->
                 <Grid Grid.Row="1">
-
+                    
                     <!--Window content space Grid layout-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -39,38 +43,26 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
+                    
                     <!--Content grid-->
                     <Grid Grid.Column="1">
                         <!--Grid layout-->
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1.4*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.7*"/>
+                            <RowDefinition Height="0.6*"/>
+                            <RowDefinition Height="0.9*"/>
+                            <RowDefinition Height="0.35*"/>
+                            <RowDefinition Height="0.35*"/>
+                            <RowDefinition Height="1.1*"/>
                         </Grid.RowDefinitions>
 
-                        <Rectangle Grid.Row="0" Stroke="#3a3960" StrokeDashArray="4,2" StrokeThickness="3" Width="110" Height="110"  RadiusX="25" RadiusY="25"/>
-                        <!--To do: Implement drop image control-->
+                        
+                        
+                        <Image x:Name="BookCover" Width="110" Height="140"  />
 
                         <!--TextBox grid-->
                         <Grid Grid.Row="1">
-                            <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-
-                            </Grid.RowDefinitions>
-
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                               BorderThickness="3" BorderBrush="#5e686d"
-                               Text="Title" Name="txtTitle" IsReadOnly="True"
-                      />
-                            <!--To do: Impelment custom TextBox control-->
-
-
+                            <TextBlock x:Name="txtTitle"  FontSize="28" FontWeight="Bold" Foreground="#3a3960"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
                         </Grid>
 
 
@@ -78,83 +70,67 @@
                         <Grid Grid.Row="2">
                             <!--Grid layout-->
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="1.3*"/>
+                                <RowDefinition Height="0.8*"/>
                             </Grid.RowDefinitions>
-                            <!-- To do: Implement custom ComboBoc control-->
-                            <ComboBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                               BorderThickness="3" BorderBrush="#5e686d"
-                               Text="Name" Name="cmbAuthor" IsReadOnly="True"
-                          />
 
-                            <ComboBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                               BorderThickness="3" BorderBrush="#5e686d"
-                               Text="Name" Name="cmbGenre" IsReadOnly="True"
-                          />
-                            <!--To do: Impelment custom TextBox control-->
+                            <Grid Grid.Row="0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".35*"/>
+                                    <ColumnDefinition Width="0.8*"/>
+                                </Grid.ColumnDefinitions>
 
+                                <Label Padding="0,8,0,0" Content="Author(s):" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
+                                <TextBlock Padding="0,8,0,0"  Grid.Column="1" x:Name="lbAuthor" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" TextWrapping="WrapWithOverflow" />
+                            </Grid>
+                            
+                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                <Label Content="Genre:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
+                                <Label x:Name="lbGenre" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
+                            </StackPanel>
 
                         </Grid>
 
                         <!--TextBox grid-->
                         <Grid Grid.Row="3">
-                            <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
 
-                            </Grid.RowDefinitions>
-
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                               BorderThickness="3" BorderBrush="#5e686d"
-                               Text="Page number" Name="txtPage" IsReadOnly="True"
-                      />
-                            <!--To do: Impelment custom TextBox control-->
+                            <StackPanel  Orientation="Horizontal">
+                                <Label Content="Page count:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
+                                <Label x:Name="lbPage" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
+                            </StackPanel>
 
 
                         </Grid>
 
                         <Grid Grid.Row="4">
+                            <StackPanel  Orientation="Horizontal">
+                                <Label Content="IBAN:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
+                                <Label x:Name="lbIBAN" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
+                            </StackPanel>
+                        </Grid>
+                        
+
+                        <Grid Grid.Row="5">
                             <!--Grid layout-->
                             <Grid.RowDefinitions>
+                                <RowDefinition Height=".5*"/>
                                 <RowDefinition Height="*"/>
 
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                               BorderThickness="3" BorderBrush="#5e686d"
-                               Text="Description" Name="txtDescription" IsReadOnly="True"
-                      />
-                            <!--To do: Impelment custom TextBox control-->
+                            <TextBlock Padding="5,0" Grid.Row="0" FontSize="22" FontWeight="Bold" 
+                                Background="Transparent" Foreground="#3a3960"
+                               Text="Description:" VerticalAlignment="Center"/>
 
-
-                        </Grid>
-
-                        <!-- To do: Implement sliced in half Combobox at the grid row 4 (grid with 2 comboboxes)-->
-
-                        <!--Button grid-->
-                        <Grid Grid.Row="5">
-                            <!--Grid layout-->
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button Grid.Column="1
-                                    " Margin="10" Content="Close" 
-                              FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                              BorderThickness="3" BorderBrush="#5e686d" Background="Transparent"
-                              Click="Button_Click"
-                              />
+                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                                <TextBlock x:Name="txtDescription" TextWrapping="Wrap" Padding="5,0" Foreground="#3a3960"  FontSize="20" FontWeight="DemiBold"  />
+                            </ScrollViewer>
 
                         </Grid>
+
+                        
+
+                       
                     </Grid>
                 </Grid>
 
