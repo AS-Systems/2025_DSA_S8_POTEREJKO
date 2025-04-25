@@ -1,4 +1,5 @@
 ﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,20 +24,30 @@ namespace LibraryManager.View.Windows.Info
         public InfoBook(Book book)
         {
             InitializeComponent();
+
+            CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
+
+
+            string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "image-icon.png");
+            BookCover.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+
+
             txtDescription.Text = book.Description;
             txtTitle.Text = book.Title;
-            txtPage.Text = book.PageCount.ToString();
-            cmbAuthor.Text = book.Author.ToString();
-            cmbGenre.Text = book.Genre.ToString();
+            lbPage.Content = "~" + book.PageCount.ToString();
+            lbAuthor.Text = (book.Author.Name + " " + book.Author.Surname);
+            lbGenre.Content = (Genre)book.Genre;
+            lbIBAN.Content = "3459876";
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CloseBTN_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
+
     }
 }

@@ -192,6 +192,7 @@ namespace LibraryManager.View.Pages
             if (selectedBook != null)
             {
                 var infoWindow = new InfoBook(selectedBook);
+                infoWindow.Owner = Window.GetWindow(this);
                 infoWindow.ShowDialog();
             }
         }
