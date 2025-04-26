@@ -25,6 +25,9 @@
     <Compile Update="View\CustomControls\Buttons\PageSelectionButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\Buttons\UserInfoButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\Capsules\AvaliableBooks.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -136,6 +139,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\Buttons\PageSelectionButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\Buttons\UserInfoButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\Capsules\AvaliableBooks.xaml">
