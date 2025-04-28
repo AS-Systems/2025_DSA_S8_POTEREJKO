@@ -6,97 +6,50 @@
         xmlns:local="clr-namespace:LibraryManager.View.Windows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-         Title="LoginWindow" Height="400" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+         Title="LoginWindow" Height="450" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
-        <Border Background="#faffc5" CornerRadius="35">
+        <Border Background="#faffc5" CornerRadius="35" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Grid>
                 <!--Window layout-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.4*"/>
                     <RowDefinition Height="9.4*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.5*"/>
                 </Grid.RowDefinitions>
 
-                <!--Top bar with window title-->
-                <Border Grid.Row="0" Background="#3a3960" CornerRadius="33,33,0,0" MouseLeftButtonDown="Border_MouseLeftButtonDown">
-                    <Grid>
-                        <!--Top bar layout-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" Grid.ColumnSpan="3" Background="#3a3960" CornerRadius="33,33,0,0">
+                    <Grid >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Content="Login" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
+
+                        <Button x:Name="LoginButton" Grid.Column="0" Content="Login" Foreground="#a9bfa8" FontWeight="DemiBold" FontSize="20" BorderThickness="0" Click="LoginButton_Click">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="33,0,0,0"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Button x:Name="RegisterButton" Grid.Column="1"  Content="Register" Foreground="#a9bfa8" FontWeight="DemiBold" FontSize="20" BorderThickness="0" Click="RegisterButton_Click">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="0,33,0,0"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
                     </Grid>
                 </Border>
 
-                <!--Window content space Grid-->
-                <Grid Grid.Row="1">
 
-                    <!--Window content space Grid layout-->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!--Content grid-->
-                    <Grid Grid.Column="1">
-                        <!--Grid layout-->
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="0.7*"/>
-                        </Grid.RowDefinitions>
-
-
-                        <!--TextBox grid-->
-                        <Grid Grid.Row="0">
-                            <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-
-                            <TextBox x:Name="UsernameBox" Grid.Row="0" Margin="0,25,0,25" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                 BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Username"
-                                     GotFocus="UsernameBox_GotFocus"
-                                     LostFocus="UsernameBox_LostFocus"
-                        />
-                            <!--To do: Impelment custom TextBox control-->
-
-                            <TextBox x:Name="PasswordBox" Grid.Row="1" Margin="0,5,0,45" HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                BorderThickness="3" BorderBrush="#5e686d"
-                                Text="Password"
-                                     GotFocus="PasswordBox_GotFocus"
-                                     LostFocus="PasswordBox_LostFocus"
-                        />
-                        </Grid>
-
-                        <!--Button grid-->
-                        <Grid Grid.Row="2">
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-
-                            <Button x:Name="LoginBTN" Grid.Row="0" Margin="50,8,50,8" Content="Login" 
-                                FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                                BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"
-                                    Click="LoginBTN_Click"
-                                    />
-
-                            <Button Grid.Row="1"  Margin="50,8,50,8" Content="Exit" 
-                                FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                                BorderThickness="3" BorderBrush="#5e686d" Background="Transparent" Click="Button_Click"/>
-                        </Grid>
-                    </Grid>
-                </Grid>
+                <Frame x:Name="WindowContent" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>
 
             </Grid>
         </Border>

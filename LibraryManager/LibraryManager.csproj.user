@@ -76,6 +76,15 @@
     <Compile Update="View\Pages\HomePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Pages\LoginRegisterPages\LoginPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\LoginRegisterPages\PersonalInfoPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\LoginRegisterPages\RegisterPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Windows\Add\AddAuthor.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -187,6 +196,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\LoginRegisterPages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\LoginRegisterPages\PersonalInfoPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\LoginRegisterPages\RegisterPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Add\AddAuthor.xaml">
