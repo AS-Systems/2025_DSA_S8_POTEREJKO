@@ -1,0 +1,79 @@
+﻿<Page x:Class="LibraryManager.View.Pages.PersonalInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibraryManager.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="300"
+      Title="PersonalInfoPage">
+
+    <Grid>
+
+        <Grid>
+            <!--Window content space Grid-->
+            <Grid >
+                <!--Content grid-->
+                <Grid >
+                    <!--Grid layout-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.7*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <!--TextBox grid-->
+                    <Grid Grid.Row="0">
+                        <!--Grid layout-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBox x:Name="NameBox" Grid.Row="0" Margin="0,10" HorizontalContentAlignment="Left" 
+                             VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                             Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                             BorderThickness="3" BorderBrush="#5e686d"
+                             Text="Name" TextChanged="NameBox_TextChanged"/>
+
+
+                        <TextBox x:Name="SurnameBox" Grid.Row="1" Margin="0,10" HorizontalContentAlignment="Left" 
+                            VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                            Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                            BorderThickness="3" BorderBrush="#5e686d"
+                            Text="Surname" TextChanged="SurnameBox_TextChanged" />
+
+                        <TextBox x:Name="PhoneBox" Grid.Row="2" Margin="0,10" HorizontalContentAlignment="Left" 
+                            VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                            Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                            BorderThickness="3" BorderBrush="#5e686d"
+                            Text="Phone number" TextChanged="PhoneBox_TextChanged" />
+    
+                    </Grid>
+
+                    <!--Button grid-->
+                    <Grid Grid.Row="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="RegisterBTN" Grid.Row="0" Margin="50,8,50,8" Content="Register" 
+                            FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
+                            BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b" Click="RegisterBTN_Click"
+                               
+                                />
+
+                        <Button Grid.Row="1"  Margin="50,8,50,8" Content="Exit" 
+                            FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
+                            BorderThickness="3" BorderBrush="#5e686d" Background="Transparent" Click="Button_Click" />
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+    
+</Page>

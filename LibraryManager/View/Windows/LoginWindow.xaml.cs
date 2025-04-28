@@ -1,5 +1,6 @@
 ﻿using LibraryManager.Model.Repositories;
 using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.View.Pages;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -22,11 +23,27 @@ namespace LibraryManager.View.Windows
     /// </summary>
     public partial class LoginWindow : Window
     {
-        private readonly IUserRepository _userRepository;
+        
+        private LoginPage loginPage;
+        private RegisterPage registerPage;
+        private PersonalInfoPage personalInfoPage;
+
+        private readonly Brush _pageSelectedColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
+        private readonly Brush _pageNotSelectedColor = Brushes.Transparent;
+
+
         public LoginWindow()
         {
             InitializeComponent();
-            _userRepository = App.ServiceProvider.GetRequiredService<IUserRepository>();
+            
+            loginPage = new LoginPage(this);
+            registerPage = new RegisterPage(this);
+
+            LoginButton.Background = _pageSelectedColor;
+            RegisterButton.Background = _pageNotSelectedColor;
+
+
+            WindowContent.Content = loginPage;
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -34,57 +51,22 @@ namespace LibraryManager.View.Windows
             DragMove();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            WindowContent.Content = loginPage;
+
+            LoginButton.Background = _pageSelectedColor;
+            RegisterButton.Background = _pageNotSelectedColor;
+
         }
 
-        private void UsernameBox_GotFocus(object sender, RoutedEventArgs e)
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            UsernameBox.Text = string.Empty;
+            WindowContent.Content = registerPage;
+
+            LoginButton.Background = _pageNotSelectedColor;
+            RegisterButton.Background = _pageSelectedColor;
         }
 
-        private void UsernameBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (UsernameBox.Text == string.Empty)
-            {
-                UsernameBox.Text = "Username";
-            }
-        }
-
-        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            PasswordBox.Text = string.Empty;
-        }
-
-        private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (PasswordBox.Text == string.Empty)
-            {
-                PasswordBox.Text = "Password";
-            }
-        }
-
-        private async void LoginBTN_Click(object sender, RoutedEventArgs e)
-        {
-            var username = UsernameBox.Text;
-            var foundUser = await _userRepository.GetUserByUsernameAsync(username);
-
-            if (foundUser != null)
-            {
-                if (foundUser.Password == PasswordBox.Text)
-                {
-                    MainWindow2 mainWindow = new MainWindow2(foundUser);
-                    mainWindow.Show();
-                    Close();
-                }
-                else { 
-                    //To do: Info wrong password.
-                }
-            }
-            else{
-                //To do: Info user not found.
-            }
-        }
     }
 }
