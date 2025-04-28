@@ -5,22 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LibraryManager.View.CustomControls.Buttons"
              mc:Ignorable="d" 
+             Name="UserInfoBtn"
              d:DesignHeight="80" d:DesignWidth="250">
     <Grid>
-        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Background="#3a3960" Width="{Binding Width, ElementName=UserInfoBtn}" Height="{Binding Height, ElementName=UserInfoBtn}" >
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Background="#3a3960" BorderThickness="0" Click="Button_Click" >
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <!-- Avatar -->
                 <Ellipse Width="40" Height="40" Margin="0,0,10,0">
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="{Binding AvatarImage}" />
+                        <ImageBrush ImageSource="{Binding AppUser.ProfilePicture, ElementName=UserInfoBtn}" />
                     </Ellipse.Fill>
                 </Ellipse>
 
                 <StackPanel Orientation="Horizontal">
                     <!-- User Name -->
-                    <TextBlock Text="Name" FontSize="22" Foreground="#a9bfa8" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBlock Text="{Binding AppUser.Name, ElementName=UserInfoBtn}" FontSize="22" Foreground="#a9bfa8" VerticalAlignment="Center" Margin="0,0,10,0" />
                     <!-- User Role -->
-                    <TextBlock Text="Surname" FontSize="22" Foreground="#a9bfa8" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding AppUser.Surname, ElementName=UserInfoBtn}" FontSize="22" Foreground="#a9bfa8" VerticalAlignment="Center"/>
                 </StackPanel>
 
 
