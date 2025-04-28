@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryManager.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,27 @@ namespace LibraryManager.View.CustomControls.Buttons
     /// </summary>
     public partial class UserInfoButton : UserControl
     {
+        public static readonly DependencyProperty AppUserProperty = DependencyProperty.Register("AppUser", typeof(User), typeof(UserInfoButton), new PropertyMetadata(new User()));
+
+
+        public User AppUser
+        {
+            get { return (User)GetValue(AppUserProperty); }
+            set { SetValue(AppUserProperty, value); }
+        }
+        
+
+
+
         public UserInfoButton()
         {
             InitializeComponent();
+        }
+
+        public event RoutedEventHandler ButtonClick;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonClick.Invoke(this, e);
         }
     }
 }

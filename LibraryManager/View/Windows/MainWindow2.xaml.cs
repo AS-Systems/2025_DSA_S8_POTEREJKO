@@ -1,5 +1,7 @@
 ﻿using LibraryManager.Model.Entities;
+using LibraryManager.View.CustomControls.Buttons;
 using LibraryManager.View.Pages;
+using LibraryManager.View.Windows.Info;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +25,14 @@ namespace LibraryManager.View.Windows
     {
         private BooksPage booksPage = new BooksPage();
         private HomePage homePage = new HomePage();
+        private User appUser;
 
         public MainWindow2(User user)
         {
             InitializeComponent();
-            UsernameLabel.Text = user.Name + " " + user.Surname;
+            appUser = user;
+
+            UserButton.AppUser = appUser;
             
             PageHolder.Content = homePage;
 
@@ -74,6 +79,11 @@ namespace LibraryManager.View.Windows
         {
             await booksPage.LoadDataAsync();
             PageHolder.Content = booksPage;
+        }
+
+        private void UserButton_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            new InfoUser(appUser).ShowDialog();
         }
     }
 }

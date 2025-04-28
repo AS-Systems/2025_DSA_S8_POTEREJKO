@@ -69,7 +69,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <TextBlock Text="Name Surname" FontSize="30" Foreground="#a9bfa8" x:Name="UsernameLabel"/>
+                    <bt:UserInfoButton x:Name="UserButton" ButtonClick="UserButton_ButtonClick" />
                 </StackPanel>
 
             <Border Background="#faffc5" CornerRadius="35" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
