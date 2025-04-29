@@ -36,19 +36,39 @@
                          Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                          BorderThickness="3" BorderBrush="#5e686d" TextChanged="EmailBox_TextChanged"
                          Text="E-mail" />
+
+                        <Popup x:Name="NamePopup" PlacementTarget="{Binding ElementName=EmailBox}" Placement="Right" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding EmailPopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="10" HorizontalOffset="10">
+                            <Border Background="#bec29b" Width="150" Height="40" CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3">
+                                <TextBlock Text="{Binding EmailPopText, UpdateSourceTrigger=PropertyChanged}" Foreground="#3a3960" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Border>
+                        </Popup>
+
                         <!--To do: Impelment custom TextBox control-->
 
                         <TextBox x:Name="UsernameBox" Grid.Row="1" Margin="0,12" HorizontalContentAlignment="Left" 
                         VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                         Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                        BorderThickness="3" BorderBrush="#5e686d" TextChanged="UsernameBox_TextChanged"
+                        BorderThickness="3" BorderBrush="#5e686d" LostFocus="UsernameBox_LostFocus"
                         Text="Username" />
+
+                        <Popup x:Name="UsernamePopup" PlacementTarget="{Binding ElementName=UsernameBox}" Placement="Right" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding UsernamePopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="10" HorizontalOffset="10">
+                            <Border Background="#bec29b"  Width="150" Height="40"  CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3" >
+                                <TextBlock Margin="6" Text="{Binding UsernamePopText, UpdateSourceTrigger=PropertyChanged}" Foreground="#3a3960" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Border>
+                        </Popup>
 
                         <TextBox x:Name="PasswordBox" Grid.Row="2" Margin="0,12" HorizontalContentAlignment="Left" 
                         VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                         Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                         BorderThickness="3" BorderBrush="#5e686d" TextChanged="PasswordBox_TextChanged"
                         Text="Password" />
+
+                        <Popup x:Name="PasswordPopup" PlacementTarget="{Binding ElementName=PasswordBox}" Placement="Right" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding PasswordPopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="10" HorizontalOffset="10">
+                            <Border Background="#bec29b"  CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3" >
+                                <TextBlock Margin="6" Text="{Binding PasswordPopText, UpdateSourceTrigger=PropertyChanged}" Foreground="#3a3960" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Border>
+                        </Popup>
+
 
                     </Grid>
 

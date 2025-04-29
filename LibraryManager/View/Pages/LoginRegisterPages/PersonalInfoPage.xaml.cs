@@ -5,6 +5,7 @@ using LibraryManager.View.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -25,20 +26,81 @@ namespace LibraryManager.View.Pages
     /// <summary>
     /// Logika interakcji dla klasy PersonalInfoPage.xaml
     /// </summary>
-    public partial class PersonalInfoPage : Page
+    public partial class PersonalInfoPage : Page, INotifyPropertyChanged
     {
         private User user = new();
         private readonly Window _window;
         private readonly IUserRepository _userRepository;
 
+        private readonly Brush _texboxNormalBorderBrush = (Brush)new BrushConverter().ConvertFromString("#5e686d");
+
         private bool _isNameCorrect = false;
         private bool _isSurnameCorrect = false;
         private bool _isPhoneCorrect = false;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        #region Properties Popups
+        private bool namePopVisibility;
+        private string namePopText;
+
+        private bool surnamePopVisibility;
+        private string surnamePopText;
+
+        private bool phonePopVisibility;
+        private string phonePopText;
+
+
+        public bool NamePopVisibility
+        {
+            get { return namePopVisibility; }
+            set { namePopVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public string NamePopText
+        {
+            get { return namePopText; }
+            set { namePopText = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool SurnamePopVisibility
+        {
+            get { return surnamePopVisibility; }
+            set { surnamePopVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public string SurnamePopText
+        {
+            get { return surnamePopText; }
+            set { surnamePopText = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool PhonePopVisibility
+        {
+            get { return phonePopVisibility; }
+            set { phonePopVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+        public string PhonePopText
+        {
+            get { return phonePopText; }
+            set { phonePopText = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion
 
 
         public PersonalInfoPage(string email, string username, string password, Window window)
         {
             InitializeComponent();
+            DataContext = this;
+
             _userRepository = App.ServiceProvider.GetRequiredService<IUserRepository>();
 
             _window = window;
@@ -47,6 +109,19 @@ namespace LibraryManager.View.Pages
             user.Username = username;
             user.Password = password;
 
+            NameBox.BorderBrush = _texboxNormalBorderBrush;
+            SurnameBox.BorderBrush = _texboxNormalBorderBrush;
+            PhoneBox.BorderBrush = _texboxNormalBorderBrush;
+
+            NamePopVisibility = false;
+            SurnamePopVisibility = false;
+            PhonePopVisibility = false;
+
+        }
+
+        protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -82,23 +157,49 @@ namespace LibraryManager.View.Pages
         {
             string namePattern = @"^[a-zA-Z]+$";
 
-            if (!Regex.IsMatch(NameBox.Text, namePattern))
+            if (string.IsNullOrEmpty(NameBox.Text))
             {
+                NamePopVisibility = true;
+                NamePopText = "Name can't be empty!";
+                NameBox.BorderBrush = Brushes.Red;
                 return false;
             }
 
+            if (!Regex.IsMatch(NameBox.Text, namePattern))
+            {
+                NamePopVisibility = true;
+                NamePopText = "Invalid name!";
+                NameBox.BorderBrush = Brushes.Red;
+                return false;
+            }
+
+            NamePopVisibility = false;
+            NameBox.BorderBrush = _texboxNormalBorderBrush;
             return true;
         }
 
         private bool ValidateSurname()
         {
-            string namePattern = @"^[a-zA-Z]+$";
+            string surnamePattern = @"^[a-zA-Z]+$";
 
-            if (!Regex.IsMatch(NameBox.Text, namePattern))
+            if (string.IsNullOrEmpty(SurnameBox.Text))
             {
+                SurnamePopVisibility = true;
+                SurnamePopText = "Surname can't be empty!";
+                SurnameBox.BorderBrush = Brushes.Red;
                 return false;
             }
 
+            if (!Regex.IsMatch(SurnameBox.Text, surnamePattern))
+            {
+                SurnamePopVisibility = true;
+                SurnamePopText = "Invalid surname!";
+                SurnameBox.BorderBrush = Brushes.Red;
+                return false;
+            }
+
+            SurnamePopVisibility = false;
+            SurnameBox.BorderBrush = _texboxNormalBorderBrush;
             return true;
         }
 
@@ -108,9 +209,14 @@ namespace LibraryManager.View.Pages
 
             if (!Regex.IsMatch(PhoneBox.Text, phonePattern))
             {
+                PhonePopVisibility = true;
+                PhonePopText = "Invalid phone number!";
+                PhoneBox.BorderBrush = Brushes.Red;
                 return false;
             }
 
+            PhoneBox.BorderBrush = _texboxNormalBorderBrush;
+            PhonePopVisibility = false;
             return true;
         }
 

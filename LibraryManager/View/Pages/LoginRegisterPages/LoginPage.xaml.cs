@@ -3,6 +3,7 @@ using LibraryManager.View.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,17 +22,39 @@ namespace LibraryManager.View.Pages
     /// <summary>
     /// Logika interakcji dla klasy LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class LoginPage : Page, INotifyPropertyChanged
     {
         private readonly Window _window;
         private readonly IUserRepository _userRepository;
 
+        private bool loginPopVisibility;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public bool LoginPopVisibility
+        {
+            get { return loginPopVisibility; }
+            set { loginPopVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
         public LoginPage(Window window)
         {
             InitializeComponent();
+            DataContext = this;
 
             _userRepository = App.ServiceProvider.GetRequiredService<IUserRepository>();
             _window = window;
+
+            LoginPopVisibility = false;
+        }
+
+        protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -78,15 +101,11 @@ namespace LibraryManager.View.Pages
                     mainWindow.Show();
                     _window.Close();
                 }
-                else
-                {
-                    //To do: Info wrong password.
-                }
             }
-            else
-            {
-                //To do: Info user not found.
-            }
+
+            LoginPopVisibility = true;
+
+
         }
 
     }

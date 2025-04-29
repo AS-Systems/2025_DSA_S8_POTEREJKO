@@ -61,6 +61,12 @@
                                 BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"
                                    Click="LoginBTN_Click"
                                     />
+                        <Popup x:Name="LoginPopup" PlacementTarget="{Binding ElementName=LoginBTN}" Placement="Top" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding LoginPopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="-10">
+                            <Border Background="#bec29b" Height="40"  CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3" >
+                                <TextBlock Margin="6" Text="Wrong password or username!" Foreground="#3a3960" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                            </Border>
+                        </Popup>
+
 
                         <Button Grid.Row="1"  Margin="50,8,50,8" Content="Exit" 
                                 FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
