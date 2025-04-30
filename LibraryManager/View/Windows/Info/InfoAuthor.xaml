@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManager.View.Windows.Info"
         mc:Ignorable="d"
-      Title="InfoAuthor" Height="650" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+      Title="InfoAuthor" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
@@ -28,7 +28,8 @@
                         <Label Grid.Column="1" Content="Info Author" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
                     </Grid>
                 </Border>
-
+                
+                <Border BorderThickness="5,0,5,5" BorderBrush="#bfbb81" Grid.Row="1" CornerRadius="0,0,31,31" Grid.RowSpan="2"/>
                 <!--Window content space Grid-->
                 <Grid Grid.Row="1">
 
@@ -44,55 +45,61 @@
                         <!--Grid layout-->
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1.4*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
                         <Rectangle Grid.Row="0" Stroke="#3a3960" StrokeDashArray="4,2" StrokeThickness="3" Width="110" Height="110"  RadiusX="25" RadiusY="25"/>
-                        <!--To do: Implement drop image control-->
 
-                        <!--TextBox grid-->
                         <Grid Grid.Row="1">
-                            <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
 
-                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="0,5,0,5" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="7*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                  BorderThickness="3" BorderBrush="#5e686d"
-                                  Text="Name" Name="txtName" IsReadOnly="True"
-                         />
-                            <!--To do: Impelment custom TextBox control-->
+                                <Label Content="Name:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="Bold" />
+                                <Label x:Name="NameLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
 
-                            <TextBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                 BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Surname" Name="txtSurname" IsReadOnly="True"
-                         />
+                            </Grid>
+
                         </Grid>
+                        
+                        
                         <Grid Grid.Row="2">
-                            <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
 
-                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="0,5,0,5" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="7*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                  BorderThickness="3" BorderBrush="#5e686d"
-                                  Text="Info" Name="txtInfo" IsReadOnly="True"
-                         />
+                                <Label Content="Surname:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="Bold" />
+                                <Label x:Name="SurnameLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+
+                            </Grid>
+
+                        </Grid>
+                        
+                        
+                        <Grid Grid.Row="3">
+                            <Grid Grid.Row="0" Margin="0,5,0,5" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="7*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Info:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="Bold" />
+                                <Label x:Name="InfoLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+
+                            </Grid>
 
                         </Grid>
                         <!--Button grid-->
-                        <Grid Grid.Row="3">
+                        <Grid Grid.Row="4">
                             <!--Grid layout-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>

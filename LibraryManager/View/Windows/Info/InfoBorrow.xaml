@@ -29,6 +29,7 @@
                     </Grid>
                 </Border>
 
+                <Border BorderThickness="5,0,5,5" BorderBrush="#bfbb81" Grid.Row="1" CornerRadius="0,0,31,31" Grid.RowSpan="2"/>
                 <!--Window content space Grid-->
                 <Grid Grid.Row="1">
 
@@ -50,42 +51,42 @@
                         </Grid.RowDefinitions>
 
 
-                        <!--TextBox grid-->
-                        <Grid Grid.Row="0">
+                        <!--Book and borrower-->
+                        <Grid Grid.Row="0" Margin="0,10,0,0">
                             <!--Grid layout-->
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <ComboBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                               BorderThickness="3" BorderBrush="#5e686d"
-                               Text="Name" Name="cmbBook" IsReadOnly="True"
-                          />
-                            <!--To do: Impelment custom ComboBox control-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.7*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
 
-                            <ComboBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                               VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                               Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                               BorderThickness="3" BorderBrush="#5e686d"
-                               Text="Name" Name="cmbUser" IsReadOnly="True"
-                          />
+                                <Label Content="Book:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
+                                <Label x:Name="BookLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+
+                                <Label Grid.Row="1" Content="Borrower:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
+                                <Label Grid.Row="1" x:Name="BorrowerLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
-
                             </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.97*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
 
-                            <TextBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                   VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                   Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                   BorderThickness="3" BorderBrush="#5e686d"
-                                   Text="Description" x:Name="txtDescription" IsReadOnly="True"
-                          />
+                            <Label Content="Borrow date:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
+                            <Label x:Name="BorrowDateLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+
+                            <Label Content="Return date:" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
+                            <Label x:Name="ReturnDateLabel" Grid.Row="1" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+
                         </Grid>
                         <!--Button grid-->
                         <Grid Grid.Row="2">
