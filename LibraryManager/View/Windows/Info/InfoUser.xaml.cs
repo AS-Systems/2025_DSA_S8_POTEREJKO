@@ -23,10 +23,13 @@ namespace LibraryManager.View.Windows.Info
         public InfoUser(User user)
         {
             InitializeComponent();
-            txtName.Text = user.Name;
-            txtSurname.Text = user.Surname;
-            txtMail.Text = user.Email;
-            txtPhone.Text = user.PhoneNumber;
+
+            NameLabel.Content = user.Name;
+            SurnameLabel.Content = user.Surname;
+            EmailLabel.Content = user.Email;
+            PhoneLabel.Content = user.PhoneNumber;
+
+            CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

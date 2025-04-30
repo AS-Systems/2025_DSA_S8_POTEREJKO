@@ -29,6 +29,7 @@
                     </Grid>
                 </Border>
 
+                <Border BorderThickness="5,0,5,5" BorderBrush="#bfbb81" Grid.Row="1" CornerRadius="0,0,31,31" Grid.RowSpan="2"/>
                 <!--Window content space Grid-->
                 <Grid Grid.Row="1">
 

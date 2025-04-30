@@ -7,7 +7,7 @@
         xmlns:uc="clr-namespace:LibraryManager.View.CustomControls"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
-        Title="InfoBook" Height="650" Width="450" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        Title="InfoBook" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>

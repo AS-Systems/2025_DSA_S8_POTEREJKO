@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManager.View.Windows"
         mc:Ignorable="d"
-        Title="AddBorrower" Height="650" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        Title="AddBorrower" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
@@ -29,6 +29,7 @@
                     </Grid>
                 </Border>
 
+                <Border BorderThickness="5,0,5,5" BorderBrush="#bfbb81" Grid.Row="1" CornerRadius="0,0,31,31" Grid.RowSpan="2"/>
                 <!--Window content space Grid-->
                 <Grid Grid.Row="1">
 
