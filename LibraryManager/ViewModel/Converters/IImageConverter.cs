@@ -19,7 +19,7 @@ public class ImageConverter : IImageConverter
 
         using (var memoryStream = new MemoryStream())
         {
-            image.Save(memoryStream, ImageFormat.Png); // Save as PNG or other format  
+            image.Save(memoryStream, ImageFormat.Png);   
             return memoryStream.ToArray();
         }
     }
@@ -32,5 +32,15 @@ public class ImageConverter : IImageConverter
         {
             return Image.FromStream(memoryStream);
         }
+    }
+}
+
+// Dependency Injection 
+public static class ServiceCollectionExtensions
+{
+    public static IServiceCollection AddImageConverter(this IServiceCollection services)
+    {
+        services.AddSingleton<IImageConverter, ImageConverter>();
+        return services;
     }
 }
