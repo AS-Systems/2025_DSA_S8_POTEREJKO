@@ -64,6 +64,9 @@
     <Compile Update="View\CustomControls\ItemTemplates\BookItemTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\ItemTemplates\BorrowsItemTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\ProgressBars\CircularProgressBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -187,6 +190,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\ItemTemplates\BookItemTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\ItemTemplates\BorrowsItemTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\ProgressBars\CircularProgressBar.xaml">
