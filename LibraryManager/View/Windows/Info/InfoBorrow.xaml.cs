@@ -24,9 +24,10 @@ namespace LibraryManager.View.Windows.Info
         public InfoBorrow(Borrow borrow)
         {
             InitializeComponent();
-            cmbBook.Text = borrow.BookCopy.Book.Title.ToString();
-            cmbUser.Text = borrow.User.ToString();
-            //txtDescription.Text = borrow.Description;
+            BookLabel.Content = borrow.BookCopy.Book.Title.ToString();
+            BorrowerLabel.Content = borrow.User.ToString();
+            BorrowDateLabel.Content = borrow.BorrowDate.ToString();
+            ReturnDateLabel.Content = borrow.ReturnDate.ToString();
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
