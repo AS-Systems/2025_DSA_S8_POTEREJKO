@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManager.View.Windows.Info"
+        xmlns:uc="clr-namespace:LibraryManager.View.CustomControls"
         mc:Ignorable="d"
        Title="InfoBorrow" Height="450" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
@@ -22,9 +23,10 @@
                         <!--Top bar layout-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
+                        <uc:CircularButtonControl Grid.Column="2" x:Name="CloseBTN" Margin="4,0,0,0" Diameter="45" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="Button_Click"/>
                         <Label Grid.Column="1" Content="Info Borrow" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
                     </Grid>
                 </Border>
@@ -90,20 +92,6 @@
                         </Grid>
                         <!--Button grid-->
                         <Grid Grid.Row="2">
-                            <!--Grid layout-->
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button Grid.Column="1" Margin="10" Content="Close" 
-                               FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                               BorderThickness="3" BorderBrush="#5e686d" Background="Transparent"
-                               Click="Button_Click"
-                               />
-                            <!--To do: Impelment custom Button control-->
-
-
                         </Grid>
                     </Grid>
                 </Grid>

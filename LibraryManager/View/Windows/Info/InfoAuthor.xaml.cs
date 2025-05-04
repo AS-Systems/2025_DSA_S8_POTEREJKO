@@ -27,7 +27,7 @@ namespace LibraryManager.View.Windows.Info
             InitializeComponent();
             NameLabel.Content = author.Name;
             SurnameLabel.Content = author.Surname;
-            InfoLabel.Content = author.Info;
+            InfoContent.Text = author.Info;
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

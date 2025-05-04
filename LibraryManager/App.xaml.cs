@@ -1,6 +1,7 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Repositories;
 using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.ViewModel.Converters.ImageConverter;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -25,6 +26,7 @@ namespace LibraryManager
                 options.UseMySql("server=192.168.0.207;database=homelibrary;user id=test;password=twoje_haslo;port=3306", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.3.0-mysql"))); // Set your connection string here
             serviceCollection.AddScoped<IUserRepository, UserRepository>();
             serviceCollection.AddScoped<IBookRepository, BookRepository>();
+            serviceCollection.AddSingleton<IImageConverter, ImageConverter>();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 
