@@ -25,9 +25,9 @@ namespace LibraryManager.View.Windows.Info
         public InfoAuthor(Author author)
         {
             InitializeComponent();
-            txtName.Text = author.Name;
-            txtSurname.Text = author.Surname;
-            txtInfo.Text = author.Info;
+            NameLabel.Content = author.Name;
+            SurnameLabel.Content = author.Surname;
+            InfoLabel.Content = author.Info;
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
