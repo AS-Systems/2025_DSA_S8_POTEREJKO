@@ -57,8 +57,7 @@
                             <RowDefinition Height="1.1*"/>
                         </Grid.RowDefinitions>
 
-                        <dr:ImageDropControl Grid.Row="0" Width="110" Height="140" CornerRadius="25"/>
-
+                        <dr:ImageDisplayControl x:Name="bookCoverPhoto" Grid.Row="0" Width="110" Height="130" CornerRadius="25" />
 
                         <!--TextBox grid-->
                         <Grid Grid.Row="1">
@@ -81,7 +80,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label Padding="0,8,0,0" Content="Author(s):" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
-                                <TextBlock Padding="0,8,0,0"  Grid.Column="1" x:Name="lbAuthor" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" TextWrapping="WrapWithOverflow" />
+                                <TextBlock Padding="0,8,0,0"  Grid.Column="1" x:Name="txtAuthor" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" TextWrapping="WrapWithOverflow" />
                             </Grid>
                             
                             <StackPanel Grid.Row="1" Orientation="Horizontal">

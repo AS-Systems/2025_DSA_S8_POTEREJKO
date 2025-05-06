@@ -28,7 +28,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <uc:CircularButtonControl Grid.Column="2" x:Name="CloseBTN" Margin="4,0,0,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="Button_Click"/>
-                        <Label Grid.Column="1" Content="Info Book" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
+                        <Label Grid.Column="1" Content="Info User" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
                     </Grid>
                 </Border>
 
@@ -57,7 +57,7 @@
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
-                        <dr:ImageDropControl Grid.Row="0" Width="110" Height="135" CornerRadius="25"/>
+                        <dr:ImageDisplayControl Grid.Row="0" Width="110" Height="130" CornerRadius="25"/>
 
                         <!--Name grid-->
                         <Grid Grid.Row="1">
