@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManager.View.Windows.Edit"
+        xmlns:dr="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
         mc:Ignorable="d"
         Title="EditBook" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
@@ -52,8 +53,7 @@
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
-                        <Rectangle Grid.Row="0" Stroke="#3a3960" StrokeDashArray="4,2" StrokeThickness="3" Width="110" Height="110"  RadiusX="25" RadiusY="25"/>
-                        <!--To do: Implement drop image control-->
+                        <dr:ImageDropControl Grid.Row="0" Width="110" Height="135" CornerRadius="25"/>
 
                         <!--TextBox grid-->
                         <Grid Grid.Row="1">
