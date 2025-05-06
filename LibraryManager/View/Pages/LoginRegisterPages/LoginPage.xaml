@@ -39,7 +39,7 @@
                         />
                         <!--To do: Impelment custom TextBox control-->
 
-                        <TextBox x:Name="PasswordBox" Grid.Row="1" Margin="0,5,0,35" HorizontalContentAlignment="Left" 
+                        <TextBox x:Name="PasswordBox" Grid.Row="1" Margin="0,5,0,45" HorizontalContentAlignment="Left" 
                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                 BorderThickness="3" BorderBrush="#5e686d"

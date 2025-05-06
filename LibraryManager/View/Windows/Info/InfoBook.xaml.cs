@@ -29,7 +29,7 @@ namespace LibraryManager.View.Windows.Info
 
 
             string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "image-icon.png");
-            BookCover.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+            //BookCover.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
 
 
             txtDescription.Text = book.Description;
