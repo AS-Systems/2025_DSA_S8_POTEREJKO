@@ -31,11 +31,11 @@ namespace LibraryManager.View.Windows.Info
             string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "image-icon.png");
             //BookCover.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
 
-
+            bookCoverPhoto.ImageDisplay = null;
             txtDescription.Text = book.Description;
             txtTitle.Text = book.Title;
             lbPage.Content = "~" + book.PageCount.ToString();
-            lbAuthor.Text = (book.Author.Name + " " + book.Author.Surname);
+            txtAuthor.Text = (book.Author.Name + " " + book.Author.Surname);
             lbGenre.Content = (Genre)book.Genre;
             lbIBAN.Content = "3459876";
         }
