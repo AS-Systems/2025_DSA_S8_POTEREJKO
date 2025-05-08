@@ -30,22 +30,27 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBox x:Name="UsernameBox" Grid.Row="0" Margin="0,25,0,25" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                 BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Username" LostFocus="UsernameBox_LostFocus"
-                                 GotFocus="UsernameBox_GotFocus"
-                        />
-                        <!--To do: Impelment custom TextBox control-->
+                        
+                        <Grid Grid.Row="0" >
+                            <TextBox x:Name="UsernameBox" Grid.Row="0" Margin="0,25,0,25" HorizontalContentAlignment="Left"  VerticalContentAlignment="Center" 
+                           FontSize="20" FontWeight="DemiBold"  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960" BorderThickness="3" BorderBrush="#5e686d"
+                           LostFocus="UsernameBox_LostFocus" GotFocus="UsernameBox_GotFocus" TextChanged="UsernameBox_TextChanged"/>
 
-                        <TextBox x:Name="PasswordBox" Grid.Row="1" Margin="0,5,0,45" HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                BorderThickness="3" BorderBrush="#5e686d"
-                                Text="Password" GotFocus="PasswordBox_GotFocus"
-                                LostFocus="PasswordBox_LostFocus"
-                                 />
+                            <TextBlock x:Name="PlaceholderTextUsername" Text="Enter username" Foreground="#3a3960" FontSize="20" FontWeight="DemiBold" Margin="10,25,0,25"
+                          VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible" />
+
+                        </Grid>
+
+
+                        <Grid Grid.Row="1" >
+                            <PasswordBox x:Name="PasswordBox"  GotFocus="PasswordBox_GotFocus"   LostFocus="PasswordBox_LostFocus"  PasswordChanged="PasswordBox_PasswordChanged"  
+                            Margin="0,5,0,45"  FontSize="20"  FontWeight="DemiBold"  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960" VerticalContentAlignment="Center"  BorderThickness="3" BorderBrush="#5e686d" />
+
+                            <TextBlock x:Name="PlaceholderText" Text="Enter password" Foreground="#3a3960" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,45"
+                             VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible" />
+                            
+                        </Grid>
+
                     </Grid>
 
                     <!--Button grid-->

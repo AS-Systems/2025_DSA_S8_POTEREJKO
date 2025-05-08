@@ -31,42 +31,47 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBox x:Name="NameBox" Grid.Row="0" Margin="0,10" HorizontalContentAlignment="Left" 
-                             VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                             Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                             BorderThickness="3" BorderBrush="#5e686d"
-                             Text="Name" TextChanged="NameBox_TextChanged"/>
+                        <Grid Grid.Row="0" >
+                            <TextBox x:Name="NameBox"  GotFocus="NameBox_GotFocus"   LostFocus="NameBox_LostFocus"  TextChanged="NameBox_TextChanged"  
+                            Margin="0,10"  FontSize="20"  FontWeight="DemiBold"  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960" VerticalContentAlignment="Center"  BorderThickness="3" BorderBrush="#5e686d" />
 
-                        <Popup x:Name="NameBoxPopup" PlacementTarget="{Binding ElementName=NameBox}" Placement="Right" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding NamePopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="10" HorizontalOffset="10">
-                            <Border Background="#bec29b"  Width="150" Height="40"  CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3" >
-                                <TextBlock Margin="6" Text="{Binding NamePopText, UpdateSourceTrigger=PropertyChanged}" Foreground="#3a3960" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                            </Border>
-                        </Popup>
+                            <TextBlock x:Name="PlaceholderText" Text="Enter name" Foreground="#3a3960" FontSize="20" FontWeight="DemiBold" Margin="10,10"
+                            VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible" />
 
+                            <Popup x:Name="NameBoxPopup" PlacementTarget="{Binding ElementName=NameBox}" Placement="Right" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding NamePopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="10" HorizontalOffset="10">
+                                <Border Background="#bec29b"  Width="150" Height="40"  CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3" >
+                                    <TextBlock Margin="6" Text="{Binding NamePopText, UpdateSourceTrigger=PropertyChanged}" Foreground="#3a3960" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                </Border>
+                            </Popup>
+                        </Grid>
 
-                        <TextBox x:Name="SurnameBox" Grid.Row="1" Margin="0,10" HorizontalContentAlignment="Left" 
-                            VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                            Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                            BorderThickness="3" BorderBrush="#5e686d"
-                            Text="Surname" TextChanged="SurnameBox_TextChanged" />
+                        <Grid Grid.Row="1" >
+                            <TextBox x:Name="SurnameBox"  GotFocus="SurnameBox_GotFocus"   LostFocus="SurnameBox_LostFocus"  TextChanged="SurnameBox_TextChanged"  
+                            Margin="0,10"  FontSize="20"  FontWeight="DemiBold"  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960" VerticalContentAlignment="Center"  BorderThickness="3" BorderBrush="#5e686d" />
 
-                        <Popup x:Name="SurnameBoxPopup" PlacementTarget="{Binding ElementName=SurnameBox}" Placement="Right" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding SurnamePopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="10" HorizontalOffset="10">
-                            <Border Background="#bec29b"  Width="150" Height="40"  CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3" >
-                                <TextBlock Margin="6" Text="{Binding SurnamePopText, UpdateSourceTrigger=PropertyChanged}" Foreground="#3a3960" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                            </Border>
-                        </Popup>
+                            <TextBlock x:Name="PlaceholderTextSurname" Text="Enter surname" Foreground="#3a3960" FontSize="20" FontWeight="DemiBold" Margin="10,10"
+                            VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible" />
+                            
+                            <Popup x:Name="SurnameBoxPopup" PlacementTarget="{Binding ElementName=SurnameBox}" Placement="Right" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding SurnamePopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="10" HorizontalOffset="10">
+                                <Border Background="#bec29b"  Width="150" Height="40"  CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3" >
+                                    <TextBlock Margin="6" Text="{Binding SurnamePopText, UpdateSourceTrigger=PropertyChanged}" Foreground="#3a3960" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                </Border>
+                            </Popup>
+                        </Grid>
 
-                        <TextBox x:Name="PhoneBox" Grid.Row="2" Margin="0,10" HorizontalContentAlignment="Left" 
-                            VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                            Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                            BorderThickness="3" BorderBrush="#5e686d"
-                            Text="Phone number" TextChanged="PhoneBox_TextChanged" />
+                        <Grid Grid.Row="2" >
+                            <TextBox x:Name="PhoneBox"  GotFocus="PhoneBox_GotFocus"   LostFocus="PhoneBox_LostFocus"  TextChanged="PhoneBox_TextChanged"  
+                            Margin="0,10"  FontSize="20"  FontWeight="DemiBold"  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960" VerticalContentAlignment="Center"  BorderThickness="3" BorderBrush="#5e686d" />
 
-                        <Popup x:Name="PhoneBoxPopup" PlacementTarget="{Binding ElementName=PhoneBox}" Placement="Right" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding PhonePopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="10" HorizontalOffset="10">
-                            <Border Background="#bec29b"  Width="150" Height="40"  CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3" >
-                                <TextBlock Margin="6" Text="{Binding PhonePopText, UpdateSourceTrigger=PropertyChanged}" Foreground="#3a3960" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                            </Border>
-                        </Popup>
+                            <TextBlock x:Name="PlaceholderTextPhone" Text="Enter phone number" Foreground="#3a3960" FontSize="20" FontWeight="DemiBold" Margin="10,10"
+                            VerticalAlignment="Center" IsHitTestVisible="False" Visibility="Visible" />
+
+                            <Popup x:Name="PhoneBoxPopup" PlacementTarget="{Binding ElementName=PhoneBox}" Placement="Right" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding PhonePopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="10" HorizontalOffset="10">
+                                <Border Background="#bec29b"  Width="150" Height="40"  CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3" >
+                                    <TextBlock Margin="6" Text="{Binding PhonePopText, UpdateSourceTrigger=PropertyChanged}" Foreground="#3a3960" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                </Border>
+                            </Popup>
+                        </Grid>
 
                     </Grid>
 

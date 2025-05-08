@@ -14,18 +14,25 @@ namespace LibraryManager.View.Pages
 
     public partial class RegisterPage : Page, INotifyPropertyChanged
     {
+        #region Private Fields
+
         private LoginWindow loginWindow;
         private readonly IUserRepository _userRepository;
+        private readonly Brush _texboxNormalBorderBrush = (Brush)new BrushConverter().ConvertFromString("#5e686d");
 
         private bool isEmailCorrect = false;
         private bool isUsernameCorrect = false;
         private bool isPasswordCorrect = false;
-
-        private readonly Brush _texboxNormalBorderBrush = (Brush)new BrushConverter().ConvertFromString("#5e686d");
-
-
-
         private bool emailPopVisibility;
+        private string emailPopText;
+        private bool usernamePopVisibility;
+        private string usernamePopText;
+        private bool passwordPopVisibility;
+        private string passwordPopText;
+
+        #endregion
+
+        #region PublicFields
 
         public bool EmailPopVisibility
         {
@@ -34,9 +41,6 @@ namespace LibraryManager.View.Pages
                 OnPropertyChanged();
             }
         }
-
-        private string emailPopText;
-
         public string EmailPopText
         {
             get { return emailPopText; }
@@ -44,8 +48,6 @@ namespace LibraryManager.View.Pages
                 OnPropertyChanged();
             }
         }
-
-        private bool usernamePopVisibility;
         public bool UsernamePopVisibility
         {
             get { return usernamePopVisibility; }
@@ -53,9 +55,6 @@ namespace LibraryManager.View.Pages
                   OnPropertyChanged();
             }
         }
-
-        private string usernamePopText;
-
         public string UsernamePopText
         {
             get { return usernamePopText; }
@@ -63,9 +62,7 @@ namespace LibraryManager.View.Pages
                   OnPropertyChanged();
             }
         }
-
-
-        private bool passwordPopVisibility;
+        public event PropertyChangedEventHandler? PropertyChanged;
         public bool PasswordPopVisibility
         {
             get { return passwordPopVisibility; }
@@ -73,8 +70,6 @@ namespace LibraryManager.View.Pages
                 OnPropertyChanged();
             }
         }
-
-        private string passwordPopText;
         public string PasswordPopText
         {
             get { return passwordPopText; }
@@ -82,9 +77,9 @@ namespace LibraryManager.View.Pages
                 OnPropertyChanged();
             }
         }
+        #endregion
 
 
-        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -116,7 +111,7 @@ namespace LibraryManager.View.Pages
 
             if(isEmailCorrect && isPasswordCorrect && isUsernameCorrect) 
             {
-                loginWindow.WindowContent.Content = new PersonalInfoPage(EmailBox.Text,UsernameBox.Text,PasswordBox.Text, loginWindow);
+                loginWindow.WindowContent.Content = new PersonalInfoPage(EmailBox.Text,UsernameBox.Text,PasswordBox.Password, loginWindow);
             }
 
         }
@@ -182,7 +177,7 @@ namespace LibraryManager.View.Pages
             // - one digit
             // - one special character (!@#$%^&*)
             string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$";
-            if (!Regex.IsMatch(PasswordBox.Text, passwordPattern))
+            if (!Regex.IsMatch(PasswordBox.Password, passwordPattern))
             {
                 PasswordPopVisibility = true;
                 PasswordBox.BorderBrush = Brushes.Red;
@@ -204,20 +199,66 @@ namespace LibraryManager.View.Pages
         {
             Application.Current.Shutdown();
         }
+        private void EmailBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateEmailPlaceHolder();
+        }
+
+        private void EmailBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateEmailPlaceHolder();
+        }
 
         private void EmailBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             isEmailCorrect = EvaluateEmail();
+            UpdateEmailPlaceHolder();
         }
 
-        private void PasswordBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void UpdateEmailPlaceHolder()
         {
-            isPasswordCorrect = EvaluatePassword();
+            PlaceholderTextEmail.Visibility = string.IsNullOrEmpty(EmailBox.Text)
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
         }
 
+        private void UsernameBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateUsernamePlaceHolder();
+        }
         private async void UsernameBox_LostFocus(object sender, RoutedEventArgs e)
         {
             isUsernameCorrect = await EvaluateUsernameAsync();
+            UpdateUsernamePlaceHolder();
+        }
+        private void UsernameBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateUsernamePlaceHolder();
+        }
+        private void UpdateUsernamePlaceHolder()
+        {
+            PlaceholderTextUsername.Visibility = string.IsNullOrEmpty(UsernameBox.Text)
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+        }
+        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdatePasswordPlaceHolder();
+        }
+        private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            UpdatePasswordPlaceHolder();
+        }
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            isPasswordCorrect = EvaluatePassword();
+            UpdatePasswordPlaceHolder();
+        }
+        private void UpdatePasswordPlaceHolder()
+        {
+            PlaceholderText.Visibility = string.IsNullOrEmpty(PasswordBox.Password)
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
         }
     }
 }
