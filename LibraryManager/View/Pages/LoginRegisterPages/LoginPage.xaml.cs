@@ -64,29 +64,49 @@ namespace LibraryManager.View.Pages
 
         private void UsernameBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            UsernameBox.Text = string.Empty;
+            UpdateUsernamePlaceHolder();
         }
 
         private void UsernameBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (UsernameBox.Text == string.Empty)
-            {
-                UsernameBox.Text = "Username";
-            }
+            UpdateUsernamePlaceHolder();
         }
+
+        private void UsernameBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateUsernamePlaceHolder();
+        }
+
 
         private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            PasswordBox.Text = string.Empty;
+            UpdatePasswordPlaceholder();
         }
 
         private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (PasswordBox.Text == string.Empty)
-            {
-                PasswordBox.Text = "Password";
-            }
+            UpdatePasswordPlaceholder();
         }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            UpdatePasswordPlaceholder();
+        }
+
+        private void UpdatePasswordPlaceholder()
+        {
+            PlaceholderText.Visibility = string.IsNullOrEmpty(PasswordBox.Password)
+                ? Visibility.Visible
+                : Visibility.Collapsed;
+        }
+
+        private void UpdateUsernamePlaceHolder()
+        {
+            PlaceholderTextUsername.Visibility = string.IsNullOrEmpty(UsernameBox.Text)
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+        }
+
 
         private async void LoginBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -95,7 +115,7 @@ namespace LibraryManager.View.Pages
 
             if (foundUser != null)
             {
-                if (foundUser.Password == PasswordBox.Text)
+                if (foundUser.Password == PasswordBox.Password)
                 {
                     MainWindow2 mainWindow = new MainWindow2(foundUser);
                     mainWindow.Show();

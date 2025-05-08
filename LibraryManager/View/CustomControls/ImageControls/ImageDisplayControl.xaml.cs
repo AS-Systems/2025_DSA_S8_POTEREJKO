@@ -20,7 +20,7 @@ namespace LibraryManager.View.CustomControls.ImageControls
     /// </summary>
     public partial class ImageDisplayControl : UserControl
     {
-        public static readonly DependencyProperty DisplayImageSourceProperty = DependencyProperty.Register("DisplayImageSource", typeof(ImageSource?), typeof(ImageDisplayControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty DisplayImageSourceProperty = DependencyProperty.Register("DisplayImageSource", typeof(ImageSource), typeof(ImageDisplayControl), new PropertyMetadata(null));
         public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.Register("CornerRadius", typeof(int), typeof(ImageDisplayControl), new PropertyMetadata(25));
 
         public ImageSource? DisplayImageSource

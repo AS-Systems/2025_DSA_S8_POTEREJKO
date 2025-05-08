@@ -223,16 +223,65 @@ namespace LibraryManager.View.Pages
         private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             _isNameCorrect = ValidateName();
+            UpdateNamePlaceHolder();
         }
 
         private void SurnameBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             _isSurnameCorrect = ValidateSurname();
+            UpdateSurnamePlaceHolder();
         }
 
         private void PhoneBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             _isPhoneCorrect = ValidatePhone();
+            UpdatePhonePlaceHolder();
+        }
+
+        private void NameBox_GotFocus(object sender , RoutedEventArgs e) 
+        {
+            UpdateNamePlaceHolder();
+        }
+        private void NameBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateNamePlaceHolder();
+        }
+        private void SurnameBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateSurnamePlaceHolder();
+        }
+        private void SurnameBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateSurnamePlaceHolder();
+        }
+        private void PhoneBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdatePhonePlaceHolder();
+        }
+        private void PhoneBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            UpdatePhonePlaceHolder();
+        }
+
+        private void UpdateNamePlaceHolder()
+        {
+            PlaceholderText.Visibility = string.IsNullOrEmpty(NameBox.Text)
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+        }
+
+        private void UpdateSurnamePlaceHolder()
+        {
+            PlaceholderTextSurname.Visibility = string.IsNullOrEmpty(SurnameBox.Text)
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+        }
+
+        private void UpdatePhonePlaceHolder()
+        {
+            PlaceholderTextPhone.Visibility = string.IsNullOrEmpty(PhoneBox.Text)
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
         }
 
     }
