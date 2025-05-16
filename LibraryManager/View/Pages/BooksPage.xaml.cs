@@ -235,6 +235,12 @@ namespace LibraryManager.View.Pages
             var addAuthorWindow = new AddAuthor();
             addAuthorWindow.ShowDialog();
         }
+
+        private void CircularDoubleButtonControl_ButtonMiddleClick(object sender, RoutedEventArgs e)
+        {
+            var addBookWindow = new AddBook();
+            addBookWindow.ShowDialog();
+        }
     }
 
 
