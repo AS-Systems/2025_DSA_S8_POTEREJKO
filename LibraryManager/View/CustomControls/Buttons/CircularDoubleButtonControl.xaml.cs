@@ -30,10 +30,11 @@ namespace LibraryManager.View.CustomControls.Buttons
             buttonCir.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "+-Icon.png");
             ButtonTop.Visibility = Visibility.Hidden;
             ButtonBottom.Visibility = Visibility.Hidden;
+            ButtonMiddle.Visibility = Visibility.Hidden;
 
             ButtonTop.Click += ButtonTop_Click;
             ButtonBottom.Click += ButtonBottom_Click;
-
+            ButtonMiddle.Click += ButtonMiddle_Click;
         }
 
         private void buttonCir_Click(object sender, RoutedEventArgs e)
@@ -42,11 +43,13 @@ namespace LibraryManager.View.CustomControls.Buttons
             {
                 AnimateSlideIn(ButtonTop, TopTransform);
                 AnimateSlideIn(ButtonBottom, BottomTransform);
+                AnimateSlideIn(ButtonMiddle, MiddleTransform);
             }
             else
             {
                 AnimateSlideOut(ButtonTop, TopTransform);
                 AnimateSlideOut(ButtonBottom, BottomTransform);
+                AnimateSlideOut(ButtonMiddle, MiddleTransform);
             }
             buttonsVisible = !buttonsVisible;
         }
@@ -54,6 +57,7 @@ namespace LibraryManager.View.CustomControls.Buttons
 
         public event RoutedEventHandler ButtonTopClick;
         public event RoutedEventHandler ButtonBottomClick;
+        public event RoutedEventHandler ButtonMiddleClick; 
 
         private void ButtonTop_Click(object sender, RoutedEventArgs e)
         {
@@ -65,6 +69,10 @@ namespace LibraryManager.View.CustomControls.Buttons
             ButtonBottomClick?.Invoke(this, e);
         }
 
+        private void ButtonMiddle_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonMiddleClick?.Invoke(this, e);
+        }
 
 
         private void AnimateSlideIn(UIElement element, TranslateTransform transform)
