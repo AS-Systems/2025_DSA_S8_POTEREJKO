@@ -23,7 +23,9 @@ public partial class User
 
     public sbyte Role { get; set; }
 
-    public virtual ICollection<Bookcopy> Bookcopies { get; set; } = new List<Bookcopy>();
+    public virtual ICollection<BookCopy> BookCopies { get; set; } = new List<BookCopy>();
+
+    public virtual ICollection<Bookshelf> BookShelves { get; set; } = new List<Bookshelf>();
 
     public virtual ICollection<Borrow> Borrows { get; set; } = new List<Borrow>();
 }

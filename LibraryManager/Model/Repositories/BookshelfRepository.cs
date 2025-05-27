@@ -17,34 +17,34 @@ namespace LibraryManager.Model.Repositories
 
         public async Task<bool> IsAnyBookshelfAsync()
         {
-            return await _context.Bookshelves.AnyAsync();
+            return await _context.BookShelves.AnyAsync();
         }
 
         public async Task<IEnumerable<Bookshelf?>> GetAllBookshelvesAsync()
         {
-            return await _context.Bookshelves.Include(b => b.Shelves).ToListAsync();
+            return await _context.BookShelves.Include(b => b.Shelves).ToListAsync();
         }
 
         public async Task<Bookshelf> GetBookshelfByIdAsync(int id)
         {
-            return await _context.Bookshelves.Include(b => b.Shelves).FirstOrDefaultAsync(b => b.Id == id);
+            return await _context.BookShelves.Include(b => b.Shelves).FirstOrDefaultAsync(b => b.Id == id);
         }
 
         public async Task InsertAsync(Bookshelf bookshelf)
         {
-            await _context.Bookshelves.AddAsync(bookshelf);
+            await _context.BookShelves.AddAsync(bookshelf);
             await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Bookshelf bookshelf)
         {
-            _context.Bookshelves.Update(bookshelf);
+            _context.BookShelves.Update(bookshelf);
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(Bookshelf bookshelf)
         {
-            _context.Bookshelves.Remove(bookshelf);
+            _context.BookShelves.Remove(bookshelf);
             await _context.SaveChangesAsync();
         }
     }

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using LibraryManager.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace LibraryManager.Model.Entities;
+namespace LibraryManager.Model;
 
 public partial class HomelibraryContext : DbContext
 {
@@ -17,22 +18,26 @@ public partial class HomelibraryContext : DbContext
 
     public virtual DbSet<Author> Authors { get; set; }
 
+    public virtual DbSet<BookAuthor> BookAuthors { get; set; }
+
+    public virtual DbSet<BookCopy> BookCopies { get; set; }
+
+    public virtual DbSet<Bookshelf> BookShelves { get; set; }
+
     public virtual DbSet<Book> Books { get; set; }
 
-    public virtual DbSet<Bookcopy> Bookcopies { get; set; }
-
-    public virtual DbSet<Bookshelf> Bookshelves { get; set; }
+    public virtual DbSet<BooksGenre> BooksGenres { get; set; }
 
     public virtual DbSet<Borrow> Borrows { get; set; }
 
-    public virtual DbSet<Shelf> Shelves { get; set; }
+    public virtual DbSet<Genre> Genres { get; set; }
 
-    public virtual DbSet<Storage> Storages { get; set; }
+    public virtual DbSet<Shelf> Shelves { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //    => optionsBuilder.UseMySql("server=192.168.0.207;database=homelibrary;user id=test;password=twoje_haslo;port=3306", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.3.0-mysql"));
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.UseMySql("server=mysql-home-library-sarass880-book-library.d.aivencloud.com;port=13154;database=HomeLibrary;uid=avnadmin;pwd=AVNS_EkwHAZ05UxBQuiJMdrh;sslmode=Required", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -44,124 +49,152 @@ public partial class HomelibraryContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("authors");
-
             entity.Property(e => e.Info).HasColumnType("text");
             entity.Property(e => e.Name).HasMaxLength(255);
             entity.Property(e => e.Surname).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<Book>(entity =>
+        modelBuilder.Entity<BookAuthor>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("books");
+            entity.ToTable("Book_Authors");
 
-            entity.HasIndex(e => e.AuthorId, "AuthorId");
+            entity.HasIndex(e => e.AuthorId, "fk_author");
 
-            entity.Property(e => e.Cover).HasColumnType("blob");
-            entity.Property(e => e.Description).HasColumnType("text");
-            entity.Property(e => e.Title).HasMaxLength(255);
+            entity.HasIndex(e => e.BookId, "fk_book");
 
-            entity.HasOne(d => d.Author).WithMany(p => p.Books)
+            entity.HasOne(d => d.Author).WithMany(p => p.BookAuthors)
                 .HasForeignKey(d => d.AuthorId)
-                .HasConstraintName("books_ibfk_1");
+                .HasConstraintName("fk_author");
+
+            entity.HasOne(d => d.Book).WithMany(p => p.BookAuthors)
+                .HasForeignKey(d => d.BookId)
+                .HasConstraintName("fk_book");
         });
 
-        modelBuilder.Entity<Bookcopy>(entity =>
+        modelBuilder.Entity<BookCopy>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("bookcopies");
+            entity.HasIndex(e => e.BookId, "fk_book3");
 
-            entity.HasIndex(e => e.BookId, "BookId");
+            entity.HasIndex(e => e.OwnerId, "fk_owner");
 
-            entity.HasIndex(e => e.OwnerId, "OwnerId");
+            entity.HasIndex(e => e.ShelfId, "fk_shelf");
 
-            entity.HasIndex(e => e.StorageId, "StorageId");
-
-            entity.HasOne(d => d.Book).WithMany(p => p.Bookcopies)
+            entity.HasOne(d => d.Book).WithMany(p => p.BookCopies)
                 .HasForeignKey(d => d.BookId)
-                .HasConstraintName("bookcopies_ibfk_3");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_book3");
 
-            entity.HasOne(d => d.Owner).WithMany(p => p.Bookcopies)
+            entity.HasOne(d => d.Owner).WithMany(p => p.BookCopies)
                 .HasForeignKey(d => d.OwnerId)
-                .HasConstraintName("bookcopies_ibfk_1");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_owner");
 
-            entity.HasOne(d => d.Storage).WithMany(p => p.Bookcopies)
-                .HasForeignKey(d => d.StorageId)
-                .OnDelete(DeleteBehavior.SetNull)
-                .HasConstraintName("bookcopies_ibfk_2");
+            entity.HasOne(d => d.Shelf).WithMany(p => p.BookCopies)
+                .HasForeignKey(d => d.ShelfId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_shelf");
         });
 
         modelBuilder.Entity<Bookshelf>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("bookshelves");
+            entity.HasIndex(e => e.OwnerId, "fk_owner2");
 
+            entity.Property(e => e.City).HasMaxLength(100);
+            entity.Property(e => e.Country).HasMaxLength(100);
             entity.Property(e => e.Name).HasMaxLength(255);
+            entity.Property(e => e.Street).HasMaxLength(255);
+
+            entity.HasOne(d => d.Owner).WithMany(p => p.BookShelves)
+                .HasForeignKey(d => d.OwnerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_owner2");
+        });
+
+        modelBuilder.Entity<Book>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.Property(e => e.Cover).HasColumnType("blob");
+            entity.Property(e => e.Description).HasColumnType("text");
+            entity.Property(e => e.Iban).HasColumnName("IBAN");
+            entity.Property(e => e.Title).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<BooksGenre>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("Books_Genres");
+
+            entity.HasIndex(e => e.BookId, "fk_book2");
+
+            entity.HasIndex(e => e.GenreId, "fk_genre");
+
+            entity.HasOne(d => d.Book).WithMany(p => p.BooksGenres)
+                .HasForeignKey(d => d.BookId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_book2");
+
+            entity.HasOne(d => d.Genre).WithMany(p => p.BooksGenres)
+                .HasForeignKey(d => d.GenreId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_genre");
         });
 
         modelBuilder.Entity<Borrow>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("borrows");
+            entity.HasIndex(e => e.BookCopyId, "fk_bookcopy");
 
-            entity.HasIndex(e => e.BookCopyId, "BookCopyId");
-
-            entity.HasIndex(e => e.UserId, "UserId");
+            entity.HasIndex(e => e.UserId, "fk_user");
 
             entity.Property(e => e.BorrowDate).HasColumnType("datetime");
             entity.Property(e => e.ReturnDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.BookCopy).WithMany(p => p.Borrows)
                 .HasForeignKey(d => d.BookCopyId)
-                .HasConstraintName("borrows_ibfk_1");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_bookcopy");
 
             entity.HasOne(d => d.User).WithMany(p => p.Borrows)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("borrows_ibfk_2");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_user");
+        });
+
+        modelBuilder.Entity<Genre>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.Property(e => e.Name).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Shelf>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("shelves");
-
-            entity.HasIndex(e => e.BookShelfeId, "BookShelfeId");
+            entity.HasIndex(e => e.BookshelfId, "fh_Bookshelf");
 
             entity.Property(e => e.Name).HasMaxLength(255);
 
-            entity.HasOne(d => d.BookShelfe).WithMany(p => p.Shelves)
-                .HasForeignKey(d => d.BookShelfeId)
-                .HasConstraintName("shelves_ibfk_1");
-        });
-
-        modelBuilder.Entity<Storage>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("storages");
-
-            entity.HasIndex(e => e.ShelfId, "ShelfId");
-
-            entity.Property(e => e.City).HasMaxLength(100);
-            entity.Property(e => e.Country).HasMaxLength(100);
-            entity.Property(e => e.Street).HasMaxLength(255);
-
-            entity.HasOne(d => d.Shelf).WithMany(p => p.Storages)
-                .HasForeignKey(d => d.ShelfId)
-                .HasConstraintName("storages_ibfk_1");
+            entity.HasOne(d => d.Bookshelf).WithMany(p => p.Shelves)
+                .HasForeignKey(d => d.BookshelfId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_bookshelf");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("users");
+            entity.HasIndex(e => e.Email, "Email").IsUnique();
 
             entity.HasIndex(e => e.Username, "Username").IsUnique();
 

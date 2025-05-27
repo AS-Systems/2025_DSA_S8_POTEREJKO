@@ -7,15 +7,15 @@ public partial class Shelf
 {
     public int Id { get; set; }
 
-    public int BookShelfeId { get; set; }
+    public int BookshelfId { get; set; }
 
     public string Name { get; set; } = null!;
 
-    public int AvaliableSpace { get; set; }
+    public int AvailableSpace { get; set; }
 
     public int Capacity { get; set; }
 
-    public virtual Bookshelf BookShelfe { get; set; } = null!;
+    public virtual ICollection<BookCopy> BookCopies { get; set; } = new List<BookCopy>();
 
-    public virtual ICollection<Storage> Storages { get; set; } = new List<Storage>();
+    public virtual Bookshelf Bookshelf { get; set; } = null!;
 }

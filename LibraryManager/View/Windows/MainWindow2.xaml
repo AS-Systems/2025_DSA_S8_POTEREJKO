@@ -43,11 +43,11 @@
                 <bt:PageSelectionButton x:Name="BooksBTN"
                     ButtonText="Books" Grid.Column="0" Grid.Row="2"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="BooksBTN_Click"/>
                 <bt:PageSelectionButton x:Name="BorrowsBTN"
-                    ButtonText="Borrows" Grid.Column="0" Grid.Row="3"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b"/>
+                    ButtonText="Borrows" Grid.Column="0" Grid.Row="3"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="BorrowsBTN_Click"/>
                 <bt:PageSelectionButton x:Name="UsersBTN"
-                    ButtonText="Users" Grid.Column="0" Grid.Row="4"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b"/>
+                    ButtonText="Users" Grid.Column="0" Grid.Row="4"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="UsersBTN_Click"/>
                 <bt:PageSelectionButton x:Name="StorageBTN"
-                    ButtonText="Storage" Grid.Column="0" Grid.Row="5"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b"/>
+                    ButtonText="Storage" Grid.Column="0" Grid.Row="5"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="StorageBTN_Click"/>
 
 
             </Grid>

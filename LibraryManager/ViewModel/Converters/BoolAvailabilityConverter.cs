@@ -15,7 +15,7 @@ namespace LibraryManager.ViewModel.Converters
         {
             if (value != null)
             { 
-                var bookCopies = (List<Bookcopy>)value;
+                var bookCopies = (List<BookCopy>)value;
 
                 bool available = bookCopies.Any(b => b.IsAvailable);
 

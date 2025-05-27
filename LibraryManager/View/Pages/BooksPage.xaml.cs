@@ -80,15 +80,17 @@ namespace LibraryManager.View.Pages
 
         private void AuthorColumnFilter_FilterTextChanged(object sender, string filterText)
         {
-            var filtered = AllBooks
-           .Where(b => (b.Author.Name+b.Author.Surname).Contains(filterText, StringComparison.OrdinalIgnoreCase))
-           .ToList();
+           // var filtered = AllBooks
+           //.Where(b => (b.Author.Name+b.Author.Surname).Contains(filterText, StringComparison.OrdinalIgnoreCase))
+           //.ToList();
 
-            FilteredBooks.Clear();
-            foreach (var book in filtered)
-            {
-                FilteredBooks.Add(book);
-            }
+           // FilteredBooks.Clear();
+           // foreach (var book in filtered)
+           // {
+           //     FilteredBooks.Add(book);
+           // }
+
+            throw new NotImplementedException();
         }
 
         private void PageCountColumnFilter_FilterTextChanged(object sender, int pageCount)
@@ -147,11 +149,11 @@ namespace LibraryManager.View.Pages
                 }
                 else if (yesCheckboxValue == true && noCheckboxValue == false)
                 {
-                    filtered = AllBooks.Where(b => b.Bookcopies.Any(c => c.IsAvailable == true)).ToList();
+                    filtered = AllBooks.Where(b => b.BookCopies.Any(c => c.IsAvailable == true)).ToList();
                 }
                 else if (yesCheckboxValue == false && noCheckboxValue == true)
                 {
-                    filtered = AllBooks.Where(b => b.Bookcopies.Any(c => c.IsAvailable == false)).ToList();
+                    filtered = AllBooks.Where(b => b.BookCopies.Any(c => c.IsAvailable == false)).ToList();
                 }
             }
 

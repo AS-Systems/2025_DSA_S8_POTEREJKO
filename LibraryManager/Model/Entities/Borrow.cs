@@ -13,9 +13,9 @@ public partial class Borrow
 
     public DateTime BorrowDate { get; set; }
 
-    public DateTime? ReturnDate { get; set; }
+    public DateTime ReturnDate { get; set; }
 
-    public virtual Bookcopy BookCopy { get; set; } = null!;
+    public virtual BookCopy BookCopy { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;
 }

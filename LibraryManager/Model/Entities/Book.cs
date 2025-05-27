@@ -11,15 +11,15 @@ public partial class Book
 
     public byte[]? Cover { get; set; }
 
-    public int? Genre { get; set; }
-
     public int? PageCount { get; set; }
 
     public string? Description { get; set; }
 
-    public int AuthorId { get; set; }
+    public int Iban { get; set; }
 
-    public virtual Author Author { get; set; } = null!;
+    public virtual ICollection<BookAuthor> BookAuthors { get; set; } = new List<BookAuthor>();
 
-    public virtual ICollection<Bookcopy> Bookcopies { get; set; } = new List<Bookcopy>();
+    public virtual ICollection<BookCopy> BookCopies { get; set; } = new List<BookCopy>();
+
+    public virtual ICollection<BooksGenre> BooksGenres { get; set; } = new List<BooksGenre>();
 }

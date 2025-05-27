@@ -22,12 +22,12 @@ namespace LibraryManager.Model.Repositories
 
         public async Task<IEnumerable<Shelf>> GetAllShelvesAsync()
         {
-            return await _context.Shelves.Include(s => s.Storages).ToListAsync();
+            return await _context.Shelves.ToListAsync();
         }
 
         public async Task<Shelf?> GetShelfByIdAsync(int id)
         {
-            return await _context.Shelves.Include(s => s.Storages).FirstOrDefaultAsync(s => s.Id == id);
+            return await _context.Shelves.FirstOrDefaultAsync(s => s.Id == id);
         }
 
         public async Task InsertAsync(Shelf shelf)
