@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LibraryManager.Model.Entities;
 
-public partial class Borrows
+public partial class Borrow
 {
     public int Id { get; set; }
 
@@ -15,7 +15,7 @@ public partial class Borrows
 
     public DateTime ReturnDate { get; set; }
 
-    public virtual BookCopies BookCopy { get; set; } = null!;
+    public virtual BookCopy BookCopy { get; set; } = null!;
 
-    public virtual Users User { get; set; } = null!;
+    public virtual User User { get; set; } = null!;
 }

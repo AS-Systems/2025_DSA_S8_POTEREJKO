@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LibraryManager.Model.Entities;
 
-public partial class BookShelves
+public partial class Bookshelf
 {
     public int Id { get; set; }
 
@@ -19,7 +19,7 @@ public partial class BookShelves
 
     public string Street { get; set; } = null!;
 
-    public virtual Users Owner { get; set; } = null!;
+    public virtual User Owner { get; set; } = null!;
 
-    public virtual ICollection<Shelves> Shelves { get; set; } = new List<Shelves>();
+    public virtual ICollection<Shelf> Shelves { get; set; } = new List<Shelf>();
 }

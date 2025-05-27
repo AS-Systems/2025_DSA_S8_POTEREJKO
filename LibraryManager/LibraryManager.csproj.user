@@ -85,6 +85,9 @@
     <Compile Update="View\Pages\BooksPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Pages\BorrowsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Pages\HomePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,6 +98,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\LoginRegisterPages\RegisterPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\StoragePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\UsersPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Windows\Add\AddAuthor.xaml.cs">
@@ -219,6 +228,9 @@
     <Page Update="View\Pages\BooksPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Pages\BorrowsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Pages\HomePage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -229,6 +241,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Pages\LoginRegisterPages\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\StoragePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\UsersPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Add\AddAuthor.xaml">

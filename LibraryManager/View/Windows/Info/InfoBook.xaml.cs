@@ -35,8 +35,8 @@ namespace LibraryManager.View.Windows.Info
             txtDescription.Text = book.Description;
             txtTitle.Text = book.Title;
             lbPage.Content = "~" + book.PageCount.ToString();
-            txtAuthor.Text = (book.Author.Name + " " + book.Author.Surname);
-            lbGenre.Content = (Genre)book.Genre;
+            //txtAuthor.Text = (book.BookAuthors.Name + " " + book.BookAuthors.Surname);
+            //lbGenre.Content = (Model.Enums.Genre)book.Genre;
             lbIBAN.Content = "3459876";
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

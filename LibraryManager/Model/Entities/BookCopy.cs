@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LibraryManager.Model.Entities;
 
-public partial class BookCopies
+public partial class BookCopy
 {
     public int Id { get; set; }
 
@@ -15,11 +15,11 @@ public partial class BookCopies
 
     public bool IsAvailable { get; set; }
 
-    public virtual Books Book { get; set; } = null!;
+    public virtual Book Book { get; set; } = null!;
 
-    public virtual ICollection<Borrows> Borrows { get; set; } = new List<Borrows>();
+    public virtual ICollection<Borrow> Borrows { get; set; } = new List<Borrow>();
 
-    public virtual Users Owner { get; set; } = null!;
+    public virtual User Owner { get; set; } = null!;
 
-    public virtual Shelves Shelf { get; set; } = null!;
+    public virtual Shelf Shelf { get; set; } = null!;
 }

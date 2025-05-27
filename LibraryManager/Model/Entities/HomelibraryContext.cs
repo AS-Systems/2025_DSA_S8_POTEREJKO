@@ -16,28 +16,27 @@ public partial class HomelibraryContext : DbContext
     {
     }
 
-    public virtual DbSet<Authors> Authors { get; set; }
+    public virtual DbSet<Author> Authors { get; set; }
 
-    public virtual DbSet<BookAuthors> BookAuthors { get; set; }
+    public virtual DbSet<BookAuthor> BookAuthors { get; set; }
 
-    public virtual DbSet<BookCopies> BookCopies { get; set; }
+    public virtual DbSet<BookCopy> BookCopies { get; set; }
 
-    public virtual DbSet<BookShelves> BookShelves { get; set; }
+    public virtual DbSet<Bookshelf> BookShelves { get; set; }
 
-    public virtual DbSet<Books> Books { get; set; }
+    public virtual DbSet<Book> Books { get; set; }
 
-    public virtual DbSet<BooksGenres> BooksGenres { get; set; }
+    public virtual DbSet<BooksGenre> BooksGenres { get; set; }
 
-    public virtual DbSet<Borrows> Borrows { get; set; }
+    public virtual DbSet<Borrow> Borrows { get; set; }
 
-    public virtual DbSet<Genres> Genres { get; set; }
+    public virtual DbSet<Genre> Genres { get; set; }
 
-    public virtual DbSet<Shelves> Shelves { get; set; }
+    public virtual DbSet<Shelf> Shelves { get; set; }
 
-    public virtual DbSet<Users> Users { get; set; }
+    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=mysql-home-library-sarass880-book-library.d.aivencloud.com;port=13154;database=HomeLibrary;uid=avnadmin;pwd=AVNS_EkwHAZ05UxBQuiJMdrh;sslmode=Required", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,7 +45,7 @@ public partial class HomelibraryContext : DbContext
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<Authors>(entity =>
+        modelBuilder.Entity<Author>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
@@ -55,7 +54,7 @@ public partial class HomelibraryContext : DbContext
             entity.Property(e => e.Surname).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<BookAuthors>(entity =>
+        modelBuilder.Entity<BookAuthor>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
@@ -74,7 +73,7 @@ public partial class HomelibraryContext : DbContext
                 .HasConstraintName("fk_book");
         });
 
-        modelBuilder.Entity<BookCopies>(entity =>
+        modelBuilder.Entity<BookCopy>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
@@ -100,7 +99,7 @@ public partial class HomelibraryContext : DbContext
                 .HasConstraintName("fk_shelf");
         });
 
-        modelBuilder.Entity<BookShelves>(entity =>
+        modelBuilder.Entity<Bookshelf>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
@@ -117,7 +116,7 @@ public partial class HomelibraryContext : DbContext
                 .HasConstraintName("fk_owner2");
         });
 
-        modelBuilder.Entity<Books>(entity =>
+        modelBuilder.Entity<Book>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
@@ -127,7 +126,7 @@ public partial class HomelibraryContext : DbContext
             entity.Property(e => e.Title).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<BooksGenres>(entity =>
+        modelBuilder.Entity<BooksGenre>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
@@ -148,7 +147,7 @@ public partial class HomelibraryContext : DbContext
                 .HasConstraintName("fk_genre");
         });
 
-        modelBuilder.Entity<Borrows>(entity =>
+        modelBuilder.Entity<Borrow>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
@@ -170,14 +169,14 @@ public partial class HomelibraryContext : DbContext
                 .HasConstraintName("fk_user");
         });
 
-        modelBuilder.Entity<Genres>(entity =>
+        modelBuilder.Entity<Genre>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.Property(e => e.Name).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<Shelves>(entity =>
+        modelBuilder.Entity<Shelf>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
@@ -191,7 +190,7 @@ public partial class HomelibraryContext : DbContext
                 .HasConstraintName("fk_bookshelf");
         });
 
-        modelBuilder.Entity<Users>(entity =>
+        modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 

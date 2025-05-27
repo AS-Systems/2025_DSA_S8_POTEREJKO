@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LibraryManager.Model.Entities;
 
-public partial class Shelves
+public partial class Shelf
 {
     public int Id { get; set; }
 
@@ -15,7 +15,7 @@ public partial class Shelves
 
     public int Capacity { get; set; }
 
-    public virtual ICollection<BookCopies> BookCopies { get; set; } = new List<BookCopies>();
+    public virtual ICollection<BookCopy> BookCopies { get; set; } = new List<BookCopy>();
 
-    public virtual BookShelves Bookshelf { get; set; } = null!;
+    public virtual Bookshelf Bookshelf { get; set; } = null!;
 }

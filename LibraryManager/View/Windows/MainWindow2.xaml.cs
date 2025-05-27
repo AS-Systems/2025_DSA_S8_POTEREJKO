@@ -25,6 +25,9 @@ namespace LibraryManager.View.Windows
     {
         private BooksPage booksPage = new BooksPage();
         private HomePage homePage = new HomePage();
+        private BorrowsPage borrowsPage = new BorrowsPage();
+        private UsersPage usersPage = new UsersPage();
+        private StoragePage storagePage = new StoragePage();
         private User appUser;
 
         public MainWindow2(User user)
@@ -84,6 +87,21 @@ namespace LibraryManager.View.Windows
         private void UserButton_ButtonClick(object sender, RoutedEventArgs e)
         {
             new InfoUser(appUser).ShowDialog();
+        }
+
+        private void BorrowsBTN_Click(object sender, RoutedEventArgs e)
+        {
+            PageHolder.Content = borrowsPage;
+        }
+
+        private void UsersBTN_Click(object sender, RoutedEventArgs e)
+        {
+            PageHolder.Content = usersPage;
+        }
+
+        private void StorageBTN_Click(object sender, RoutedEventArgs e)
+        {
+            PageHolder.Content = storagePage;
         }
     }
 }

@@ -22,12 +22,12 @@ namespace LibraryManager.Model.Repositories
 
         public async Task<IEnumerable<Author>> GetAllAuthorsAsync()
         {
-            return await _libraryDBContext.Authors.Include(a => a.Books).ToListAsync();
+            return await _libraryDBContext.Authors.Include(a => a.BookAuthors).ToListAsync();
         }
 
         public async Task<Author?> GetAuthorByIdAsync(int id)
         {
-            return await _libraryDBContext.Authors.Include(a => a.Books).FirstOrDefaultAsync(a => a.Id == id);
+            return await _libraryDBContext.Authors.Include(a => a.BookAuthors).FirstOrDefaultAsync(a => a.Id == id);
         }
 
         public async Task InsertAsync(Author author)

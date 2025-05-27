@@ -26,8 +26,8 @@ namespace LibraryManager.View.Windows.Edit
             txtDescription.Text = book.Description;
             txtTitle.Text = book.Title;
             txtPage.Text = book.PageCount.ToString();
-            cmbAuthor.Text = book.Author.ToString();
-            cmbGenre.Text = book.Genre.ToString();
+            cmbAuthor.Text = book.BookAuthors.ToString();
+            cmbGenre.Text = book.BooksGenres.ToString();
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

@@ -1,4 +1,5 @@
-﻿using LibraryManager.Model.Entities;
+﻿using LibraryManager.Model;
+using LibraryManager.Model.Entities;
 using LibraryManager.Model.Repositories;
 using LibraryManager.Model.Repositories.Interfaces;
 using LibraryManager.ViewModel.Converters.ImageConverter;
