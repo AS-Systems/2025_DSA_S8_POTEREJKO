@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LibraryManager.Model.Entities;
 
-public partial class User
+public partial class Users
 {
     public int Id { get; set; }
 
@@ -23,7 +23,9 @@ public partial class User
 
     public sbyte Role { get; set; }
 
-    public virtual ICollection<Bookcopy> Bookcopies { get; set; } = new List<Bookcopy>();
+    public virtual ICollection<BookCopies> BookCopies { get; set; } = new List<BookCopies>();
 
-    public virtual ICollection<Borrow> Borrows { get; set; } = new List<Borrow>();
+    public virtual ICollection<BookShelves> BookShelves { get; set; } = new List<BookShelves>();
+
+    public virtual ICollection<Borrows> Borrows { get; set; } = new List<Borrows>();
 }

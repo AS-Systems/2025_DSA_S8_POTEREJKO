@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LibraryManager.Model.Entities;
 
-public partial class Author
+public partial class Authors
 {
     public int Id { get; set; }
 
@@ -13,5 +13,5 @@ public partial class Author
 
     public string? Info { get; set; }
 
-    public virtual ICollection<Book> Books { get; set; } = new List<Book>();
+    public virtual ICollection<BookAuthors> BookAuthors { get; set; } = new List<BookAuthors>();
 }

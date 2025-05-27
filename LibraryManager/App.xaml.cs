@@ -23,7 +23,7 @@ namespace LibraryManager
 
             // Registering services with DI
             serviceCollection.AddDbContext<HomelibraryContext>(options =>
-                options.UseMySql("server=192.168.0.207;database=homelibrary;user id=test;password=twoje_haslo;port=3306", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.3.0-mysql"))); // Set your connection string here
+                options.UseMySql("Server=mysql-home-library-sarass880-book-library.d.aivencloud.com;Port=13154;Database=HomeLibrary;Uid=avnadmin;Pwd=AVNS_EkwHAZ05UxBQuiJMdrh;SslMode=Required;", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"))); // Set your connection string here
             serviceCollection.AddScoped<IUserRepository, UserRepository>();
             serviceCollection.AddScoped<IBookRepository, BookRepository>();
             serviceCollection.AddSingleton<IImageConverter, ImageConverter>();
