@@ -5,9 +5,12 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Images\ASLogo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\ASLogo.ico" />
+    <None Remove="Resources\Images\ASLogo.png" />
     <None Remove="Resources\Images\+-Icon.png" />
     <None Remove="Resources\Images\Book-Dark-Icon.png" />
     <None Remove="Resources\Images\Book-Light-Icon.png" />
@@ -33,6 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\Images\ASLogo.ico" />
+    <Content Include="Resources\Images\ASLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\+-Icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
