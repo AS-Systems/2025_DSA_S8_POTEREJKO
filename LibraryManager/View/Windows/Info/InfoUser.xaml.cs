@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using LibraryManager.Model.Entities;
+using LibraryManager.Model.Enums;
 
 namespace LibraryManager.View.Windows.Info
 {
@@ -28,6 +29,7 @@ namespace LibraryManager.View.Windows.Info
             SurnameLabel.Content = user.Surname;
             EmailLabel.Content = user.Email;
             PhoneLabel.Content = user.PhoneNumber;
+            RoleLabel.Content = ((Role)user.Role).ToString();
 
             CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
         }

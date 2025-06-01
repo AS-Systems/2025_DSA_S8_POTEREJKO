@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="LibraryManager.View.CustomControls.ItemTemplates.BookshelfItemTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryManager.View.CustomControls.ItemTemplates"
+             xmlns:btn ="clr-namespace:LibraryManager.View.CustomControls.Buttons"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="800">
+
+    <Grid ClipToBounds="True" Margin="0,10,0,0">
+        <Grid Margin="40,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width=".9*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width=".4*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding Name}" FontSize="30" Grid.Column="0" TextTrimming="CharacterEllipsis"  Foreground="#3a3960" FontWeight="DemiBold" TextAlignment="Center" />
+            <TextBlock Text="{Binding Shelves.Count}" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis"  Foreground="#3a3960" FontWeight="DemiBold" TextAlignment="Center" />
+            <TextBlock x:Name="SpaceText" FontSize="30" Grid.Column="2" TextTrimming="CharacterEllipsis"  Foreground="#3a3960" FontWeight="DemiBold" TextAlignment="Center" />
+
+            <!--Control Buttons Grid-->
+            <Grid Grid.Column="3" Margin="10,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <btn:ItemTemplateActionButton x:Name="infoButton" Grid.Column="0" Width="30" Height="30" Margin="0,0,0,5"/>
+                <btn:ItemTemplateActionButton x:Name="editButton" Grid.Column="1" Width="30" Height="30" Margin="0,0,0,5"/>
+                <btn:ItemTemplateActionButton x:Name="deleteButton" Grid.Column="2" Width="30" Height="30" Margin="0,0,0,5" ButtonBackground="#ff5757"/>
+            </Grid>
+
+        </Grid>
+
+
+        <Rectangle Height="4"
+               VerticalAlignment="Bottom"
+               Stroke="#2e2d4b"
+               StrokeThickness="5"
+               StrokeDashArray="1,3" Margin="40,0" />
+    </Grid>
+</UserControl>

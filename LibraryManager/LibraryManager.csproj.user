@@ -22,6 +22,9 @@
     <Compile Update="View\CustomControls\Buttons\ItemActionButtonControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\Buttons\ItemTemplateActionButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\Buttons\PageSelectionButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -70,7 +73,13 @@
     <Compile Update="View\CustomControls\ItemTemplates\BookItemTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\ItemTemplates\BookshelfItemTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\ItemTemplates\BorrowsItemTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\CustomControls\ItemTemplates\UserItemTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\CustomControls\ProgressBars\CircularProgressBar.xaml.cs">
@@ -165,6 +174,9 @@
     <Page Update="View\CustomControls\Buttons\ItemActionButtonControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\CustomControls\Buttons\ItemTemplateActionButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CustomControls\Buttons\PageSelectionButton.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -213,7 +225,13 @@
     <Page Update="View\CustomControls\ItemTemplates\BookItemTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\CustomControls\ItemTemplates\BookshelfItemTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\CustomControls\ItemTemplates\BorrowsItemTemplate.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CustomControls\ItemTemplates\UserItemTemplate.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CustomControls\ProgressBars\CircularProgressBar.xaml">

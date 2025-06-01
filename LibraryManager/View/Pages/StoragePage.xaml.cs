@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LibraryManager.Model.Entities;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,31 @@ namespace LibraryManager.View.Pages
     /// </summary>
     public partial class StoragePage : Page
     {
+        public ObservableCollection<Bookshelf> FilteredBookshelves { get; set; } = new ObservableCollection<Bookshelf>();
         public StoragePage()
         {
             InitializeComponent();
+            DataContext = this;
+
+
+            List<Shelf> shelfList = new List<Shelf>();
+
+            var shelf = new Shelf()
+            {
+                Id = 1,
+                Name = "Test",
+                AvailableSpace = 3,
+                Capacity = 7
+            };
+            shelfList.Add(shelf);
+
+
+            FilteredBookshelves.Add(new Bookshelf(){
+                Name = "Bookshelf1",
+                HasSpace = true,
+                Shelves = shelfList
+            });
+
         }
     }
 }

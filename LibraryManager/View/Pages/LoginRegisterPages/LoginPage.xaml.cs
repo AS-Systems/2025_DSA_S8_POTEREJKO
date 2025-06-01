@@ -111,6 +111,7 @@ namespace LibraryManager.View.Pages
         private async void LoginBTN_Click(object sender, RoutedEventArgs e)
         {
             var username = UsernameBox.Text;
+            var all = await _userRepository.GetAllUsersAsync();
             var foundUser = await _userRepository.GetUserByUsernameAsync(username);
 
             if (foundUser != null)
