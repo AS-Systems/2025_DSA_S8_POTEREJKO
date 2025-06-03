@@ -56,9 +56,9 @@ public partial class HomelibraryContext : DbContext
 
         modelBuilder.Entity<BookAuthor>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("Book_Authors");
+
+            entity.HasKey(e => new { e.BookId, e.AuthorId }).HasName("PRIMARY");
 
             entity.HasIndex(e => e.AuthorId, "fk_author");
 
@@ -128,16 +128,16 @@ public partial class HomelibraryContext : DbContext
 
         modelBuilder.Entity<BooksGenre>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
             entity.ToTable("Books_Genres");
 
-            entity.HasIndex(e => e.BookId, "fk_book2");
+            entity.HasKey(e => new { e.BookId, e.GenreId }).HasName("PRIMARY");
 
-            entity.HasIndex(e => e.GenreId, "fk_genre");
+            entity.HasIndex(e => e.BookId).HasDatabaseName("fk_book2");
+
+            entity.HasIndex(e => e.GenreId).HasDatabaseName("fk_genre");
 
             entity.HasOne(d => d.Book).WithMany(p => p.BooksGenres)
-                .HasForeignKey(d => d.BookId)
+                    .HasForeignKey(d => d.BookId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_book2");
 

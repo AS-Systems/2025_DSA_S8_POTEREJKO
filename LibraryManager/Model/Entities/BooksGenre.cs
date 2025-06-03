@@ -5,7 +5,6 @@ namespace LibraryManager.Model.Entities;
 
 public partial class BooksGenre
 {
-    public int Id { get; set; }
 
     public int BookId { get; set; }
 
