@@ -8,7 +8,41 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BorrowsPage">
 
-    <Grid>
-        <TextBlock Margin="40" Text="Borrows" Foreground="Aqua"></TextBlock>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".6*"/>
+            <RowDefinition Height="7.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#3a3960" Grid.Row="0">
+            <Border  CornerRadius="30,30,0,0" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4.5*"/>
+                        <ColumnDefinition Width="6*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" CornerRadius="30,30,0,0" Background="#bec29b">
+                        <Grid  Margin="30,0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="BorrowsFinishedBtn" Grid.Column="0" Content="Finished" Background="Transparent" BorderThickness="0" Click="BorrowsFinishedBtn_Click"></Button>
+                            <Button x:Name="BorrowsCurrentBtn" Grid.Column="1" Content="Current" Background="Transparent" BorderThickness="0" Click="BorrowsCurrentBtn_Click"></Button>
+                            <Button x:Name="BorrowsUpcommingBtn" Grid.Column="2" Content="Upcomming" Background="Transparent" BorderThickness="0" Click="BorrowsUpcommingBtn_Click"></Button>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Frame x:Name="BorrowsPageContentPresenter" Grid.Row="1">
+
+        </Frame>
+
+
     </Grid>
 </Page>
