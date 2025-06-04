@@ -20,9 +20,31 @@ namespace LibraryManager.View.Pages
     /// </summary>
     public partial class BorrowsPage : Page
     {
+        private readonly BorrowsPageFinished _pageFinished = new BorrowsPageFinished();
+        private readonly BorrowsPageCurrent _pageCurrent = new BorrowsPageCurrent();
+        private readonly BorrowsPageUpcoming _pageUpcoming = new BorrowsPageUpcoming();
+
         public BorrowsPage()
         {
             InitializeComponent();
+
+            BorrowsPageContentPresenter.Content = _pageFinished;
+
+        }
+
+        private void BorrowsFinishedBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BorrowsPageContentPresenter.Content = _pageFinished;
+        }
+
+        private void BorrowsCurrentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BorrowsPageContentPresenter.Content = _pageCurrent;
+        }
+
+        private void BorrowsUpcommingBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BorrowsPageContentPresenter.Content = _pageUpcoming;
         }
     }
 }
