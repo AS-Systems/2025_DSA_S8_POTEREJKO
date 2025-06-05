@@ -97,10 +97,16 @@
     <Compile Update="View\Pages\BorrowsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Pages\BorrowsPageCheckOuts.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Pages\BorrowsPageCurrent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\BorrowsPageFinished.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\BorrowsPageReturns.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\BorrowsPageUpcoming.xaml.cs">
