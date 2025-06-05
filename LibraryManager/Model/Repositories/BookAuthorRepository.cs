@@ -1,11 +1,10 @@
-﻿using LibraryManager.Model.Entities;
-using LibraryManager.Model.Repositories.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System;
+
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using LibraryManager.Model.Entities;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace LibraryManager.Model.Repositories
 {
@@ -18,37 +17,62 @@ namespace LibraryManager.Model.Repositories
             _context = context;
         }
 
-        public async Task<bool> IsAnyBookAuthorAsync()
+
+        public async Task<IEnumerable<BookAuthor>> GetAllAsync()
         {
-            return await _context.BookAuthors.AnyAsync();
+            return await _context.BookAuthors
+                .Include(ba => ba.Book)
+                .Include(ba => ba.Author)
+                .ToListAsync();
         }
 
-        public async Task<IEnumerable<BookAuthor>> GetAllBookAuthorsAsync()
+        public async Task<BookAuthor?> GetAsync(int bookId, int authorId)
         {
-            return await _context.BookAuthors.ToListAsync();
+            return await _context.BookAuthors
+                .Include(ba => ba.Book)
+                .Include(ba => ba.Author)
+                .FirstOrDefaultAsync(ba => ba.BookId == bookId && ba.AuthorId == authorId);
         }
 
-        public async Task<BookAuthor?> GetBookAuthorByIdAsync(int id)
+        public async Task<IEnumerable<BookAuthor>> GetByBookIdAsync(int bookId)
         {
-            return await _context.BookAuthors.FirstOrDefaultAsync(ba => ba.Id == id);
+            return await _context.BookAuthors
+                .Include(ba => ba.Author)
+                .Where(ba => ba.BookId == bookId)
+                .ToListAsync();
         }
 
-        public async Task InsertAsync(BookAuthor bookAuthor)
+        public async Task<IEnumerable<BookAuthor>> GetByAuthorIdAsync(int authorId)
         {
-            await _context.BookAuthors.AddAsync(bookAuthor);
+            return await _context.BookAuthors
+                .Include(ba => ba.Book)
+                .Where(ba => ba.AuthorId == authorId)
+                .ToListAsync();
+        }
+
+        public async Task AddAsync(BookAuthor bookAuthor)
+        {
+            _context.BookAuthors.Add(bookAuthor);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(BookAuthor bookAuthor)
+        public async Task DeleteAsync(int bookId, int authorId)
         {
-            _context.BookAuthors.Update(bookAuthor);
-            await _context.SaveChangesAsync();
+            var bookAuthor = await _context.BookAuthors
+                .FirstOrDefaultAsync(ba => ba.BookId == bookId && ba.AuthorId == authorId);
+
+            if (bookAuthor != null)
+            {
+                _context.BookAuthors.Remove(bookAuthor);
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public async Task DeleteAsync(BookAuthor bookAuthor)
+        public async Task<bool> ExistsAsync(int bookId, int authorId)
         {
-            _context.BookAuthors.Remove(bookAuthor);
-            await _context.SaveChangesAsync();
+            return await _context.BookAuthors
+                .AnyAsync(ba => ba.BookId == bookId && ba.AuthorId == authorId);
         }
     }
 }
+

@@ -1,54 +1,61 @@
-﻿using LibraryManager.Model.Entities;
-using LibraryManager.Model.Repositories.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using LibraryManager.Model.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Model.Repositories
 {
-    public class BookCopyRepository : IBookCopyRepository
+    internal class BookCopyRepository : IBookCopyRepository
     {
-        private readonly HomelibraryContext _context;
+        private readonly HomelibraryContext _libraryDBContext;
 
         public BookCopyRepository(HomelibraryContext context)
         {
-            _context = context;
-        }
+            _libraryDBContext = context;
 
-        public async Task<bool> IsAnyBookCopyAsync()
-        {
-            return await _context.BookCopies.AnyAsync();
         }
 
         public async Task<IEnumerable<BookCopy>> GetAllBookCopiesAsync()
         {
-            return await _context.BookCopies.ToListAsync();
+
+            return await _libraryDBContext.BookCopies
+                .Include(bc => bc.Book)
+                .Include(bc => bc.Owner)
+                .Include(bc => bc.Shelf)
+                .Include(bc => bc.Borrows)
+                .ToListAsync();
         }
 
-        public async Task<BookCopy?> GetBookCopyByIdAsync(int bookCopyId)
+        public async Task<BookCopy?> GetBookCopyByIdAsync(int id)
         {
-            return await _context.BookCopies.FirstOrDefaultAsync(bc => bc.Id == bookCopyId);
+            return await _libraryDBContext.BookCopies
+                .Include(bc => bc.Book)
+                .Include(bc => bc.Owner)
+                .Include(bc => bc.Shelf)
+                .Include(bc => bc.Borrows)
+                .FirstOrDefaultAsync(bc => bc.Id == id);
         }
 
-        public async Task InsertAsync(BookCopy bookCopy)
+        public async Task AddBookCopyAsync(BookCopy bookCopy)
         {
-            await _context.BookCopies.AddAsync(bookCopy);
-            await _context.SaveChangesAsync();
+            _libraryDBContext.BookCopies.Add(bookCopy);
+            await _libraryDBContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(BookCopy bookCopy)
+        public async Task UpdateBookCopyAsync(BookCopy bookCopy)
         {
-            _context.BookCopies.Update(bookCopy);
-            await _context.SaveChangesAsync();
+            _libraryDBContext.BookCopies.Update(bookCopy);
+            await _libraryDBContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(BookCopy bookCopy)
+        public async Task DeleteBookCopyAsync(int id)
         {
-            _context.BookCopies.Remove(bookCopy);
-            await _context.SaveChangesAsync();
+            var bookCopy = await _libraryDBContext.BookCopies.FindAsync(id);
+            if (bookCopy != null)
+            {
+                _libraryDBContext.BookCopies.Remove(bookCopy);
+                await _libraryDBContext.SaveChangesAsync();
+            }
         }
     }
 }

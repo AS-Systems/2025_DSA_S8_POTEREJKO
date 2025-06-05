@@ -1,10 +1,9 @@
-﻿using System;
+
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using LibraryManager.Model.Entities;
-using LibraryManager.Model.Repositories.Interfaces;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Model.Repositories
@@ -18,24 +17,25 @@ namespace LibraryManager.Model.Repositories
             _context = context;
         }
 
-        public async Task<bool> IsAnyGenreAsync()
+        public async Task<IEnumerable<Genre>> GetAllAsync()
         {
-            return await _context.Genres.AnyAsync();
+            return await _context.Genres
+                .Include(g => g.BooksGenres)
+                    .ThenInclude(bg => bg.Book)
+                .ToListAsync();
         }
 
-        public async Task<IEnumerable<Genre>> GetAllGenresAsync()
+        public async Task<Genre?> GetByIdAsync(int id)
         {
-            return await _context.Genres.ToListAsync();
+            return await _context.Genres
+                .Include(g => g.BooksGenres)
+                    .ThenInclude(bg => bg.Book)
+                .FirstOrDefaultAsync(g => g.Id == id);
         }
 
-        public async Task<Genre?> GetGenreByIdAsync(int genreId)
+        public async Task AddAsync(Genre genre)
         {
-            return await _context.Genres.FirstOrDefaultAsync(g => g.Id == genreId);
-        }
-
-        public async Task InsertAsync(Genre genre)
-        {
-            await _context.Genres.AddAsync(genre);
+            _context.Genres.Add(genre);
             await _context.SaveChangesAsync();
         }
 
@@ -45,11 +45,19 @@ namespace LibraryManager.Model.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Genre genre)
+        public async Task DeleteAsync(int id)
         {
-            _context.Genres.Remove(genre);
-            await _context.SaveChangesAsync();
+            var genre = await _context.Genres.FindAsync(id);
+            if (genre != null)
+            {
+                _context.Genres.Remove(genre);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<bool> ExistsAsync(int id)
+        {
+            return await _context.Genres.AnyAsync(g => g.Id == id);
         }
     }
 }
-

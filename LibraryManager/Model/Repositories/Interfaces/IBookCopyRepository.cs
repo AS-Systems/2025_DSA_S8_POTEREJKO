@@ -1,20 +1,17 @@
-﻿using LibraryManager.Model.Entities;
-using System;
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using LibraryManager.Model.Entities;
 
-
-namespace LibraryManager.Model.Repositories.Interfaces
+namespace LibraryManager.Model.Repositories
 {
-    internal interface IBookCopyRepository
+    public interface IBookCopyRepository
     {
-        Task<bool> IsAnyBookCopyAsync();
         Task<IEnumerable<BookCopy>> GetAllBookCopiesAsync();
-        Task<BookCopy?> GetBookCopyByIdAsync(int bookCopyId);
-        Task InsertAsync(BookCopy bookCopy);
-        Task UpdateAsync(BookCopy bookCopy);
-        Task DeleteAsync(BookCopy bookCopy);
+        Task<BookCopy?> GetBookCopyByIdAsync(int id);
+        Task AddBookCopyAsync(BookCopy bookCopy);
+        Task UpdateBookCopyAsync(BookCopy bookCopy);
+        Task DeleteBookCopyAsync(int id);
+
     }
 }

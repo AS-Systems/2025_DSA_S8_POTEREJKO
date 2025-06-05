@@ -1,19 +1,17 @@
-﻿using LibraryManager.Model.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using LibraryManager.Model.Entities;
 
-namespace LibraryManager.Model.Repositories.Interfaces
+namespace LibraryManager.Model.Repositories
 {
-    internal interface IBookAuthorRepository
+    public interface IBookAuthorRepository
     {
-        Task<bool> IsAnyBookAuthorAsync();
-        Task<IEnumerable<BookAuthor>> GetAllBookAuthorsAsync();
-        Task<BookAuthor?> GetBookAuthorByIdAsync(int bookAuthorId);
-        Task InsertAsync(BookAuthor bookAuthor);
-        Task UpdateAsync(BookAuthor bookAuthor);
-        Task DeleteAsync(BookAuthor bookAuthor);
+        Task<IEnumerable<BookAuthor>> GetAllAsync();
+        Task<BookAuthor?> GetAsync(int bookId, int authorId);
+        Task<IEnumerable<BookAuthor>> GetByBookIdAsync(int bookId);
+        Task<IEnumerable<BookAuthor>> GetByAuthorIdAsync(int authorId);
+        Task AddAsync(BookAuthor bookAuthor);
+        Task DeleteAsync(int bookId, int authorId);
+        Task<bool> ExistsAsync(int bookId, int authorId);
     }
 }
