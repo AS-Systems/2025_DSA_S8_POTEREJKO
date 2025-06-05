@@ -55,6 +55,10 @@ namespace LibraryManager.View.Windows
             StorageBTN.ButtonClickedImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "Storage-Dark-Icon.png");
 
 
+
+            SetBasicColor();
+            HomeBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
+            
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -76,12 +80,18 @@ namespace LibraryManager.View.Windows
         {
             await homePage.LoadDataAsync();
             PageHolder.Content = homePage;
+
+            SetBasicColor();
+            HomeBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
         }
 
         private async void BooksBTN_Click(object sender, RoutedEventArgs e)
         {
             await booksPage.LoadDataAsync();
             PageHolder.Content = booksPage;
+
+            SetBasicColor();
+            BooksBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
         }
 
         private void UserButton_ButtonClick(object sender, RoutedEventArgs e)
@@ -92,16 +102,37 @@ namespace LibraryManager.View.Windows
         private void BorrowsBTN_Click(object sender, RoutedEventArgs e)
         {
             PageHolder.Content = borrowsPage;
+
+            SetBasicColor();
+            BorrowsBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
         }
 
         private void UsersBTN_Click(object sender, RoutedEventArgs e)
         {
             PageHolder.Content = usersPage;
+
+            SetBasicColor();
+            UsersBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
         }
 
         private void StorageBTN_Click(object sender, RoutedEventArgs e)
         {
             PageHolder.Content = storagePage;
+
+            SetBasicColor();
+            StorageBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
         }
+
+
+        private void SetBasicColor()
+        {
+            HomeBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3a3960"));
+            BooksBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3a3960"));
+            BorrowsBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3a3960"));
+            UsersBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3a3960"));
+            StorageBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3a3960"));
+        }
+
+
     }
 }

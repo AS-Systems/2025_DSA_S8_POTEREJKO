@@ -8,7 +8,72 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BorrowsPage">
 
-    <Grid>
-        <TextBlock Margin="40" Text="Borrows" Foreground="Aqua"></TextBlock>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".6*"/>
+            <RowDefinition Height="7.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#3a3960" Grid.Row="0">
+            <Border  CornerRadius="30,30,0,0" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4.5*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" CornerRadius="30,30,0,0" Background="#bec29b">
+                        <Grid  >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="BorrowsFinishedBtn" Grid.Column="0" Content="Finished" FontSize="22" FontWeight="DemiBold" Background="Transparent" Foreground="#3a3960" BorderThickness="0" Click="BorrowsFinishedBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="30,0,0,0"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <Button x:Name="BorrowsCurrentBtn" Grid.Column="1" Content="Current" FontSize="22" FontWeight="DemiBold" Background="Transparent" Foreground="#3a3960" BorderThickness="0" Click="BorrowsCurrentBtn_Click"></Button>
+                            <Button x:Name="BorrowsUpcommingBtn" Grid.Column="2" Content="Upcomming" FontSize="22" FontWeight="DemiBold" Background="Transparent" Foreground="#3a3960" BorderThickness="0" Click="BorrowsUpcommingBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="0,30,0,0"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                        </Grid>
+                    </Border>
+
+                    <Grid Grid.Column="2" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Button x:Name="CheckOutsBtn"  Grid.Column="0" Content="Check-outs" FontSize="22" FontWeight="DemiBold" Background="#bec29b" Foreground="#3a3960" BorderThickness="0" Click="CheckOutsBtn_Click" >
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="30,0,0,0"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                        <Button x:Name="ReturnsButton" Grid.Column="1" Content="Returns" FontSize="22" FontWeight="DemiBold" Background="#bec29b" Foreground="#3a3960" BorderThickness="0" Click="ReturnsButton_Click"></Button>
+
+                    </Grid>
+                    
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Frame x:Name="BorrowsPageContentPresenter" Grid.Row="1">
+
+        </Frame>
+
+
     </Grid>
 </Page>

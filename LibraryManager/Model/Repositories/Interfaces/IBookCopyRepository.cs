@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using LibraryManager.Model.Entities;
 
@@ -11,5 +12,6 @@ namespace LibraryManager.Model.Repositories
         Task AddBookCopyAsync(BookCopy bookCopy);
         Task UpdateBookCopyAsync(BookCopy bookCopy);
         Task DeleteBookCopyAsync(int id);
+
     }
 }

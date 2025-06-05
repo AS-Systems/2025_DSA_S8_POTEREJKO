@@ -1,0 +1,62 @@
+﻿<Page x:Class="LibraryManager.View.Pages.BorrowsPageCurrent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibraryManager.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BorrowsPageCurrent">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".58*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Border Background="#bec29b">
+                <Grid Margin="40,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Title" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
+                    <TextBlock Text="Borrower" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
+                    <TextBlock Text="Take date" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
+                    <TextBlock Text="Return date" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
+                    <TextBlock Text="Copy owner" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
+
+                </Grid>
+            </Border>
+            <Rectangle Height="4" VerticalAlignment="Bottom" Stroke="#2e2d4b" StrokeThickness="5" Margin="35,0"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <ListBox ItemsSource="{Binding FilteredBookshelves,Mode=TwoWay}" SelectedItem="{Binding SelectedBook, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single" Background="Transparent" BorderThickness="0"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <!--<it:BookshelfItemTemplate/>-->
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Row="2" >
+
+
+        </Grid>
+
+    </Grid>
+</Page>

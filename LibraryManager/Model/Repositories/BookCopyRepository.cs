@@ -12,10 +12,12 @@ namespace LibraryManager.Model.Repositories
         public BookCopyRepository(HomelibraryContext context)
         {
             _libraryDBContext = context;
+
         }
 
         public async Task<IEnumerable<BookCopy>> GetAllBookCopiesAsync()
         {
+
             return await _libraryDBContext.BookCopies
                 .Include(bc => bc.Book)
                 .Include(bc => bc.Owner)

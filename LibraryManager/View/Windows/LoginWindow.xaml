@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LibraryManager.View.Windows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-         Title="LoginWindow" Height="450" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+         Title="LoginWindow" Height="450" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize" >
     <Grid>
         <Border Background="#faffc5" CornerRadius="35" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Grid>
