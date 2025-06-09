@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LibraryManager.Model.Enums;
 
 namespace LibraryManager.Model.Repositories
 {
@@ -17,7 +18,87 @@ namespace LibraryManager.Model.Repositories
         {
             _context = context;
         }
-
+        
+        public async Task<int> GetTotalBorrowsOfUserAsync(int userId, TimePeriod timePeriod)
+        {
+            var startDate = GetStartDate(timePeriod);
+            return await _context.Borrows
+                .Where(b => b.UserId == userId && b.BorrowDate >= startDate)
+                .AsNoTracking()
+                .CountAsync();
+        }
+        
+        public async Task<int> GetTotalBorrowsAsync(TimePeriod timePeriod)
+        {
+            var startDate = GetStartDate(timePeriod);
+            return await _context.Borrows
+                .Where(b => b.BorrowDate >= startDate)
+                .AsNoTracking()
+                .CountAsync();
+        }
+        
+        public async Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfUserAsync(int userId, TimePeriod timePeriod)
+        {
+            var startDate = DateTime.UtcNow;
+            var endDate = GetEndDate(timePeriod);
+            return await _context.Borrows
+                .Where(b => b.UserId == userId && b.BorrowDate >= startDate && b.BorrowDate <= endDate)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+        
+        public async Task<IEnumerable<Borrow>> GetUpcomingBorrowsAsync(TimePeriod timePeriod)
+        {
+            var startDate = DateTime.UtcNow;
+            var endDate = GetEndDate(timePeriod);
+            return await _context.Borrows
+                .Where(b => b.BorrowDate >= startDate && b.BorrowDate <= endDate)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+        
+        public async Task<IEnumerable<Borrow>> GetUpcomingReturnsOfUserAsync(int userId, TimePeriod timePeriod)
+        {
+            var startDate = DateTime.UtcNow;
+            var endDate = GetEndDate(timePeriod);
+            return await _context.Borrows
+                .Where(b => b.UserId == userId && b.ReturnDate >= startDate && b.ReturnDate <= endDate)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+        
+        public async Task<IEnumerable<Borrow>> GetUpcomingReturnsAsync(TimePeriod timePeriod)
+        {
+            var startDate = DateTime.UtcNow;
+            var endDate = GetEndDate(timePeriod);
+            return await _context.Borrows
+                .Where(b => b.ReturnDate >= startDate && b.ReturnDate <= endDate)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+        
+        private DateTime GetStartDate(TimePeriod timePeriod)
+        {
+            return timePeriod switch
+            {
+                TimePeriod.Today => DateTime.UtcNow.Date,
+                TimePeriod.ThisMonth => new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1),
+                TimePeriod.ThisYear => new DateTime(DateTime.UtcNow.Year, 1, 1),
+                _ => throw new ArgumentOutOfRangeException(nameof(timePeriod), "Invalid time period")
+            };
+        }
+        
+        private DateTime GetEndDate(TimePeriod timePeriod)
+        {
+            return timePeriod switch
+            {
+                TimePeriod.Today => DateTime.UtcNow.Date.AddDays(1).AddTicks(-1),
+                TimePeriod.ThisMonth => new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1).AddMonths(1).AddTicks(-1),
+                TimePeriod.ThisYear => new DateTime(DateTime.UtcNow.Year, 1, 1).AddYears(1).AddTicks(-1),
+                _ => throw new ArgumentOutOfRangeException(nameof(timePeriod), "Invalid time period")
+            };
+        }
+        
         public async Task<bool> IsAnyBorrowAsync()
         {
             return await _context.Borrows.AnyAsync();

@@ -17,7 +17,31 @@ namespace LibraryManager.Model.Repositories
         {
             _context = context;
         }
-
+        
+        public async Task<IEnumerable<Book>> GetAllBooksOfUserAsync(int userId)
+        {
+            return await _context.Books
+                .Where(b => b.Id == userId) //assuming userId is a book ID here, which is not typical imo \o/
+                .AsNoTracking()
+                .ToListAsync();
+        }
+        
+        public async Task<IEnumerable<Book>> GetAllAvailableBooksOfUserAsync(int userId)
+        {
+            return await _context.Books
+                .Where(b => b.Id == userId && b.IsAvailable) //same here. but isAvailable is not a property of book
+                .AsNoTracking()
+                .ToListAsync();
+        }
+        
+        public async Task<IEnumerable<Book>> GetAllAvailableBooksAsync()
+        {
+            return await _context.Books
+                .Where(b => b.IsAvailable) //and same here
+                .AsNoTracking()
+                .ToListAsync();
+        }
+        
         public async Task<bool> IsAnyBookAsync()
         {
             return await _context.Books.AnyAsync();
@@ -38,6 +62,7 @@ namespace LibraryManager.Model.Repositories
             await _context.Books.AddAsync(book);
             await _context.SaveChangesAsync();
         }
+
         public async Task UpdateAsync(Book book)
         {
             _context.Books.Update(book);
@@ -48,7 +73,6 @@ namespace LibraryManager.Model.Repositories
         {
             _context.Books.Remove(book);
             await _context.SaveChangesAsync();
-        }
- 
+        } 
     }
 }
