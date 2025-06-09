@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using LibraryManager.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace LibraryManager.Model;
+namespace LibraryManager.Model.Entities;
 
 public partial class HomelibraryContext : DbContext
 {

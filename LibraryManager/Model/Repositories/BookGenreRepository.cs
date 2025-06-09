@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories
 {
-    public class BooksGenreRepository : IBooksGenreRepository
+    public class BookGenreRepository : IBooksGenreRepository
     {
         private readonly HomelibraryContext _context;
 
-        public BooksGenreRepository(HomelibraryContext context)
+        public BookGenreRepository(HomelibraryContext context)
         {
             _context = context;
         }
