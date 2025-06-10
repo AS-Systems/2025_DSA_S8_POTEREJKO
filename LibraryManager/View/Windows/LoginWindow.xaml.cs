@@ -1,6 +1,8 @@
 ﻿using LibraryManager.Model.Repositories;
 using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.Services;
 using LibraryManager.View.Pages;
+using LibraryManager.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -31,7 +33,6 @@ namespace LibraryManager.View.Windows
         private readonly Brush _pageSelectedColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
         private readonly Brush _pageNotSelectedColor = Brushes.Transparent;
 
-
         public LoginWindow()
         {
             InitializeComponent();
@@ -44,6 +45,19 @@ namespace LibraryManager.View.Windows
 
 
             WindowContent.Content = loginPage;
+
+            this.PreviewKeyDown += OnKeyDown;
+
+        }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+            {
+                ClippyService.ToggleVisibility();
+                 if (ClippyService.IsVisible)
+                    ClippyService.Say("Insert your username and password. Click the login button after input. If you don't have an account, click the register button.");
+            }
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -67,6 +81,5 @@ namespace LibraryManager.View.Windows
             LoginButton.Background = _pageNotSelectedColor;
             RegisterButton.Background = _pageSelectedColor;
         }
-
     }
 }
