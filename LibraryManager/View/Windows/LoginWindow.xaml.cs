@@ -56,7 +56,7 @@ namespace LibraryManager.View.Windows
             {
                 ClippyService.ToggleVisibility();
                  if (ClippyService.IsVisible)
-                    ClippyService.SayLoginInstructions();
+                    ClippyService.Say("Insert your username and password. Click the login button after input. If you don't have an account, click the register button.");
             }
         }
 
@@ -81,6 +81,5 @@ namespace LibraryManager.View.Windows
             LoginButton.Background = _pageNotSelectedColor;
             RegisterButton.Background = _pageSelectedColor;
         }
-
     }
 }

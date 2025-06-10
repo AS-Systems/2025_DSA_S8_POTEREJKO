@@ -1,5 +1,6 @@
 ﻿using LibraryManager.Model.Repositories.Interfaces;
 using LibraryManager.View.Windows;
+using LibraryManager.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
@@ -7,7 +8,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Windows.Navigation;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace LibraryManager.View.Pages
 {
@@ -259,6 +263,36 @@ namespace LibraryManager.View.Pages
             PlaceholderText.Visibility = string.IsNullOrEmpty(PasswordBox.Password)
                     ? Visibility.Visible
                     : Visibility.Collapsed;
+        }
+        private void UsernameBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Enter your desired username.");
+        }
+        private void EmailBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Enter your email.");
+        }
+        private void PasswordBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Enter your desired password.");
+        }
+        private void ContinueBTN_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click here after filling out the fields.");
+        }
+        private void ExitBTN_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click here to exit application.");
+        }
+        private void MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Enter your email, username and password to register. After filling out the fields, click 'Continue' to save your user.");
         }
     }
 }

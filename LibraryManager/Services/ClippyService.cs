@@ -34,7 +34,7 @@ namespace LibraryManager.Services
             {
                 if (isVisible)
                 {
-                    character.Close();
+                    character.Hide();
                     isVisible = false;
                 }
                 else
@@ -45,18 +45,16 @@ namespace LibraryManager.Services
             }
         }
 
-        public static void SayLoginInstructions()
+        public static void Say(string message)
         {
             if (character == null)
-            {
                 Initialize();
-            }
 
-        character.Say(new TextBlock 
-        { 
-            Text = "Insert your username and password. Click the login button after input. If you don't have an account, click the register button.", 
-            Foreground = Brushes.Black 
-        });
+            character.Say(new TextBlock
+            {
+                Text = message,
+                Foreground = Brushes.Black
+            });
         }
 
     }

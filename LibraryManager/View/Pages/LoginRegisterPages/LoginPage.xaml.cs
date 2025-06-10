@@ -1,5 +1,6 @@
 ﻿using LibraryManager.Model.Repositories.Interfaces;
 using LibraryManager.View.Windows;
+using LibraryManager.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -107,6 +108,23 @@ namespace LibraryManager.View.Pages
                     : Visibility.Collapsed;
         }
 
+        private void UsernameBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Enter your username.");
+        }
+
+        private void PasswordBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Enter your password.");
+        }
+
+        private void Field_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Insert your username and password. Click the login button after input. If you don't have an account, click the register button to go to register page.");
+        }
 
         private async void LoginBTN_Click(object sender, RoutedEventArgs e)
         {
@@ -128,6 +146,18 @@ namespace LibraryManager.View.Pages
 
 
         }
+       
+        private void LoginBTN_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click here to log in after entering your credentials.");
+        }
 
+        private void ExitBTN_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click here to exit application.");
+        }
+    
     }
 }

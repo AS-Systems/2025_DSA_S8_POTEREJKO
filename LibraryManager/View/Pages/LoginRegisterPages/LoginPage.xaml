@@ -32,7 +32,7 @@
 
                         
                         <Grid Grid.Row="0" >
-                            <TextBox x:Name="UsernameBox" Grid.Row="0" Margin="0,25,0,25" HorizontalContentAlignment="Left"  VerticalContentAlignment="Center" 
+                            <TextBox x:Name="UsernameBox" Grid.Row="0" Margin="0,25,0,25" HorizontalContentAlignment="Left"  VerticalContentAlignment="Center" MouseEnter="UsernameBox_MouseEnter" MouseLeave="Field_MouseLeave"
                            FontSize="20" FontWeight="DemiBold"  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960" BorderThickness="3" BorderBrush="#5e686d"
                            LostFocus="UsernameBox_LostFocus" GotFocus="UsernameBox_GotFocus" TextChanged="UsernameBox_TextChanged"/>
 
@@ -43,7 +43,7 @@
 
 
                         <Grid Grid.Row="1" >
-                            <PasswordBox x:Name="PasswordBox"  GotFocus="PasswordBox_GotFocus"   LostFocus="PasswordBox_LostFocus"  PasswordChanged="PasswordBox_PasswordChanged"  
+                            <PasswordBox x:Name="PasswordBox"  GotFocus="PasswordBox_GotFocus"   LostFocus="PasswordBox_LostFocus"  PasswordChanged="PasswordBox_PasswordChanged" MouseEnter="PasswordBox_MouseEnter" MouseLeave="Field_MouseLeave"  
                             Margin="0,5,0,45"  FontSize="20"  FontWeight="DemiBold"  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960" VerticalContentAlignment="Center"  BorderThickness="3" BorderBrush="#5e686d" />
 
                             <TextBlock x:Name="PlaceholderText" Text="Enter password" Foreground="#3a3960" FontSize="20" FontWeight="DemiBold" Margin="10,5,0,45"
@@ -64,7 +64,7 @@
                         <Button x:Name="LoginBTN" Grid.Row="0" Margin="50,8,50,8" Content="Login" 
                                 FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
                                 BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"
-                                   Click="LoginBTN_Click"
+                                   Click="LoginBTN_Click" MouseEnter="LoginBTN_MouseEnter" MouseLeave="Field_MouseLeave"
                                     />
                         <Popup x:Name="LoginPopup" PlacementTarget="{Binding ElementName=LoginBTN}" Placement="Top" StaysOpen="True" AllowsTransparency="True" PopupAnimation="Fade"  IsOpen="{Binding LoginPopVisibility,UpdateSourceTrigger=PropertyChanged}" VerticalOffset="-10">
                             <Border Background="#bec29b" Height="40"  CornerRadius="15" BorderBrush="#3a3960" BorderThickness="3" >
@@ -75,7 +75,7 @@
 
                         <Button Grid.Row="1"  Margin="50,8,50,8" Content="Exit" 
                                 FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                                BorderThickness="3" BorderBrush="#5e686d" Background="Transparent" Click="Button_Click" />
+                                BorderThickness="3" BorderBrush="#5e686d" Background="Transparent" Click="Button_Click" MouseEnter="ExitBTN_MouseEnter" MouseLeave="Field_MouseLeave"/>
                     </Grid>
                 </Grid>
             </Grid>
