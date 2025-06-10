@@ -30,7 +30,24 @@ namespace LibraryManager.View.CustomControls.ImageControls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
+        public static readonly DependencyProperty ImageBlobProperty =
+        DependencyProperty.Register(nameof(ImageBlob), typeof(byte[]), typeof(ImageDropControl),
+            new PropertyMetadata(null, OnImageBlobChanged));
 
+        public byte[]? ImageBlob
+        {
+            get => (byte[]?)GetValue(ImageBlobProperty);
+            set => SetValue(ImageBlobProperty, value);
+        }
+
+        private static void OnImageBlobChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as ImageDropControl;
+            if (control != null && e.NewValue is byte[] newImageBlob)
+            {
+                // Handle the change in ImageBlob property, e.g., update the UI or process the image blob.
+            }
+        }
 
         public ImageDropControl()
         {
@@ -51,9 +68,9 @@ namespace LibraryManager.View.CustomControls.ImageControls
                         DroppedImage.Source = bitmap;
                         DroppedImage.Visibility = Visibility.Visible;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        
+                        // Log or handle the exception as needed.
                     }
                 }
             }
@@ -61,10 +78,9 @@ namespace LibraryManager.View.CustomControls.ImageControls
 
         private bool IsImageFile(string path)
         {
-            string ext = System.IO.Path.GetExtension(path)?.ToLower();
+            string? ext = System.IO.Path.GetExtension(path)?.ToLower();
             return ext == ".jpg" || ext == ".jpeg" || ext == ".png";
         }
-
     }
 
     public class RectConverter : IMultiValueConverter

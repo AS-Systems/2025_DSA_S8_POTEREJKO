@@ -53,7 +53,7 @@
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
-                        <dr:ImageDropControl Grid.Row="0" Width="110" Height="135" CornerRadius="25"/>
+                        <dr:ImageDropControl Grid.Row="0" Width="110" Height="135" CornerRadius="25" Loaded="ImageDropControl_Loaded"/>
 
                         <!--TextBox grid-->
                         <Grid Grid.Row="1">
