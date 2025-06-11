@@ -12,6 +12,7 @@ public class BookViewModel
     private readonly IImageConverter _imageConverter;
     private readonly HomelibraryContext _dbContext;
 
+    //
     public Book CurrentBook { get; set; } = new Book();
 
     public BookViewModel(IImageConverter imageConverter, HomelibraryContext dbContext)
