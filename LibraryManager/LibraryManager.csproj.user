@@ -76,6 +76,9 @@
     <Compile Update="View\CustomControls\ItemTemplates\BookshelfItemTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\ItemTemplates\BorrowCycleItemTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\ItemTemplates\BorrowsItemTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -97,7 +100,7 @@
     <Compile Update="View\Pages\BorrowsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\Pages\BorrowsPageCheckOuts.xaml.cs">
+    <Compile Update="View\Pages\BorrowsPageIssues.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Pages\BorrowsPageCurrent.xaml.cs">
