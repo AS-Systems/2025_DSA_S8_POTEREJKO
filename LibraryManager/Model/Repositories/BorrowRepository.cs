@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories
@@ -26,6 +25,21 @@ namespace LibraryManager.Model.Repositories
         public async Task<IEnumerable<Borrow>> GetAllBorrowsAsync()
         {
             return await _context.Borrows.Include(b => b.User).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Borrow>> GetAllBorrowsOfUserId(int id)
+        { 
+            return await _context.Borrows.Where(b => b.UserId == id).ToListAsync();  
+        }
+
+        public async Task<IEnumerable<Borrow>> GetFinishedBorrowsOfUserId(int id)
+        { 
+            return await _context.Borrows.Where(b => b.UserId == id && b.ReturnDate < DateTime.Now).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfUserId(int id)
+        {
+            return await _context.Borrows.Where(b => b.UserId == id && b.BorrowDate > DateTime.Now).ToListAsync();
         }
 
         public async Task<Borrow?> GetBorrowByIdAsync(int id)

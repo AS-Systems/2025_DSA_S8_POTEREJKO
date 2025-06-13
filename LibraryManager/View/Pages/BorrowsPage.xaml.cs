@@ -30,14 +30,16 @@ namespace LibraryManager.View.Pages
         {
             InitializeComponent();
 
+
             BorrowsPageContentPresenter.Content = _pageFinished;
 
             SetBasicColor();
             BorrowsFinishedBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#bec29b"));
         }
 
-        private void BorrowsFinishedBtn_Click(object sender, RoutedEventArgs e)
+        private async void BorrowsFinishedBtn_Click(object sender, RoutedEventArgs e)
         {
+            await _pageFinished.LoadDataAsync();
             BorrowsPageContentPresenter.Content = _pageFinished;
 
             SetBasicColor();
@@ -52,8 +54,9 @@ namespace LibraryManager.View.Pages
             BorrowsCurrentBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#bec29b"));
         }
 
-        private void BorrowsUpcommingBtn_Click(object sender, RoutedEventArgs e)
+        private async void BorrowsUpcommingBtn_Click(object sender, RoutedEventArgs e)
         {
+            await _pageUpcoming.LoadDataAsync();
             BorrowsPageContentPresenter.Content = _pageUpcoming;
 
             SetBasicColor();
@@ -84,6 +87,12 @@ namespace LibraryManager.View.Pages
             BorrowsUpcommingBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#faffc5"));
             CheckOutsBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#faffc5"));
             ReturnsButton.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#faffc5"));
+        }
+
+
+        public async Task LoadDataAsync()
+        {
+            await _pageFinished.LoadDataAsync();
         }
 
 

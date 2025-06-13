@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LibraryManager.ViewModel;
 
 namespace LibraryManager.View.Pages
 {
@@ -136,6 +137,7 @@ namespace LibraryManager.View.Pages
             {
                 if (foundUser.Password == PasswordBox.Password)
                 {
+                    AppUser.User = foundUser;
                     MainWindow2 mainWindow = new MainWindow2(foundUser);
                     mainWindow.Show();
                     _window.Close();
