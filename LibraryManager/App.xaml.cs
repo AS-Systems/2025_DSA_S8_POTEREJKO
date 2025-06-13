@@ -27,6 +27,7 @@ namespace LibraryManager
                 options.UseMySql("Server=mysql-home-library-sarass880-book-library.d.aivencloud.com;Port=13154;Database=HomeLibrary;Uid=avnadmin;Pwd=password;SslMode=Required;", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.35-mysql"))); // Set your connection string here
             serviceCollection.AddScoped<IUserRepository, UserRepository>();
             serviceCollection.AddScoped<IBookRepository, BookRepository>();
+            serviceCollection.AddScoped<IBorrowRepository, BorrowRepository>();
             serviceCollection.AddSingleton<IImageConverter, ImageConverter>();
 
             ServiceProvider = serviceCollection.BuildServiceProvider();

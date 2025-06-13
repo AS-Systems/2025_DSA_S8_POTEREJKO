@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LibraryManager.View.Pages
 {
@@ -20,9 +14,30 @@ namespace LibraryManager.View.Pages
     /// </summary>
     public partial class BorrowsPageUpcoming : Page
     {
+        private readonly IBorrowRepository _borrowRepository;
+
+        public ObservableCollection<Borrow> Borrows { get; set; } = new ObservableCollection<Borrow>();
+
+
         public BorrowsPageUpcoming()
         {
             InitializeComponent();
+            _borrowRepository = App.ServiceProvider.GetRequiredService<IBorrowRepository>();
+            
         }
+
+
+
+        public async Task LoadDataAsync()
+        {
+            var results = await _borrowRepository.GetUpcomingBorrowsOfUserId(AppUser.User.Id);
+
+            Borrows.Clear();
+            foreach (var borrow in results)
+            {
+                Borrows.Add(borrow);
+            }
+        }
+
     }
 }

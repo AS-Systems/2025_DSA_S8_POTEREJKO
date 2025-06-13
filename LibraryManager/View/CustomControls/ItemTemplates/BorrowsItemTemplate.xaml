@@ -18,11 +18,11 @@
                 <ColumnDefinition Width="1.3*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Title}" FontSize="30" Grid.Column="0" TextTrimming="CharacterEllipsis" Margin="0,0,35,0" Foreground="#3a3960" FontWeight="DemiBold" />
-            <TextBlock Text="{Binding CopyOwner}" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis" Margin="0,0,15,0" Foreground="#3a3960" FontWeight="DemiBold" />
-            <TextBlock Text="{Binding TakeDate}" FontSize="30" Grid.Column="2" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding BookCopy.Book.Title}" FontSize="30" Grid.Column="0" TextTrimming="CharacterEllipsis" Margin="0,0,35,0" Foreground="#3a3960" FontWeight="DemiBold" />
+            <TextBlock Text="{Binding BookCopy.Owner.Username}" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis" Margin="0,0,15,0" Foreground="#3a3960" FontWeight="DemiBold" />
+            <TextBlock Text="{Binding BorrowDate}" FontSize="30" Grid.Column="2" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
             <TextBlock Text="{Binding ReturnDate}" FontSize="30" Grid.Column="3" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding Borrower}" FontSize="30" Grid.Column="4" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding User.Username}" FontSize="30" Grid.Column="4" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
         </Grid>
 
 

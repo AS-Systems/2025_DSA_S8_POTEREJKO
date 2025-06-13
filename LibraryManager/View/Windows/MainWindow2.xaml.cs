@@ -99,8 +99,9 @@ namespace LibraryManager.View.Windows
             new InfoUser(appUser).ShowDialog();
         }
 
-        private void BorrowsBTN_Click(object sender, RoutedEventArgs e)
+        private async void BorrowsBTN_Click(object sender, RoutedEventArgs e)
         {
+            await borrowsPage.LoadDataAsync();
             PageHolder.Content = borrowsPage;
 
             SetBasicColor();

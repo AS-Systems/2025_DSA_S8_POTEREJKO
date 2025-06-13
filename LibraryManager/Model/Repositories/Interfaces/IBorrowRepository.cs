@@ -1,8 +1,5 @@
 ﻿using LibraryManager.Model.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories.Interfaces
@@ -15,5 +12,8 @@ namespace LibraryManager.Model.Repositories.Interfaces
         Task InsertAsync(Borrow borrow);
         Task UpdateAsync(Borrow borrow);
         Task DeleteAsync(Borrow borrow);
+        Task<IEnumerable<Borrow>> GetAllBorrowsOfUserId(int id);
+        Task<IEnumerable<Borrow>> GetFinishedBorrowsOfUserId(int id);
+        Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfUserId(int id);
     }
 }
