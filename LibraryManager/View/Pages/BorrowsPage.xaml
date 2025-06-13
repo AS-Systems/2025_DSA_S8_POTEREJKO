@@ -55,7 +55,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         
-                        <Button x:Name="CheckOutsBtn"  Grid.Column="0" Content="Check-outs" FontSize="22" FontWeight="DemiBold" Background="#bec29b" Foreground="#3a3960" BorderThickness="0" Click="CheckOutsBtn_Click" >
+                        <Button x:Name="CheckOutsBtn"  Grid.Column="0" Content="Issues" FontSize="22" FontWeight="DemiBold" Background="#bec29b" Foreground="#3a3960" BorderThickness="0" Click="CheckOutsBtn_Click" >
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="30,0,0,0"/>

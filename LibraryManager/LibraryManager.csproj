@@ -19,6 +19,7 @@
     <None Remove="Resources\Images\Borrows-Light-Icon.png" />
     <None Remove="Resources\Images\close.png" />
     <None Remove="Resources\Images\delete.png" />
+    <None Remove="Resources\Images\downward.png" />
     <None Remove="Resources\Images\edit.png" />
     <None Remove="Resources\Images\Home-Dark-Icon.png" />
     <None Remove="Resources\Images\Home-Light-Icon.png" />
@@ -30,6 +31,7 @@
     <None Remove="Resources\Images\Storage-Dark-Icon.png" />
     <None Remove="Resources\Images\Storage-Light-Icon.png" />
     <None Remove="Resources\Images\storage.png" />
+    <None Remove="Resources\Images\upward.png" />
     <None Remove="Resources\Images\Users-Dark-Icon.png" />
     <None Remove="Resources\Images\Users-Light-Icon.png" />
     <None Remove="Resources\Images\users.png" />
@@ -61,6 +63,9 @@
     <Content Include="Resources\Images\delete.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Images\downward.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\edit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -83,6 +88,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Storage-Light-Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Images\upward.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Images\Users-Dark-Icon.png">
