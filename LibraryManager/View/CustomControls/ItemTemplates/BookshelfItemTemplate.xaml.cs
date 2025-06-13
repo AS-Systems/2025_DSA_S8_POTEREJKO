@@ -22,7 +22,7 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
             infoButton.IconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "info.png");
             editButton.IconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "edit.png");
 
-            this.Loaded += BookshelfItemTemplate_Loaded;
+            Loaded += BookshelfItemTemplate_Loaded;
 
         }
 

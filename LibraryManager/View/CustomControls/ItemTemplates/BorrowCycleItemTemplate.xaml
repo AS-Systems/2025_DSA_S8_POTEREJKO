@@ -4,9 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LibraryManager.View.CustomControls.ItemTemplates"
+             xmlns:btn ="clr-namespace:LibraryManager.View.CustomControls.Buttons"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             d:DesignHeight="50" d:DesignWidth="800">
+
+    <Grid ClipToBounds="True" Margin="0,10,0,0">
+        <Grid Margin="40,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width=".8*"/>
+                <ColumnDefinition Width="1.1*"/>
+                <ColumnDefinition Width=".2*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding BookCopy.Book.Title}" FontSize="30" Grid.Column="0" TextTrimming="CharacterEllipsis"  Foreground="#3a3960" FontWeight="DemiBold" TextAlignment="Center" />
+            <TextBlock Text="{Binding User.Name}" Padding="25,0,0,0" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis"  Foreground="#3a3960" FontWeight="DemiBold" TextAlignment="Center" />
+            <TextBlock x:Name="dateText" FontSize="30" Grid.Column="2" TextTrimming="CharacterEllipsis"  Foreground="#3a3960" FontWeight="DemiBold" TextAlignment="Center" />
+
+            <!--Control Buttons Grid-->
+            <Grid Grid.Column="3" Margin="10,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <btn:ItemTemplateActionButton x:Name="actionBtn" Width="30" Height="30" Margin="0,0,0,5" HorizontalAlignment="Center"/>
+            </Grid>
+
+        </Grid>
+
+
+        <Rectangle Height="4"
+            VerticalAlignment="Bottom"
+            Stroke="#2e2d4b"
+            StrokeThickness="5"
+            StrokeDashArray="1,3" Margin="40,0" />
     </Grid>
+
 </UserControl>
