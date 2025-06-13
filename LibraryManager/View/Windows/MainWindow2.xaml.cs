@@ -108,8 +108,9 @@ namespace LibraryManager.View.Windows
             BorrowsBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
         }
 
-        private void UsersBTN_Click(object sender, RoutedEventArgs e)
+        private async void UsersBTN_Click(object sender, RoutedEventArgs e)
         {
+            await usersPage.LoadDataAsync();
             PageHolder.Content = usersPage;
 
             SetBasicColor();
