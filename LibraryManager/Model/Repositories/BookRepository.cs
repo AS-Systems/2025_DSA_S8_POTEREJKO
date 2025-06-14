@@ -25,12 +25,12 @@ namespace LibraryManager.Model.Repositories
 
         public async Task<List<Book>> GetAllBooksAsync()
         {
-            return await _context.Books.Include(b => b.BookAuthors).Include(b => b.BookCopies).Include(b => b.BooksGenres).ToListAsync();
+            return await _context.Books.Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).Include(b => b.BookCopies).Include(b => b.BooksGenres).ThenInclude(bg => bg.Genre).ToListAsync();
         }
 
         public async Task<Book?> GetBookByIdAsync(int id)
         {
-            return await _context.Books.Include(b => b.BookAuthors).Include(b => b.BookCopies).Include(b => b.BooksGenres).FirstOrDefaultAsync(b => b.Id == id);
+            return await _context.Books.Include(b => b.BookAuthors).ThenInclude(ba => ba.Author).Include(b => b.BookCopies).Include(b => b.BooksGenres).ThenInclude(bg => bg.Genre).FirstOrDefaultAsync(b => b.Id == id);
         }
 
         public async Task InsertAsync(Book book)
