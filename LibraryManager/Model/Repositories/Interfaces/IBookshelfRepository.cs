@@ -8,6 +8,7 @@ namespace LibraryManager.Model.Repositories.Interfaces
     {
         Task<bool> IsAnyBookshelfAsync();
         Task<IEnumerable<Bookshelf?>> GetAllBookshelvesAsync();
+        Task<IEnumerable<Bookshelf>> GetBookshelfOfUserAsync(int userId);
         Task<Bookshelf> GetBookshelfByIdAsync(int id);
         Task InsertAsync(Bookshelf bookshelf);
         Task UpdateAsync(Bookshelf bookshelf);

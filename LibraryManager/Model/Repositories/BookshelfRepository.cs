@@ -2,6 +2,7 @@
 using LibraryManager.Model.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories
@@ -24,6 +25,12 @@ namespace LibraryManager.Model.Repositories
         {
             return await _context.BookShelves.Include(b => b.Shelves).ToListAsync();
         }
+
+        public async Task<IEnumerable<Bookshelf>> GetBookshelfOfUserAsync(int userId)
+        {
+            return await _context.BookShelves.Where(b => b.OwnerId == userId).Include(b => b.Shelves).ToListAsync();
+        }
+
 
         public async Task<Bookshelf> GetBookshelfByIdAsync(int id)
         {
