@@ -12,6 +12,7 @@
         <conv:BoolAvailabilityConverter x:Key="BoolAvailabilityConverter"/>
         <conv:AuthorObjToAuthorStrConverter x:Key="AuthorToStringConverter"/>
         <conv:IntGenreConverter x:Key="IntGenreConverter"/>
+        <conv:GenresToStringConverter x:Key="GenresToStringConverter"/>
     </UserControl.Resources>
 
     <Grid ClipToBounds="True" Margin="0,10,0,0">
@@ -24,10 +25,10 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="{Binding Title}" FontSize="30" Grid.Column="0" TextTrimming="CharacterEllipsis" Margin="0,0,35,0" Foreground="#3a3960" FontWeight="DemiBold" />
-            <TextBlock Text="{Binding Author, Converter={StaticResource AuthorToStringConverter}}" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis" Margin="0,0,15,0" Foreground="#3a3960" FontWeight="DemiBold" />
-            <TextBlock Text="{Binding Genre, Converter={StaticResource IntGenreConverter}}" FontSize="30" Grid.Column="2" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding BookAuthors, Converter={StaticResource AuthorToStringConverter}}" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis" Margin="0,0,15,0" Foreground="#3a3960" FontWeight="DemiBold" />
+            <TextBlock Text="{Binding BooksGenres, Converter={StaticResource GenresToStringConverter}}" FontSize="30" Grid.Column="2" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
             <TextBlock Text="{Binding PageCount}" FontSize="30" Grid.Column="3" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding Bookcopies, Converter={StaticResource BoolAvailabilityConverter}}" FontSize="30" Grid.Column="4" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding BookCopies, Converter={StaticResource BoolAvailabilityConverter}}" FontSize="30" Grid.Column="4" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
         </Grid>
         
 
