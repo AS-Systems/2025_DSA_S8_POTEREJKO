@@ -29,6 +29,7 @@ namespace LibraryManager
             serviceCollection.AddScoped<IBookRepository, BookRepository>();
             serviceCollection.AddScoped<IBorrowRepository, BorrowRepository>();
             serviceCollection.AddSingleton<IImageConverter, ImageConverter>();
+            serviceCollection.AddSingleton<IBookshelfRepository, BookshelfRepository>();    
 
             ServiceProvider = serviceCollection.BuildServiceProvider();
 

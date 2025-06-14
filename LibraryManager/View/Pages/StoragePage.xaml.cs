@@ -1,19 +1,12 @@
 ﻿using LibraryManager.Model.Entities;
-using System;
+using LibraryManager.Model.Repositories;
+using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LibraryManager.View.Pages
 {
@@ -22,30 +15,26 @@ namespace LibraryManager.View.Pages
     /// </summary>
     public partial class StoragePage : Page
     {
+        private readonly IBookshelfRepository _bookshelfRepository;
         public ObservableCollection<Bookshelf> FilteredBookshelves { get; set; } = new ObservableCollection<Bookshelf>();
         public StoragePage()
         {
-            InitializeComponent();
+            InitializeComponent();            
+            _bookshelfRepository = App.ServiceProvider.GetRequiredService<IBookshelfRepository>();  
+
             DataContext = this;
+        }
 
+        public async Task LoadDataAsync()
+        {
+            var resources = await _bookshelfRepository.GetBookshelfOfUserAsync(AppUser.User.Id); // => for testing only
+            //var resources = await _bookshelfRepository.GetBookshelfOfUserAsync(AppUser.User.Id);
 
-            List<Shelf> shelfList = new List<Shelf>();
-
-            var shelf = new Shelf()
+            FilteredBookshelves.Clear();
+            foreach (var bookshelf in resources)
             {
-                Id = 1,
-                Name = "Test",
-                AvailableSpace = 3,
-                Capacity = 7
-            };
-            shelfList.Add(shelf);
-
-
-            FilteredBookshelves.Add(new Bookshelf(){
-                Name = "Bookshelf1",
-                HasSpace = true,
-                Shelves = shelfList
-            });
+                FilteredBookshelves.Add(bookshelf);
+            }
 
         }
     }
