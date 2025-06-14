@@ -6,23 +6,25 @@ using System.Windows.Data;
 
 namespace LibraryManager.ViewModel.Converters
 {
-    class AuthorObjToAuthorStrConverter : IValueConverter
+    public class GenresToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value != null)
+            string genreString = string.Empty;
+
+            if (value is null)
             { 
-                var authors = (ICollection<BookAuthor>)value;
-                string authorNameSurname = string.Empty;
-
-                foreach (var bookAuthor in authors) 
-                {
-                   authorNameSurname = bookAuthor.Author?.Name + " " + bookAuthor.Author?.Surname + " ";
-                }
-
-                return authorNameSurname;
+                return genreString;
             }
-            return string.Empty;
+
+            var genres = (ICollection<BooksGenre>)value;
+
+            foreach (var genre in genres)
+            {
+                genreString += (genre.Genre?.Name + ", ");
+            }
+
+            return genreString;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
