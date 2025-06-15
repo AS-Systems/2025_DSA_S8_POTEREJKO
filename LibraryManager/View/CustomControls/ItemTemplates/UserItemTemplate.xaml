@@ -32,8 +32,8 @@
 
                 </Grid.ColumnDefinitions>
                 <btn:ItemTemplateActionButton x:Name="infoButton" Grid.Column="0" Width="30" Height="30" Margin="0,0,0,5" ItemClicked="infoButton_ItemClicked"/>
-                <btn:ItemTemplateActionButton x:Name="editButton" Grid.Column="1" Width="30" Height="30" Margin="0,0,0,5"/>
-                <btn:ItemTemplateActionButton x:Name="deleteButton" Grid.Column="2" Width="30" Height="30" Margin="0,0,0,5" ButtonBackground="#ff5757"/>
+                <btn:ItemTemplateActionButton x:Name="editButton" Grid.Column="1" Width="30" Height="30" Margin="0,0,0,5" ItemClicked="editButton_ItemClicked"/>
+                <btn:ItemTemplateActionButton x:Name="deleteButton" Grid.Column="2" Width="30" Height="30" Margin="0,0,0,5" ButtonBackground="#ff5757" ItemClicked="deleteButton_ItemClicked"/>
             </Grid>
 
         </Grid>

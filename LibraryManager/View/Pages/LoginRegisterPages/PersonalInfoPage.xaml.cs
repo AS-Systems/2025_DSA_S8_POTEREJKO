@@ -2,6 +2,7 @@
 using LibraryManager.Model.Enums;
 using LibraryManager.Model.Repositories.Interfaces;
 using LibraryManager.View.Windows;
+using LibraryManager.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -139,6 +140,7 @@ namespace LibraryManager.View.Pages
                 user.Role = (int)Role.User;
                 await _userRepository.InsertAsync(user);
 
+                AppUser.User = user;
                 new MainWindow2(user).Show();
                 _window.Close();
             }
