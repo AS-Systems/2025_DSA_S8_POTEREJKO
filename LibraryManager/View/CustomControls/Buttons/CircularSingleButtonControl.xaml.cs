@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LibraryManager.View.CustomControls.Buttons
 {
@@ -26,7 +16,7 @@ namespace LibraryManager.View.CustomControls.Buttons
 
         public static readonly DependencyProperty SubButtonTextProperty = DependencyProperty.Register("SubButtonText", typeof(string), typeof(CircularSingleButtonControl), new PropertyMetadata("Text"));
         public static readonly DependencyProperty ButtonWidthProperty = DependencyProperty.Register("ButtonWidth", typeof(int), typeof(CircularSingleButtonControl), new PropertyMetadata(160));
-        public static readonly DependencyProperty ButtonIsVisibleProperty = DependencyProperty.Register("IsVisible", typeof(Visibility), typeof(CircularSingleButtonControl), new PropertyMetadata(Visibility.Hidden));
+        public static readonly DependencyProperty ButtonIsVisibleProperty = DependencyProperty.Register("ButtonIsVisible", typeof(Visibility), typeof(CircularSingleButtonControl), new PropertyMetadata(Visibility.Hidden));
 
 
         public Visibility ButtonIsVisible
