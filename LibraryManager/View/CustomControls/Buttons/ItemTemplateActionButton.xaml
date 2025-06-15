@@ -8,7 +8,7 @@
              Name="ActionButton"
              >
     <Grid>
-        <Button  BorderBrush="#5e686d" BorderThickness="2" Foreground="#3a3960" Background="{Binding ButtonBackground, ElementName=ActionButton}" >
+        <Button  BorderBrush="#5e686d" BorderThickness="2" Foreground="#3a3960" Background="{Binding ButtonBackground, ElementName=ActionButton}" Click="Button_Click" >
         <Button.Resources>
             <Style TargetType="Border">
                 <Setter Value="7" Property="CornerRadius"/>

@@ -28,11 +28,25 @@ namespace LibraryManager.View.CustomControls.Buttons
 
         public static readonly DependencyProperty IconPathProperty = DependencyProperty.Register("IconPath", typeof(string), typeof(ItemTemplateActionButton), new PropertyMetadata(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "image-icon.png")));
 
+
+        public event RoutedEventHandler ItemClicked
+        {
+            add { AddHandler(ItemTemplateButtonClickedEvent, value); }
+            remove { RemoveHandler(ItemTemplateButtonClickedEvent, value); }
+        }
+        public static readonly RoutedEvent ItemTemplateButtonClickedEvent = EventManager.RegisterRoutedEvent(nameof(ItemClicked), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ItemTemplateActionButton));
+
+
         public ItemTemplateActionButton()
         {
             InitializeComponent();
 
             DataContext = this;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(ItemTemplateButtonClickedEvent));
         }
     }
 }
