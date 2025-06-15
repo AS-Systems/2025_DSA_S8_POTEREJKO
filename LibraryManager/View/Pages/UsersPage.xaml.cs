@@ -1,6 +1,7 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Enums;
 using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.View.Windows.Add;
 using LibraryManager.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.ObjectModel;
@@ -55,8 +56,8 @@ namespace LibraryManager.View.Pages
 
         private void cirButton_ButtonSubClick(object sender, RoutedEventArgs e)
         {
-            //var window = new AddUser();
-            //window.ShowDialog();
+            var window = new AddUser();
+            window.ShowDialog();
         }
     }
 }

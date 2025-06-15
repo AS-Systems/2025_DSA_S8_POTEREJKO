@@ -57,7 +57,7 @@
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
-                        <dr:ImageDisplayControl Grid.Row="0" Width="110" Height="130" CornerRadius="25"/>
+                        <dr:ImageDisplayControl x:Name="profileDispay" Grid.Row="0" Width="110" Height="130" CornerRadius="25"/>
 
                         <!--Name grid-->
                         <Grid Grid.Row="1">

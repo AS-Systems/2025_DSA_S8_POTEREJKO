@@ -34,7 +34,7 @@ public class BookViewModel
             throw new InvalidDataException("File too large.");
 
         using var image = Image.FromFile(filePath);
-        CurrentBook.Cover = _imageConverter.ImageToBlob(image);
+       // CurrentBook.Cover = _imageConverter.ImageToBlob(image);
     }
 
     // Save to database
