@@ -42,7 +42,7 @@ namespace LibraryManager.View.CustomControls.Buttons
         {
             InitializeComponent();
             buttonCir.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "+-Icon.png");
-            buttonCir.Click += ButtonSub_Click;
+            
             SubButton.Visibility = Visibility.Hidden;
         }
 

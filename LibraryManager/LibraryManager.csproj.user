@@ -145,7 +145,7 @@
     <Compile Update="View\Windows\Add\AddBorrow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\Windows\Add\AddBorrower.xaml.cs">
+    <Compile Update="View\Windows\Add\AddUser.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Windows\Edit\EditAuthor.xaml.cs">
@@ -295,9 +295,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Add\AddBorrow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\Windows\Add\AddBorrower.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Edit\EditAuthor.xaml">

@@ -1,12 +1,8 @@
-using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using Microsoft.Extensions.DependencyInjection;
+using System.Windows.Media.Imaging;
 
 public interface IImageConverter
 {
-    byte[] ImageToBlob(Image image);
-    Image BlobToImage(byte[] blob);
+    byte[] ImageToBlob(BitmapImage bitmapImage);
+    BitmapImage BlobToImage(byte[] blob);
 }
 

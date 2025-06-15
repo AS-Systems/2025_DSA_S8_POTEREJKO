@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using LibraryManager.Model.Entities;
+﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Enums;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Windows;
+using System.Windows.Input;
 
 namespace LibraryManager.View.Windows.Info
 {
@@ -21,10 +12,19 @@ namespace LibraryManager.View.Windows.Info
     /// </summary>
     public partial class InfoUser : Window
     {
+        private readonly IImageConverter _imageConverter;
+
         public InfoUser(User user)
         {
             InitializeComponent();
+            _imageConverter = App.ServiceProvider.GetRequiredService<IImageConverter>();
 
+
+            if (user.ProfilePicture is not null)
+            {
+                profileDispay.DisplayImageSource = _imageConverter.BlobToImage(user.ProfilePicture);
+            }
+           
             NameLabel.Content = user.Name;
             SurnameLabel.Content = user.Surname;
             EmailLabel.Content = user.Email;

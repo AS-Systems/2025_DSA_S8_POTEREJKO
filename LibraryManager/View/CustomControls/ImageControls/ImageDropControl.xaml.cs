@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LibraryManager.View.CustomControls.ImageControls
 {
@@ -22,7 +14,7 @@ namespace LibraryManager.View.CustomControls.ImageControls
     public partial class ImageDropControl : UserControl
     {
         public static readonly DependencyProperty CornerRadiusProperty = DependencyProperty.Register("CornerRadius", typeof(int), typeof(ImageDropControl), new PropertyMetadata(25));
-
+        private static readonly IImageConverter _imageConverter = App.ServiceProvider.GetRequiredService<IImageConverter>();
 
         public int CornerRadius
         {
@@ -30,9 +22,7 @@ namespace LibraryManager.View.CustomControls.ImageControls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        public static readonly DependencyProperty ImageBlobProperty =
-        DependencyProperty.Register(nameof(ImageBlob), typeof(byte[]), typeof(ImageDropControl),
-            new PropertyMetadata(null, OnImageBlobChanged));
+        public static readonly DependencyProperty ImageBlobProperty =  DependencyProperty.Register(nameof(ImageBlob), typeof(byte[]), typeof(ImageDropControl),  new PropertyMetadata(null));
 
         public byte[]? ImageBlob
         {
@@ -40,19 +30,12 @@ namespace LibraryManager.View.CustomControls.ImageControls
             set => SetValue(ImageBlobProperty, value);
         }
 
-        private static void OnImageBlobChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var control = d as ImageDropControl;
-            if (control != null && e.NewValue is byte[] newImageBlob)
-            {
-                // Handle the change in ImageBlob property, e.g., update the UI or process the image blob.
-            }
-        }
 
         public ImageDropControl()
         {
             InitializeComponent();
             ActionImage.Source = new BitmapImage(new Uri(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "image-icon.png")));
+
         }
 
         private void Rectangle_Drop(object sender, DragEventArgs e)
@@ -65,6 +48,10 @@ namespace LibraryManager.View.CustomControls.ImageControls
                     try
                     {
                         var bitmap = new BitmapImage(new Uri(files[0]));
+
+                        ImageBlob = _imageConverter.ImageToBlob(bitmap);
+
+
                         DroppedImage.Source = bitmap;
                         DroppedImage.Visibility = Visibility.Visible;
                     }

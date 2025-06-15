@@ -12,7 +12,7 @@
 
     <Grid Background="Transparent">
 
-        <Image x:Name="DroppedImage" Stretch="UniformToFill" Visibility="Collapsed" Source="{Binding DisplayImageSource, ElementName=ImageDisplay}">
+        <Image x:Name="DroppedImage" Stretch="UniformToFill" Visibility="Visible" Source="{Binding DisplayImageSource, ElementName=ImageDisplay,Mode=TwoWay}">
             <Image.Clip>
                 <RectangleGeometry>
                     <RectangleGeometry.Rect>
