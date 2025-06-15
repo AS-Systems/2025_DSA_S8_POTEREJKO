@@ -44,7 +44,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <it:BookshelfItemTemplate/>
+                            <it:BookshelfItemTemplate Deleted="BookshelfItemTemplate_Deleted"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

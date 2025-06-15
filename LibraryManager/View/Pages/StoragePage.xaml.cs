@@ -27,8 +27,8 @@ namespace LibraryManager.View.Pages
 
         public async Task LoadDataAsync()
         {
-            var resources = await _bookshelfRepository.GetBookshelfOfUserAsync(AppUser.User.Id); // => for testing only
-            //var resources = await _bookshelfRepository.GetBookshelfOfUserAsync(AppUser.User.Id);
+            //var resources = await _bookshelfRepository.GetBookshelfOfUserAsync(AppUser.User.Id); // => for testing only
+            var resources = await _bookshelfRepository.GetBookshelfOfUserAsync(AppUser.User.Id);
 
             FilteredBookshelves.Clear();
             foreach (var bookshelf in resources)
@@ -36,6 +36,11 @@ namespace LibraryManager.View.Pages
                 FilteredBookshelves.Add(bookshelf);
             }
 
+        }
+
+        private async void BookshelfItemTemplate_Deleted(object sender, System.Windows.RoutedEventArgs e)
+        {
+            await LoadDataAsync();
         }
     }
 }

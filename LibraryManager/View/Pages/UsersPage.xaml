@@ -46,7 +46,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <it:UserItemTemplate/>
+                            <it:UserItemTemplate Deleted="UserItemTemplate_Deleted"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

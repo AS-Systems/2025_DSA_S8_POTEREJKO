@@ -34,5 +34,10 @@ namespace LibraryManager.View.Pages
                 FilteredUsers.Add(user);
             }
         }
+
+        private async void UserItemTemplate_Deleted(object sender, System.Windows.RoutedEventArgs e)
+        {
+            await LoadDataAsync();
+        }
     }
 }
