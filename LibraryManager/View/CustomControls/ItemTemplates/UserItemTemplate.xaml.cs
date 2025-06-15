@@ -1,9 +1,10 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Enums;
+using LibraryManager.ViewModel;
 using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.IO;
 
 namespace LibraryManager.View.CustomControls.ItemTemplates
 {
@@ -19,25 +20,16 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
             infoButton.IconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "info.png");
             editButton.IconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "edit.png");
 
-            Loaded += UserItemTemplate_Loaded;
-        }
 
-        private void UserItemTemplate_Loaded(object sender, RoutedEventArgs e)
-        {
-            var userData = DataContext as User;
-
-            if (userData == null)
-            {
-                return;
-            }
-
-
-            if((Role)userData.Role == Role.Admin)
+            if ((Role)AppUser.User.Role == Role.User)
             {
                 deleteButton.Visibility = Visibility.Collapsed;
                 editButton.Visibility = Visibility.Collapsed;
             }
 
+            
         }
+
+
     }
 }
