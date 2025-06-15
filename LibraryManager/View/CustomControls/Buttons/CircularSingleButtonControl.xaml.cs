@@ -26,6 +26,14 @@ namespace LibraryManager.View.CustomControls.Buttons
 
         public static readonly DependencyProperty SubButtonTextProperty = DependencyProperty.Register("SubButtonText", typeof(string), typeof(CircularSingleButtonControl), new PropertyMetadata("Text"));
         public static readonly DependencyProperty ButtonWidthProperty = DependencyProperty.Register("ButtonWidth", typeof(int), typeof(CircularSingleButtonControl), new PropertyMetadata(160));
+        public static readonly DependencyProperty ButtonIsVisibleProperty = DependencyProperty.Register("IsVisible", typeof(Visibility), typeof(CircularSingleButtonControl), new PropertyMetadata(Visibility.Hidden));
+
+
+        public Visibility ButtonIsVisible
+        {
+            get { return (Visibility)GetValue(ButtonIsVisibleProperty); }
+            set { SetValue(ButtonIsVisibleProperty, value); }
+        }
 
         public string SubButtonText
         {

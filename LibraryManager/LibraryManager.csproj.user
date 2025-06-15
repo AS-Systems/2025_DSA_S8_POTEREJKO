@@ -16,6 +16,9 @@
     <Compile Update="View\CustomControls\Buttons\CircularSingleButtonControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\Buttons\CircularTripleButtonControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\Buttons\ComparisonOperationButtonControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,8 +1,11 @@
 ﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Enums;
 using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace LibraryManager.View.Pages
@@ -20,6 +23,16 @@ namespace LibraryManager.View.Pages
             InitializeComponent();
             DataContext = this;
             _userRepository = App.ServiceProvider.GetRequiredService<IUserRepository>();
+
+            if ((Role)AppUser.User.Role == Role.Admin)
+            {
+                cirButton.ButtonIsVisible = Visibility.Visible;
+            }
+            else
+            {
+                cirButton.ButtonIsVisible = Visibility.Hidden;
+            }
+
         }
 
 
@@ -38,6 +51,12 @@ namespace LibraryManager.View.Pages
         private async void UserItemTemplate_Deleted(object sender, System.Windows.RoutedEventArgs e)
         {
             await LoadDataAsync();
+        }
+
+        private void cirButton_ButtonSubClick(object sender, RoutedEventArgs e)
+        {
+            //var window = new AddUser();
+            //window.ShowDialog();
         }
     }
 }
