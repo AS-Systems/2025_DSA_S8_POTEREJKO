@@ -1,5 +1,6 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Enums;
+using LibraryManager.View.Windows.Info;
 using LibraryManager.ViewModel;
 using System;
 using System.IO;
@@ -20,7 +21,6 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
             infoButton.IconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "info.png");
             editButton.IconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "edit.png");
 
-
             if ((Role)AppUser.User.Role == Role.User)
             {
                 deleteButton.Visibility = Visibility.Collapsed;
@@ -30,6 +30,13 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
             
         }
 
-
+        private void infoButton_ItemClicked(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is User user)
+            {
+                var window = new InfoUser(user);
+                window.ShowDialog();
+            }
+        }
     }
 }
