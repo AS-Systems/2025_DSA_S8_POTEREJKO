@@ -7,42 +7,23 @@ using System.Windows.Media.Animation;
 namespace LibraryManager.View.CustomControls.Buttons
 {
     /// <summary>
-    /// Logika interakcji dla klasy CircularDoubleButtonControl.xaml
+    /// Logika interakcji dla klasy CircularTripleButtonControl.xaml
     /// </summary>
-    public partial class CircularDoubleButtonControl : UserControl
+    public partial class CircularTripleButtonControl : UserControl
     {
         private bool buttonsVisible = false;
-
-        public static readonly DependencyProperty ButtonTopContentProperty = DependencyProperty.Register("ButtonTopContent", typeof(string), typeof(CircularDoubleButtonControl), new PropertyMetadata("Text"));
-        public static readonly DependencyProperty ButtonBottomContentProperty = DependencyProperty.Register("ButtonBottomContent", typeof(string), typeof(CircularDoubleButtonControl), new PropertyMetadata("Text"));
-
-        public string ButtonTopContent
-        {
-            get { return (string)GetValue(ButtonTopContentProperty); }
-            set { SetValue(ButtonTopContentProperty, value); }
-        }
-
-        public string ButtonBottomContent
-        {
-            get { return (string)GetValue(ButtonBottomContentProperty); }
-            set { SetValue(ButtonBottomContentProperty, value); }
-        }
-
-
-
-
-
-
-        public CircularDoubleButtonControl()
+        public CircularTripleButtonControl()
         {
             InitializeComponent();
 
             buttonCir.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "+-Icon.png");
             ButtonTop.Visibility = Visibility.Hidden;
             ButtonBottom.Visibility = Visibility.Hidden;
+            ButtonMiddle.Visibility = Visibility.Hidden;
 
             ButtonTop.Click += ButtonTop_Click;
             ButtonBottom.Click += ButtonBottom_Click;
+            ButtonMiddle.Click += ButtonMiddle_Click;
         }
 
         private void buttonCir_Click(object sender, RoutedEventArgs e)
@@ -51,11 +32,13 @@ namespace LibraryManager.View.CustomControls.Buttons
             {
                 AnimateSlideIn(ButtonTop, TopTransform);
                 AnimateSlideIn(ButtonBottom, BottomTransform);
+                AnimateSlideIn(ButtonMiddle, MiddleTransform);
             }
             else
             {
                 AnimateSlideOut(ButtonTop, TopTransform);
                 AnimateSlideOut(ButtonBottom, BottomTransform);
+                AnimateSlideOut(ButtonMiddle, MiddleTransform);
             }
             buttonsVisible = !buttonsVisible;
         }
@@ -63,7 +46,7 @@ namespace LibraryManager.View.CustomControls.Buttons
 
         public event RoutedEventHandler ButtonTopClick;
         public event RoutedEventHandler ButtonBottomClick;
-        public event RoutedEventHandler ButtonMiddleClick; 
+        public event RoutedEventHandler ButtonMiddleClick;
 
         private void ButtonTop_Click(object sender, RoutedEventArgs e)
         {
@@ -87,7 +70,7 @@ namespace LibraryManager.View.CustomControls.Buttons
 
             var anim = new DoubleAnimation
             {
-                From = 15, 
+                From = 15,
                 To = 0,
                 Duration = TimeSpan.FromMilliseconds(100),
                 EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
@@ -109,8 +92,6 @@ namespace LibraryManager.View.CustomControls.Buttons
 
             transform.BeginAnimation(TranslateTransform.XProperty, anim);
         }
-
-
 
     }
 }

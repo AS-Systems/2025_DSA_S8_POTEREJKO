@@ -5,34 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LibraryManager.View.CustomControls.Buttons"
              xmlns:cir="clr-namespace:LibraryManager.View.CustomControls"
+             Name="DoubleBtn"
              mc:Ignorable="d" >
     
-    <Grid Height="90">
+    <Grid Height="70">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="160"/>
-            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="70"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="55,2,65,2">
-            <Button x:Name="ButtonMiddle"
-            BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"
-            Content="Add Book" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"
-            FontSize="15" Padding="0,0,15,0" FontWeight="Bold" Foreground="#3a3960">
-                <Button.RenderTransform>
-                    <TranslateTransform x:Name="MiddleTransform" />
-                </Button.RenderTransform>
-            </Button>
-        </Grid>
 
         <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="20,1,37,2">
             <Button x:Name="ButtonTop"
             BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"
-            Content="Add Author" HorizontalContentAlignment="Center"
+            Content="{Binding ButtonTopContent, ElementName=DoubleBtn}" HorizontalContentAlignment="Center"
             FontSize="15" Padding="0,0,25,0" FontWeight="Bold" Foreground="#3a3960">
                 <Button.RenderTransform>
                     <TranslateTransform x:Name="TopTransform" />
@@ -40,10 +30,10 @@
             </Button>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="20,2,38,1">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="20,2,38,1">
             <Button x:Name="ButtonBottom"
     BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"
-    Content="Add Book Copy" HorizontalContentAlignment="Center"
+    Content="{Binding ButtonBottomContent, ElementName=DoubleBtn}" HorizontalContentAlignment="Center"
     FontSize="15" Padding="0,0,25,0" FontWeight="Bold" Foreground="#3a3960">
                 <Button.RenderTransform>
                     <TranslateTransform x:Name="BottomTransform" />
@@ -51,7 +41,7 @@
             </Button>
         </Grid>
 
-        <cir:CircularButtonControl x:Name="buttonCir" Grid.Column="1" Diameter="90" Grid.RowSpan="3" Width="90" Height="90" ButtonBorderThickness="5" ButtonBorderColor="#5e686d" ButtonBackground="#faffc5" ImageHeight="30" ImageWidth="30" Click="buttonCir_Click" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e"/>
+        <cir:CircularButtonControl x:Name="buttonCir" Grid.Column="1" Diameter="70" Grid.RowSpan="3" Width="70" Height="70" ButtonBorderThickness="5" ButtonBorderColor="#5e686d" ButtonBackground="#faffc5" ImageHeight="30" ImageWidth="30" Click="buttonCir_Click" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e"/>
 
     </Grid>
 </UserControl>
