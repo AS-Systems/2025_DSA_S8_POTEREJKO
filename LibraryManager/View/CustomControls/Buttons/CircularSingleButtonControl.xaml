@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              Name="CirSingSub"
              >
-    <Grid Height="70" Visibility="{Binding ButtonIsVisible, ElementName=CirSingSub}">
+    <Grid Height="70" Visibility="{Binding ButtonIsVisible, ElementName=CirSingSub, Mode=TwoWay}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding ButtonWidth, ElementName=CirSingSub}"/>
             <ColumnDefinition Width="70"/>
