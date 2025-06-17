@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:LibraryManager.View.Windows.Info"
         xmlns:uc="clr-namespace:LibraryManager.View.CustomControls"
         xmlns:dr="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
+        xmlns:it="clr-namespace:LibraryManager.View.CustomControls.ItemTemplates"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
         Title="InfoBookshelf" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
@@ -49,12 +50,11 @@
                     <Grid Grid.Column="1">
                         <!--Grid layout-->
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.3*"/>
+                            <RowDefinition Height="0.3*"/>
+                            <RowDefinition Height="0.3*"/>
+                            <RowDefinition Height="0.3*"/>
+                            <RowDefinition Height="1.2*"/>
                         </Grid.RowDefinitions>
 
 
@@ -70,7 +70,7 @@
                                     <ColumnDefinition Width="0.8*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Padding="0,8,0,0" Content="Name:" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
+                                <Label Padding="4,8,0,0" Content="Name:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
                                 <TextBlock Padding="0,8,0,0"  Grid.Column="1" x:Name="lbName" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" TextWrapping="WrapWithOverflow" />
                             </Grid>
 
@@ -78,18 +78,9 @@
 
                         </Grid>
 
-                        <!--TextBox grid-->
+                   
+
                         <Grid Grid.Row="1">
-
-                            <StackPanel  Orientation="Horizontal">
-                                <Label Content="Owner:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
-                                <Label x:Name="lbOwner" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
-                            </StackPanel>
-
-
-                        </Grid>
-
-                        <Grid Grid.Row="2">
                             <StackPanel  Orientation="Horizontal">
                                 <Label Content="Country:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
                                 <Label x:Name="lbCountry" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
@@ -97,27 +88,70 @@
                         </Grid>
 
 
-                        <Grid Grid.Row="3">
+                        <Grid Grid.Row="2">
                             <StackPanel  Orientation="Horizontal">
                                 <Label Content="City:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
                                 <Label x:Name="lbCity" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
                             </StackPanel>
                         </Grid>
 
-                        <Grid Grid.Row="4">
+                        <Grid Grid.Row="3">
                             <StackPanel  Orientation="Horizontal">
                                 <Label Content="Street:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
                                 <Label x:Name="lbStreet" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
                             </StackPanel>
                         </Grid>
 
-                        <Grid Grid.Row="5">
-                            <ListView Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                 BorderThickness="3" BorderBrush="#5e686d"
+                        <Grid Grid.Row="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="1.2*"/>
+                                <RowDefinition Height="7*"/>
+                            </Grid.RowDefinitions>
 
-                        />
+                            <Label Grid.Column="0" Content="Shelves:" VerticalAlignment="Top" HorizontalAlignment="Left" HorizontalContentAlignment="Left" FontSize="15" FontWeight="DemiBold" Foreground="#3a3960"/>
+
+                            <Border Grid.Row="1" CornerRadius="10,10,0,0" Background="#bfbb81" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".4*"/>
+                                        <ColumnDefinition Width="1.2*"/>
+                                        <ColumnDefinition Width=".8*"/>
+                                        <ColumnDefinition Width=".8*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Content="Id" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"  Foreground="#3a3960" FontWeight="DemiBold"/>
+                                    <Label Grid.Column="1" Content="Name" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"  Foreground="#3a3960" FontWeight="DemiBold"/>
+                                    <Label Grid.Column="2" Content="Available" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"  Foreground="#3a3960" FontWeight="DemiBold"/>
+                                    <Label Grid.Column="3" Content="Capacity" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"  Foreground="#3a3960" FontWeight="DemiBold"/>
+
+                                </Grid>
+                            </Border>
+                            
+                            <ListBox Grid.Row="2" Margin="0,0,0,5" HorizontalContentAlignment="Left" 
+                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                                 Background="Transparent" Foreground="#3a3960"
+                                 BorderThickness="3,0,3,3" BorderBrush="#bfbb81" ItemsSource="{Binding Shelves, Mode=TwoWay}" 
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False"
+                                     >
+                                <ListBox.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="0,0,10,10"/>
+                                    </Style>
+                                </ListBox.Resources>
+                                
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <it:ShelfItemTemplate/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                               
+                            </ListBox>
                         </Grid>
 
 

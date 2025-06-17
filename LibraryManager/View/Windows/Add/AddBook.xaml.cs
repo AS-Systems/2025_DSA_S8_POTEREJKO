@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LibraryManager.View.Windows
 {
@@ -22,6 +15,14 @@ namespace LibraryManager.View.Windows
         public AddBook()
         {
             InitializeComponent();
+
+            MultiSelectComboBox.ItemsSource = new List<string>
+            {
+                "Adam Mickiewicz",
+                "Henryk Sienkiewicz",
+                "Wisława Szymborska",
+                "Czesław Miłosz"
+            };
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -38,5 +39,18 @@ namespace LibraryManager.View.Windows
         {
 
         }
+
+        private void MultiSelectComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            var selectedItems = MultiSelectComboBox.Items.Cast<string>()
+                .Where(item =>
+                {
+                    var container = MultiSelectComboBox.ItemContainerGenerator.ContainerFromItem(item) as ComboBoxItem;
+                    return container != null && container.IsSelected;
+                });
+
+            MultiSelectComboBox.Text = string.Join(", ", selectedItems);
+        }
+
     }
 }

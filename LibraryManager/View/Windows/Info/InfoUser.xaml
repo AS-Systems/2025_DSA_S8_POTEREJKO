@@ -7,6 +7,7 @@
         xmlns:uc="clr-namespace:LibraryManager.View.CustomControls"
         xmlns:dr="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
          Title="InfoUser" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">

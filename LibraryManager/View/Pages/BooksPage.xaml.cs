@@ -1,7 +1,6 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Enums;
 using LibraryManager.Model.Repositories.Interfaces;
-using LibraryManager.View.CustomControls.Buttons;
 using LibraryManager.View.CustomControls.ColumnFilters;
 using LibraryManager.View.Windows;
 using LibraryManager.View.Windows.Edit;
@@ -13,18 +12,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics.X86;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LibraryManager.View.Pages
 {
@@ -47,8 +37,6 @@ namespace LibraryManager.View.Pages
                 ActivateItemActionButtons();
             }
         }
-
-
 
         public BooksPage()
         {
@@ -208,22 +196,22 @@ namespace LibraryManager.View.Pages
             }
         }
 
-        private void ItemDelete_ButtonClick(object sender, RoutedEventArgs e)
+        private async void ItemDelete_ButtonClick(object sender, RoutedEventArgs e)
         {
             if (selectedBook != null)
             {
+
                 var result = MessageBox.Show($"Are you sure you want to delete: {selectedBook.Title}", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.Yes)
                 {
+                    await _bookRepository.DeleteAsync(selectedBook);
+
                     // Perform the delete logic here
                     MessageBox.Show("Item deleted successfully!", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                    await LoadDataAsync();
                 }
-
             }
-            
-
-
         }
 
         private void CircularDoubleButtonControl_ButtonBottomClick(object sender, RoutedEventArgs e)

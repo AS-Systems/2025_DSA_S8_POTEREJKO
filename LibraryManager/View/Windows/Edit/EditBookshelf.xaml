@@ -5,16 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManager.View.Windows"
         xmlns:dr="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
+        xmlns:it="clr-namespace:LibraryManager.View.CustomControls.ItemTemplates"
+        xmlns:btn="clr-namespace:LibraryManager.View.CustomControls.Buttons"
         mc:Ignorable="d"
-        Title="EditBookshelf" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        WindowStartupLocation="CenterOwner"
+        Title="EditBookshelf" Height="720" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
                 <!--Window layout-->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.4*"/>
+                    <RowDefinition Height="1.1*"/>
                     <RowDefinition Height="9.4*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height=".6*"/>
                 </Grid.RowDefinitions>
 
                 <!--Top bar with window title-->
@@ -42,16 +45,15 @@
                     </Grid.ColumnDefinitions>
 
                     <!--Content grid-->
-                    <Grid Grid.Column="1">
+                    <Grid Grid.Column="1" Margin="0,10,0,0">
                         <!--Grid layout-->
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.7*"/>
+                            <RowDefinition Height="0.4*"/>
+                            <RowDefinition Height="0.4*"/>
+                            <RowDefinition Height="0.4*"/>
+                            <RowDefinition Height="0.4*"/>
+                            <RowDefinition Height="1.5*"/>
+                            <RowDefinition Height="0.4*"/>
                         </Grid.RowDefinitions>
 
 
@@ -64,42 +66,25 @@
 
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                            <TextBox x:Name="nameBox" Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Name"
-                        />
-
-
-
+                                 Text="Name"/>
                         </Grid>
 
 
-                        <!--Comboboxes grid-->
-                        <Grid Grid.Row="1">
-                            <!--Grid layout-->
-                            <!-- To do: Implement custom ComboBoc control-->
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                 BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Owner"
-                        />
-                            <!--To do: Impelment custom TextBox control-->
-
-
-                        </Grid>
+                        
 
                         <!--TextBox grid-->
-                        <Grid Grid.Row="2">
+                        <Grid Grid.Row="1">
                             <!--Grid layout-->
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
 
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                            <TextBox x:Name="countryBox" Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
@@ -110,6 +95,23 @@
 
                         </Grid>
 
+                        <Grid Grid.Row="2">
+                            <!--Grid layout-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+
+                            </Grid.RowDefinitions>
+
+                            <TextBox x:Name="cityBox" Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                                 BorderThickness="3" BorderBrush="#5e686d"
+                                 Text="City"
+                        />
+                            
+                        </Grid>
+
+
                         <Grid Grid.Row="3">
                             <!--Grid layout-->
                             <Grid.RowDefinitions>
@@ -117,72 +119,100 @@
 
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                 BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="City"
-                        />
-                            <!--To do: Impelment custom TextBox control-->
-
-
-                        </Grid>
-
-
-                        <Grid Grid.Row="4">
-                            <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-
-                            </Grid.RowDefinitions>
-
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                            <TextBox x:Name="streetBox" Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
                                  Text="Street"
                         />
-                            <!--To do: Impelment custom TextBox control-->
-
-
+                            
                         </Grid>
 
-                        <Grid Grid.Row="5">
-                            <!--Grid layout-->
+                        <Grid Grid.Row="4">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-
+                                <RowDefinition Height="1.2*"/>
+                                <RowDefinition Height="1.2*"/>
+                                <RowDefinition Height="6*"/>
+                                <RowDefinition Height="1.5*"/>
                             </Grid.RowDefinitions>
-                            <!-- LISTVIEW TO CHANGE-->
-                            <ListView Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                 BorderThickness="3" BorderBrush="#5e686d"
 
-                        />
-                            <!--To do: Impelment custom TextBox control-->
+                            <TextBlock Grid.Column="0" Text="Shelves:" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="2,0,0,0" FontSize="20" FontWeight="DemiBold" Foreground="#3a3960"/>
 
+                            <Border Grid.Row="1" CornerRadius="10,10,0,0" Background="#bfbb81" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".4*"/>
+                                        <ColumnDefinition Width="1.2*"/>
+                                        <ColumnDefinition Width=".8*"/>
+                                        <ColumnDefinition Width=".8*"/>
+                                    </Grid.ColumnDefinitions>
 
+                                    <Label Grid.Column="0" Content="Id" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"  Foreground="#3a3960" FontWeight="DemiBold"/>
+                                    <Label Grid.Column="1" Content="Name" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"  Foreground="#3a3960" FontWeight="DemiBold"/>
+                                    <Label Grid.Column="2" Content="Available" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"  Foreground="#3a3960" FontWeight="DemiBold"/>
+                                    <Label Grid.Column="3" Content="Capacity" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"  Foreground="#3a3960" FontWeight="DemiBold"/>
+
+                                </Grid>
+                            </Border>
+
+                            <ListBox Grid.Row="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                            Background="Transparent" Foreground="#3a3960" BorderThickness="3,0,3,0" BorderBrush="#bfbb81" ItemsSource="{Binding Shelves, Mode=TwoWay}" 
+                            SelectedItem="{Binding SelectedShelf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False">
+                                
+
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <it:ShelfItemTemplate/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+
+                            </ListBox>
+
+                            <Border Grid.Row="3" BorderThickness="3,0,3,3" BorderBrush="#bfbb81" CornerRadius="0,0,10,10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="7*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <btn:ItemTemplateActionButton x:Name="addButton" Grid.Column="0" Width="28" Height="28"  ItemClicked="addButton_ItemClicked"/>
+                                        <btn:ItemTemplateActionButton x:Name="deleteButton" Grid.Column="1" Width="28" Height="28" ButtonBackground="#ff5757" ItemClicked="deleteButton_ItemClicked"/>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                            
                         </Grid>
 
                         <!--Button grid-->
-                        <Grid Grid.Row="6">
+                        <Grid Grid.Row="6" Margin="0,5,0,0">
                             <!--Grid layout-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Button Grid.Column="0" Margin="10" Content="Discard" 
+                            <Button Grid.Column="0" Margin="0,5,5,0" Content="Discard" 
                                 FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
                                 BorderThickness="3" BorderBrush="#5e686d" Background="Transparent"
                                 Click="Button_Click"
                                 />
                             <!--To do: Impelment custom Button control-->
 
-                            <Button Grid.Column="1" Margin="10" Content="Save" 
+                            <Button x:Name="saveBtn" Grid.Column="1" Margin="5,5,0,0" Content="Save" 
                                 FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                                BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"/>
+                                BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b" Click="saveBtn_Click"/>
                         </Grid>
                     </Grid>
                 </Grid>

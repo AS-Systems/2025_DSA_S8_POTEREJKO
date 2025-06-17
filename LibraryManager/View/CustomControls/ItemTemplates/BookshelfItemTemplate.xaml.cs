@@ -1,5 +1,7 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.View.Windows;
+using LibraryManager.View.Windows.Info;
 using LibraryManager.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -65,8 +67,9 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
         private void infoButton_ItemClicked(object sender, RoutedEventArgs e)
         {
             if (DataContext is Bookshelf bookshelf)
-            { 
-                //Info Bookshelf page
+            {
+                var window = new InfoBookshelf(bookshelf);
+                window.ShowDialog();
             }
         }
 
@@ -74,7 +77,11 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
         {
             if (DataContext is Bookshelf bookshelf)
             {
-                //Edit Bookshelf page
+                var window = new EditBookshelf(bookshelf);
+
+                var result = window.ShowDialog();
+
+                RaiseEvent(new RoutedEventArgs(DeletedEvent));             
             }
         }
 

@@ -51,6 +51,7 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
             if (DataContext is User user)
             {
                 var window = new InfoUser(user);
+                window.Owner = Window.GetWindow(this);
                 window.ShowDialog();
             }
         }
@@ -59,8 +60,14 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
         {
             if (DataContext is User user)
             {
-                var window = new EditUser(user);
-                window.ShowDialog();
+                var window = new EditUser(user: user, canShowRole: true);
+                window.Owner = Window.GetWindow(this);
+                var result = window.ShowDialog();
+
+                if (result == true) 
+                {
+                    RaiseEvent(new RoutedEventArgs(DeletedEvent));
+                }
             }
         }
 

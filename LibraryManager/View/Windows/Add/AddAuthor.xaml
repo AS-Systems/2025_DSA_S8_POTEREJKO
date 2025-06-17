@@ -45,18 +45,18 @@
                     <Grid Grid.Column="1">
                         <!--Grid layout-->
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1.4*"/>
+                            <RowDefinition Height="1*"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.75*"/>
                             <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
                         <dr:ImageDropControl
+                            x:Name="profileHolder"
                             Grid.Row="0"
                             Width="110"
-                            Height="110"
-                            CornerRadius="25"
-                            ImageBlob="{Binding CurrentAuthor.Photo, Mode=TwoWay}" />
+                            Height="140"
+                            />
 
 
                         <!--TextBox grid-->
@@ -68,14 +68,14 @@
 
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                            <TextBox x:Name="nameBox" Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                      VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                      Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                      BorderThickness="3" BorderBrush="#5e686d"
                                      Text="Name"
                             /> <!--To do: Impelment custom TextBox control-->
 
-                            <TextBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                            <TextBox x:Name="surnameBox" Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                     VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                     Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                     BorderThickness="3" BorderBrush="#5e686d"
@@ -89,7 +89,7 @@
 
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                            <TextBox x:Name="infoBox" Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                      VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                      Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                      BorderThickness="3" BorderBrush="#5e686d"
@@ -111,9 +111,9 @@
                                     Click="Button_Click"
                                     /> <!--To do: Impelment custom Button control-->
 
-                            <Button Grid.Column="1" Margin="10" Content="Save" 
+                            <Button x:Name="saveBtn" Grid.Column="1" Margin="10" Content="Save" 
                                     FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                                    BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"/>
+                                    BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b" Click="saveBtn_Click"/>
                         </Grid>
                     </Grid>
                 </Grid>

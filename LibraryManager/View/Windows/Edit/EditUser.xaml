@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManager.View.Windows.Edit"
+        xmlns:img="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
         mc:Ignorable="d"
-        Title="EditBorrower" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        WindowStartupLocation="CenterOwner"
+        Title="EditBorrower" Height="700" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
@@ -50,11 +52,12 @@
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
 
-                        <Rectangle Grid.Row="0" Stroke="#3a3960" StrokeDashArray="4,2" StrokeThickness="3" Width="110" Height="110"  RadiusX="25" RadiusY="25"/>
+                        <img:ImageDropControl x:Name="profileHolder" Margin="120,10,120,10"/>
                         <!--To do: Implement drop image control-->
 
                         <!--TextBox grid-->
@@ -69,7 +72,7 @@
                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                 BorderThickness="3" BorderBrush="#5e686d"
-                                Text="Name" Name="txtName"
+                                Text="Name" Name="nameBox"
                        />
                             <!--To do: Impelment custom TextBox control-->
 
@@ -89,7 +92,7 @@
                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                 BorderThickness="3" BorderBrush="#5e686d"
-                                Text="Surname" Name="txtSurname"
+                                Text="Surname" Name="surnameBox"
                        />
                             <!--To do: Impelment custom TextBox control-->
 
@@ -110,7 +113,7 @@
                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                 BorderThickness="3" BorderBrush="#5e686d"
-                                Text="Phone" Name="txtPhone"
+                                Text="Phone" Name="phoneBox"
                        />
 
 
@@ -129,17 +132,23 @@
                                    VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                    Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                    BorderThickness="3" BorderBrush="#5e686d"
-                                   Text="E-mail" Name="txtMail"
+                                   Text="E-mail" Name="emailBox"
                            />
                             <!--To do: Impelment custom TextBox control-->
 
 
                         </Grid>
 
-                        <!-- To do: Implement sliced in half Combobox at the grid row 4 (grid with 2 comboboxes)-->
+                        <Grid Grid.Row="5">
+                            <ComboBox  Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                                VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                                Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                                BorderThickness="3" BorderBrush="#5e686d" x:Name="roleCombo"/>
+
+                        </Grid>
 
                         <!--Button grid-->
-                        <Grid Grid.Row="5">
+                        <Grid Grid.Row="6">
                             <!--Grid layout-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -155,7 +164,7 @@
 
                             <Button Grid.Column="1" Margin="10" Content="Save" 
                                FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                               BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"/>
+                               BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b" x:Name="saveBtn" Click="saveBtn_Click"/>
                         </Grid>
                     </Grid>
                 </Grid>

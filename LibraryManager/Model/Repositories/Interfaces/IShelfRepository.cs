@@ -12,5 +12,6 @@ namespace LibraryManager.Model.Repositories.Interfaces
         Task InsertAsync(Shelf shelf);
         Task UpdateAsync(Shelf shelf);
         Task DeleteAsync(Shelf shelf);
+        Task<IEnumerable<Shelf>> GetAllShelvesOfBookshelfAsync(int bookshelfId);
     }
 }
