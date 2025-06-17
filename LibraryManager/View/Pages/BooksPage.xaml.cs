@@ -214,9 +214,12 @@ namespace LibraryManager.View.Pages
             }
         }
 
-        private void CircularDoubleButtonControl_ButtonBottomClick(object sender, RoutedEventArgs e)
+        private async void CircularDoubleButtonControl_ButtonBottomClick(object sender, RoutedEventArgs e)
         {
             var addBookWindow = new AddBook();
+            addBookWindow.Owner = Window.GetWindow(this);
+            await addBookWindow.LoadDataAsync();
+
             addBookWindow.ShowDialog();
         }
 
@@ -226,10 +229,18 @@ namespace LibraryManager.View.Pages
             addAuthorWindow.ShowDialog();
         }
 
-        private void CircularDoubleButtonControl_ButtonMiddleClick(object sender, RoutedEventArgs e)
+        private async void CircularDoubleButtonControl_ButtonMiddleClick(object sender, RoutedEventArgs e)
         {
             var addBookWindow = new AddBook();
-            addBookWindow.ShowDialog();
+            addBookWindow.Owner = Window.GetWindow(this);
+            await addBookWindow.LoadDataAsync();
+
+            var result = addBookWindow.ShowDialog();
+
+            if (result == true)
+            {
+               await LoadDataAsync();
+            }
         }
     }
 

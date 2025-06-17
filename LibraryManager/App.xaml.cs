@@ -30,6 +30,7 @@ namespace LibraryManager
             serviceCollection.AddScoped<IBookshelfRepository, BookshelfRepository>();
             serviceCollection.AddScoped<IAuthorRepository, AuthorRepository>();
             serviceCollection.AddScoped<IShelfRepository, ShelfRepository>();
+            serviceCollection.AddScoped<IGenreRepository, GenreRepository>();
 
             serviceCollection.AddSingleton<IImageConverter, ImageConverter>();
 
