@@ -54,10 +54,17 @@ namespace LibraryManager.View.Pages
             await LoadDataAsync();
         }
 
-        private void cirButton_ButtonSubClick(object sender, RoutedEventArgs e)
+        private async void cirButton_ButtonSubClick(object sender, RoutedEventArgs e)
         {
             var window = new AddUser();
-            window.ShowDialog();
+            window.Owner = Window.GetWindow(this);
+
+            var result = window.ShowDialog();
+
+            if (result == true) 
+            {
+                await LoadDataAsync();
+            }
         }
     }
 }

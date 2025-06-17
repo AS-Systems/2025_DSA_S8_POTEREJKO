@@ -53,7 +53,7 @@
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
-                        <dr:ImageDropControl Grid.Row="0" Width="110" Height="135" CornerRadius="25" Loaded="ImageDropControl_Loaded"/>
+                        <dr:ImageDropControl Grid.Row="0" Width="110" Height="135" Loaded="ImageDropControl_Loaded"/>
 
                         <!--TextBox grid-->
                         <Grid Grid.Row="1">
@@ -82,21 +82,26 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
+                            
                             <!-- To do: Implement custom ComboBoc control-->
-                            <ComboBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                 BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Name"
-                            />
+                            <ComboBox x:Name="MultiSelectComboBox" Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold"  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                                BorderThickness="3"  BorderBrush="#5e686d" SelectedIndex="-1" IsEditable="True" IsReadOnly="True" StaysOpenOnEdit="True" DropDownClosed="MultiSelectComboBox_DropDownClosed">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding}" IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ComboBoxItem}, Path=IsSelected, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
 
                             <ComboBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
                                  Text="Name"
-                            />
-                            <!--To do: Impelment custom TextBox control-->
+                            >
+                                <ComboBoxItem IsEnabled="False" IsSelected="True">-- Select genres --</ComboBoxItem>
+
+                            </ComboBox>
 
 
                         </Grid>

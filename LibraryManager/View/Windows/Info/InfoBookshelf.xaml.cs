@@ -1,18 +1,8 @@
 ﻿using LibraryManager.Model.Entities;
-using LibraryManager.Model.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LibraryManager.View.Windows.Info
 {
@@ -21,15 +11,29 @@ namespace LibraryManager.View.Windows.Info
     /// </summary>
     public partial class InfoBookshelf : Window
     {
-        public InfoBookshelf(Book book)
+        public ObservableCollection<Shelf> Shelves { get; set; } = new ObservableCollection<Shelf>();
+
+
+        public InfoBookshelf(Bookshelf bookshelf)
         {
             InitializeComponent();
+            DataContext = this;
 
             CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
 
-
             string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "image-icon.png");
-            //BookCover.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
+
+
+            lbName.Text = bookshelf.Name;   
+            lbCity.Content = bookshelf.City;
+            lbCountry.Content = bookshelf.Country;
+            lbStreet.Content = bookshelf.Street;
+
+            Shelves.Clear();
+            foreach (var shelf in bookshelf.Shelves)
+            {
+                Shelves.Add(shelf);
+            }
 
 
         }

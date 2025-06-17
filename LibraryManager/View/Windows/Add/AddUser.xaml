@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:LibraryManager.View.Windows.Add"
         xmlns:img="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
        Title="AddUser" Height="820" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
 
     <Grid>

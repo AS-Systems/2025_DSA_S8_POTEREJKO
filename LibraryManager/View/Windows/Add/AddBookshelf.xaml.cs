@@ -1,4 +1,8 @@
-﻿using System;
+﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +23,12 @@ namespace LibraryManager.View.Windows
     /// </summary>
     public partial class AddBookshelf : Window
     {
+        private readonly IBookshelfRepository _bookshelfRepository;
+
         public AddBookshelf()
         {
             InitializeComponent();
+            _bookshelfRepository = App.ServiceProvider.GetRequiredService<IBookshelfRepository>();
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -31,12 +38,25 @@ namespace LibraryManager.View.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            DialogResult = false;
         }
 
-        private void ImageDropControl_Loaded(object sender, RoutedEventArgs e)
+        private async void saveBtn_Click(object sender, RoutedEventArgs e)
         {
+            var newBookshelf = new Bookshelf
+            {
+                Name = nameBox.Text,
+                Country = countryBox.Text,
+                City = cityBox.Text,
+                Street = streetBox.Text,    
+                OwnerId = AppUser.User.Id
+            };
 
+            await _bookshelfRepository.InsertAsync(newBookshelf);
+
+            MessageBox.Show("Bookshelf added!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            DialogResult = true;
         }
     }
 }

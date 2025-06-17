@@ -34,7 +34,7 @@ namespace LibraryManager.View.Windows.Add
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            DialogResult = false;
         }
 
         private async void saveBtn_Click(object sender, RoutedEventArgs e)
@@ -64,7 +64,9 @@ namespace LibraryManager.View.Windows.Add
 
 
             await _userRepository.InsertAsync(newUser);
+            MessageBox.Show("New user added!", "Info",MessageBoxButton.OK, MessageBoxImage.Information);
 
+            DialogResult = true;
         }
     }
 }

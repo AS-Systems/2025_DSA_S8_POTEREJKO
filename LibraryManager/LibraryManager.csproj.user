@@ -85,6 +85,9 @@
     <Compile Update="View\CustomControls\ItemTemplates\BorrowsItemTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\ItemTemplates\ShelfItemTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\ItemTemplates\UserItemTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -146,6 +149,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Windows\Add\AddBorrow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\Add\AddShelf.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\Add\AddShelfCombo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Windows\Add\AddUser.xaml.cs">

@@ -2,6 +2,7 @@
 using LibraryManager.Model.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LibraryManager.Model.Repositories
@@ -30,6 +31,11 @@ namespace LibraryManager.Model.Repositories
             return await _context.Shelves.FirstOrDefaultAsync(s => s.Id == id);
         }
 
+        public async Task<IEnumerable<Shelf>> GetAllShelvesOfBookshelfAsync(int bookshelfId)
+        {
+            return await _context.Shelves.Where(b => b.BookshelfId == bookshelfId).ToListAsync();
+        }
+
         public async Task InsertAsync(Shelf shelf)
         {
             await _context.Shelves.AddAsync(shelf);
@@ -44,8 +50,12 @@ namespace LibraryManager.Model.Repositories
 
         public async Task DeleteAsync(Shelf shelf)
         {
-            _context.Shelves.Remove(shelf);
-            await _context.SaveChangesAsync();
+            var entity = await _context.Shelves.FindAsync(shelf.Id);
+            if (entity != null)
+            {
+                _context.Shelves.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

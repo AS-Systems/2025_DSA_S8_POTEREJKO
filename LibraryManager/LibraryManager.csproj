@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\add.png" />
     <None Remove="Resources\Images\ASLogo.ico" />
     <None Remove="Resources\Images\ASLogo.png" />
     <None Remove="Resources\Images\+-Icon.png" />
@@ -38,6 +39,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\Images\add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Images\ASLogo.ico" />
     <Content Include="Resources\Images\ASLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

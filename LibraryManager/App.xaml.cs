@@ -1,5 +1,4 @@
-﻿using LibraryManager.Model;
-using LibraryManager.Model.Entities;
+﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Repositories;
 using LibraryManager.Model.Repositories.Interfaces;
 using LibraryManager.ViewModel.Converters.ImageConverter;
@@ -29,6 +28,8 @@ namespace LibraryManager
             serviceCollection.AddScoped<IBookRepository, BookRepository>();
             serviceCollection.AddScoped<IBorrowRepository, BorrowRepository>();
             serviceCollection.AddScoped<IBookshelfRepository, BookshelfRepository>();
+            serviceCollection.AddScoped<IAuthorRepository, AuthorRepository>();
+            serviceCollection.AddScoped<IShelfRepository, ShelfRepository>();
 
             serviceCollection.AddSingleton<IImageConverter, ImageConverter>();
 
