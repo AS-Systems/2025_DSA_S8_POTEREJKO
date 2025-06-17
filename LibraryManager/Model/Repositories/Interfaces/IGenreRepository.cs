@@ -1,20 +1,16 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using LibraryManager.Model.Entities;
 
-
-namespace LibraryManager.Model.Repositories.Interfaces
+namespace LibraryManager.Model.Repositories
 {
-    internal interface IGenreRepository
+    public interface IGenreRepository
     {
-        Task<bool> IsAnyGenreAsync();
-        Task<IEnumerable<Genre>> GetAllGenresAsync();
-        Task<Genre?> GetGenreByIdAsync(int genreId);
-        Task InsertAsync(Genre genre);
+        Task<IEnumerable<Genre>> GetAllAsync();
+        Task<Genre?> GetByIdAsync(int id);
+        Task AddAsync(Genre genre);
         Task UpdateAsync(Genre genre);
-        Task DeleteAsync(Genre genre);
+        Task DeleteAsync(int id);
+        Task<bool> ExistsAsync(int id);
     }
 }

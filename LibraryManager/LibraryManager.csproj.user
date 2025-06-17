@@ -64,6 +64,9 @@
     <Compile Update="View\CustomControls\ColumnFilters\TitleColumnFilter.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\Comboboxes\MultiSelectComboBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\Comboboxes\TransparentCombobox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

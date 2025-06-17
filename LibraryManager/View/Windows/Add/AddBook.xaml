@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManager.View.Windows"
         xmlns:dr="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
+        xmlns:cmb="clr-namespace:LibraryManager.View.CustomControls.Comboboxes"
         mc:Ignorable="d"
-        Title="AddBook" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        Title="AddBook" Height="750" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
@@ -49,11 +50,11 @@
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="1.5*"/>
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
-                        <dr:ImageDropControl Grid.Row="0" Width="110" Height="135" Loaded="ImageDropControl_Loaded"/>
+                        <dr:ImageDropControl x:Name="coverHolder" Grid.Row="0" Width="110" Height="135" Loaded="ImageDropControl_Loaded"/>
 
                         <!--TextBox grid-->
                         <Grid Grid.Row="1">
@@ -67,7 +68,7 @@
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Title"
+                                 Text="Title" x:Name="titleBox"
                         />
                             <!--To do: Impelment custom TextBox control-->
 
@@ -82,28 +83,19 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+
+                                <cmb:MultiSelectComboBox ItemsSource="{Binding Authors}" SelectedItems="{Binding SelectedAuthors}" PlaceHolderText="Select author" Margin="0,5,0,5"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+
+                                <cmb:MultiSelectComboBox ItemsSource="{Binding Genres}"
+                                   SelectedItems="{Binding SelectedGenres}" PlaceHolderText="Select genre" Margin="0,5,0,5"/>
+                            </Grid>
                             
-                            <!-- To do: Implement custom ComboBoc control-->
-                            <ComboBox x:Name="MultiSelectComboBox" Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold"  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                BorderThickness="3"  BorderBrush="#5e686d" SelectedIndex="-1" IsEditable="True" IsReadOnly="True" StaysOpenOnEdit="True" DropDownClosed="MultiSelectComboBox_DropDownClosed">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <CheckBox Content="{Binding}" IsChecked="{Binding RelativeSource={RelativeSource AncestorType=ComboBoxItem}, Path=IsSelected, Mode=TwoWay}" />
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-
-                            <ComboBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                 BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Name"
-                            >
-                                <ComboBoxItem IsEnabled="False" IsSelected="True">-- Select genres --</ComboBoxItem>
-
-                            </ComboBox>
-
-
+                 
                         </Grid>
 
                         <!--TextBox grid-->
@@ -118,7 +110,7 @@
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Page number"
+                                 Text="Page number" x:Name="pageNumBox"
                         />
                             <!--To do: Impelment custom TextBox control-->
 
@@ -133,14 +125,12 @@
                             </Grid.RowDefinitions>
 
                             <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                                 VerticalContentAlignment="Top" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Description"
-                        />
-                            <!--To do: Impelment custom TextBox control-->
-
-
+                                 Text="Description" x:Name="descriptionBox"
+                                 TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+                            
                         </Grid>
 
                         <!-- To do: Implement sliced in half Combobox at the grid row 4 (grid with 2 comboboxes)-->
@@ -162,7 +152,7 @@
 
                             <Button Grid.Column="1" Margin="10" Content="Save" 
                                 FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                                BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"/>
+                                BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b" x:Name="saveBtn" Click="saveBtn_Click"/>
                         </Grid>
                     </Grid>
                 </Grid>

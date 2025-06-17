@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryManager.Model.Entities;
 
@@ -11,6 +12,9 @@ public partial class Author
     public string Surname { get; set; } = null!;
 
     public string? Info { get; set; }
+
+    [NotMapped]
+    public string DisplayName => Name + " " + Surname;
 
     public virtual ICollection<BookAuthor> BookAuthors { get; set; } = new List<BookAuthor>();
 }
