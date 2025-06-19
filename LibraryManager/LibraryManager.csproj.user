@@ -139,6 +139,9 @@
     <Compile Update="View\Windows\Add\AddBook.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Windows\Add\AddBookCopy.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Windows\Add\AddBookshelf.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -298,6 +301,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Add\AddBook.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\Add\AddBookCopy.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Add\AddBookshelf.xaml">
