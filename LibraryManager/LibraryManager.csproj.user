@@ -157,6 +157,9 @@
     <Compile Update="View\Windows\Edit\EditBook.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Windows\Edit\EditBookCopy.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Windows\Edit\EditBookshelf.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -170,6 +173,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Windows\Info\InfoBook.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\Info\InfoBookCopy.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Windows\Info\InfoBookshelf.xaml.cs">
@@ -321,6 +327,9 @@
     <Page Update="View\Windows\Edit\EditBook.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Windows\Edit\EditBookCopy.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Windows\Edit\EditBookshelf.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -334,6 +343,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Info\InfoBook.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Windows\Info\InfoBookCopy.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Windows\Info\InfoBookshelf.xaml">

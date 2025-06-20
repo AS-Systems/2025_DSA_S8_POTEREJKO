@@ -1,4 +1,4 @@
-﻿<Window x:Class="LibraryManager.View.Windows.Edit.EditBook"
+﻿<Window x:Class="LibraryManager.View.Windows.Edit.EditBookCopy"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LibraryManager.View.Windows.Edit"
         xmlns:dr="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
         mc:Ignorable="d"
-        Title="EditBook" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        Title="EditBookCopy" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
@@ -45,7 +45,7 @@
                     <Grid Grid.Column="1">
                         <!--Grid layout-->
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="1.4*"/>
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="0.5*"/>
@@ -53,6 +53,7 @@
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
+                        <dr:ImageDropControl Grid.Row="0" Width="110" Height="135" CornerRadius="25"/>
 
                         <!--TextBox grid-->
                         <Grid Grid.Row="1">
