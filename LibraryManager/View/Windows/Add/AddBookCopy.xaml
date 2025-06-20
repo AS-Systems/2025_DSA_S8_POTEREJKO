@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LibraryManager.View.Windows"
         xmlns:dr="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
         mc:Ignorable="d"
-        Title="AddBookCopy" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        Title="AddBookCopy" Height="550" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
@@ -16,6 +16,9 @@
                     <RowDefinition Height="9.4*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+
+
+
 
                 <!--Top bar with window title-->
                 <Border Grid.Row="0" Background="#3a3960" CornerRadius="33,33,0,0" MouseLeftButtonDown="Border_MouseLeftButtonDown">
@@ -49,11 +52,34 @@
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
+                        <Grid Grid.Row="0">
+                            <!--Grid layout-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
+                            <!-- To do: Implement custom ComboBoc control-->
+                            <TextBlock Padding="5,0" Grid.Row="0" FontSize="22" FontWeight="Bold" 
+                                Background="Transparent" Foreground="#3a3960"
+                               Text="Is avaiable?:" VerticalAlignment="Center"/>
+
+
+                            <!--To do: Impelment custom TextBox control-->
+                            <CheckBox Grid.Column="1"
+                                  IsChecked="True"
+                                  VerticalAlignment="Center" HorizontalAlignment="Center"
+                                  FontSize="24">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3"/>
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                        </Grid>
+                        
                         <!--TextBox grid-->
                         <Grid Grid.Row="1">
                             <!--Grid layout-->
@@ -62,12 +88,12 @@
 
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                            <ComboBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Title"
-                        />
+                                 Text="Book"
+                            />
                             <!--To do: Impelment custom TextBox control-->
 
 
@@ -86,14 +112,14 @@
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Name"
+                                 Text="Shelf"
                             />
 
                             <ComboBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Name"
+                                 Text="Owner"
                             />
                             <!--To do: Impelment custom TextBox control-->
 
@@ -108,18 +134,12 @@
 
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                 BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Page number"
-                        />
                             <!--To do: Impelment custom TextBox control-->
 
 
                         </Grid>
 
-                        <Grid Grid.Row="4">
+                        <Grid Grid.Row="3">
                             <!--Grid layout-->
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
