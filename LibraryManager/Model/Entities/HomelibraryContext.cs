@@ -52,6 +52,7 @@ public partial class HomelibraryContext : DbContext
             entity.Property(e => e.Info).HasColumnType("text");
             entity.Property(e => e.Name).HasMaxLength(255);
             entity.Property(e => e.Surname).HasMaxLength(255);
+            entity.Property(e => e.AuthorPicture).HasColumnType("blob");
         });
 
         modelBuilder.Entity<BookAuthor>(entity =>
