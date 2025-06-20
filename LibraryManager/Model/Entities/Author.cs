@@ -12,6 +12,8 @@ public partial class Author
     public string Surname { get; set; } = null!;
 
     public string? Info { get; set; }
+    public byte[]? AuthorPicture { get; set; }
+
 
     [NotMapped]
     public string DisplayName => Name + " " + Surname;

@@ -15,7 +15,7 @@ namespace LibraryManager.Services
         {
             if (character == null)
             {
-                character = new ClippyCharacter(Character.Clippy);
+                character = new ClippyCharacter(Character.Rocky);
                 character.Show();
                 character.PlayAnimation("Idle1_1", AnimationMode.Loop);
                 isVisible = true;
