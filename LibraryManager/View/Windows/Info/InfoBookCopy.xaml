@@ -8,7 +8,7 @@
         xmlns:dr="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
-        Title="InfoBookCopy" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        Title="InfoBookCopy" Height="450" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
@@ -29,7 +29,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <uc:CircularButtonControl Grid.Column="2" x:Name="CloseBTN" Margin="4,0,0,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="CloseBTN_Click"/>
-                        <Label Grid.Column="1" Content="Info Book" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
+                        <Label Grid.Column="1" Content="Info Book Copy" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
                     </Grid>
                 </Border>
 
@@ -49,29 +49,35 @@
                     <Grid Grid.Column="1">
                         <!--Grid layout-->
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1.4*"/>
-                            <RowDefinition Height="0.6*"/>
-                            <RowDefinition Height="0.9*"/>
                             <RowDefinition Height="0.35*"/>
                             <RowDefinition Height="0.35*"/>
-                            <RowDefinition Height="1.1*"/>
+                            <RowDefinition Height="0.35*"/>
                         </Grid.RowDefinitions>
 
-                        <dr:ImageDisplayControl x:Name="bookCoverPhoto" Grid.Row="0" Width="110" Height="130" CornerRadius="25" />
+
 
                         <!--TextBox grid-->
-                        <Grid Grid.Row="1">
-                            <TextBlock x:Name="txtTitle"  FontSize="28" FontWeight="Bold" Foreground="#3a3960"  VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="0.8*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Padding="0,8,0,0" Content="Is avaiable?:" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" Foreground="#3a3960"/>
+                            <CheckBox Grid.Column="1"
+                                  IsChecked="True"
+                                  VerticalAlignment="Center" HorizontalAlignment="Center"
+                                  FontSize="24">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3"/>
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
                         </Grid>
 
 
                         <!--Comboboxes grid-->
-                        <Grid Grid.Row="2">
+                        <Grid Grid.Row="1">
                             <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1.3*"/>
-                                <RowDefinition Height="0.8*"/>
-                            </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0" >
                                 <Grid.ColumnDefinitions>
@@ -79,53 +85,24 @@
                                     <ColumnDefinition Width="0.8*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Padding="0,8,0,0" Content="Author(s):" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
-                                <TextBlock Padding="0,8,0,0"  Grid.Column="1" x:Name="txtAuthor" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" TextWrapping="WrapWithOverflow" />
+                                <Label Padding="0,8,0,0" Content="Book:" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
+                                <TextBlock Padding="0,8,0,0"  Grid.Column="1" x:Name="txtBook" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" TextWrapping="WrapWithOverflow" />
                             </Grid>
 
-                            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                <Label Content="Genre:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
-                                <Label x:Name="lbGenre" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
-                            </StackPanel>
 
                         </Grid>
 
-                        <!--TextBox grid-->
-                        <Grid Grid.Row="3">
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".35*"/>
+                                <ColumnDefinition Width="0.8*"/>
+                            </Grid.ColumnDefinitions>
 
-                            <StackPanel  Orientation="Horizontal">
-                                <Label Content="Page count:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
-                                <Label x:Name="lbPage" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
-                            </StackPanel>
-
-
-                        </Grid>
-
-                        <Grid Grid.Row="4">
-                            <StackPanel  Orientation="Horizontal">
-                                <Label Content="IBAN:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
-                                <Label x:Name="lbIBAN" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
-                            </StackPanel>
-                        </Grid>
-
-
-                        <Grid Grid.Row="5">
-                            <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height=".5*"/>
-                                <RowDefinition Height="*"/>
-
-                            </Grid.RowDefinitions>
-
-                            <TextBlock Padding="5,0" Grid.Row="0" FontSize="22" FontWeight="Bold" 
-                                Background="Transparent" Foreground="#3a3960"
-                               Text="Description:" VerticalAlignment="Center"/>
-
-                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                                <TextBlock x:Name="txtDescription" TextWrapping="Wrap" Padding="5,0" Foreground="#3a3960"  FontSize="20" FontWeight="DemiBold"  />
-                            </ScrollViewer>
+                            <Label Padding="0,8,0,0" Content="Shelf:" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" Foreground="#3a3960"/>
+                            <TextBlock Padding="0,8,0,0"  Grid.Column="1" x:Name="txtShelf" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" TextWrapping="WrapWithOverflow" />
 
                         </Grid>
+
 
 
 

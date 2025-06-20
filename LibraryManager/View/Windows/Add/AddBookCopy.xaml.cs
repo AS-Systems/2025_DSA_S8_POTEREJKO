@@ -34,9 +34,5 @@ namespace LibraryManager.View.Windows
             Close();
         }
 
-        private void ImageDropControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

@@ -21,23 +21,10 @@ namespace LibraryManager.View.Windows.Info
     /// </summary>
     public partial class InfoBookCopy : Window
     {
-        public InfoBookCopy(Book book)
+        public InfoBookCopy(BookCopy bookCopy)
         {
             InitializeComponent();
 
-            CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
-
-
-            string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "image-icon.png");
-            //BookCover.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
-
-            bookCoverPhoto.ImageDisplay = null;
-            txtDescription.Text = book.Description;
-            txtTitle.Text = book.Title;
-            lbPage.Content = "~" + book.PageCount.ToString();
-            //txtAuthor.Text = (book.BookAuthors.Name + " " + book.BookAuthors.Surname);
-            //lbGenre.Content = (Model.Enums.Genre)book.Genre;
-            lbIBAN.Content = "3459876";
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

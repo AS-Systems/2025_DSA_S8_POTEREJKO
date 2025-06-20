@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,32 +13,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using LibraryManager.Model.Entities;
 
-namespace LibraryManager.View.Windows.Edit
+namespace LibraryManager.View.Windows.Info
 {
     /// <summary>
-    /// Logika interakcji dla klasy EditBook.xaml
+    /// Logika interakcji dla klasy InfoBook.xaml
     /// </summary>
     public partial class EditBookCopy : Window
     {
-        public EditBookCopy(Book book)
+        public EditBookCopy(BookCopy bookCopy)
         {
             InitializeComponent();
-            txtDescription.Text = book.Description;
-            txtTitle.Text = book.Title;
-            txtPage.Text = book.PageCount.ToString();
-            cmbAuthor.Text = book.BookAuthors.ToString();
-            cmbGenre.Text = book.BooksGenres.ToString();
+
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CloseBTN_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
+
     }
 }

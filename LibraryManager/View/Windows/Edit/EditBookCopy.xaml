@@ -1,12 +1,12 @@
-﻿<Window x:Class="LibraryManager.View.Windows.Edit.EditBookCopy"
+﻿<Window x:Class="LibraryManager.View.Windows.EditBookCopy"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LibraryManager.View.Windows.Edit"
+        xmlns:local="clr-namespace:LibraryManager.View.Windows"
         xmlns:dr="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
         mc:Ignorable="d"
-        Title="EditBookCopy" Height="650" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        Title="EditBookCopy" Height="550" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
@@ -17,6 +17,9 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
+
+
+
                 <!--Top bar with window title-->
                 <Border Grid.Row="0" Background="#3a3960" CornerRadius="33,33,0,0" MouseLeftButtonDown="Border_MouseLeftButtonDown">
                     <Grid>
@@ -26,7 +29,7 @@
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Content="Edit Book" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
+                        <Label Grid.Column="1" Content="Edit Book Copy" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#a9bfa8" FontSize="25" FontWeight="DemiBold"/>
                     </Grid>
                 </Border>
 
@@ -45,38 +48,42 @@
                     <Grid Grid.Column="1">
                         <!--Grid layout-->
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1.4*"/>
                             <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="0.5*"/>
-                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="1.0*"/>
                             <RowDefinition Height="0.7*"/>
                         </Grid.RowDefinitions>
 
-                        <dr:ImageDropControl Grid.Row="0" Width="110" Height="135" CornerRadius="25"/>
-
-                        <!--TextBox grid-->
-                        <Grid Grid.Row="1">
+                        <Grid Grid.Row="0">
                             <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                            </Grid.RowDefinitions>
+                            <!-- To do: Implement custom ComboBoc control-->
+                            <TextBlock Padding="5,0" Grid.Row="0" FontSize="22" FontWeight="Bold" 
+                                Background="Transparent" Foreground="#3a3960"
+                               Text="Is avaiable?:" VerticalAlignment="Center"/>
 
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                BorderThickness="3" BorderBrush="#5e686d"
-                                Text="Title" Name="txtTitle"
-                       />
+
                             <!--To do: Impelment custom TextBox control-->
-
+                            <CheckBox Grid.Column="1"
+                                  IsChecked="True"
+                                  VerticalAlignment="Center" HorizontalAlignment="Center"
+                                  FontSize="24">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3"/>
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
 
                         </Grid>
 
+                        <!--TextBox grid-->
+
+
 
                         <!--Comboboxes grid-->
-                        <Grid Grid.Row="2">
+                        <Grid Grid.Row="1">
                             <!--Grid layout-->
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -84,64 +91,26 @@
                             </Grid.RowDefinitions>
                             <!-- To do: Implement custom ComboBoc control-->
                             <ComboBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                BorderThickness="3" BorderBrush="#5e686d"
-                                Text="Name" Name="cmbAuthor"
-                           />
+                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                                 BorderThickness="3" BorderBrush="#5e686d"
+                                 Text="Shelf"
+                            />
 
                             <ComboBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                BorderThickness="3" BorderBrush="#5e686d"
-                                Text="Name" Name="cmbGenre"
-                           />
+                                 VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                                 Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                                 BorderThickness="3" BorderBrush="#5e686d"
+                                 Text="Owner"
+                            />
                             <!--To do: Impelment custom TextBox control-->
 
 
                         </Grid>
 
-                        <!--TextBox grid-->
-                        <Grid Grid.Row="3">
-                            <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-
-                            </Grid.RowDefinitions>
-
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                BorderThickness="3" BorderBrush="#5e686d"
-                                Text="Page number" Name="txtPage"
-                       />
-                            <!--To do: Impelment custom TextBox control-->
-
-
-                        </Grid>
-
-                        <Grid Grid.Row="4">
-                            <!--Grid layout-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-
-                            </Grid.RowDefinitions>
-
-                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                BorderThickness="3" BorderBrush="#5e686d"
-                                Text="Description" Name="txtDescription"
-                       />
-                            <!--To do: Impelment custom TextBox control-->
-
-
-                        </Grid>
-
-                        <!-- To do: Implement sliced in half Combobox at the grid row 4 (grid with 2 comboboxes)-->
 
                         <!--Button grid-->
-                        <Grid Grid.Row="5">
+                        <Grid Grid.Row="3">
                             <!--Grid layout-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -149,15 +118,15 @@
                             </Grid.ColumnDefinitions>
 
                             <Button Grid.Column="0" Margin="10" Content="Discard" 
-                               FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                               BorderThickness="3" BorderBrush="#5e686d" Background="Transparent"
-                               Click="Button_Click"
-                               />
+                                FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
+                                BorderThickness="3" BorderBrush="#5e686d" Background="Transparent"
+                   
+                                />
                             <!--To do: Impelment custom Button control-->
 
                             <Button Grid.Column="1" Margin="10" Content="Save" 
-                               FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                               BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"/>
+                                FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
+                                BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"/>
                         </Grid>
                     </Grid>
                 </Grid>
