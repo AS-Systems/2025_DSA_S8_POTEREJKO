@@ -152,12 +152,12 @@ namespace LibraryManager.View.Pages
 
         public async Task LoadDataAsync()
         {
-            AllBooks = await _bookRepository.GetAllBooksAsync();
-            FilteredBooks.Clear();
-            foreach (var book in AllBooks)
-            {
-                FilteredBooks.Add(book);
-            }
+            //AllBooks = await _bookRepository.GetAllBooksAsync();
+            //FilteredBooks.Clear();
+            //foreach (var book in AllBooks)
+            //{
+            //    FilteredBooks.Add(book);
+            //}
 
         }
 

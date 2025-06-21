@@ -103,6 +103,12 @@
     <Compile Update="View\CustomControls\TextBoxes\SmallTextBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Pages\BookCopiesPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\BooksHolderPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Pages\BooksPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
