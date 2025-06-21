@@ -1,20 +1,10 @@
 ﻿using LibraryManager.Model.Entities;
-using LibraryManager.View.CustomControls.Buttons;
 using LibraryManager.View.Pages;
 using LibraryManager.View.Windows.Info;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LibraryManager.View.Windows
 {
@@ -23,7 +13,7 @@ namespace LibraryManager.View.Windows
     /// </summary>
     public partial class MainWindow2 : Window
     {
-        private BooksPage booksPage = new BooksPage();
+        private BooksHolderPage booksHolderPage = new BooksHolderPage();
         private HomePage homePage = new HomePage();
         private BorrowsPage borrowsPage = new BorrowsPage();
         private UsersPage usersPage = new UsersPage();
@@ -87,8 +77,8 @@ namespace LibraryManager.View.Windows
 
         private async void BooksBTN_Click(object sender, RoutedEventArgs e)
         {
-            await booksPage.LoadDataAsync();
-            PageHolder.Content = booksPage;
+            await booksHolderPage.LoadDataAsync();
+            PageHolder.Content = booksHolderPage;
 
             SetBasicColor();
             BooksBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
