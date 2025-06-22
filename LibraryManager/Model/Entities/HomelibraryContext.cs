@@ -64,6 +64,7 @@ public partial class HomelibraryContext : DbContext
 
             entity.HasOne(d => d.Author).WithMany(p => p.BookAuthors)
                 .HasForeignKey(d => d.AuthorId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_author");
 
             entity.HasOne(d => d.Book).WithMany(p => p.BookAuthors)
@@ -136,7 +137,7 @@ public partial class HomelibraryContext : DbContext
 
             entity.HasOne(d => d.Book).WithMany(p => p.BooksGenres)
                     .HasForeignKey(d => d.BookId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_book2");
 
             entity.HasOne(d => d.Genre).WithMany(p => p.BooksGenres)
