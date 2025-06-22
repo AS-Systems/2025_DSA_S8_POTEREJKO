@@ -76,6 +76,9 @@
     <Compile Update="View\CustomControls\ImageControls\ImageDropControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CustomControls\ItemTemplates\BookCopyItemTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CustomControls\ItemTemplates\BookItemTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

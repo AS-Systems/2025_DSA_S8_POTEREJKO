@@ -80,13 +80,19 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Label Padding="0,8,0,0" Content="Author(s):" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
-                                <TextBlock Padding="0,8,0,0"  Grid.Column="1" x:Name="txtAuthor" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" TextWrapping="WrapWithOverflow" />
+                                <TextBox Padding="0,8,0,0"  Grid.Column="1" x:Name="txtAuthor" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" TextWrapping="Wrap"
+                                    AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" Background="Transparent" BorderThickness="0"/>
                             </Grid>
                             
-                            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                <Label Content="Genre:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
-                                <Label x:Name="lbGenre" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" />
-                            </StackPanel>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".35*"/>
+                                    <ColumnDefinition Width="0.8*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0"  Content="Genre:" VerticalAlignment="Center" HorizontalAlignment="Left"  FontSize="22" FontWeight="Bold" Foreground="#3a3960" />
+                                <TextBox  Grid.Column="1" x:Name="lbGenre" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="DemiBold" Foreground="#3a3960" TextWrapping="Wrap"  AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True" Background="Transparent" BorderThickness="0"/>
+                            </Grid>
 
                         </Grid>
 

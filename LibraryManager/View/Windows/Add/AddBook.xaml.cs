@@ -82,6 +82,7 @@ namespace LibraryManager.View.Windows
                     PageCount = int.Parse(pageNumBox.Text),
                     Description = descriptionBox.Text,
                     Cover = coverHolder.ImageBlob,
+                    Iban = int.Parse(ibanBox.Text),
                 };
 
                 foreach (var genre in SelectedGenres)

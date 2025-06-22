@@ -49,6 +49,7 @@ namespace LibraryManager.View.Pages
         public async Task LoadDataAsync()
         {
             await _booksPage.LoadDataAsync();
+            await _bookCopiesPage.LoadDataAsync();
         }
 
     }

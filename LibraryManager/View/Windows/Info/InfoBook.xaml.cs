@@ -1,5 +1,6 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Enums;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,23 +22,36 @@ namespace LibraryManager.View.Windows.Info
     /// </summary>
     public partial class InfoBook : Window
     {
+        private readonly IImageConverter _imageConverter;
+
         public InfoBook(Book book)
         {
             InitializeComponent();
+            _imageConverter = App.ServiceProvider.GetRequiredService<IImageConverter>();    
 
             CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
-
-
             string imagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "image-icon.png");
-            //BookCover.Source = new BitmapImage(new Uri(imagePath, UriKind.Absolute));
 
-            bookCoverPhoto.ImageDisplay = null;
+            if (book.Cover is not null)
+            {
+                bookCoverPhoto.ImageDisplay.DisplayImageSource = _imageConverter.BlobToImage(book.Cover);
+            }
+
             txtDescription.Text = book.Description;
             txtTitle.Text = book.Title;
             lbPage.Content = "~" + book.PageCount.ToString();
-            //txtAuthor.Text = (book.BookAuthors.Name + " " + book.BookAuthors.Surname);
-            //lbGenre.Content = (Model.Enums.Genre)book.Genre;
-            lbIBAN.Content = "3459876";
+            lbIBAN.Content = book.Iban;
+
+            foreach (var genre in book.BooksGenres)
+            {
+                lbGenre.Text += (genre.Genre.Name + ", ");
+            }
+
+            foreach (var author in book.BookAuthors)
+            {
+                txtAuthor.Text += (author.Author.DisplayName + ", ");
+            }
+
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
