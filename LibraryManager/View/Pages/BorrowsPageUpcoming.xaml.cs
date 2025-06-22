@@ -1,10 +1,12 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.View.Windows;
 using LibraryManager.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace LibraryManager.View.Pages
@@ -39,5 +41,12 @@ namespace LibraryManager.View.Pages
             }
         }
 
+        private void CircularSingleButtonControl_ButtonSubClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var window = new AdddBorrow();
+            window.Owner = Window.GetWindow(this);
+
+            window.ShowDialog();
+        }
     }
 }

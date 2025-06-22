@@ -1,28 +1,40 @@
-﻿using System;
+﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LibraryManager.View.Pages
 {
-    /// <summary>
-    /// Logika interakcji dla klasy BorrowsPageCurrent.xaml
-    /// </summary>
+
     public partial class BorrowsPageCurrent : Page
     {
+        private readonly IBorrowRepository _borrowRepository;
+        public ObservableCollection<Borrow> Borrows { get; set; } = new ObservableCollection<Borrow>();
+
         public BorrowsPageCurrent()
         {
             InitializeComponent();
+            DataContext = this;
+
+            _borrowRepository = App.ServiceProvider.GetRequiredService<IBorrowRepository>();    
         }
+
+
+        public async Task LoadDataAsync()
+        {
+            IEnumerable<Borrow> results = await _borrowRepository.GetFinishedBorrowsOfUserId(AppUser.User.Id);
+
+            Borrows.Clear();
+            foreach (var borrow in results)
+            {
+                Borrows.Add(borrow);
+            }
+
+        }
+
     }
 }
