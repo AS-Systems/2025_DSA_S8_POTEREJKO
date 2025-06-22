@@ -8,6 +8,7 @@ namespace LibraryManager.Model.Repositories
     public interface IBookCopyRepository
     {
         Task<IEnumerable<BookCopy>> GetAllBookCopiesAsync();
+        Task<IEnumerable<BookCopy>> GetAllBookCopiesOfUserAsync(int ownerId);
         Task<BookCopy?> GetBookCopyByIdAsync(int id);
         Task AddBookCopyAsync(BookCopy bookCopy);
         Task UpdateBookCopyAsync(BookCopy bookCopy);

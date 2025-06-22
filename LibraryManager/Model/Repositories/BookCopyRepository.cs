@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LibraryManager.Model.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace LibraryManager.Model.Repositories
                 .Include(bc => bc.Book)
                 .Include(bc => bc.Owner)
                 .Include(bc => bc.Shelf)
+                .Include(bc => bc.Shelf.Bookshelf)
                 .Include(bc => bc.Borrows)
                 .ToListAsync();
         }
@@ -32,9 +34,24 @@ namespace LibraryManager.Model.Repositories
                 .Include(bc => bc.Book)
                 .Include(bc => bc.Owner)
                 .Include(bc => bc.Shelf)
+                .Include(bc => bc.Shelf.Bookshelf)
                 .Include(bc => bc.Borrows)
                 .FirstOrDefaultAsync(bc => bc.Id == id);
         }
+
+        public async Task<IEnumerable<BookCopy>> GetAllBookCopiesOfUserAsync(int ownerId)
+        {
+            return await _libraryDBContext.BookCopies
+                   .Where(bc => bc.Owner.Id ==  ownerId)
+                   .Include(bc => bc.Book)
+                   .Include(bc => bc.Owner)
+                   .Include(bc => bc.Shelf)
+                   .Include(bc => bc.Shelf.Bookshelf)
+                   .Include(bc => bc.Borrows)
+                   .ToListAsync();
+        }
+
+
 
         public async Task AddBookCopyAsync(BookCopy bookCopy)
         {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using LibraryManager.Model.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Model.Entities;
 

@@ -48,37 +48,11 @@
                     <Grid Grid.Column="1">
                         <!--Grid layout-->
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.2*"/>
                             <RowDefinition Height="1.0*"/>
-                            <RowDefinition Height="0.7*"/>
+                            <RowDefinition Height="1.0*"/>
+                            <RowDefinition Height="0.5*"/>
                         </Grid.RowDefinitions>
-
-                        <Grid Grid.Row="0">
-                            <!--Grid layout-->
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <!-- To do: Implement custom ComboBoc control-->
-                            <TextBlock Padding="5,0" Grid.Row="0" FontSize="22" FontWeight="Bold" 
-                                Background="Transparent" Foreground="#3a3960"
-                               Text="Is avaiable?:" VerticalAlignment="Center"/>
-
-
-                            <!--To do: Impelment custom TextBox control-->
-                            <CheckBox Grid.Column="1"
-                                  IsChecked="True"
-                                  VerticalAlignment="Center" HorizontalAlignment="Center"
-                                  FontSize="24">
-                                <CheckBox.LayoutTransform>
-                                    <ScaleTransform ScaleX="3" ScaleY="3"/>
-                                </CheckBox.LayoutTransform>
-                            </CheckBox>
-
-                        </Grid>
-
-                        <!--TextBox grid-->
 
 
 
@@ -90,26 +64,84 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <!-- To do: Implement custom ComboBoc control-->
-                            <ComboBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                            <ComboBox x:Name="bookBox" Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Shelf"
-                            />
+                                 Text="Book"
+                            >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Title}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                                
+                            </ComboBox>
 
-                            <ComboBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                            <ComboBox x:Name="bookShelfBox" Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Owner"
-                            />
+                                 Text="BookShelf" SelectionChanged="bookShelfBox_SelectionChanged"
+                            >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                             <!--To do: Impelment custom TextBox control-->
 
 
                         </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <ComboBox x:Name="shelfBox" Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                                VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                                Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                                BorderThickness="3" BorderBrush="#5e686d" Text="Shelf">
+                                
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
 
 
-                        <!--Button grid-->
+
+                            <Grid Grid.Row="1">
+                                <!--Grid layout-->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- To do: Implement custom ComboBoc control-->
+                                <TextBlock Padding="5,0" Grid.Row="0" FontSize="22" FontWeight="Bold" 
+                                    Background="Transparent" Foreground="#3a3960"
+                                    Text="Available:" VerticalAlignment="Center"/>
+
+
+                                <!--To do: Impelment custom TextBox control-->
+                                <CheckBox Grid.Column="1" IsChecked="True" x:Name="availableBox"
+                                VerticalAlignment="Center" HorizontalAlignment="Center"
+                                FontSize="24">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="3"/>
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+
+                            </Grid>
+
+                        </Grid>
+
+
+                            <!--Button grid-->
                         <Grid Grid.Row="3">
                             <!--Grid layout-->
                             <Grid.ColumnDefinitions>
@@ -120,13 +152,13 @@
                             <Button Grid.Column="0" Margin="10" Content="Discard" 
                                 FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
                                 BorderThickness="3" BorderBrush="#5e686d" Background="Transparent"
-                   
+                                Click="CloseBTN_Click"
                                 />
                             <!--To do: Impelment custom Button control-->
 
-                            <Button Grid.Column="1" Margin="10" Content="Save" 
+                            <Button x:Name="saveBtn" Grid.Column="1" Margin="10" Content="Save" 
                                 FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                                BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"/>
+                                BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b" Click="saveBtn_Click"/>
                         </Grid>
                     </Grid>
                 </Grid>

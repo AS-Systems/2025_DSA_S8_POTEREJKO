@@ -13,9 +13,9 @@
             <Grid>
                 <!--Window layout-->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.4*"/>
-                    <RowDefinition Height="9.4*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.2*"/>
+                    <RowDefinition Height="9.8*"/>
+                    <RowDefinition Height=".3*"/>
                 </Grid.RowDefinitions>
 
                 <!--Top bar with window title-->
@@ -49,6 +49,7 @@
                             <RowDefinition Height="1.4*"/>
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="0.5*"/>
                             <RowDefinition Height="1.5*"/>
                             <RowDefinition Height="0.7*"/>
@@ -117,7 +118,21 @@
 
                         </Grid>
 
+
                         <Grid Grid.Row="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
+                                VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
+                                Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
+                                BorderThickness="3" BorderBrush="#5e686d"
+                                Text="IBAN" x:Name="ibanBox" />
+                        </Grid>
+
+
+                        <Grid Grid.Row="5">
                             <!--Grid layout-->
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -136,7 +151,7 @@
                         <!-- To do: Implement sliced in half Combobox at the grid row 4 (grid with 2 comboboxes)-->
                         
                         <!--Button grid-->
-                        <Grid Grid.Row="5">
+                        <Grid Grid.Row="6">
                             <!--Grid layout-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>

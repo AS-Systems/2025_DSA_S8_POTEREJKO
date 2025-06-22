@@ -152,12 +152,12 @@ namespace LibraryManager.View.Pages
 
         public async Task LoadDataAsync()
         {
-            //AllBooks = await _bookRepository.GetAllBooksAsync();
-            //FilteredBooks.Clear();
-            //foreach (var book in AllBooks)
-            //{
-            //    FilteredBooks.Add(book);
-            //}
+            AllBooks = await _bookRepository.GetAllBooksAsync();
+            FilteredBooks.Clear();
+            foreach (var book in AllBooks)
+            {
+                FilteredBooks.Add(book);
+            }
 
         }
 
@@ -187,12 +187,21 @@ namespace LibraryManager.View.Pages
             }
         }
 
-        private void ItemEdit_ButtonClick(object sender, RoutedEventArgs e)
+        private async void ItemEdit_ButtonClick(object sender, RoutedEventArgs e)
         {
             if (selectedBook != null)
             {
                 var editWindow = new EditBook(selectedBook);
-                editWindow.ShowDialog();
+                editWindow.Owner = Window.GetWindow(this);
+                await editWindow.LoadDataAsync();
+
+               var result =  editWindow.ShowDialog();
+
+                if (result == true)
+                {
+                    await LoadDataAsync();
+                }
+
             }
         }
 
@@ -220,7 +229,11 @@ namespace LibraryManager.View.Pages
             addBookWindow.Owner = Window.GetWindow(this);
             await addBookWindow.LoadDataAsync();
 
-            addBookWindow.ShowDialog();
+            var result = addBookWindow.ShowDialog();
+            if(result == true)
+            {
+                await LoadDataAsync();  
+            }
         }
 
         private void CircularDoubleButtonControl_ButtonTopClick(object sender, RoutedEventArgs e)

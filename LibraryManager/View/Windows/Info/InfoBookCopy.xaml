@@ -63,9 +63,10 @@
                                 <ColumnDefinition Width="0.8*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Padding="0,8,0,0" Content="Is avaiable?:" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" Foreground="#3a3960"/>
+                            <Label Padding="0,8,0,0" Content="Available:" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="22" FontWeight="Bold" Foreground="#3a3960"/>
                             <CheckBox Grid.Column="1"
-                                  IsChecked="True"
+                                  x:Name="availableBox"
+                                  IsHitTestVisible="False"
                                   VerticalAlignment="Center" HorizontalAlignment="Center"
                                   FontSize="24">
                                 <CheckBox.LayoutTransform>
