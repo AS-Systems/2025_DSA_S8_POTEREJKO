@@ -133,7 +133,15 @@
 
                         <!--Button grid-->
                         <Grid Grid.Row="6">
-                            
+                            <Grid Grid.Row="0" Margin="0,5,0,5" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="6*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Username:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="Bold" />
+                                <Label x:Name="UsernameLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="DemiBold" />
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>

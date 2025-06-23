@@ -26,7 +26,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 
-                <btn:ItemTemplateActionButton x:Name="actionBtn" Width="30" Height="30" Margin="0,0,0,5" HorizontalAlignment="Center"/>
+                <btn:ItemTemplateActionButton x:Name="actionBtn" Width="30" Height="30" Margin="0,0,0,5" HorizontalAlignment="Center" ItemClicked="actionBtn_ItemClicked" />
             </Grid>
 
         </Grid>

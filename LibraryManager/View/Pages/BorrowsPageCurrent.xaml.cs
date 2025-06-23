@@ -26,7 +26,7 @@ namespace LibraryManager.View.Pages
 
         public async Task LoadDataAsync()
         {
-            IEnumerable<Borrow> results = await _borrowRepository.GetFinishedBorrowsOfUserId(AppUser.User.Id);
+            IEnumerable<Borrow> results = await _borrowRepository.GetCurrentBorrowsOfUserId(AppUser.User.Id);
 
             Borrows.Clear();
             foreach (var borrow in results)

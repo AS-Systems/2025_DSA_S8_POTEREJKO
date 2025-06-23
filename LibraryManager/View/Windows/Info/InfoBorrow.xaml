@@ -68,7 +68,7 @@
                             </Grid.ColumnDefinitions>
 
                                 <Label Content="Book:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
-                                <Label x:Name="BookLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="DemiBold" />
+                                <Label x:Name="BookLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="DemiBold"  />
 
                                 <Label Grid.Row="1" Content="Borrower:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
                                 <Label Grid.Row="1" x:Name="BorrowerLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="DemiBold" />
@@ -103,7 +103,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Content="Borrow status:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
-                            <Label x:Name="BorrowStatusLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+                            <Label x:Name="BorrowStatusLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="DemiBold" />
 
 
                         </Grid>

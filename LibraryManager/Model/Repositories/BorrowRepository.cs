@@ -33,9 +33,30 @@ namespace LibraryManager.Model.Repositories
             return await _context.Borrows.Where(b => b.UserId == id).ToListAsync();  
         }
 
+        public async Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfBookCopyOwnerId(int id)
+        {
+            return await _context.Borrows
+                .Include(b => b.BookCopy)
+                .Include(b => b.BookCopy.Book)
+                .Where(b => b.BookCopy.OwnerId == id && b.Status == (sbyte)Status.Upcomming)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Borrow>> GetCurrentBorrowsOfBookCopyOwnerId(int id)
+        {
+            return await _context.Borrows
+                .Include(b => b.BookCopy)
+                .Include(b => b.BookCopy.Book)
+                .Where(b => b.BookCopy.OwnerId == id && b.Status == (sbyte)Status.Current)
+                .ToListAsync();
+        }
+
+
+
         public async Task<IEnumerable<Borrow>> GetFinishedBorrowsOfUserId(int id)
         { 
             return await _context.Borrows.Where(b => b.UserId == id && b.Status == (sbyte)Status.Finished)
+                .Include(b => b.BookCopy)
                 .Include(b => b.BookCopy.Book)
                 .Include(b => b.User)
                 .ToListAsync();

@@ -30,6 +30,7 @@ namespace LibraryManager.View.Windows.Info
             EmailLabel.Content = user.Email;
             PhoneLabel.Content = user.PhoneNumber;
             RoleLabel.Content = ((Role)user.Role).ToString();
+            UsernameLabel.Content = user.Username;
 
             CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
         }

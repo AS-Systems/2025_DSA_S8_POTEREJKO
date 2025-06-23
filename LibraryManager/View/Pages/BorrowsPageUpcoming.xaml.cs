@@ -25,7 +25,9 @@ namespace LibraryManager.View.Pages
         {
             InitializeComponent();
             _borrowRepository = App.ServiceProvider.GetRequiredService<IBorrowRepository>();
-            
+
+            DataContext = this;
+
         }
 
 
@@ -41,12 +43,18 @@ namespace LibraryManager.View.Pages
             }
         }
 
-        private void CircularSingleButtonControl_ButtonSubClick(object sender, System.Windows.RoutedEventArgs e)
+        private async void CircularSingleButtonControl_ButtonSubClick(object sender, System.Windows.RoutedEventArgs e)
         {
             var window = new AdddBorrow();
             window.Owner = Window.GetWindow(this);
+            await window.LoadDataAsync();
 
-            window.ShowDialog();
+            var result =  window.ShowDialog();
+            if (result == true)
+            { 
+                await LoadDataAsync();
+            }
+
         }
     }
 }

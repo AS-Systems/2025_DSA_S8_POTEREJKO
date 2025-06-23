@@ -39,6 +39,18 @@ namespace LibraryManager.Model.Repositories
                 .FirstOrDefaultAsync(bc => bc.Id == id);
         }
 
+        public async Task<IEnumerable<BookCopy>> GetBookCopiesOfBook(int bookId)
+        {
+            return await _libraryDBContext.BookCopies
+                .Include(bc => bc.Book)
+                .Include(bc => bc.Owner)
+                .Include(bc => bc.Shelf)
+                .Include(bc => bc.Shelf.Bookshelf)
+                .Include(bc => bc.Borrows)
+                .Where(bc => bc.BookId == bookId).ToListAsync();    
+        }
+
+
         public async Task<IEnumerable<BookCopy>> GetAllBookCopiesOfUserAsync(int ownerId)
         {
             return await _libraryDBContext.BookCopies
