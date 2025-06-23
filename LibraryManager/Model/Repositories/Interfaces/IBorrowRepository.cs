@@ -15,5 +15,8 @@ namespace LibraryManager.Model.Repositories.Interfaces
         Task<IEnumerable<Borrow>> GetAllBorrowsOfUserId(int id);
         Task<IEnumerable<Borrow>> GetFinishedBorrowsOfUserId(int id);
         Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfUserId(int id);
+        Task<IEnumerable<Borrow>> GetCurrentBorrowsOfUserId(int id);
+        Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfBookCopyOwnerId(int id);
+        Task<IEnumerable<Borrow>> GetCurrentBorrowsOfBookCopyOwnerId(int id);
     }
 }

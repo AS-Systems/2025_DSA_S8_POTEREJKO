@@ -62,7 +62,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <btn:CircularSingleButtonControl Grid.Column="1" ButtonIsVisible="Visible" SubButtonText="Borrow book" HorizontalAlignment="Right" Margin="0,0,60,0"/>
+            <btn:CircularSingleButtonControl Grid.Column="1" ButtonIsVisible="Visible" SubButtonText="Borrow book" ButtonSubClick="CircularSingleButtonControl_ButtonSubClick" HorizontalAlignment="Right" Margin="0,0,60,0"/>
 
         </Grid>
 

@@ -1,6 +1,11 @@
 ﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace LibraryManager.View.Pages
@@ -10,49 +15,34 @@ namespace LibraryManager.View.Pages
     /// </summary>
     public partial class BorrowsPageReturns : Page
     {
-        public List<Borrow> ReturnsList { get; set; }
+        private readonly IBorrowRepository _borrowRepository;
 
+        public ObservableCollection<Borrow> ReturnsList { get; set; } = new();
 
         public BorrowsPageReturns()
         {
             InitializeComponent();
             DataContext = this;
 
-            var borrowList = new List<Borrow>
-            {
-            new Borrow
-            {
-                Id = 1,
-                BookCopyId = 101,
-                UserId = 1001,
-                BorrowDate = DateTime.Now.AddHours(-7),
-                ReturnDate = DateTime.Now.AddHours(4),
-                BookCopy = new BookCopy { Id = 101, BookId = 201, Book = new Book{ Title = "Title 1"} },
-                User = new User { Id = 1001, Name = "Jan Kowalski", Email = "jan.kowalski@example.com" }
-            },
-            new Borrow
-            {
-                Id = 2,
-                BookCopyId = 102,
-                UserId = 1002,
-                BorrowDate = DateTime.Now.AddHours(-2),
-                ReturnDate = DateTime.Now.AddHours(2),
-                BookCopy = new BookCopy { Id = 102, BookId = 202, Book = new Book{ Title = "Title 2"} },
-                User = new User { Id = 1002, Name = "Anna Nowak", Email = "anna.nowak@example.com" }
-            },
-            new Borrow
-            {
-                Id = 3,
-                BookCopyId = 103,
-                UserId = 1003,
-                BorrowDate = DateTime.Now.AddHours(-5),
-                ReturnDate = DateTime.Now.AddHours(3),
-                BookCopy = new BookCopy { Id = 103, BookId = 203, Book = new Book{ Title = "Title 3"} },
-                User = new User { Id = 1003, Name = "Piotr Wiśniewski", Email = "piotr.wisniewski@example.com" }
-            }
-            };
+            _borrowRepository = App.ServiceProvider.GetRequiredService<IBorrowRepository>();    
 
-            ReturnsList = borrowList;
+        }
+
+        public async Task LoadDataAsync()
+        {
+            var borrows =  await _borrowRepository.GetCurrentBorrowsOfBookCopyOwnerId(AppUser.User.Id);
+
+            ReturnsList.Clear();
+            foreach (var borrow in borrows) 
+            {
+                ReturnsList.Add(borrow);
+            }
+
+        }
+
+        private async void BorrowCycleItemTemplate_Deleted(object sender, System.Windows.RoutedEventArgs e)
+        {
+            await LoadDataAsync();
         }
     }
 }

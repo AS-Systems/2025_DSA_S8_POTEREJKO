@@ -1,4 +1,5 @@
 ﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Enums;
 using LibraryManager.Model.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -32,15 +33,49 @@ namespace LibraryManager.Model.Repositories
             return await _context.Borrows.Where(b => b.UserId == id).ToListAsync();  
         }
 
+        public async Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfBookCopyOwnerId(int id)
+        {
+            return await _context.Borrows
+                .Include(b => b.BookCopy)
+                .Include(b => b.BookCopy.Book)
+                .Where(b => b.BookCopy.OwnerId == id && b.Status == (sbyte)Status.Upcomming)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Borrow>> GetCurrentBorrowsOfBookCopyOwnerId(int id)
+        {
+            return await _context.Borrows
+                .Include(b => b.BookCopy)
+                .Include(b => b.BookCopy.Book)
+                .Where(b => b.BookCopy.OwnerId == id && b.Status == (sbyte)Status.Current)
+                .ToListAsync();
+        }
+
+
+
         public async Task<IEnumerable<Borrow>> GetFinishedBorrowsOfUserId(int id)
         { 
-            return await _context.Borrows.Where(b => b.UserId == id && b.ReturnDate < DateTime.Now).ToListAsync();
+            return await _context.Borrows.Where(b => b.UserId == id && b.Status == (sbyte)Status.Finished)
+                .Include(b => b.BookCopy)
+                .Include(b => b.BookCopy.Book)
+                .Include(b => b.User)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfUserId(int id)
         {
-            return await _context.Borrows.Where(b => b.UserId == id && b.BorrowDate > DateTime.Now).ToListAsync();
+            return await _context.Borrows.Where(b => b.UserId == id && b.Status == (sbyte)Status.Upcomming)
+                .Include(b => b.BookCopy.Book)
+                .Include(b =>b.User)
+                .ToListAsync();
         }
+
+        public async Task<IEnumerable<Borrow>> GetCurrentBorrowsOfUserId(int id)
+        {
+            return await _context.Borrows.Where(b => b.UserId == id && b.Status == (sbyte)Status.Current).ToListAsync();
+        }
+
+
 
         public async Task<Borrow?> GetBorrowByIdAsync(int id)
         {
