@@ -59,5 +59,14 @@ namespace LibraryManager.Model.Repositories
         {
             return await _context.Genres.AnyAsync(g => g.Id == id);
         }
+        public async Task<IEnumerable<Genre>> GetTopGenresAsync(int top = 3)
+        {
+            return await _context.Genres
+                .Include(g => g.BooksGenres)
+                .OrderByDescending(g => g.BooksGenres.Count)
+                .Take(top)
+                .ToListAsync();
+        }
+
     }
 }

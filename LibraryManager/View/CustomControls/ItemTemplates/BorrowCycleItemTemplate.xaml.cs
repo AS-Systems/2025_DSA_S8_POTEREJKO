@@ -50,11 +50,19 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
 
             if (IsBookReturn)
             {
-                date = borrow.ReturnDate;
+                if (borrow.ReturnDate.HasValue)
+                    date = borrow.ReturnDate.Value;
+                else
+                    return; // or handle null case appropriately
             }
-            else {
-                date = borrow.BorrowDate;
+            else
+            {
+                if (borrow.BorrowDate.HasValue)
+                    date = borrow.BorrowDate.Value;
+                else
+                    return; // or handle null case appropriately
             }
+
 
             dateText.Text = (date.ToShortDateString() + $" {date.Hour}:{date.Minute}");
         }

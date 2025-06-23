@@ -416,7 +416,7 @@
 
         <Label Padding="12,0,0,0" Grid.Column="0" Content="This:" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#5e686d"/>
 
-        <ComboBox Grid.Column="1" ItemsPanel="{DynamicResource ComboBoxItemsPanel1}" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource CustomComboboxStyle}"  >
+        <ComboBox Grid.Column="1" ItemsPanel="{DynamicResource ComboBoxItemsPanel1}" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource CustomComboboxStyle}" SelectionChanged="ComboBox_SelectionChanged"  >
             <ComboBoxItem Content="Year"/>
             <ComboBoxItem Content="Month"/>
             <ComboBoxItem Content="Day"/>

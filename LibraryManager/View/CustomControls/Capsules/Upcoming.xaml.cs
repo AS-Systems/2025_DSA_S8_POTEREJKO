@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LibraryManager.Model.Enums;
+using LibraryManager.Model.Repositories.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LibraryManager.View.CustomControls.Capsules
 {
@@ -20,9 +23,12 @@ namespace LibraryManager.View.CustomControls.Capsules
     /// </summary>
     public partial class Upcoming : UserControl
     {
+        
+        private readonly IBorrowRepository _borrowRepository;
         public Upcoming()
         {
             InitializeComponent();
+            _borrowRepository = App.ServiceProvider.GetRequiredService<IBorrowRepository>();
         }
 
         public static readonly DependencyProperty CapsuleWidthProperty = DependencyProperty.Register("CapsuleWidth", typeof(int), typeof(Upcoming), new PropertyMetadata(250));
@@ -87,6 +93,39 @@ namespace LibraryManager.View.CustomControls.Capsules
         {
             get { return (string)GetValue(ReturnCountProperty); }
             set { SetValue(ReturnCountProperty, value); }
+        }
+
+        // Define a routed event or simple CLR event to notify selection changed
+        public event EventHandler<string>? SelectionChangedEvent;
+
+        private async void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string selectedValue = selectedItem.Content.ToString() ?? "";
+
+                // Raise selection event
+                SelectionChangedEvent?.Invoke(this, selectedValue);
+
+                // Parse TimePeriod
+                TimePeriod period = selectedValue switch
+                {
+                    "Year" => TimePeriod.ThisYear,
+                    "Month" => TimePeriod.ThisMonth,
+                    "Day" => TimePeriod.Today,
+                    _ => TimePeriod.Today
+                };
+
+                // Fetch upcoming borrows
+                var upcomingBorrows = await _borrowRepository.GetUpcomingBorrowsAsync(period);
+
+                // Fetch upcoming returns (you may need to add GetUpcomingReturnsAsync)
+                var upcomingReturns = await _borrowRepository.GetUpcomingReturnsAsync(period);
+
+                // Update dependency properties
+                BorrowCount = upcomingBorrows.Count().ToString();
+                ReturnCount = upcomingReturns.Count().ToString();
+            }
         }
 
 

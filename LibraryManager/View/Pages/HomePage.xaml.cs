@@ -18,6 +18,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LibraryManager.Model.Enums;
+using LibraryManager.Model.Helpers;
+using LibraryManager.Model.Repositories;
+using LibraryManager.View.CustomControls.Capsules;
 
 namespace LibraryManager.View.Pages
 {
@@ -27,6 +31,8 @@ namespace LibraryManager.View.Pages
     public partial class HomePage : Page, INotifyPropertyChanged
     {
         private readonly IBookRepository _bookRepository;
+        private readonly IBorrowRepository _borrowRepository;
+        private readonly IGenreRepository _genreRepository;
         private readonly User _appUser;
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -41,7 +47,7 @@ namespace LibraryManager.View.Pages
         private int upcomingBorrows;
         private int upcomingReturns;
 
-        
+
 
         #endregion
 
@@ -49,7 +55,9 @@ namespace LibraryManager.View.Pages
         public int AllBooks
         {
             get { return allBooks; }
-            set { allBooks = value;
+            set
+            {
+                allBooks = value;
                 OnPropertyChanged();
             }
         }
@@ -57,7 +65,9 @@ namespace LibraryManager.View.Pages
         public int AllAvailableBooks
         {
             get { return allAvailableBooks; }
-            set { allAvailableBooks = value;
+            set
+            {
+                allAvailableBooks = value;
                 OnPropertyChanged();
             }
         }
@@ -65,7 +75,9 @@ namespace LibraryManager.View.Pages
         public int YourBooks
         {
             get { return yourBooks; }
-            set { yourBooks = value;
+            set
+            {
+                yourBooks = value;
                 OnPropertyChanged();
             }
         }
@@ -73,7 +85,9 @@ namespace LibraryManager.View.Pages
         public int AvailableYourBooks
         {
             get { return availableYourBooks; }
-            set { availableYourBooks = value;
+            set
+            {
+                availableYourBooks = value;
                 OnPropertyChanged();
             }
         }
@@ -81,7 +95,9 @@ namespace LibraryManager.View.Pages
         public int TotalBorrows
         {
             get { return totalBorrows; }
-            set { totalBorrows = value;
+            set
+            {
+                totalBorrows = value;
                 OnPropertyChanged();
             }
         }
@@ -89,7 +105,9 @@ namespace LibraryManager.View.Pages
         public int UpcomingBorrows
         {
             get { return upcomingBorrows; }
-            set { upcomingBorrows = value;
+            set
+            {
+                upcomingBorrows = value;
                 OnPropertyChanged();
             }
         }
@@ -97,7 +115,9 @@ namespace LibraryManager.View.Pages
         public int UpcomingReturns
         {
             get { return upcomingReturns; }
-            set { upcomingReturns = value;
+            set
+            {
+                upcomingReturns = value;
                 OnPropertyChanged();
             }
         }
@@ -109,48 +129,81 @@ namespace LibraryManager.View.Pages
         {
             InitializeComponent();
             _appUser = appUser;
-            _bookRepository = App.ServiceProvider.GetRequiredService<IBookRepository>();         
+            _bookRepository = App.ServiceProvider.GetRequiredService<IBookRepository>();
+            _borrowRepository = App.ServiceProvider.GetRequiredService<IBorrowRepository>();
+            _genreRepository = App.ServiceProvider.GetRequiredService<IGenreRepository>();
             DataContext = this;
-
+            
+            TotalBorrowsCapsule.SelectionChangedEvent += TotalBorrowsCapsule_SelectionChanged;
+            UpcomingCapsule.SelectionChangedEvent += UpcomingCapsule_SelectionChanged;
 
             TotalBorrows = 20;
 
             AllAvailableBooks = 65;
             AllBooks = 80;
-            
+
             AvailableYourBooks = 3;
             YourBooks = 7;
 
             UpcomingBorrows = 2;
             UpcomingReturns = 1;
             _ = LoadDataAsync();
+            
+
         }
 
+        private void TotalBorrowsCapsule_SelectionChanged(object? sender, string selectedValue)
+        {
+            // Here you get the "Year", "Month", or "Day" string and update TotalBorrows accordingly
+
+            // Example logic to simulate changing TotalBorrows:
+            switch (selectedValue)
+            {
+                case "Year":
+                    TotalBorrows = 365; // Or load real data for year
+                    break;
+                case "Month":
+                    TotalBorrows = 30;  // Or load real data for month
+                    break;
+                case "Day":
+                    TotalBorrows = 1;   // Or load real data for day
+                    break;
+            }
+        }
+        private async void UpcomingCapsule_SelectionChanged(object? sender, string selectedValue)
+        {
+            // for example, fetch data based on selectedValue
+            // and update UpcomingCapsule.BorrowCount and ReturnCount
+        }
 
         public async Task LoadDataAsync()
-    {
-        try
         {
-            var allBooksList = await _bookRepository.GetAllBooksAsync();
-            var availableBooksList = await _bookRepository.GetAllAvailableBooksAsync();
-            var userBooksList = await _bookRepository.GetAllBooksOfUserAsync(_appUser.Id);
-            var availableUserBooksList = await _bookRepository.GetAllAvailableBooksOfUserAsync(_appUser.Id);
+            try
+            {
+                var allBooksList = await _bookRepository.GetAllBooksAsync();
+                var availableBooksList = await _bookRepository.GetAllAvailableBooksAsync();
+                var userBooksList = await _bookRepository.GetAllBooksOfUserAsync(_appUser.Id);
+                var availableUserBooksList = await _bookRepository.GetAllAvailableBooksOfUserAsync(_appUser.Id);
 
-            AllBooks = allBooksList.Count;
-            AllAvailableBooks = availableBooksList.Count;
-            YourBooks = userBooksList.Count;
-            AvailableYourBooks = availableUserBooksList.Count;
+                AllBooks = allBooksList.Count;
+                AllAvailableBooks = availableBooksList.Count;
+                YourBooks = userBooksList.Count;
+                AvailableYourBooks = availableUserBooksList.Count;
 
-            // For now, mock values or call the corresponding methods (later)
-            TotalBorrows = 0;
-            UpcomingBorrows = 0;
-            UpcomingReturns = 0;
+                var userBorrows = await _borrowRepository.GetAllBorrowsOfUserId2(_appUser.Id);
+                TotalBorrows = userBorrows.Count;
+
+                var upcomingBorrows = await _borrowRepository.GetUpcomingBorrowsOfUserAsync(_appUser.Id, TimePeriod.ThisWeek);
+                var upcomingReturns = await _borrowRepository.GetUpcomingReturnsOfUserAsync(_appUser.Id, TimePeriod.ThisWeek);
+                UpcomingBorrows = upcomingBorrows.Count();
+                UpcomingReturns = upcomingReturns.Count();
+                await TopGenres.LoadTopGenresAsync(_genreRepository);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
-        catch (Exception ex)
-        {
-            MessageBox.Show($"Failed to load data: {ex.Message}");
-        }
-    }
 
 
 
@@ -158,5 +211,6 @@ namespace LibraryManager.View.Pages
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }

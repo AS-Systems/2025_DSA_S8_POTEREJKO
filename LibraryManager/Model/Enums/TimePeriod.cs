@@ -8,6 +8,7 @@ namespace LibraryManager.Model.Enums{
     public enum TimePeriod
     {
         Today,
+        ThisWeek,
         ThisMonth,
         ThisYear
     }

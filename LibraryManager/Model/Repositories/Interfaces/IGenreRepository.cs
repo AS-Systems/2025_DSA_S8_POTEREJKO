@@ -12,5 +12,6 @@ namespace LibraryManager.Model.Repositories
         Task UpdateAsync(Genre genre);
         Task DeleteAsync(int id);
         Task<bool> ExistsAsync(int id);
+        Task<IEnumerable<Genre>> GetTopGenresAsync(int top = 3);
     }
 }
