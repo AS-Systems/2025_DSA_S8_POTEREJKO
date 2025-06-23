@@ -3,6 +3,7 @@ using LibraryManager.Model.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace LibraryManager.Model.Repositories
 {
@@ -47,5 +48,38 @@ namespace LibraryManager.Model.Repositories
             await _context.SaveChangesAsync();
         }
  
+        public async Task<List<Book>> GetAllBooksOfUserAsync(int userId)
+        {
+            return await _context.BookCopies
+                .AsNoTracking()
+                .Where(bc => bc.OwnerId == userId)
+                .Include(bc => bc.Book)
+                .Select(bc => bc.Book)
+                .Distinct()
+                .ToListAsync();
+        }
+
+        public async Task<List<Book>> GetAllAvailableBooksOfUserAsync(int userId)
+        {
+            return await _context.BookCopies
+                .AsNoTracking()
+                .Where(bc => bc.OwnerId == userId && bc.IsAvailable)
+                .Include(bc => bc.Book)
+                .Select(bc => bc.Book)
+                .Distinct()
+                .ToListAsync();
+        }
+
+        public async Task<List<Book>> GetAllAvailableBooksAsync()
+        {
+            return await _context.BookCopies
+                .AsNoTracking()
+                .Where(bc => bc.IsAvailable)
+                .Include(bc => bc.Book)
+                .Select(bc => bc.Book)
+                .Distinct()
+                .ToListAsync();
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using LibraryManager.Model.Repositories.Interfaces;
+﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Repositories.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace LibraryManager.View.Pages
     public partial class HomePage : Page, INotifyPropertyChanged
     {
         private readonly IBookRepository _bookRepository;
+        private readonly User _appUser;
         public event PropertyChangedEventHandler? PropertyChanged;
 
 
@@ -103,9 +105,10 @@ namespace LibraryManager.View.Pages
         #endregion
 
 
-        public HomePage()
+        public HomePage(User appUser)
         {
             InitializeComponent();
+            _appUser = appUser;
             _bookRepository = App.ServiceProvider.GetRequiredService<IBookRepository>();         
             DataContext = this;
 
@@ -120,20 +123,40 @@ namespace LibraryManager.View.Pages
 
             UpcomingBorrows = 2;
             UpcomingReturns = 1;
+            _ = LoadDataAsync();
         }
 
 
         public async Task LoadDataAsync()
-        { 
-            
+    {
+        try
+        {
+            var allBooksList = await _bookRepository.GetAllBooksAsync();
+            var availableBooksList = await _bookRepository.GetAllAvailableBooksAsync();
+            var userBooksList = await _bookRepository.GetAllBooksOfUserAsync(_appUser.Id);
+            var availableUserBooksList = await _bookRepository.GetAllAvailableBooksOfUserAsync(_appUser.Id);
+
+            AllBooks = allBooksList.Count;
+            AllAvailableBooks = availableBooksList.Count;
+            YourBooks = userBooksList.Count;
+            AvailableYourBooks = availableUserBooksList.Count;
+
+            // For now, mock values or call the corresponding methods (later)
+            TotalBorrows = 0;
+            UpcomingBorrows = 0;
+            UpcomingReturns = 0;
         }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Failed to load data: {ex.Message}");
+        }
+    }
+
 
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-
     }
 }
