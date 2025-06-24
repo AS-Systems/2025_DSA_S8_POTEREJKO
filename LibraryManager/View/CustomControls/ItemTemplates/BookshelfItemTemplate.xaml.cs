@@ -69,6 +69,7 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
             if (DataContext is Bookshelf bookshelf)
             {
                 var window = new InfoBookshelf(bookshelf);
+                window.Owner = Window.GetWindow(this);
                 window.ShowDialog();
             }
         }
@@ -78,7 +79,7 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
             if (DataContext is Bookshelf bookshelf)
             {
                 var window = new EditBookshelf(bookshelf);
-
+                window.Owner = Window.GetWindow(this);
                 var result = window.ShowDialog();
 
                 RaiseEvent(new RoutedEventArgs(DeletedEvent));             

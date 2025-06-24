@@ -67,9 +67,20 @@ namespace LibraryManager.View.Windows
                 var newBookCopy = new BookCopy
                 {
                     Book = book,
-                    Shelf = shelf,
                     OwnerId = AppUser.User.Id
                 };
+
+                if (shelf.AvailableSpace > 0)
+                {
+                    newBookCopy.Shelf = shelf;
+
+                }
+                else 
+                {
+                    MessageBox.Show("Selected shelf has no free space!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
 
                 if (available == true)
                 {
@@ -81,7 +92,12 @@ namespace LibraryManager.View.Windows
                 }
 
                 await _bookCopyRepository.AddBookCopyAsync(newBookCopy);
+
+                shelf.AvailableSpace -= 1;
+                await _shelfRepository.UpdateAsync(shelf);
+
                 MessageBox.Show("Item added!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 DialogResult = true;
             }
             else

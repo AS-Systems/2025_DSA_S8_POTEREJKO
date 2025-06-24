@@ -1,5 +1,6 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Enums;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -14,6 +15,9 @@ namespace LibraryManager.View.Windows.Info
         public InfoBorrow(Borrow borrow)
         {
             InitializeComponent();
+
+            CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
+
             BookLabel.Content = borrow.BookCopy.Book.Title.ToString();
             BorrowerLabel.Content = borrow.User.Username.ToString();
             BorrowDateLabel.Content = borrow.BorrowDate.ToShortDateString();

@@ -28,6 +28,7 @@ namespace LibraryManager.View.Windows.Info
             NameLabel.Content = author.Name;
             SurnameLabel.Content = author.Surname;
             InfoContent.Text = author.Info;
+            CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

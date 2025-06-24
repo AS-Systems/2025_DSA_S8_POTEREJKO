@@ -7,6 +7,7 @@
         xmlns:dr="clr-namespace:LibraryManager.View.CustomControls.ImageControls"
         xmlns:cmb="clr-namespace:LibraryManager.View.CustomControls.Comboboxes"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
         Title="AddBook" Height="750" Width="420" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">

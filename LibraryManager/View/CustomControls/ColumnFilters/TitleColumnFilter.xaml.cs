@@ -1,18 +1,7 @@
 ﻿using LibraryManager.View.CustomControls.TextBoxes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LibraryManager.View.CustomControls.ColumnFilters
 {
@@ -21,9 +10,35 @@ namespace LibraryManager.View.CustomControls.ColumnFilters
     /// </summary>
     public partial class TitleColumnFilter : UserControl
     {
+
+        public static readonly DependencyProperty FilterNameTextProperty = DependencyProperty.Register("FilterNameText", typeof(string), typeof(TitleColumnFilter), new PropertyMetadata(""));
+        public static readonly DependencyProperty PlaceholderTextProperty = DependencyProperty.Register("PlaceholderTxt", typeof(string), typeof(TitleColumnFilter), new PropertyMetadata(""));
+
+
+        public string FilterNameText
+        {
+            get { return (string)GetValue(FilterNameTextProperty); }
+            set { SetValue(FilterNameTextProperty, value); }
+        }
+
+
+
+        public string PlaceholderTxt
+        {
+            get { return (string)GetValue(PlaceholderTextProperty); }
+            set { SetValue(PlaceholderTextProperty, value); }
+        }
+
+
+
+
+
+
         public TitleColumnFilter()
         {
             InitializeComponent();
+            DataContext = this;
+
 
             Loaded += (s, e) =>
             {
@@ -59,13 +74,35 @@ namespace LibraryManager.View.CustomControls.ColumnFilters
         }
 
         public event EventHandler<string> FilterTextChanged;
+
+
+        private void FilterTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PlaceholderText.Visibility = string.IsNullOrWhiteSpace(FilterTextBox.Text)
+                ? Visibility.Collapsed
+                : Visibility.Collapsed;
+        }
+
+        private void FilterTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            PlaceholderText.Visibility = string.IsNullOrWhiteSpace(FilterTextBox.Text)
+                ? Visibility.Visible
+                : Visibility.Collapsed;
+        }
+
         private void CustomTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (sender is CustomTextBox textBox)
+            if (sender is TextBox textBox)
             {
-                FilterTextChanged?.Invoke(this, textBox.TextBoxText);
+                PlaceholderText.Visibility = string.IsNullOrWhiteSpace(textBox.Text)
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+                FilterTextChanged?.Invoke(this, textBox.Text);
             }
         }
+
+
 
     }
 }
