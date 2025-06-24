@@ -29,12 +29,20 @@ namespace LibraryManager.View.Windows.Add
 
         private async void saveBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (int.TryParse(capacityBox.Text, null, out int result) == false)
+            {
+                MessageBox.Show("Invalid input in capacity", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                return;
+            }
+
+
             var shelfToAdd = new Shelf
             {
                 Name = nameBox.Text,
-                Capacity = int.Parse(capacityBox.Text),
+                Capacity = result,
                 BookshelfId = _bookshelf.Id,
-                AvailableSpace = int.Parse(capacityBox.Text)
+                AvailableSpace = result
             };
 
             await _shelfRepository.InsertAsync(shelfToAdd);

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManager.View.Windows"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
         Title="AdddBorrow" Height="450" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
@@ -31,7 +32,7 @@
 
                 <Border BorderThickness="5,0,5,5" BorderBrush="#bfbb81" Grid.Row="1" CornerRadius="0,0,31,31" Grid.RowSpan="2"/>
                 <!--Window content space Grid-->
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="1" >
 
                     <!--Window content space Grid layout-->
                     <Grid.ColumnDefinitions>
@@ -60,20 +61,38 @@
                                 
                             </Grid.RowDefinitions>
 
+                            <!--Book-->
                             <ComboBox Grid.Row="0" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Name"
-                            />
-                            <!--To do: Impelment custom ComboBox control-->
+                                 Text="Name" x:Name="bookBox" SelectionChanged="bookBox_SelectionChanged"
+                            >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Title}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
 
+                            </ComboBox>
+
+                            <!--Bookcopy-->
                             <ComboBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
                                  VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
                                  Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
                                  BorderThickness="3" BorderBrush="#5e686d"
-                                 Text="Name"
-                            />
+                                 Text="Name" x:Name="bookCopyBox"
+                            >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Shelf.Bookshelf.Location}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </Grid>
 
                         <Grid Grid.Row="1">
@@ -83,12 +102,28 @@
 
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="1" Margin="0,5,0,5" HorizontalContentAlignment="Left" 
-                                    VerticalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" 
-                                    Padding="10,0,0,0" Background="Transparent" Foreground="#3a3960"
-                                    BorderThickness="3" BorderBrush="#5e686d"
-                                    Text="Description" x:Name="txtDescription"
-                           />
+                            <Grid Grid.Row="0"> 
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Foreground="#3a3960" FontSize="20" FontWeight="DemiBold" Background="Transparent" Text="Borrow date:" />
+                                <DatePicker Grid.Row="1" Foreground="#3a3960" FontSize="20" FontWeight="DemiBold" Background="Transparent" BorderThickness="0" x:Name="borrowDateBox"/>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Foreground="#3a3960" FontSize="20" FontWeight="DemiBold" Background="Transparent" Text="Return date:" />
+                                <DatePicker Grid.Row="1" Foreground="#3a3960" FontSize="20" FontWeight="DemiBold" Background="Transparent" BorderThickness="0" x:Name="returnDateBox" />
+
+                            </Grid>
+                            
+                            
                         </Grid>
 
                         <!--Button grid-->
@@ -108,7 +143,8 @@
 
                             <Button Grid.Column="1" Margin="10" Content="Save" 
                                  FontWeight="DemiBold" FontSize="20" Foreground="#3a3960" 
-                                 BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"/>
+                                 BorderThickness="3" BorderBrush="#5e686d" Background="#bec29b"
+                                 x:Name="saveBtn" Click="saveBtn_Click"/>
                         </Grid>
                     </Grid>
                 </Grid>

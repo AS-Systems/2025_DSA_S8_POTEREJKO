@@ -28,12 +28,18 @@ namespace LibraryManager.Model.Repositories
 
         public async Task<IEnumerable<Entities.User>> GetAllUsersAsync()
         {
-            return await _context.Users.Include(u => u.Borrows).ToListAsync();
+            return await _context.Users
+                .Include(u => u.Borrows)
+                .Include(u => u.BookCopies)
+                .ToListAsync();
         }
 
         public async Task<Entities.User?> GetUserByIdAsync(int userId)
         {
-            return await _context.Users.Include(u => u.Borrows).FirstOrDefaultAsync(u => u.Id == userId);
+            return await _context.Users
+                .Include(u => u.Borrows)
+                .Include(u => u.BookCopies)
+                .FirstOrDefaultAsync(u => u.Id == userId);
         }
 
         public async Task<Entities.User?> GetUserByUsernameAsync(string username)

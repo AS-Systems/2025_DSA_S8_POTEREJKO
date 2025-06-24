@@ -66,19 +66,30 @@ namespace LibraryManager.View.Pages
             }
         }
 
-        private void AuthorColumnFilter_FilterTextChanged(object sender, string filterText)
+        private void authorColumnFilter_FilterTextChanged(object sender, string filterText)
         {
-           // var filtered = AllBooks
-           //.Where(b => (b.Author.Name+b.Author.Surname).Contains(filterText, StringComparison.OrdinalIgnoreCase))
-           //.ToList();
+            var filtered = AllBooks
+           .Where(b => b.BookAuthors.Any(ba => ba.Author.DisplayName.Contains(filterText, StringComparison.OrdinalIgnoreCase)))
+           .ToList();
 
-           // FilteredBooks.Clear();
-           // foreach (var book in filtered)
-           // {
-           //     FilteredBooks.Add(book);
-           // }
+            FilteredBooks.Clear();
+            foreach (var book in filtered)
+            {
+                FilteredBooks.Add(book);
+            }
+        }
 
-            throw new NotImplementedException();
+        private void genreColumnFilter_FilterTextChanged(object sender, string filterText)
+        {
+            var filtered = AllBooks
+           .Where(b => b.BooksGenres.Any(bg => bg.Genre.DisplayName.Contains(filterText, StringComparison.OrdinalIgnoreCase)))
+           .ToList();
+
+            FilteredBooks.Clear();
+            foreach (var book in filtered)
+            {
+                FilteredBooks.Add(book);
+            }
         }
 
         private void PageCountColumnFilter_FilterTextChanged(object sender, int pageCount)
@@ -239,6 +250,8 @@ namespace LibraryManager.View.Pages
         private void CircularDoubleButtonControl_ButtonTopClick(object sender, RoutedEventArgs e)
         {
             var addAuthorWindow = new AddAuthor();
+            addAuthorWindow.Owner = Window.GetWindow(this);
+            
             addAuthorWindow.ShowDialog();
         }
 
@@ -255,6 +268,10 @@ namespace LibraryManager.View.Pages
                await LoadDataAsync();
             }
         }
+
+
+
+
     }
 
 

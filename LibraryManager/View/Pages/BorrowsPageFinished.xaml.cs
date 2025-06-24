@@ -16,7 +16,6 @@ namespace LibraryManager.View.Pages
     public partial class BorrowsPageFinished : Page
     {
         private readonly IBorrowRepository _borrowRepository;
-
         public ObservableCollection<Borrow> Borrows { get; set; }  = new ObservableCollection<Borrow>();
 
 

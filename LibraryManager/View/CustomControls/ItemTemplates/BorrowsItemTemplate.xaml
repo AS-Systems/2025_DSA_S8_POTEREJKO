@@ -5,24 +5,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LibraryManager.View.CustomControls.ItemTemplates"
              xmlns:conv="clr-namespace:LibraryManager.ViewModel.Converters"
+             xmlns:btn="clr-namespace:LibraryManager.View.CustomControls.Buttons"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="800">
 
+    <UserControl.Resources>
+        <conv:DateTimeToDateConverter x:Key="ToDateConverter"/>
+    </UserControl.Resources>
 
     <Grid ClipToBounds="True" Margin="0,10,0,0">
         <Grid Margin="40,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.4*"/>
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="1.4*"/>
+                <ColumnDefinition Width="1.4*"/>
                 <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width=".4*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="{Binding BookCopy.Book.Title}" FontSize="30" Grid.Column="0" TextTrimming="CharacterEllipsis" Margin="0,0,35,0" Foreground="#3a3960" FontWeight="DemiBold" />
-            <TextBlock Text="{Binding BookCopy.Owner.Username}" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis" Margin="0,0,15,0" Foreground="#3a3960" FontWeight="DemiBold" />
-            <TextBlock Text="{Binding BorrowDate}" FontSize="30" Grid.Column="2" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
-            <TextBlock Text="{Binding ReturnDate}" FontSize="30" Grid.Column="3" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center"/>
-            <TextBlock Text="{Binding User.Username}" FontSize="30" Grid.Column="4" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding User.Username}" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis" Margin="0,0,15,0" Foreground="#3a3960" FontWeight="DemiBold" />
+            <TextBlock Text="{Binding BorrowDate, Converter={StaticResource ToDateConverter}}" FontSize="30" Grid.Column="2" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding ReturnDate, Converter={StaticResource ToDateConverter}}" FontSize="30" Grid.Column="3" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding BookCopy.Owner.Username}" FontSize="30" Grid.Column="4" TextTrimming="CharacterEllipsis" Margin="0,0,10,0" Foreground="#3a3960" FontWeight="DemiBold" HorizontalAlignment="Center" />
+
+            <!--Control Buttons Grid-->
+            <Grid Grid.Column="5" Margin="0,0,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <btn:ItemTemplateActionButton x:Name="actionBtn" Width="30" Height="30" Margin="0,0,0,5" HorizontalAlignment="Center" ItemClicked="actionBtn_ItemClicked"/>
+            </Grid>
+
         </Grid>
 
 

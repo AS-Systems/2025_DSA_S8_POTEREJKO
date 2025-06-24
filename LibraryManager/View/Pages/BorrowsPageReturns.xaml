@@ -45,7 +45,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <it:BorrowCycleItemTemplate IsBookReturn="True"/>
+                            <it:BorrowCycleItemTemplate IsBookReturn="True" Deleted="BorrowCycleItemTemplate_Deleted"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

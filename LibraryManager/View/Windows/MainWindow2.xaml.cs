@@ -87,7 +87,10 @@ namespace LibraryManager.View.Windows
 
         private void UserButton_ButtonClick(object sender, RoutedEventArgs e)
         {
-            new InfoUser(appUser).ShowDialog();
+            var window = new InfoUser(appUser);
+            window.Owner = this;
+            window.ShowDialog();
+
         }
 
         private async void BorrowsBTN_Click(object sender, RoutedEventArgs e)

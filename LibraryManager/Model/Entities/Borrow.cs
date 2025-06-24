@@ -15,6 +15,8 @@ public partial class Borrow
 
     public DateTime? ReturnDate { get; set; }
 
+    public sbyte Status { get; set; }
+
     public virtual BookCopy BookCopy { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;

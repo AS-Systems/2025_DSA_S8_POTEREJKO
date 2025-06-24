@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LibraryManager.Model.Entities;
 
@@ -22,4 +23,8 @@ public partial class Bookshelf
     public virtual User Owner { get; set; } = null!;
 
     public virtual ICollection<Shelf> Shelves { get; set; } = new List<Shelf>();
+
+    [NotMapped]
+    public string Location => Country + " " + City + " " + Street;
+
 }

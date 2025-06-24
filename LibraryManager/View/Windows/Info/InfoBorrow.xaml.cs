@@ -1,17 +1,8 @@
 ﻿using LibraryManager.Model.Entities;
+using LibraryManager.Model.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 
 namespace LibraryManager.View.Windows.Info
@@ -24,10 +15,15 @@ namespace LibraryManager.View.Windows.Info
         public InfoBorrow(Borrow borrow)
         {
             InitializeComponent();
+
+            CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
+
             BookLabel.Content = borrow.BookCopy.Book.Title.ToString();
-            BorrowerLabel.Content = borrow.User.ToString();
-            BorrowDateLabel.Content = borrow.BorrowDate.ToString();
-            ReturnDateLabel.Content = borrow.ReturnDate.ToString();
+            BorrowerLabel.Content = borrow.User.Username.ToString();
+            BorrowDateLabel.Content = borrow.BorrowDate?.ToShortDateString() ?? "";
+            ReturnDateLabel.Content = borrow.ReturnDate?.ToShortDateString() ?? "";
+
+            BorrowStatusLabel.Content = ((Status)borrow.Status).ToString();
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

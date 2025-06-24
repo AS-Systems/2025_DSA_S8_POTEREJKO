@@ -1,4 +1,5 @@
 ﻿using LibraryManager.Model.Entities;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -16,6 +17,7 @@ namespace LibraryManager.View.Windows.Info
             availableBox.IsChecked = bookCopy.IsAvailable;
             txtBook.Text = bookCopy.Book?.Title;
             txtShelf.Text = bookCopy.Shelf?.Bookshelf?.Name +": " + bookCopy.Shelf?.Name;
+            CloseBTN.ImagePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Images", "close.png");
 
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

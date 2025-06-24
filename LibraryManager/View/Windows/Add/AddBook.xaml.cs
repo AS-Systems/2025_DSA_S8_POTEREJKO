@@ -76,13 +76,22 @@ namespace LibraryManager.View.Windows
         {
             if (SelectedGenres.Count > 0 && SelectedAuthors.Count > 0)
             {
+
+                if (int.TryParse(pageNumBox.Text, null , out int resultPage) == false || int.TryParse(ibanBox.Text, null, out int resultIban) == false)
+                {
+                    MessageBox.Show("Invalid input in IBAN or page count", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    return;
+                }
+
+
                 var newBook = new Book
                 {
                     Title = titleBox.Text,
-                    PageCount = int.Parse(pageNumBox.Text),
+                    PageCount = resultPage,
                     Description = descriptionBox.Text,
                     Cover = coverHolder.ImageBlob,
-                    Iban = int.Parse(ibanBox.Text),
+                    Iban = resultIban,
                 };
 
                 foreach (var genre in SelectedGenres)

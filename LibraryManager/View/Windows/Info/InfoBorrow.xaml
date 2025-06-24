@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:LibraryManager.View.Windows.Info"
         xmlns:uc="clr-namespace:LibraryManager.View.CustomControls"
         mc:Ignorable="d"
-       Title="InfoBorrow" Height="450" Width="350" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
+        WindowStartupLocation="CenterOwner"
+       Title="InfoBorrow" Height="450" Width="380" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ResizeMode="NoResize">
     <Grid>
         <Border Background="#faffc5" CornerRadius="35">
             <Grid>
@@ -62,15 +63,15 @@
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.7*"/>
+                                <ColumnDefinition Width="0.5*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
                                 <Label Content="Book:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
-                                <Label x:Name="BookLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+                                <Label x:Name="BookLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="DemiBold"  />
 
                                 <Label Grid.Row="1" Content="Borrower:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
-                                <Label Grid.Row="1" x:Name="BorrowerLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+                                <Label Grid.Row="1" x:Name="BorrowerLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="DemiBold" />
 
                         </Grid>
                         <Grid Grid.Row="1">
@@ -79,19 +80,32 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.97*"/>
+                                <ColumnDefinition Width="0.7*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
                             <Label Content="Borrow date:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
-                            <Label x:Name="BorrowDateLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+                            <Label x:Name="BorrowDateLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="DemiBold" />
 
                             <Label Content="Return date:" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
-                            <Label x:Name="ReturnDateLabel" Grid.Row="1" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="25"  Foreground="#3a3960" FontWeight="DemiBold" />
+                            <Label x:Name="ReturnDateLabel" Grid.Row="1" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="DemiBold" />
 
                         </Grid>
                         <!--Button grid-->
                         <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.3*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="Borrow status:" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="Bold" />
+                            <Label x:Name="BorrowStatusLabel" Grid.Column="1" Content="" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="22"  Foreground="#3a3960" FontWeight="DemiBold" />
+
+
                         </Grid>
                     </Grid>
                 </Grid>

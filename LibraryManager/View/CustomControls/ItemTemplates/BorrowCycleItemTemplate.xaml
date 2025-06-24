@@ -17,7 +17,7 @@
                 <ColumnDefinition Width=".2*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="{Binding BookCopy.Book.Title}" FontSize="30" Grid.Column="0" TextTrimming="CharacterEllipsis"  Foreground="#3a3960" FontWeight="DemiBold" TextAlignment="Center" />
-            <TextBlock Text="{Binding User.Name}" Padding="25,0,0,0" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis"  Foreground="#3a3960" FontWeight="DemiBold" TextAlignment="Center" />
+            <TextBlock Text="{Binding User.Username}" Padding="25,0,0,0" FontSize="30" Grid.Column="1" TextTrimming="CharacterEllipsis"  Foreground="#3a3960" FontWeight="DemiBold" TextAlignment="Center" />
             <TextBlock x:Name="dateText" FontSize="30" Grid.Column="2" TextTrimming="CharacterEllipsis"  Foreground="#3a3960" FontWeight="DemiBold" TextAlignment="Center" />
 
             <!--Control Buttons Grid-->
@@ -26,7 +26,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 
-                <btn:ItemTemplateActionButton x:Name="actionBtn" Width="30" Height="30" Margin="0,0,0,5" HorizontalAlignment="Center"/>
+                <btn:ItemTemplateActionButton x:Name="actionBtn" Width="30" Height="30" Margin="0,0,0,5" HorizontalAlignment="Center" ItemClicked="actionBtn_ItemClicked" />
             </Grid>
 
         </Grid>
