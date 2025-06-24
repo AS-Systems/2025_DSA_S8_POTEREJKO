@@ -70,11 +70,18 @@ namespace LibraryManager.View.Windows.Edit
 
             if (SelectedGenres.Count > 0 && SelectedAuthors.Count > 0)
             {
-                _book.Iban = int.Parse(ibanBox.Text);
+                if (int.TryParse(pageNumBox.Text, null, out int resultPage) == false || int.TryParse(ibanBox.Text, null, out int resultIban) == false)
+                {
+                    MessageBox.Show("Invalid input in IBAN or page count", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    return;
+                }
+
+                _book.Iban = resultIban;
                 _book.Title = titleBox.Text;
                 _book.Description = descriptionBox.Text;
                 _book.Cover = coverHolder.ImageBlob;
-                _book.PageCount = int.Parse(pageNumBox.Text);
+                _book.PageCount = resultPage;
 
                 foreach (var genre in SelectedGenres)
                 {
