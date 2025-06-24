@@ -89,8 +89,9 @@ public partial class HomelibraryContext : DbContext
 
             entity.HasOne(d => d.Owner).WithMany(p => p.BookCopies)
                 .HasForeignKey(d => d.OwnerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_owner");
+
 
             entity.HasOne(d => d.Shelf).WithMany(p => p.BookCopies)
                 .HasForeignKey(d => d.ShelfId)
@@ -111,8 +112,9 @@ public partial class HomelibraryContext : DbContext
 
             entity.HasOne(d => d.Owner).WithMany(p => p.BookShelves)
                 .HasForeignKey(d => d.OwnerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade) 
                 .HasConstraintName("fk_owner2");
+
         });
 
         modelBuilder.Entity<Book>(entity =>
@@ -159,13 +161,14 @@ public partial class HomelibraryContext : DbContext
 
             entity.HasOne(d => d.BookCopy).WithMany(p => p.Borrows)
                 .HasForeignKey(d => d.BookCopyId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_bookcopy");
 
             entity.HasOne(d => d.User).WithMany(p => p.Borrows)
                 .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_user");
+
         });
 
         modelBuilder.Entity<Genre>(entity =>
@@ -185,7 +188,7 @@ public partial class HomelibraryContext : DbContext
 
             entity.HasOne(d => d.Bookshelf).WithMany(p => p.Shelves)
                 .HasForeignKey(d => d.BookshelfId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("fk_bookshelf");
         });
 
