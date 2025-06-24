@@ -1,7 +1,6 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Repositories;
 using LibraryManager.View.Windows;
-using LibraryManager.View.Windows.Info;
 using LibraryManager.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.ObjectModel;
@@ -66,6 +65,7 @@ namespace LibraryManager.View.Pages
         private async void CircularSingleButtonControl_ButtonSubClick(object sender, RoutedEventArgs e)
         {
             var window = new AddBookCopy();
+            window.Owner = Window.GetWindow(this);  
             await window.LoadDataAsync();
 
             var result = window.ShowDialog();

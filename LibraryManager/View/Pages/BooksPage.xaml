@@ -20,7 +20,7 @@
 
         <Grid>
             <Border Background="#bec29b" >
-                <Grid Margin="40,0">
+                <Grid Margin="50,0,30,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition Width="1.4*"/>
@@ -29,13 +29,15 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <cf:PageCountColumnFilter Grid.Column="3" HorizontalContentAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="0,0,0,5" FilterTextChanged="PageCountColumnFilter_FilterTextChanged" OperationChanged="PageCountColumnFilter_OperationChanged"/>
-                    <cf:TitleColumnFilter Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" FilterTextChanged="TitleColumnFilter_FilterTextChanged"/>
-                    <cf:AuthorColumnFilter Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" FilterTextChanged="AuthorColumnFilter_FilterTextChanged"/>
-                    <cf:AvailableColumnFilter Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" AvailabilityChanged="AvailableColumnFilter_AvailabilityChanged"  />
+                    
+                    <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Title" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Authors" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b"/>
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Genres" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b"/>
+                    <TextBlock Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Page count" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b"/>
+                    <TextBlock Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Available" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b"/>
+                   
 
-                    <TextBlock Text="Genre" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
-                
+                    
                 </Grid>
             </Border>
             <Rectangle Height="4" VerticalAlignment="Bottom" Stroke="#2e2d4b" StrokeThickness="5" Margin="35,0"/>

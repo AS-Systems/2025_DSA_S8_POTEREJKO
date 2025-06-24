@@ -6,7 +6,11 @@
              xmlns:local="clr-namespace:LibraryManager.View.CustomControls.ColumnFilters"
              xmlns:btn="clr-namespace:LibraryManager.View.CustomControls.Buttons"
              xmlns:txtBox="clr-namespace:LibraryManager.View.CustomControls.TextBoxes"
-             mc:Ignorable="d" >
+             mc:Ignorable="d" 
+             Name="ColumnFilterText"
+             >
+            
+    
     <Grid  x:Name="RootGrid">
 
         <Grid.ColumnDefinitions>
@@ -14,7 +18,7 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Margin="5,0,2,0" Grid.Column="0" x:Name="ColumnName" Text="Title" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28" Foreground="#5e686d" FontWeight="DemiBold"/>
+        <TextBlock Margin="5,0,2,0" Grid.Column="0" x:Name="ColumnName" Text="{Binding FilterNameText, ElementName=ColumnFilterText}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" Foreground="#5e686d" FontWeight="DemiBold"/>
 
         <Button Grid.Column="1" BorderBrush="Transparent" Background="Transparent" Click="FilterButton_Click">
             <Button.Style>
@@ -45,26 +49,53 @@
         </Button>
 
         <Popup x:Name="PART_Popup"
-    Margin="0,20"
-    Width="180"
-    MinHeight="40"
-    Placement="Bottom"
-    PlacementTarget="{Binding ElementName=ColumnName}"
-    StaysOpen="True" 
-    AllowsTransparency="True"
-    PopupAnimation="Slide"
-    IsOpen="{Binding IsPopupOpen, Mode=TwoWay}">
-            <Border
-         x:Name="dropDownBorder"
-         Background="#bec29b"
-         BorderBrush="#5e686d"
-         BorderThickness="2" 
-         CornerRadius="10">
+       Margin="0,20"
+       Width="180"
+       MinHeight="40"
+       Placement="Bottom"
+       PlacementTarget="{Binding ElementName=ColumnName}"
+       StaysOpen="True"
+       AllowsTransparency="True"
+       PopupAnimation="Slide"
+       IsOpen="{Binding IsPopupOpen, Mode=TwoWay}">
 
+            <Border x:Name="dropDownBorder"
+            Background="#bec29b"
+            BorderBrush="#5e686d"
+            BorderThickness="2"
+            CornerRadius="10">
                 <Grid>
-                    <txtBox:CustomTextBox Grid.Column="2" Margin="5,5" TextBoxWidth="160" TextChanged="CustomTextBox_TextChanged" TextBoxText=""/>
+                    <Grid>
+                        <TextBox x:Name="FilterTextBox"
+                         Margin="5"
+                         Width="160"
+                         TextChanged="CustomTextBox_TextChanged"
+                         GotFocus="FilterTextBox_GotFocus"
+                         LostFocus="FilterTextBox_LostFocus"
+                         Background="#bec29b"
+                         BorderBrush="#5e686d"
+                         BorderThickness="2"
+                         FontSize="15"
+                         FontWeight="DemiBold"
+                                 />
+
+                        <TextBlock x:Name="PlaceholderText"
+                           Text="{Binding PlaceholderTxt, ElementName=ColumnFilterText}"
+                           Margin="10,5,0,0"
+                           VerticalAlignment="Center"
+                           Foreground="Gray"
+                           Background="Transparent"
+                           FontSize="15"
+                           FontWeight="DemiBold"
+                           IsHitTestVisible="False"
+                           HorizontalAlignment="Left"
+                           Visibility="Visible"/>
+                    </Grid>
                 </Grid>
             </Border>
         </Popup>
+
+
+
     </Grid>
 </UserControl>

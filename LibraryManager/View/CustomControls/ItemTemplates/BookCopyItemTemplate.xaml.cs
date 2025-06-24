@@ -57,6 +57,7 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
             if (DataContext is BookCopy bookCopy)
             {
                 var window = new InfoBookCopy(bookCopy);
+                window.Owner = Window.GetWindow(this);
                 window.ShowDialog();
             }
         }
@@ -66,6 +67,7 @@ namespace LibraryManager.View.CustomControls.ItemTemplates
             if (DataContext is BookCopy bookCopy)
             {
                 var window = new EditBookCopy(bookCopy);
+                window.Owner = Window.GetWindow(this);
                 await window.LoadDataAsync();
 
                 var result = window.ShowDialog();
