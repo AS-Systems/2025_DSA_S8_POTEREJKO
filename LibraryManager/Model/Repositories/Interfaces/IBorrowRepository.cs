@@ -21,5 +21,7 @@ namespace LibraryManager.Model.Repositories.Interfaces
         Task<IEnumerable<Borrow>> GetUpcomingReturnsOfUserAsync(int userId, TimePeriod period);
         Task<IEnumerable<Borrow>> GetUpcomingReturnsAsync(TimePeriod period);
         Task<List<Borrow>> GetAllBorrowsOfUserId2(int userId);
+        Task<List<Borrow>> GetTrueUpcomingBorrowsAsync(TimePeriod period);
+        Task<List<Borrow>> GetTrueUpcomingReturnsAsync(TimePeriod period);
     }
 }

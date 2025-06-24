@@ -28,6 +28,7 @@ namespace LibraryManager.View.CustomControls.Capsules
         public Upcoming()
         {
             InitializeComponent();
+            TotalBorrowsCapsule.SelectionChangedEvent += TotalBorrowsCapsule_SelectionChanged;
             _borrowRepository = App.ServiceProvider.GetRequiredService<IBorrowRepository>();
         }
 
@@ -95,38 +96,42 @@ namespace LibraryManager.View.CustomControls.Capsules
             set { SetValue(ReturnCountProperty, value); }
         }
 
-        // Define a routed event or simple CLR event to notify selection changed
         public event EventHandler<string>? SelectionChangedEvent;
-
-        private async void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
             {
                 string selectedValue = selectedItem.Content.ToString() ?? "";
-
-                // Raise selection event
+                // Raise the event with the selected value
                 SelectionChangedEvent?.Invoke(this, selectedValue);
-
-                // Parse TimePeriod
-                TimePeriod period = selectedValue switch
-                {
-                    "Year" => TimePeriod.ThisYear,
-                    "Month" => TimePeriod.ThisMonth,
-                    "Day" => TimePeriod.Today,
-                    _ => TimePeriod.Today
-                };
-
-                // Fetch upcoming borrows
-                var upcomingBorrows = await _borrowRepository.GetUpcomingBorrowsAsync(period);
-
-                // Fetch upcoming returns (you may need to add GetUpcomingReturnsAsync)
-                var upcomingReturns = await _borrowRepository.GetUpcomingReturnsAsync(period);
-
-                // Update dependency properties
-                BorrowCount = upcomingBorrows.Count().ToString();
-                ReturnCount = upcomingReturns.Count().ToString();
             }
         }
+        private async void TotalBorrowsCapsule_SelectionChanged(object? sender, string selectedValue)
+        {
+            TimePeriod period;
+
+            switch (selectedValue)
+            {
+                case "Year":
+                    period = TimePeriod.ThisYear;
+                    break;
+                case "Month":
+                    period = TimePeriod.ThisMonth;
+                    break;
+                case "Day":
+                    period = TimePeriod.Today;
+                    break;
+                default:
+                    return;
+            }
+
+            var upcomingBorrows = await _borrowRepository.GetTrueUpcomingBorrowsAsync(period);
+            var upcomingReturns = await _borrowRepository.GetTrueUpcomingReturnsAsync(period);
+
+            BorrowCount = upcomingBorrows.Count().ToString();
+            ReturnCount = upcomingReturns.Count().ToString();
+        }
+
 
 
     }

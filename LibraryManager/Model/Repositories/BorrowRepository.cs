@@ -128,6 +128,26 @@ namespace LibraryManager.Model.Repositories
                 .Where(b => b.UserId == userId)
                 .ToListAsync();
         }
+        public async Task<List<Borrow>> GetTrueUpcomingBorrowsAsync(TimePeriod period)
+        {
+            var (start, end) = TimePeriodHelper.GetUpcomingRange(period);
+            return await _context.Borrows
+                .AsNoTracking()
+                .Where(b => b.BorrowDate.HasValue
+                            && b.BorrowDate.Value >= start
+                            && b.BorrowDate.Value < end)
+                .ToListAsync();
+        }
+        public async Task<List<Borrow>> GetTrueUpcomingReturnsAsync(TimePeriod period)
+        {
+            var (start, end) = TimePeriodHelper.GetUpcomingRange(period);
+            return await _context.Borrows
+                .AsNoTracking()
+                .Where(b => b.ReturnDate.HasValue
+                            && b.ReturnDate.Value >= start
+                            && b.ReturnDate.Value < end)
+                .ToListAsync();
+        }
     }
 }
 

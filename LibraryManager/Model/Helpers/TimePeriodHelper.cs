@@ -18,6 +18,12 @@ namespace LibraryManager.Model.Helpers
                 _ => throw new ArgumentOutOfRangeException(nameof(period), period, null)
             };
         }
+        public static (DateTime start, DateTime end) GetUpcomingRange(TimePeriod period)
+        {
+            var (start, end) = GetRange(period);
+            var today = DateTime.UtcNow.Date;
+            return (start < today ? today : start, end);
+        }
 
     }
 }
