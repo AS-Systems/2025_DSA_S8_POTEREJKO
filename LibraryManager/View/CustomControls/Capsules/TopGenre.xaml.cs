@@ -2,8 +2,11 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using LibraryManager.Model.Repositories;
+using System.Linq;
 
 namespace LibraryManager.View.CustomControls.Capsules
 {
@@ -15,7 +18,7 @@ namespace LibraryManager.View.CustomControls.Capsules
             DataContext = this;
 
             // Example data
-            TopGenresList = new ObservableCollection<string> { "Fantasy", "Sci-Fi", "Mystery" };
+            TopGenresList = new ObservableCollection<string> { "Fantasy", "Sci-Fi", "Horror" };
         }
 
         public static readonly DependencyProperty CapsuleWidthProperty =
@@ -99,6 +102,14 @@ namespace LibraryManager.View.CustomControls.Capsules
             SecondGenreText = genres.Count > 1 ? genres[1] : "";
             ThirdGenreText = genres.Count > 2 ? genres[2] : "";
         }
+        public async Task LoadTopGenresAsync(IGenreRepository genreRepo, int top = 3)
+        {
+            var topGenres = await genreRepo.GetTopGenresAsync(top);
+            // Map genre entities to string list of names
+            var genreNames = new ObservableCollection<string>(topGenres.Select(g => g.Name));
+            TopGenresList = genreNames;
+        }
+
 
         private string _firstGenreText;
         public string FirstGenreText

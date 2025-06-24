@@ -28,7 +28,7 @@
 
                 <TextBlock Grid.Row="0" Text="Total" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding HeaderTopFontSize, ElementName=TotalCapsule}" FontWeight="Bold" Foreground="#5e686d"/>
                 <TextBlock Grid.Row="1" Text="Borrows" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="{Binding HeaderBottomFontSize, ElementName=TotalCapsule}" FontWeight="Bold" Foreground="#5e686d"/>
-                <cmb:TransparentCombobox Grid.Row="2" Margin="45,0"/>
+                <cmb:TransparentCombobox x:Name="TotalBorrowsCapsule" Grid.Row="2" Margin="45,0"/>
                 <TextBlock Grid.Row="3" Text="{Binding TotalCountText, ElementName=TotalCapsule}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="{Binding TotalCountTextFontSize, ElementName=TotalCapsule}" FontWeight="Bold" Foreground="#3a3960"/>
 
             </Grid>

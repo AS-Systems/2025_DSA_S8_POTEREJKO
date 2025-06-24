@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LibraryManager.Model.Enums;
+using LibraryManager.Model.Repositories.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LibraryManager.View.CustomControls.Capsules
 {
@@ -20,9 +23,13 @@ namespace LibraryManager.View.CustomControls.Capsules
     /// </summary>
     public partial class Upcoming : UserControl
     {
+        
+        private readonly IBorrowRepository _borrowRepository;
         public Upcoming()
         {
             InitializeComponent();
+            TotalBorrowsCapsule.SelectionChangedEvent += TotalBorrowsCapsule_SelectionChanged;
+            _borrowRepository = App.ServiceProvider.GetRequiredService<IBorrowRepository>();
         }
 
         public static readonly DependencyProperty CapsuleWidthProperty = DependencyProperty.Register("CapsuleWidth", typeof(int), typeof(Upcoming), new PropertyMetadata(250));
@@ -88,6 +95,43 @@ namespace LibraryManager.View.CustomControls.Capsules
             get { return (string)GetValue(ReturnCountProperty); }
             set { SetValue(ReturnCountProperty, value); }
         }
+
+        public event EventHandler<string>? SelectionChangedEvent;
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string selectedValue = selectedItem.Content.ToString() ?? "";
+                // Raise the event with the selected value
+                SelectionChangedEvent?.Invoke(this, selectedValue);
+            }
+        }
+        private async void TotalBorrowsCapsule_SelectionChanged(object? sender, string selectedValue)
+        {
+            TimePeriod period;
+
+            switch (selectedValue)
+            {
+                case "Year":
+                    period = TimePeriod.ThisYear;
+                    break;
+                case "Month":
+                    period = TimePeriod.ThisMonth;
+                    break;
+                case "Day":
+                    period = TimePeriod.Today;
+                    break;
+                default:
+                    return;
+            }
+
+            var upcomingBorrows = await _borrowRepository.GetTrueUpcomingBorrowsAsync(period);
+            var upcomingReturns = await _borrowRepository.GetTrueUpcomingReturnsAsync(period);
+
+            BorrowCount = upcomingBorrows.Count().ToString();
+            ReturnCount = upcomingReturns.Count().ToString();
+        }
+
 
 
     }

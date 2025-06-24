@@ -14,7 +14,7 @@ namespace LibraryManager.View.Windows
     public partial class MainWindow2 : Window
     {
         private BooksHolderPage booksHolderPage = new BooksHolderPage();
-        private HomePage homePage = new HomePage();
+        private HomePage homePage;
         private BorrowsPage borrowsPage = new BorrowsPage();
         private UsersPage usersPage = new UsersPage();
         private StoragePage storagePage = new StoragePage();
@@ -24,6 +24,7 @@ namespace LibraryManager.View.Windows
         {
             InitializeComponent();
             appUser = user;
+            homePage = new HomePage(appUser);
 
             UserButton.AppUser = appUser;
             

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LibraryManager.Model.Enums;
 
 namespace LibraryManager.Model.Repositories.Interfaces
 {
@@ -16,6 +17,7 @@ namespace LibraryManager.Model.Repositories.Interfaces
         Task InsertAsync(User user);
         Task UpdateAsync(User user);
         Task DeleteAsync(User user);
-
+        Task<int> GetTotalBorrowsOfUserAsync(int userId, TimePeriod period);
+        Task<int> GetTotalBorrowsAsync(TimePeriod period);
     }
 }

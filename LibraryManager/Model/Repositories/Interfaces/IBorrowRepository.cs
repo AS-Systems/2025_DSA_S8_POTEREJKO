@@ -1,6 +1,7 @@
 ﻿using LibraryManager.Model.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LibraryManager.Model.Enums;
 
 namespace LibraryManager.Model.Repositories.Interfaces
 {
@@ -15,6 +16,13 @@ namespace LibraryManager.Model.Repositories.Interfaces
         Task<IEnumerable<Borrow>> GetAllBorrowsOfUserId(int id);
         Task<IEnumerable<Borrow>> GetFinishedBorrowsOfUserId(int id);
         Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfUserId(int id);
+        Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfUserAsync(int userId, TimePeriod period);
+        Task<IEnumerable<Borrow>> GetUpcomingBorrowsAsync(TimePeriod period);
+        Task<IEnumerable<Borrow>> GetUpcomingReturnsOfUserAsync(int userId, TimePeriod period);
+        Task<IEnumerable<Borrow>> GetUpcomingReturnsAsync(TimePeriod period);
+        Task<List<Borrow>> GetAllBorrowsOfUserId2(int userId);
+        Task<List<Borrow>> GetTrueUpcomingBorrowsAsync(TimePeriod period);
+        Task<List<Borrow>> GetTrueUpcomingReturnsAsync(TimePeriod period);
         Task<IEnumerable<Borrow>> GetCurrentBorrowsOfUserId(int id);
         Task<IEnumerable<Borrow>> GetUpcomingBorrowsOfBookCopyOwnerId(int id);
         Task<IEnumerable<Borrow>> GetCurrentBorrowsOfBookCopyOwnerId(int id);

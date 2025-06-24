@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LibraryManager.Model.Helpers;
+using LibraryManager.Model.Enums;
 
 namespace LibraryManager.Model.Repositories
 {
@@ -61,6 +63,21 @@ namespace LibraryManager.Model.Repositories
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
         }
- 
+        public async Task<int> GetTotalBorrowsOfUserAsync(int userId, TimePeriod period)
+        {
+            var (start, end) = TimePeriodHelper.GetRange(period);
+            return await _context.Borrows
+                .AsNoTracking()
+                .CountAsync(b => b.UserId == userId && b.BorrowDate >= start && b.BorrowDate < end);
+        }
+
+        public async Task<int> GetTotalBorrowsAsync(TimePeriod period)
+        {
+            var (start, end) = TimePeriodHelper.GetRange(period);
+            return await _context.Borrows
+                .AsNoTracking()
+                .CountAsync(b => b.BorrowDate >= start && b.BorrowDate < end);
+        }
+
     }
 }

@@ -12,5 +12,8 @@ namespace LibraryManager.Model.Repositories.Interfaces
         Task DeleteAsync(Book book);
         Task InsertAsync(Book book);
         Task UpdateAsync(Book book);
+        Task<List<Book>> GetAllBooksOfUserAsync(int userId);
+        Task<List<Book>> GetAllAvailableBooksOfUserAsync(int userId);
+        Task<List<Book>> GetAllAvailableBooksAsync();
     }
 }

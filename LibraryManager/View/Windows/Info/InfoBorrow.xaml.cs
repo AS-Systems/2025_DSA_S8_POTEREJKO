@@ -20,8 +20,9 @@ namespace LibraryManager.View.Windows.Info
 
             BookLabel.Content = borrow.BookCopy.Book.Title.ToString();
             BorrowerLabel.Content = borrow.User.Username.ToString();
-            BorrowDateLabel.Content = borrow.BorrowDate.ToShortDateString();
-            ReturnDateLabel.Content = borrow.ReturnDate.ToShortDateString();
+            BorrowDateLabel.Content = borrow.BorrowDate?.ToShortDateString() ?? "";
+            ReturnDateLabel.Content = borrow.ReturnDate?.ToShortDateString() ?? "";
+
             BorrowStatusLabel.Content = ((Status)borrow.Status).ToString();
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

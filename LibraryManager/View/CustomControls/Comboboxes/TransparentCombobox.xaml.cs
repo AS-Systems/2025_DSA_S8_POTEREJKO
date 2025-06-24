@@ -24,5 +24,21 @@ namespace LibraryManager.View.CustomControls.Comboboxes
         {
             InitializeComponent();
         }
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string selectedValue = selectedItem.Content?.ToString() ?? "";
+
+                // Raise an event, update a property, or do whatever you want here.
+                // Example: 
+                SelectionChangedEvent?.Invoke(this, selectedValue);
+            }
+        }
+
+        // Also declare the event if you want to notify others:
+
+        public event EventHandler<string>? SelectionChangedEvent;
+
     }
 }
