@@ -1,4 +1,5 @@
 ﻿using LibraryManager.Model.Entities;
+using LibraryManager.Services;
 using LibraryManager.View.Pages;
 using LibraryManager.View.Windows.Info;
 using System;
@@ -50,6 +51,64 @@ namespace LibraryManager.View.Windows
             SetBasicColor();
             HomeBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
             
+            this.PreviewKeyDown += OnKeyDown;
+        }
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+            {
+                ClippyService.ToggleVisibility();
+                 if (ClippyService.IsVisible)
+                    ClippyService.Say("This is HomePage. Hover on something to get more information.");
+            }
+        }
+
+        private void Field_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("This is HomePage. Hover on something to get more information.");
+        }
+
+        private void Home_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Here you can see the home page. You can also see the total number of borrows and returns in the library.");
+        }
+
+        private void Books_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Here you can see the books in the library. You can also see the books that you own.");
+        }
+
+        private void Borrows_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Here you can see the borrows in the library. You can also see the borrows that you made.");
+        }
+
+        private void Users_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Here you can see the users that have the library.");
+        }
+
+        private void Storage_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Here you can see the storage in the library. You can also see the storage that you own.");
+        }
+        
+        private void Minimize_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click here to minimize the window.");
+        }
+
+        private void Close_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click here to close the window.");
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

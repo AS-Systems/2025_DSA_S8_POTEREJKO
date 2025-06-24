@@ -39,15 +39,15 @@
                 <!--Label and buttons of left column-->
                 <Label Grid.Column="0" Grid.Row="0" Content="Library Manager" HorizontalContentAlignment="Right" VerticalContentAlignment="Top" Padding="0,10" FontSize="35" Foreground="#a9bfa8"> </Label>
                 <bt:PageSelectionButton x:Name="HomeBTN"
-                    ButtonText="Home" Grid.Column="0" Grid.Row="1"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="HomeBTN_Click"/>
+                    ButtonText="Home" Grid.Column="0" Grid.Row="1"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="HomeBTN_Click" MouseEnter="Home_MouseEnter" MouseLeave="Field_MouseLeave"/>
                 <bt:PageSelectionButton x:Name="BooksBTN"
-                    ButtonText="Books" Grid.Column="0" Grid.Row="2"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="BooksBTN_Click"/>
+                    ButtonText="Books" Grid.Column="0" Grid.Row="2"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="BooksBTN_Click" MouseEnter="Books_MouseEnter" MouseLeave="Field_MouseLeave"/>
                 <bt:PageSelectionButton x:Name="BorrowsBTN"
-                    ButtonText="Borrows" Grid.Column="0" Grid.Row="3"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="BorrowsBTN_Click"/>
+                    ButtonText="Borrows" Grid.Column="0" Grid.Row="3"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="BorrowsBTN_Click" MouseEnter="Borrows_MouseEnter" MouseLeave="Field_MouseLeave"/>
                 <bt:PageSelectionButton x:Name="UsersBTN"
-                    ButtonText="Users" Grid.Column="0" Grid.Row="4"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="UsersBTN_Click"/>
+                    ButtonText="Users" Grid.Column="0" Grid.Row="4"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="UsersBTN_Click" MouseEnter="Users_MouseEnter" MouseLeave="Field_MouseLeave"/>
                 <bt:PageSelectionButton x:Name="StorageBTN"
-                    ButtonText="Storage" Grid.Column="0" Grid.Row="5"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="StorageBTN_Click"/>
+                    ButtonText="Storage" Grid.Column="0" Grid.Row="5"  FontColor="#a9bfa8" ButtonFontSize="35" BackgroundColor="#3a3960" ButtonHoverColor="#595879" ButtonClickColor="#2e2d4b" Click="StorageBTN_Click" MouseEnter="Storage_MouseEnter" MouseLeave="Field_MouseLeave"/>
 
 
             </Grid>
@@ -78,8 +78,8 @@
             </Border>
 
                 <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
-                    <uc:CircularButtonControl x:Name="MinimiseBTN" Margin="0,0,4,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="MinimiseBTN_Click"/>
-                    <uc:CircularButtonControl x:Name="CloseBTN" Margin="4,0,0,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="CloseBTN_Click"/>
+                    <uc:CircularButtonControl x:Name="MinimiseBTN" Margin="0,0,4,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="MinimiseBTN_Click" MouseEnter="Minimize_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <uc:CircularButtonControl x:Name="CloseBTN" Margin="4,0,0,0" Diameter="50" ButtonBorderThickness="3" ImageHeight="20" ImageWidth="20" ButtonBorderColor="#5e686d" ButtonBackground="#dfe4af" ButtonClickColor="#bec29b" ButtonHoverColor="#fde49e" Click="CloseBTN_Click" MouseEnter="Close_MouseEnter" MouseLeave="Field_MouseLeave"/>
                 </StackPanel>
             </Grid>
             

@@ -22,6 +22,7 @@ using LibraryManager.Model.Enums;
 using LibraryManager.Model.Helpers;
 using LibraryManager.Model.Repositories;
 using LibraryManager.View.CustomControls.Capsules;
+using LibraryManager.Services;
 
 namespace LibraryManager.View.Pages
 {
@@ -212,5 +213,34 @@ namespace LibraryManager.View.Pages
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private void TotalBorrows_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Here you can see the total number of borrows. You can also select a time period to see the number of borrows in that period.");
+        }
+
+        private void Upcoming_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Here you can see the number of upcoming borrows and returns. You can also select a time period to see the number of borrows and returns that are going to happen in that period.");
+        }
+
+        private void TopGenres_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Here you can see the 3 top genres of books in the library.");
+        }
+
+        private void Available_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Here you can see the number of available books in the library. You can also see the number of available books that you own.");
+        }
+
+        private void Field_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("This is HomePage. Hover on something to get more information.");
+        }
     }
 }
