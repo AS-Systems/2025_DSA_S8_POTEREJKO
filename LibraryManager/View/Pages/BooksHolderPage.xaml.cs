@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
+using LibraryManager.Services;
+using System.Windows.Input;
 
 namespace LibraryManager.View.Pages
 {
@@ -26,7 +28,7 @@ namespace LibraryManager.View.Pages
         {
             await _booksPage.LoadDataAsync();
             BooksPageContentPresenter.Content = _booksPage;
-           
+
             SetBasicColor();
             AllBooksBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#bec29b"));
         }
@@ -52,5 +54,22 @@ namespace LibraryManager.View.Pages
             await _bookCopiesPage.LoadDataAsync();
         }
 
+        private void AllBooks_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to view all books.");
+        }
+
+        private void BookCopies_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to view all book copies.");
+        }
+
+        private void Field_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Hover over a button to see its function.");
+        }
     }
 }

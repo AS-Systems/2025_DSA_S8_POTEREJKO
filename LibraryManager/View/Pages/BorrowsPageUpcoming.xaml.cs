@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using LibraryManager.Services;
+using System.Windows.Input;
 
 namespace LibraryManager.View.Pages
 {
@@ -49,12 +51,48 @@ namespace LibraryManager.View.Pages
             window.Owner = Window.GetWindow(this);
             await window.LoadDataAsync();
 
-            var result =  window.ShowDialog();
+            var result = window.ShowDialog();
             if (result == true)
-            { 
+            {
                 await LoadDataAsync();
             }
 
+        }
+
+        private void Title_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Title of the book.");
+        }
+
+        private void Borrower_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Name of the borrower.");
+        }
+
+        private void Take_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Date when the book was taken.");
+        }
+
+        private void Return_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Date when the book should be returned.");
+        }
+
+        private void Copy_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Name of the book copy owner.");
+        }
+
+        private void Field_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("You can hover over fields to get more information.");
         }
     }
 }

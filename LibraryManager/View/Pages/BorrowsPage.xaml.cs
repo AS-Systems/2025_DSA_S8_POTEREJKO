@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LibraryManager.Services;
+using System.Windows.Input;
 
 namespace LibraryManager.View.Pages
 {
@@ -98,6 +100,40 @@ namespace LibraryManager.View.Pages
             await _pageFinished.LoadDataAsync();
         }
 
+        private void BorrowsFinished_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to view finished borrows.");
+        }
 
+        private void Current_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to view current borrows.");
+        }
+
+        private void Upcomming_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to view upcoming borrows.");
+        }
+
+        private void CheckOuts_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to view checkouts.");
+        }
+
+        private void Returns_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to view returns.");
+        }
+
+        private void Field_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Hover over an element to see more information.");
+        }
     }
 }

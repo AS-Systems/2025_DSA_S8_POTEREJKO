@@ -150,7 +150,6 @@ namespace LibraryManager.View.Pages
             UpcomingReturns = 1;
             _ = LoadDataAsync();
             
-
         }
 
         private void TotalBorrowsCapsule_SelectionChanged(object? sender, string selectedValue)

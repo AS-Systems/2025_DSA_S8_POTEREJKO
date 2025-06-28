@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using LibraryManager.Services;
 
 namespace LibraryManager.View.Pages
 {
@@ -20,8 +22,8 @@ namespace LibraryManager.View.Pages
         public ObservableCollection<Bookshelf> FilteredBookshelves { get; set; } = new ObservableCollection<Bookshelf>();
         public StoragePage()
         {
-            InitializeComponent();            
-            _bookshelfRepository = App.ServiceProvider.GetRequiredService<IBookshelfRepository>();  
+            InitializeComponent();
+            _bookshelfRepository = App.ServiceProvider.GetRequiredService<IBookshelfRepository>();
 
             DataContext = this;
         }
@@ -51,7 +53,7 @@ namespace LibraryManager.View.Pages
             var result = window.ShowDialog();
 
             await LoadDataAsync();
-            
+
         }
 
         private async void CircularDoubleButtonControl_ButtonBottomClick(object sender, System.Windows.RoutedEventArgs e)
@@ -62,10 +64,41 @@ namespace LibraryManager.View.Pages
 
             var result = window.ShowDialog();
 
-            if (result == true) 
+            if (result == true)
             {
                 await LoadDataAsync();
             }
         }
+
+        private void Bookshelf_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Name of the bookshelf.");
+        }
+
+        private void Shelf_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Number of shelves in the bookshelf.");
+        }
+
+        private void Storage_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Available storage in the bookshelf.");
+        }
+
+        private void Btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("You can add a new bookshelf or shelf.");
+        }
+
+        private void Field_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("You can hover over the fields to get more information.");
+        }
+
     }
 }

@@ -9,6 +9,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using LibraryManager.Services;
 
 namespace LibraryManager.View.Pages
 {
@@ -49,7 +51,7 @@ namespace LibraryManager.View.Pages
 
             BookCopies.Clear();
             foreach (var bookCopy in bookCopies)
-            { 
+            {
                 BookCopies.Add(bookCopy);
             }
 
@@ -65,7 +67,7 @@ namespace LibraryManager.View.Pages
         private async void CircularSingleButtonControl_ButtonSubClick(object sender, RoutedEventArgs e)
         {
             var window = new AddBookCopy();
-            window.Owner = Window.GetWindow(this);  
+            window.Owner = Window.GetWindow(this);
             await window.LoadDataAsync();
 
             var result = window.ShowDialog();
@@ -80,6 +82,42 @@ namespace LibraryManager.View.Pages
         private async void BookCopyItemTemplate_Deleted(object sender, RoutedEventArgs e)
         {
             await LoadDataAsync();
+        }
+
+        private void Title_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("This is the title of the book.");
+        }
+
+        private void Bookshelf_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("This is the bookshelf where the book is located.");
+        }
+
+        private void Shelf_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("This is the shelf where the book is located.");
+        }
+
+        private void Available_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("This indicates whether the book is available for borrowing.");
+        }
+
+        private void Btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to add a new copy of the book.");
+        }
+
+        private void Field_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("You can hover over the fields to get more information.");
         }
     }
 }

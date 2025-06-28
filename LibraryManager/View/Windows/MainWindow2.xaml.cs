@@ -20,6 +20,7 @@ namespace LibraryManager.View.Windows
         private UsersPage usersPage = new UsersPage();
         private StoragePage storagePage = new StoragePage();
         private User appUser;
+        private String messageForClippy;
 
         public MainWindow2(User user)
         {
@@ -58,15 +59,15 @@ namespace LibraryManager.View.Windows
             if (e.Key == Key.F1)
             {
                 ClippyService.ToggleVisibility();
-                 if (ClippyService.IsVisible)
-                    ClippyService.Say("This is HomePage. Hover on something to get more information.");
+                if (ClippyService.IsVisible)
+                    SayPageSpecificClippyMessage(); 
             }
         }
 
         private void Field_MouseLeave(object sender, MouseEventArgs e)
         {
             if (ClippyService.IsVisible)
-                ClippyService.Say("This is HomePage. Hover on something to get more information.");
+                SayPageSpecificClippyMessage(); 
         }
 
         private void Home_MouseEnter(object sender, MouseEventArgs e)
@@ -133,6 +134,7 @@ namespace LibraryManager.View.Windows
 
             SetBasicColor();
             HomeBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
+            SayPageSpecificClippyMessage();
         }
 
         private async void BooksBTN_Click(object sender, RoutedEventArgs e)
@@ -142,6 +144,7 @@ namespace LibraryManager.View.Windows
 
             SetBasicColor();
             BooksBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
+            SayPageSpecificClippyMessage();
         }
 
         private void UserButton_ButtonClick(object sender, RoutedEventArgs e)
@@ -149,7 +152,7 @@ namespace LibraryManager.View.Windows
             var window = new InfoUser(appUser);
             window.Owner = this;
             window.ShowDialog();
-
+            SayPageSpecificClippyMessage();
         }
 
         private async void BorrowsBTN_Click(object sender, RoutedEventArgs e)
@@ -159,6 +162,7 @@ namespace LibraryManager.View.Windows
 
             SetBasicColor();
             BorrowsBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
+            SayPageSpecificClippyMessage();
         }
 
         private async void UsersBTN_Click(object sender, RoutedEventArgs e)
@@ -168,6 +172,7 @@ namespace LibraryManager.View.Windows
 
             SetBasicColor();
             UsersBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
+            SayPageSpecificClippyMessage();
         }
 
         private async void StorageBTN_Click(object sender, RoutedEventArgs e)
@@ -177,6 +182,7 @@ namespace LibraryManager.View.Windows
 
             SetBasicColor();
             StorageBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2e2d4b"));
+            SayPageSpecificClippyMessage();
         }
 
 
@@ -187,6 +193,33 @@ namespace LibraryManager.View.Windows
             BorrowsBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3a3960"));
             UsersBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3a3960"));
             StorageBTN.BackgroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3a3960"));
+        }
+
+        private void SayPageSpecificClippyMessage()
+        {
+            if (!ClippyService.IsVisible) return;
+
+            switch (PageHolder.Content)
+            {
+                case HomePage:
+                    ClippyService.Say("This is the Home Page. You can view overall stats here.");
+                    break;
+                case BooksHolderPage:
+                    ClippyService.Say("This is the Books Page. You can browse and manage library books here.");
+                    break;
+                case BorrowsPage:
+                    ClippyService.Say("This is the Borrows Page. Here you can manage book borrowings.");
+                    break;
+                case UsersPage:
+                    ClippyService.Say("This is the Users Page. Manage library users here.");
+                    break;
+                case StoragePage:
+                    ClippyService.Say("This is the Storage Page. View and manage storage-related data.");
+                    break;
+                default:
+                    ClippyService.Say("You're viewing an unknown page.");
+                    break;
+            }
         }
 
 

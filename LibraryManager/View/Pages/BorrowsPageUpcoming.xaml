@@ -27,11 +27,11 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Title" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
-                    <TextBlock Text="Borrower" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
-                    <TextBlock Text="Take date" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
-                    <TextBlock Text="Return date" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
-                    <TextBlock Text="Copy owner" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
+                    <TextBlock Text="Title" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Title_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Text="Borrower" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Borrower_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Text="Take date" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Take_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Text="Return date" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Return_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Text="Copy owner" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Copy_MouseEnter" MouseLeave="Field_MouseLeave"/>
 
                 </Grid>
             </Border>

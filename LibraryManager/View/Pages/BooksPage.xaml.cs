@@ -1,6 +1,7 @@
 ﻿using LibraryManager.Model.Entities;
 using LibraryManager.Model.Enums;
 using LibraryManager.Model.Repositories.Interfaces;
+using LibraryManager.Services;
 using LibraryManager.View.CustomControls.ColumnFilters;
 using LibraryManager.View.Windows;
 using LibraryManager.View.Windows.Edit;
@@ -15,6 +16,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using LibraryManager.Services;
+using System.Windows.Input;
 
 namespace LibraryManager.View.Pages
 {
@@ -32,7 +35,9 @@ namespace LibraryManager.View.Pages
         public Book SelectedBook
         {
             get { return selectedBook; }
-            set { selectedBook = value;
+            set
+            {
+                selectedBook = value;
                 OnPropertyChanged();
                 ActivateItemActionButtons();
             }
@@ -206,7 +211,7 @@ namespace LibraryManager.View.Pages
                 editWindow.Owner = Window.GetWindow(this);
                 await editWindow.LoadDataAsync();
 
-               var result =  editWindow.ShowDialog();
+                var result = editWindow.ShowDialog();
 
                 if (result == true)
                 {
@@ -221,14 +226,14 @@ namespace LibraryManager.View.Pages
             if (selectedBook != null)
             {
 
-                var result = MessageBox.Show($"Are you sure you want to delete: {selectedBook.Title}", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var result = System.Windows.MessageBox.Show($"Are you sure you want to delete: {selectedBook.Title}", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.Yes)
                 {
                     await _bookRepository.DeleteAsync(selectedBook);
 
                     // Perform the delete logic here
-                    MessageBox.Show("Item deleted successfully!", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+                    System.Windows.MessageBox.Show("Item deleted successfully!", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
                     await LoadDataAsync();
                 }
             }
@@ -241,9 +246,9 @@ namespace LibraryManager.View.Pages
             await addBookWindow.LoadDataAsync();
 
             var result = addBookWindow.ShowDialog();
-            if(result == true)
+            if (result == true)
             {
-                await LoadDataAsync();  
+                await LoadDataAsync();
             }
         }
 
@@ -251,7 +256,7 @@ namespace LibraryManager.View.Pages
         {
             var addAuthorWindow = new AddAuthor();
             addAuthorWindow.Owner = Window.GetWindow(this);
-            
+
             addAuthorWindow.ShowDialog();
         }
 
@@ -265,12 +270,69 @@ namespace LibraryManager.View.Pages
 
             if (result == true)
             {
-               await LoadDataAsync();
+                await LoadDataAsync();
             }
         }
 
+        private void Title_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("This is the title of the book.");
+        }
 
+        private void Authors_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("These are the authors of the book.");
+        }
 
+        private void Genres_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("These are the genres of the book.");
+        }
+
+        private void Page_Cnt_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("This is the number of pages in the book.");
+        }
+
+        private void Available_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("This indicates whether the book is available for borrowing.");
+        }
+
+        private void Info_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to view more information about the book.");
+        }
+
+        private void Edit_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to edit the book details.");
+        }
+
+        private void Delete_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to delete the book.");
+        }
+
+        private void Btn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Click to add a new book or author.");
+        }
+
+        private void Field_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("You can hover over the fields to get more information.");
+        }
 
     }
 

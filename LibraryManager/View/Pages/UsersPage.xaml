@@ -27,10 +27,10 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width=".4*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Username" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
-                    <TextBlock Text="Name" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
-                    <TextBlock Text="Surname" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
-                    <TextBlock Text="Offered Books" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
+                    <TextBlock Text="Username" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Username_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Text="Name" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Name_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Text="Surname" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Surname_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Text="Offered Books" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Books_MouseEnter" MouseLeave="Field_MouseLeave"/>
 
                 </Grid>
             </Border>

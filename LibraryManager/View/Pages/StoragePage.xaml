@@ -26,9 +26,9 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width=".4*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Bookshelf Name" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
-                    <TextBlock Text="Shelf Count" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
-                    <TextBlock Text="Available Storage" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5"/>
+                    <TextBlock Text="Bookshelf Name" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Bookshelf_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Text="Shelf Count" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Shelf_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Text="Available Storage" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="DemiBold" Foreground="#5e686d" Padding="0,0,0,5" MouseEnter="Storage_MouseEnter" MouseLeave="Field_MouseLeave"/>
 
                 </Grid>
             </Border>
@@ -76,7 +76,7 @@
             </Grid>
 
             <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,60,0">
-                <btn:CircularDoubleButtonControl ButtonTopContent="Add Bookshelf" ButtonBottomContent="Add Shelf" 
+                <btn:CircularDoubleButtonControl ButtonTopContent="Add Bookshelf" ButtonBottomContent="Add Shelf" MouseEnter="Btn_MouseEnter" MouseLeave="Field_MouseLeave"
                 ButtonTopClick="CircularDoubleButtonControl_ButtonTopClick" ButtonBottomClick="CircularDoubleButtonControl_ButtonBottomClick"/>
             </Grid>
 

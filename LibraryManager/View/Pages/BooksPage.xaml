@@ -30,11 +30,11 @@
                     </Grid.ColumnDefinitions>
 
                     
-                    <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Title" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b"/>
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Authors" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b"/>
-                    <TextBlock Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Genres" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b"/>
-                    <TextBlock Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Page count" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b"/>
-                    <TextBlock Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Available" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b"/>
+                    <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Title" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b" MouseEnter="Title_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Authors" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b" MouseEnter="Authors_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Genres" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b" MouseEnter="Genres_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Page count" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b" MouseEnter="Page_Cnt_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <TextBlock Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="0,0,0,5" Text="Available" FontSize="25" FontWeight="DemiBold" Foreground="#2e2d4b" MouseEnter="Available_MouseEnter" MouseLeave="Field_MouseLeave"/>
                    
 
                     
@@ -78,16 +78,16 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel  Grid.Column="1" Orientation="Horizontal">
-                    <btn:ItemActionButtonControl x:Name="ItemInfo" ButtonText="Info" ButtonClick="ItemInfo_ButtonClick"/>
-                    <btn:ItemActionButtonControl x:Name="ItemEdit" Margin="15,0" ButtonText="Edit" ButtonClick="ItemEdit_ButtonClick"/>
-                    <btn:ItemActionButtonControl x:Name="ItemDelete" ButtonText="Delete" ButtonBackgroundColor="#bec29b" ButtonClick="ItemDelete_ButtonClick"/>
+                    <btn:ItemActionButtonControl x:Name="ItemInfo" ButtonText="Info" ButtonClick="ItemInfo_ButtonClick" MouseEnter="Info_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <btn:ItemActionButtonControl x:Name="ItemEdit" Margin="15,0" ButtonText="Edit" ButtonClick="ItemEdit_ButtonClick" MouseEnter="Edit_MouseEnter" MouseLeave="Field_MouseLeave"/>
+                    <btn:ItemActionButtonControl x:Name="ItemDelete" ButtonText="Delete" ButtonBackgroundColor="#bec29b" ButtonClick="ItemDelete_ButtonClick" MouseEnter="Delete_MouseEnter" MouseLeave="Field_MouseLeave"/>
                 </StackPanel>
                 
 
             </Grid>
 
             <Grid Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,60,0">
-                <btn:CircularDoubleButtonControl ButtonBottomClick="CircularDoubleButtonControl_ButtonMiddleClick" ButtonTopClick="CircularDoubleButtonControl_ButtonTopClick" ButtonTopContent="Add Author" ButtonBottomContent="Add Book"/>
+                <btn:CircularDoubleButtonControl ButtonBottomClick="CircularDoubleButtonControl_ButtonMiddleClick" ButtonTopClick="CircularDoubleButtonControl_ButtonTopClick" ButtonTopContent="Add Author" ButtonBottomContent="Add Book" MouseEnter="Btn_MouseEnter" MouseLeave="Field_MouseLeave"/>
             </Grid>
             
         </Grid>

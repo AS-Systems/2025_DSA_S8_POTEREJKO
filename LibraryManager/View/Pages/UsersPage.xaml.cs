@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using LibraryManager.Services;
 
 namespace LibraryManager.View.Pages
 {
@@ -61,10 +63,40 @@ namespace LibraryManager.View.Pages
 
             var result = window.ShowDialog();
 
-            if (result == true) 
+            if (result == true)
             {
                 await LoadDataAsync();
             }
+        }
+
+        private void Username_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Username of the user.");
+        }
+
+        private void Name_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Name of the user.");
+        }
+
+        private void Surname_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Surname of the user.");
+        }
+
+        private void Books_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("Number of books offered by the user.");
+        }
+
+        private void Field_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (ClippyService.IsVisible)
+                ClippyService.Say("You can hover over the fields to get more information.");
         }
     }
 }

@@ -30,7 +30,7 @@
 
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="AllBooksBtn" Grid.Column="0" Content="All books" FontSize="22" FontWeight="DemiBold" Background="Transparent" Foreground="#3a3960" BorderThickness="0" Click="AllBooksBtn_Click">
+                            <Button x:Name="AllBooksBtn" Grid.Column="0" Content="All books" FontSize="22" FontWeight="DemiBold" Background="Transparent" Foreground="#3a3960" BorderThickness="0" Click="AllBooksBtn_Click" MouseEnter="AllBooks_MouseEnter" MouseLeave="Field_MouseLeave" >
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="30,0,0,0"/>
@@ -38,7 +38,7 @@
                                 </Button.Resources>
                             </Button>
 
-                            <Button x:Name="BookCopiesBtn" Grid.Column="2" Content="Book copies" FontSize="22" FontWeight="DemiBold" Background="Transparent" Foreground="#3a3960" BorderThickness="0" Click="BookCopiesBtn_Click">
+                            <Button x:Name="BookCopiesBtn" Grid.Column="2" Content="Book copies" FontSize="22" FontWeight="DemiBold" Background="Transparent" Foreground="#3a3960" BorderThickness="0" Click="BookCopiesBtn_Click" MouseEnter="BookCopies_MouseEnter" MouseLeave="Field_MouseLeave">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="0,30,0,0"/>
