@@ -31,7 +31,7 @@ This modular architecture improves testability, maintainability, and scalability
 
 To install and run the LibraryManager application:
 
-1. Download the setup file from the `installer` folder of this repository:  
+1. Download the setup file from the `Installer` folder of this repository:  
    [`Installer/LibraryManagerSetup.msi`]
 
 2. Double-click `LibraryManagerSetup.msi` to launch the installer.
