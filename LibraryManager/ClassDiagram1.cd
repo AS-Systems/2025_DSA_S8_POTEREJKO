@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LibraryManager.Model.Entities.Author">
+    <Position X="52.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAABAAAAAAAAAAAQABAAAAAAAEAAAAEAAAAA=</HashCode>
+      <FileName>Model\Entities\Author.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="59.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="LibraryManager.Model.Repositories.AuthorRepository">
+    <Position X="45.75" Y="10.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAQAACAAAAAAAAQAAAAgAAAAAAAgAAIA=</HashCode>
+      <FileName>Model\Repositories\AuthorRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.Model.Repositories.BookAuthorRepository">
+    <Position X="42" Y="20.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAIAAAAAABAAAAAAAAAECAAAAAAAAACAAIAAAAIA=</HashCode>
+      <FileName>Model\Repositories\BookAuthorRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.Model.Repositories.BookCopyRepository">
+    <Position X="41.75" Y="16.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAgAAhAAAAAAAAAAAAChAAAQ=</HashCode>
+      <FileName>Model\Repositories\BookCopyRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.Model.Repositories.BookGenreRepository">
+    <Position X="49.25" Y="10.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAIAAAAAADAAAAAAAAAEAAAAAAAAAACAAIAAAAIA=</HashCode>
+      <FileName>Model\Repositories\BookGenreRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.Model.Repositories.BookRepository">
+    <Position X="38.25" Y="16.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAACAAABAACAAAgAAAAIAAAAAgAAgAAAAQAAIA=</HashCode>
+      <FileName>Model\Repositories\BookRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.Model.Repositories.BookshelfRepository">
+    <Position X="48.75" Y="25.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQCAAABQAAAAAAAACAAAAAAAgAAAgAAAAAAIA=</HashCode>
+      <FileName>Model\Repositories\BookshelfRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.Model.Repositories.BorrowRepository">
+    <Position X="37.75" Y="10.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAQHCBAgRAMAAIAgAAAAAAAAAAgAAAAAAAACAMA=</HashCode>
+      <FileName>Model\Repositories\BorrowRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.Model.Repositories.GenreRepository">
+    <Position X="45.5" Y="16.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAIAAAAAABAAAAAAAAIEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Model\Repositories\GenreRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.Model.Repositories.ShelfRepository">
+    <Position X="42" Y="10.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAACAAABABAAAAAAAAAACAAAAgAAEAAAAAAAIA=</HashCode>
+      <FileName>Model\Repositories\ShelfRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.Model.Repositories.UserRepository">
+    <Position X="38.25" Y="20.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAABQAAAAAAAAGACAQAAAgACAAAAAAAAIA=</HashCode>
+      <FileName>Model\Repositories\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.View.CustomControls.ImageControls.RectConverter">
+    <Position X="49" Y="32.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\CustomControls\ImageControls\ImageDropControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.View.CustomControls.ProgressBars.ValueAndMaxToAngleConverter">
+    <Position X="52" Y="16" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\CustomControls\ProgressBars\CircularProgressBar.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.ViewModel.Converters.ImageConverter.ImageConverter">
+    <Position X="56.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\ImageConverter\ImageConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.ViewModel.Converters.AuthorObjToAuthorStrConverter">
+    <Position X="51.75" Y="21.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\AuthorObjToAuthorStrConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.ViewModel.Converters.BoolAvailabilityConverter">
+    <Position X="52" Y="32.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\BoolAvailabilityConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.ViewModel.Converters.DateTimeToDateConverter">
+    <Position X="38.25" Y="32.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\DateTimeToDateConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.ViewModel.Converters.GenresToStringConverter">
+    <Position X="41.25" Y="32" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\GenresToStringConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LibraryManager.ViewModel.Converters.IntGenreConverter">
+    <Position X="52" Y="25.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>ViewModel\Converters\IntGenreConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BookViewModel">
+    <Position X="41.25" Y="25.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAICAAAAAAAAQAAAAAAAAAACAAABAA=</HashCode>
+      <FileName>ViewModel\bookViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Helpers.DateTimeExtensions">
+    <Position X="55.5" Y="10.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Helpers\DateTimeExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Helpers.TimePeriodHelper">
+    <Position X="52" Y="29.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Model\Helpers\TimePeriodHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Entities.Book">
+    <Position X="45.75" Y="25.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAABhAEIAAEAAACAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Model\Entities\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Entities.BookAuthor">
+    <Position X="41.25" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAABAgAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Model\Entities\BookAuthor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Entities.BookCopy">
+    <Position X="49.25" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACCACIAAAAAABAAAAAAAAAAAAAAAAAAIAAAIAAAAA=</HashCode>
+      <FileName>Model\Entities\BookCopy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Entities.BooksGenre">
+    <Position X="49" Y="29.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAIABAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Entities\BooksGenre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Entities.Bookshelf">
+    <Position X="45.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACIAAAAAAAIAAIEAAQAAAIAAAAAAAIAAAAAAQA=</HashCode>
+      <FileName>Model\Entities\Bookshelf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Entities.Borrow">
+    <Position X="49.5" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAADAAAEAAEAAAAAAAAAAAgAAAAAEAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Model\Entities\Borrow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Entities.Genre">
+    <Position X="45.5" Y="29.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAABAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Entities\Genre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Entities.HomelibraryContext">
+    <Position X="63" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAACAAAQBRAAIAAAIAAAAAkABAAAAAAABAAAAAAQA=</HashCode>
+      <FileName>Model\Entities\HomelibraryContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Entities.Shelf">
+    <Position X="38.5" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAAAAIAAAAAIAAAAAAAQCAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Entities\Shelf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryManager.Model.Entities.User">
+    <Position X="38.75" Y="25.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAAACAAAAIAEQAAQAQABAAAAAACBABAAAAAAAA=</HashCode>
+      <FileName>Model\Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model.DependencyInjection">
+    <Position X="45.5" Y="32.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Entities\DependencyInjection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="LibraryManager.Model.Enums.ComparisonOperation">
+    <Position X="61.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAIAAgAAAAAAAAAAAAEAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\Enums\ComparisonOperation.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LibraryManager.Model.Enums.Genre">
+    <Position X="63.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hAAEICAJEAAAAIAYABAEBIAACAAAAACAoBgAVAQAwEA=</HashCode>
+      <FileName>Model\Enums\Genre.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LibraryManager.Model.Enums.Role">
+    <Position X="65" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Enums\Role.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LibraryManager.Model.Enums.Status">
+    <Position X="61.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAASAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Enums\Status.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LibraryManager.Model.Enums.TimePeriod">
+    <Position X="65" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAABAAAAAAAAAAAAAAAAIAAQA=</HashCode>
+      <FileName>Model\Enums\TimePeriod.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
