@@ -27,7 +27,20 @@ The project follows the **MVVM (Model-View-ViewModel)** design pattern for clear
 
 This modular architecture improves testability, maintainability, and scalability.
 
-## Getting Started
+## Installation
+
+To install and run the LibraryManager application:
+
+1. Download the setup file from the `installer` folder of this repository:  
+   [`installer/LibraryManagerSetup.msi`]
+
+2. Double-click `LibraryManagerSetup.msi` to launch the installer.
+
+3. Follow the on-screen instructions to complete the installation.
+
+4. Once installed, you can launch **LibraryManager** from the Start Menu. 
+
+## Getting Started (Developers)
 
 To run the project locally:
 
